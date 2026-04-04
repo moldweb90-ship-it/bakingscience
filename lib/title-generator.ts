@@ -32,14 +32,14 @@ export function generateFallbackTitle(
   value: number,
   ingredientName: string,
 ): string {
-  return `${value}g ${ingredientName} to Cups — Precise Conversion (Sifted vs Packed) | ${SITE_NAME}`;
+  return `${value}g ${ingredientName} to Cups — Precise Conversion (Sifted vs Packed)`;
 }
 
 /**
  * Generate hub page title
  */
 export function generateHubTitle(ingredientName: string): string {
-  return `${ingredientName} — Grams to Cups Calculator (3 Methods Compared) | ${SITE_NAME}`;
+  return `${ingredientName} — Grams to Cups Calculator (3 Methods Compared)`;
 }
 
 export function generateHubDescription(ingredientName: string, _ingredient: { category: string }): string {

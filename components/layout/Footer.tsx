@@ -77,7 +77,7 @@ export default function Footer() {
 
         <div className="mt-8 pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-slate-500 text-sm">
-            &copy; {new Date().getFullYear()} BakingScience.io &mdash; Precision baking measurements for everyone.
+            &copy; 2025 BakingScience.io &mdash; Precision baking measurements for everyone.
           </p>
           <button
             className="text-slate-500 hover:text-accent text-sm transition-colors min-h-[44px] flex items-center"

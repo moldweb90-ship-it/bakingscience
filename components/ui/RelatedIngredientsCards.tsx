@@ -11,7 +11,7 @@ const categoryEmojis: Record<string, string> = {
   sugar: "\ud83c\udf6c",
   fat: "\ud83e\uddc8",
   dairy: "\ud83e\udd5b",
-  other: "\ud83e\udde3",
+  other: "\ud83e\udd63",
 };
 
 export default function RelatedIngredientsCards({ relatedIds, currentIngredientName }: RelatedIngredientsCardsProps) {
@@ -30,7 +30,7 @@ export default function RelatedIngredientsCards({ relatedIds, currentIngredientN
           className="card p-4 flex items-center gap-3 hover:border-accent transition-colors group"
         >
           <span className="text-2xl flex-shrink-0">
-            {categoryEmojis[ing.category] || "\ud83e\udde3"}
+            {categoryEmojis[ing.category] || "\ud83e\udd63"}
           </span>
           <div className="min-w-0">
             <p className="text-sm font-medium text-slate-800 group-hover:text-accent transition-colors truncate">

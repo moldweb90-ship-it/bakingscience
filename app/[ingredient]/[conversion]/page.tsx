@@ -66,8 +66,15 @@ export async function generateMetadata({ params }: LeafPageProps): Promise<Metad
   return {
     title,
     description,
-    openGraph: generateOpenGraph(title, description, canonical),
-    twitter: generateTwitterCard(title, description),
+    openGraph: {
+      ...generateOpenGraph(title, description, canonical),
+      type: 'article',
+      images: [{ url: '/og-default.png', width: 1200, height: 630 }],
+    },
+    twitter: {
+      ...generateTwitterCard(title, description),
+      images: ['/og-default.png'],
+    },
     alternates: { canonical },
   };
 }
