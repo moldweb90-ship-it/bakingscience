@@ -57,31 +57,13 @@ export function generateFAQSchema(
   ingredientId: string,
   faq: { question: string; answer: string }[],
 ) {
-  const spoonLevel = convert(value, ingredientId, 'spoon_level');
-  const sifted = convert(value, ingredientId, 'sifted');
-  const dipSweep = convert(value, ingredientId, 'dip_sweep');
-
-  const autoQuestions = [
-    {
-      question: `How many cups is ${value}g of ${ingredientName.toLowerCase()}?`,
-      answer: `Using the Spoon & Level method, ${value}g of ${ingredientName.toLowerCase()} equals ${spoonLevel.cups} cups. With Dip & Sweep it's ${dipSweep.cups} cups, and sifted it's ${sifted.cups} cups.`,
-    },
-    {
-      question: `Does the measurement method matter for ${ingredientName.toLowerCase()}?`,
-      answer: `Yes. The same ${value}g can measure ${sifted.cups} cups (sifted) or ${dipSweep.cups} cups (packed). That's a ${Math.round(((sifted.cups - dipSweep.cups) / spoonLevel.cups) * 100)}% difference.`,
-    },
-    {
-      question: `How do I measure ${ingredientName.toLowerCase()} without a scale?`,
-      answer: `Use the Spoon & Level method: lightly spoon the ${ingredientName.toLowerCase()} into a measuring cup until overflowing, then level off with a straight edge. Do not tap or shake the cup.`,
-    },
-  ];
-
-  const allQuestions = [...autoQuestions, ...faq];
+  // Deduplicate by question text
+  const uniqueFaqs = [...new Map(faq.map((f) => [f.question, f])).values()];
 
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: allQuestions.map((q) => ({
+    mainEntity: uniqueFaqs.map((q) => ({
       '@type': 'Question',
       name: q.question,
       acceptedAnswer: {

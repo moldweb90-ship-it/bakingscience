@@ -138,14 +138,10 @@ export default function LeafPageCalculator({
       </section>
 
       {/* Section H: Visual Measurement Guide */}
-      <section>
-        {/* Rendered in server component */}
-      </section>
+      {/* Rendered in server component */}
 
       {/* Section I: Nearby Values Table */}
-      <section>
-        {/* Rendered in server component */}
-      </section>
+      {/* Rendered in server component */}
 
       {/* Section J: Weight Slider */}
       <section>
@@ -166,9 +162,7 @@ export default function LeafPageCalculator({
       </section>
 
       {/* Section L: Recipe Context */}
-      <section>
-        {/* Rendered in server component */}
-      </section>
+      {/* Rendered in server component */}
 
       {/* Section M: Recipe Scaler */}
       {matchedRecipe && (
@@ -184,24 +178,16 @@ export default function LeafPageCalculator({
       )}
 
       {/* Section N: Nutrition Block */}
-      <section>
-        {/* Rendered in server component */}
-      </section>
+      {/* Rendered in server component */}
 
       {/* Section O: Pro Tips */}
-      <section>
-        {/* Rendered in server component */}
-      </section>
+      {/* Rendered in server component */}
 
       {/* Section P: Why It Matters */}
-      <section>
-        {/* Rendered in server component */}
-      </section>
+      {/* Rendered in server component */}
 
       {/* Section Q: FAQ */}
-      <section>
-        {/* Rendered in server component */}
-      </section>
+      {/* Rendered in server component */}
 
       {/* Section R: Sharing Block */}
       <section className="card p-6">
