@@ -14,7 +14,6 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
-          insecure: true
           script: |
             cd /var/www/bakingscience
             git pull origin main
