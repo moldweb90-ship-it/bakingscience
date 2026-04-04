@@ -9,11 +9,11 @@ import { SITE_URL, SITE_NAME } from '@/lib/constants';
 export const metadata: Metadata = {
   title: 'Grams to Cups Converter - 20 Baking Ingredients, 3 Methods',
   description:
-    'Stop guessing. Convert baking ingredients from grams to cups with scientific accuracy. Accounts for sifted, packed, and spooned methods. Free interactive calculator for 20+ ingredients.',
+    'Convert grams to cups for 20 baking ingredients. 3 methods: spooned, scooped, and sifted. Exact results, not rounded. Free calculator.',
   openGraph: {
     title: 'Grams to Cups Converter - 20 Baking Ingredients, 3 Methods',
     description:
-      'Stop guessing. Convert baking ingredients from grams to cups with scientific accuracy.',
+      'Convert grams to cups for 20 baking ingredients. 3 methods: spooned, scooped, and sifted. Exact results, not rounded. Free calculator.',
     url: SITE_URL,
     siteName: SITE_NAME,
     type: 'website',
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Grams to Cups Converter - 20 Baking Ingredients, 3 Methods',
     description:
-      'Stop guessing. Convert baking ingredients from grams to cups with scientific accuracy.',
+      'Convert grams to cups for 20 baking ingredients. 3 methods: spooned, scooped, and sifted. Exact results, not rounded. Free calculator.',
     images: ['/og-default.png'],
   },
   alternates: { canonical: '/' },
