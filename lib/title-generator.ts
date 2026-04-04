@@ -2,9 +2,10 @@ import { SITE_NAME } from './constants';
 
 /**
  * Anti-snippet title rotation (Section 9.1)
+ * Optimized for CTR: answer in title, differentiation from competitors
  *
- * Formula 1 — Fear/Doubt (values ending in 0 or 5)
- * Formula 2 — Ultra-Precision (values ending in 1, 4, 7)
+ * Formula 1 — Answer + Anti-AI (values ending in 0 or 5)
+ * Formula 2 — Precision (values ending in 1, 4, 7)
  * Formula 3 — Tool/Interactive (values ending in 2, 3, 6, 8, 9)
  */
 export function generateLeafTitle(
@@ -13,16 +14,17 @@ export function generateLeafTitle(
   spoonLevelCups: number,
 ): string {
   const lastDigit = value % 10;
+  const shortName = ingredientName.split(' ')[0];
 
   if (lastDigit === 0 || lastDigit === 5) {
-    return `Google Says ~${spoonLevelCups} Cups for ${value}g ${ingredientName} — Here's Why That's Wrong for YOUR Recipe`;
+    return `${value}g ${shortName} in Cups: Exactly ${spoonLevelCups} (Not ~${(spoonLevelCups * 1.1).toFixed(1)}) — 3 Methods`;
   }
 
   if (lastDigit === 1 || lastDigit === 4 || lastDigit === 7) {
-    return `${value}g ${ingredientName} to Cups: Exact Measurements for 3 Methods (Not 'Approximately')`;
+    return `${value}g ${shortName} to Cups: ${spoonLevelCups} Cups Exact (Sifted vs Packed vs Spooned)`;
   }
 
-  return `${value}g ${ingredientName} Converter: Adjust for Sifted, Packed & Altitude — Interactive Calculator`;
+  return `${value}g ${shortName} Converter: ${spoonLevelCups} Cups — Adjust for Method & Altitude`;
 }
 
 /**
