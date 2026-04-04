@@ -8,24 +8,65 @@ export default async function Image() {
     (
       <div
         style={{
-          background: '#FDF6E3',
+          background: 'linear-gradient(135deg, #FDF6E3 0%, #FFEDD5 50%, #F97316 100%)',
           width: '100%',
           height: '100%',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          gap: 16,
+          padding: 60,
         }}
       >
-        <div style={{ fontSize: 72, fontWeight: 'bold', color: '#0f172a' }}>
+        {/* Top icon row */}
+        <div style={{ display: 'flex', gap: 20, marginBottom: 30 }}>
+          <div style={{ fontSize: 64 }}>🧁</div>
+          <div style={{ fontSize: 64 }}>🔬</div>
+          <div style={{ fontSize: 64 }}>📐</div>
+        </div>
+
+        {/* Main title */}
+        <div
+          style={{
+            fontSize: 64,
+            fontWeight: 'bold',
+            color: '#0f172a',
+            textAlign: 'center',
+            lineHeight: 1.1,
+            marginBottom: 20,
+          }}
+        >
           Baking Conversions Done Right
         </div>
-        <div style={{ fontSize: 32, color: '#64748b' }}>
-          Precision baking measurements for everyone
+
+        {/* Subtitle */}
+        <div
+          style={{
+            fontSize: 28,
+            color: '#64748b',
+            textAlign: 'center',
+            marginBottom: 30,
+          }}
+        >
+          Not &quot;roughly&quot; — exactly. 20+ ingredients, 3 methods.
         </div>
-        <div style={{ fontSize: 24, color: '#f97316', marginTop: 16 }}>
-          bakingscience.io
+
+        {/* URL badge */}
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 12,
+            background: '#F97316',
+            color: 'white',
+            fontSize: 24,
+            fontWeight: 'bold',
+            padding: '12px 32px',
+            borderRadius: 12,
+          }}
+        >
+          <span>🧪</span>
+          <span>bakingscience.io</span>
         </div>
       </div>
     ),
