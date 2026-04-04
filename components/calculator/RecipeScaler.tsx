@@ -12,13 +12,79 @@ export interface RecipeScalerProps {
   activeMethod: string;
 }
 
+function decimalToFraction(cups: number): string {
+  const whole = Math.floor(cups);
+  const remainder = cups - whole;
+
+  const fractions: [number, string][] = [
+    [0, ""],
+    [0.125, "\u215B"],
+    [0.25, "\u00BC"],
+    [0.333, "\u2153"],
+    [0.375, "\u215C"],
+    [0.5, "\u00BD"],
+    [0.625, "\u215D"],
+    [0.667, "\u2154"],
+    [0.75, "\u00BE"],
+    [0.875, "\u215E"],
+  ];
+
+  let closest = "";
+  let minDiff = Infinity;
+  for (const [val, label] of fractions) {
+    const diff = Math.abs(remainder - val);
+    if (diff < minDiff) {
+      minDiff = diff;
+      closest = label;
+    }
+  }
+
+  if (whole === 0 && closest) return closest;
+  if (whole === 0) return cups.toFixed(2);
+  if (!closest) return `${whole}`;
+  return `${whole} and ${closest}`;
+}
+
+function formatCups(cups: number): string {
+  if (cups === 0) return "0 cups";
+  if (cups === 1) return "1 cup";
+
+  const whole = Math.floor(cups);
+  const remainder = cups - whole;
+
+  const fractions: [number, string][] = [
+    [0.125, "\u215B"],
+    [0.25, "\u00BC"],
+    [0.333, "\u2153"],
+    [0.375, "\u215C"],
+    [0.5, "\u00BD"],
+    [0.625, "\u215D"],
+    [0.667, "\u2154"],
+    [0.75, "\u00BE"],
+    [0.875, "\u215E"],
+  ];
+
+  let closest = "";
+  let minDiff = Infinity;
+  for (const [val, label] of fractions) {
+    const diff = Math.abs(remainder - val);
+    if (diff < minDiff) {
+      minDiff = diff;
+      closest = label;
+    }
+  }
+
+  if (whole === 0) return `${closest} cup`;
+  if (!closest) return `${whole} cups`;
+  return `${whole} ${closest} cups`;
+}
+
 export default function RecipeScaler({ recipe, activeMethod }: RecipeScalerProps) {
   const [scale, setScale] = useState(1);
   const [customScale, setCustomScale] = useState("");
 
   const scaleFactor = customScale ? parseFloat(customScale) : scale;
 
-  // Scale with correct modifiers per ingredient type
   const scaledRecipe = (() => {
     const methodMod = MEASUREMENT_METHODS[activeMethod]?.modifier ?? 1.0;
     const scaledIngredients = recipe.ingredients.map((ing) => {
@@ -56,14 +122,17 @@ export default function RecipeScaler({ recipe, activeMethod }: RecipeScalerProps
     };
   })();
 
-  const presets = [0.5, 1, 1.5, 2, 3];
+  const presets = [
+    { value: 0.5, label: "\u00BD Recipe" },
+    { value: 1, label: "1x" },
+    { value: 1.5, label: "1.5x" },
+    { value: 2, label: "Double" },
+    { value: 3, label: "Triple" },
+  ];
 
   return (
     <div className="card p-6">
-      <h3 className="text-lg font-semibold text-slate-900 mb-1">
-        Scale This Recipe
-      </h3>
-      <p className="text-sm text-slate-600 mb-4">
+      <p className="text-lg font-semibold text-slate-900 mb-1">
         {scaledRecipe.name} (scaled to {scaledRecipe.scale_factor}x, serves {scaledRecipe.scaled_serves})
       </p>
 
@@ -86,7 +155,7 @@ export default function RecipeScaler({ recipe, activeMethod }: RecipeScalerProps
                   {ing.note && <span className="text-slate-400 text-xs ml-1">({ing.note})</span>}
                 </td>
                 <td className="table-cell text-center font-mono">{ing.scaled_weight_g}g</td>
-                <td className="table-cell text-center font-mono">{ing.cups}</td>
+                <td className="table-cell text-center font-mono">{formatCups(ing.cups)}</td>
               </tr>
             ))}
           </tbody>
@@ -96,11 +165,11 @@ export default function RecipeScaler({ recipe, activeMethod }: RecipeScalerProps
       <div className="flex flex-wrap gap-2 mb-3">
         {presets.map((p) => (
           <button
-            key={p}
-            onClick={() => { setScale(p); setCustomScale(""); }}
-            className={`btn-secondary text-sm px-3 py-2 min-h-[36px] ${scaledRecipe.scale_factor === p && !customScale ? "bg-accent-light text-accent-hover border-accent" : ""}`}
+            key={p.value}
+            onClick={() => { setScale(p.value); setCustomScale(""); }}
+            className={`btn-secondary text-sm px-3 py-2 min-h-[36px] ${scaledRecipe.scale_factor === p.value && !customScale ? "bg-accent-light text-accent-hover border-accent" : ""}`}
           >
-            {p}x
+            {p.label}
           </button>
         ))}
         <div className="flex items-center gap-1">

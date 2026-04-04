@@ -25,8 +25,8 @@ export default function AltitudeToggle({ enabled, onToggle }: AltitudeToggleProp
       </label>
       {enabled && (
         <div className="callout-warning mt-3">
-          <p className="font-semibold text-slate-800 mb-2">{"\u26f0\ufe0f"} High Altitude Adjustment (above 3,500 ft)</p>
-          <p className="text-sm text-slate-700 mb-2">When baking above 3,500 feet:</p>
+          <p className="font-semibold text-slate-800 mb-1">High Altitude Baking Adjustments</p>
+          <p className="text-sm text-slate-600 mb-2">Essential tips for baking above 3,500 ft (1,070m)</p>
           <ul className="text-sm text-slate-700 space-y-1 list-disc list-inside">
             <li>Add 2-4 tablespoons of flour per cup</li>
             <li>Increase liquid by 2-4 tablespoons</li>

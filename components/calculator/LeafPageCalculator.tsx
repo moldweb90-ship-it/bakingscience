@@ -167,7 +167,8 @@ export default function LeafPageCalculator({
       {/* Section M: Recipe Scaler */}
       {matchedRecipe && (
         <section>
-          <h2 className="text-xl font-semibold text-slate-900 mb-4">Scale This Recipe</h2>
+          <h2 className="text-xl font-semibold text-slate-900 mb-1">Recipe Multiplier &amp; Converter</h2>
+          <p className="text-sm text-slate-600 mb-4">Scale this baking recipe and convert between grams and cups instantly.</p>
           <RecipeScaler
             recipe={matchedRecipe}
             currentWeight={weightG}
