@@ -24,22 +24,25 @@ export default function Icon() {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          {/* Beaker (science) */}
+          {/* Cupcake wrapper */}
           <path
-            d="M9 3h6v6l4 8c.5 1-.2 2-1.5 2h-11c-1.3 0-2-1-1.5-2l4-8V3z"
+            d="M7 14l-1 6h12l-1-6H7z"
             fill="white"
-            fillOpacity="0.9"
+            fillOpacity="0.85"
           />
-          {/* Liquid level */}
+          {/* Wrapper lines */}
+          <line x1="9" y1="14" x2="8.5" y2="20" stroke="white" strokeOpacity="0.5" strokeWidth="0.5" />
+          <line x1="12" y1="14" x2="12" y2="20" stroke="white" strokeOpacity="0.5" strokeWidth="0.5" />
+          <line x1="15" y1="14" x2="15.5" y2="20" stroke="white" strokeOpacity="0.5" strokeWidth="0.5" />
+          {/* Frosting swirl */}
           <path
-            d="M7 15h10l2-4H5l2 4z"
+            d="M6 14c0-3 2.5-6 6-6s6 3 6 6H6z"
             fill="white"
-            fillOpacity="0.5"
+            fillOpacity="0.95"
           />
-          {/* Bubbles */}
-          <circle cx="9" cy="12" r="1" fill="white" fillOpacity="0.7" />
-          <circle cx="12" cy="10" r="0.8" fill="white" fillOpacity="0.7" />
-          <circle cx="14" cy="13" r="0.6" fill="white" fillOpacity="0.7" />
+          {/* Cherry on top */}
+          <circle cx="12" cy="7" r="2" fill="white" fillOpacity="0.9" />
+          <path d="M12 5c0-1 1-2 2-2" stroke="white" strokeOpacity="0.7" strokeWidth="0.5" fill="none" />
         </svg>
       </div>
     ),

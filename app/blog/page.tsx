@@ -1,50 +1,34 @@
 import type { Metadata } from 'next';
-import BlogCard from '@/components/ui/BlogCard';
+import Link from 'next/link';
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
+import { blogPosts } from '@/data/blog-posts';
 
 export const metadata: Metadata = {
   title: 'Baking Science Blog — Tips, Guides & Conversion Deep Dives | BakingScience',
   description: 'Expert baking articles covering measurement accuracy, high-altitude baking, ingredient science, and precision techniques.',
 };
 
-const blogPosts = [
-  {
-    title: 'The 20% Error: Why Your Cup Measurements Are Ruining Your Baking',
-    slug: 'why-cup-measurements-fail',
-    excerpt: 'How you fill your measuring cup changes the weight by up to 20%. Learn the three methods professional bakers use and why Google AI can never give you the full picture.',
-    date: '2025-01-15',
-  },
-  {
-    title: 'Baking in Denver: The High-Altitude Adjustment Guide You Actually Need',
-    slug: 'high-altitude-baking-guide',
-    excerpt: 'Altitude changes everything. Learn exactly how much extra flour and liquid you need above 3,500 feet, with a city-by-city adjustment table.',
-    date: '2025-01-22',
-  },
-  {
-    title: 'Butter Math: Why Solid vs Melted Changes Everything in Your Recipe',
-    slug: 'butter-solid-vs-melted-measurement',
-    excerpt: 'The same 113g of butter measures differently depending on whether it is solid, softened, or melted. See the visual comparison that will change how you bake.',
-    date: '2025-01-29',
-  },
-  {
-    title: 'All-Purpose vs Bread vs Cake Flour: The Weight Difference That Ruins Recipes',
-    slug: 'flour-types-weight-comparison',
-    excerpt: 'Different flour types have different densities. 1 cup of cake flour weighs 30% less than 1 cup of bread flour. See the full comparison table for all 6 flour types.',
-    date: '2025-02-05',
-  },
-  {
-    title: "Stop Eyeballing: A Professional Baker's Guide to Precision Measurement",
-    slug: 'precision-measurement-guide',
-    excerpt: 'Step-by-step photo guide for each measurement method. Learn why professional bakers always weigh, and how to get the most accuracy from cup measurements when a scale is not available.',
-    date: '2025-02-12',
-  },
-];
+const categoryLabels: Record<string, string> = {
+  guides: 'Guides',
+  ingredients: 'Ingredients',
+  science: 'Science',
+  tips: 'Tips',
+  recipes: 'Recipes',
+};
+
+const categoryOrder = ['guides', 'ingredients', 'science', 'tips', 'recipes'];
 
 export default function BlogListingPage() {
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
     { label: 'Blog' },
   ];
+
+  const grouped = blogPosts.reduce<Record<string, typeof blogPosts>>((acc, post) => {
+    if (!acc[post.category]) acc[post.category] = [];
+    acc[post.category].push(post);
+    return acc;
+  }, {});
 
   return (
     <div className="py-8 sm:py-12">
@@ -59,18 +43,47 @@ export default function BlogListingPage() {
         </p>
       </header>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl">
-        {blogPosts.map((post) => (
-          <BlogCard
-            key={post.slug}
-            title={post.title}
-            slug={post.slug}
-            excerpt={post.excerpt}
-            publishedDate={post.date}
-            comingSoon
-          />
-        ))}
-      </div>
+      {categoryOrder.map((cat) => {
+        const posts = grouped[cat];
+        if (!posts || posts.length === 0) return null;
+
+        return (
+          <section key={cat} className="mb-12">
+            <h2 className="text-2xl font-bold text-slate-900 mb-6">
+              {categoryLabels[cat] || cat}
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {posts.map((post) => (
+                <Link
+                  key={post.slug}
+                  href={`/blog/${post.slug}/`}
+                  className="card p-6 flex flex-col gap-3 group hover:border-accent transition-colors"
+                >
+                  <div className="bg-slate-100 rounded-card h-40 flex items-center justify-center text-4xl">
+                    {post.emoji}
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs text-slate-500 capitalize bg-slate-100 px-2 py-0.5 rounded-full">
+                      {post.category}
+                    </span>
+                    <span className="text-xs text-slate-400">{post.readTime} min</span>
+                  </div>
+                  <h3 className="font-semibold text-slate-900 group-hover:text-accent transition-colors leading-snug">
+                    {post.title}
+                  </h3>
+                  <p className="text-sm text-slate-600 flex-1 line-clamp-3">{post.description}</p>
+                  <div className="flex items-center justify-between mt-auto">
+                    <time className="text-xs text-slate-400">{post.date}</time>
+                    <span className="text-sm text-accent group-hover:text-accent-hover font-medium">
+                      Read More &rarr;
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </section>
+        );
+      })}
     </div>
   );
 }
