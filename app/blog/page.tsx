@@ -4,7 +4,7 @@ import Breadcrumbs from '@/components/layout/Breadcrumbs';
 import { blogPosts } from '@/data/blog-posts';
 
 export const metadata: Metadata = {
-  title: 'Baking Science Blog — Tips, Guides & Conversion Deep Dives | BakingScience',
+  title: 'Baking Science Blog — Tips, Guides & Conversion Deep Dives | BakingConverter',
   description: 'Expert baking articles covering measurement accuracy, high-altitude baking, ingredient science, and precision techniques.',
 };
 

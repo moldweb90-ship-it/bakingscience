@@ -3,8 +3,8 @@ import Breadcrumbs from '@/components/layout/Breadcrumbs';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'About BakingScience — Precision Baking Measurements for Everyone',
-  description: 'Learn why BakingScience.io was created, our data sources, and our mission to bring precision to baking measurements.',
+  title: 'About BakingConverter — Precision Baking Measurements for Everyone',
+  description: 'Learn why BakingConverter.io was created, our data sources, and our mission to bring precision to baking measurements.',
 };
 
 export default function AboutPage() {
@@ -19,13 +19,13 @@ export default function AboutPage() {
 
       <article className="space-y-6 text-slate-700 leading-relaxed">
         <header>
-          <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-2">About BakingScience</h1>
+          <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-2">About BakingConverter</h1>
         </header>
 
         <section>
-          <h2 className="text-xl font-semibold text-slate-900 mt-8 mb-3">What Is BakingScience?</h2>
+          <h2 className="text-xl font-semibold text-slate-900 mt-8 mb-3">What Is BakingConverter?</h2>
           <p>
-            BakingScience.io is a free online baking conversion tool that converts ingredient weights (grams) to volume
+            BakingConverter.io is a free online baking conversion tool that converts ingredient weights (grams) to volume
             measurements (cups, tablespoons, teaspoons) with scientific precision. Unlike simple calculators that give
             you a single number, we account for measurement methods (Spoon &amp; Level, Dip &amp; Sweep, Sifted), ingredient
             states (solid, softened, melted for fats), and even high-altitude adjustments.
@@ -42,7 +42,7 @@ export default function AboutPage() {
           </p>
           <p>
             Google&apos;s AI Overview tells you &ldquo;approximately 0.72 to 0.8 cups&rdquo; for 100g of flour. That range represents
-            a 10% difference — enough to ruin a delicate recipe. We built BakingScience to give you one exact number
+            a 10% difference — enough to ruin a delicate recipe. We built BakingConverter to give you one exact number
             based on your specific inputs: the ingredient, the weight, the measurement method, and the state.
           </p>
         </section>
@@ -67,7 +67,7 @@ export default function AboutPage() {
           <p>
             <strong>Precision baking measurements for everyone.</strong> Whether you&apos;re a home baker who has ruined a
             recipe due to bad measurement, a professional who needs exactness, or a recipe blogger who needs reliable
-            conversions for your content — BakingScience is built for you.
+            conversions for your content — BakingConverter is built for you.
           </p>
           <p>
             We believe that understanding the science behind baking measurements makes everyone a better baker. Our
@@ -80,8 +80,8 @@ export default function AboutPage() {
           <h2 className="text-xl font-semibold text-slate-900 mt-8 mb-3">Get in Touch</h2>
           <p>
             Have a question, suggestion, or found an error? We&apos;d love to hear from you. Contact us at{' '}
-            <a href="mailto:contact@bakingscience.io" className="text-accent hover:text-accent-hover">
-              contact@bakingscience.io
+            <a href="mailto:contact@bakingconverter.com" className="text-accent hover:text-accent-hover">
+              contact@bakingconverter.com
             </a>{' '}
             or visit our <Link href="/contact/" className="text-accent hover:text-accent-hover">Contact page</Link>.
           </p>

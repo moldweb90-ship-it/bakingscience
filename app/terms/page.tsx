@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
 
 export const metadata: Metadata = {
-  title: 'Terms of Service — BakingScience',
-  description: 'Terms and conditions for using BakingScience.io baking conversion tools.',
+  title: 'Terms of Service — BakingConverter',
+  description: 'Terms and conditions for using BakingConverter.io baking conversion tools.',
 };
 
 export default function TermsPage() {
@@ -25,7 +25,7 @@ export default function TermsPage() {
         <section>
           <h2 className="text-xl font-semibold text-slate-900 mt-8 mb-3">1. Acceptance of Terms</h2>
           <p>
-            By accessing and using BakingScience.io (&ldquo;the Site&rdquo;), you accept and agree to be bound by these
+            By accessing and using BakingConverter.io (&ldquo;the Site&rdquo;), you accept and agree to be bound by these
             Terms of Service (&ldquo;Terms&rdquo;). If you do not agree to these Terms, please do not use the Site.
           </p>
         </section>
@@ -33,7 +33,7 @@ export default function TermsPage() {
         <section>
           <h2 className="text-xl font-semibold text-slate-900 mt-8 mb-3">2. Description of Service</h2>
           <p>
-            BakingScience.io provides free baking ingredient conversion tools that convert weights (grams) to volume
+            BakingConverter.io provides free baking ingredient conversion tools that convert weights (grams) to volume
             measurements (cups, tablespoons, teaspoons). The service also includes recipe scaling, measurement method
             comparisons, and educational content about baking science. All conversions are based on density data sourced
             from the USDA FoodData Central database and the King Arthur Baking Ingredient Weight Chart.
@@ -49,7 +49,7 @@ export default function TermsPage() {
             or commercial baking contexts. We recommend weighing ingredients for the most accurate results.
           </p>
           <p>
-            BakingScience.io is not responsible for any recipe outcomes, baking failures, or other consequences resulting
+            BakingConverter.io is not responsible for any recipe outcomes, baking failures, or other consequences resulting
             from the use of our conversion tools.
           </p>
         </section>
@@ -57,7 +57,7 @@ export default function TermsPage() {
         <section>
           <h2 className="text-xl font-semibold text-slate-900 mt-8 mb-3">4. Intellectual Property</h2>
           <p>
-            The content, design, layout, graphics, and code of this Site are the property of BakingScience.io and are
+            The content, design, layout, graphics, and code of this Site are the property of BakingConverter.io and are
             protected by copyright and other intellectual property laws. You may not reproduce, distribute, modify, or
             create derivative works from any content on this Site without prior written permission.
           </p>
@@ -84,7 +84,7 @@ export default function TermsPage() {
           <h2 className="text-xl font-semibold text-slate-900 mt-8 mb-3">6. Third-Party Links and Services</h2>
           <p>
             The Site may contain links to third-party websites or services that are not owned or controlled by
-            BakingScience.io. We have no control over, and assume no responsibility for, the content, privacy policies,
+            BakingConverter.io. We have no control over, and assume no responsibility for, the content, privacy policies,
             or practices of any third-party websites or services. You acknowledge and agree that we shall not be
             responsible or liable for any damage or loss caused by or in connection with the use of any such content,
             goods, or services available on or through any such websites or services.
@@ -94,7 +94,7 @@ export default function TermsPage() {
         <section>
           <h2 className="text-xl font-semibold text-slate-900 mt-8 mb-3">7. Limitation of Liability</h2>
           <p>
-            To the maximum extent permitted by law, BakingScience.io and its operators shall not be liable for any
+            To the maximum extent permitted by law, BakingConverter.io and its operators shall not be liable for any
             indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of
             profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of (or
             inability to access or use) the Site.
@@ -114,8 +114,8 @@ export default function TermsPage() {
           <h2 className="text-xl font-semibold text-slate-900 mt-8 mb-3">9. Contact</h2>
           <p>
             If you have any questions about these Terms, please contact us at{' '}
-            <a href="mailto:contact@bakingscience.io" className="text-accent hover:text-accent-hover">
-              contact@bakingscience.io
+            <a href="mailto:contact@bakingconverter.com" className="text-accent hover:text-accent-hover">
+              contact@bakingconverter.com
             </a>.
           </p>
         </section>

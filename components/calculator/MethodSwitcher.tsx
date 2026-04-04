@@ -13,17 +13,17 @@ export default function MethodSwitcher({ activeMethod, onMethodChange, ingredien
 
   return (
     <div>
-      <div className="flex flex-wrap gap-1 sm:gap-2" role="tablist" aria-label="Measurement method">
+      <div className="flex flex-col sm:flex-row gap-1 sm:gap-2" role="tablist" aria-label="Measurement method">
         {Object.values(MEASUREMENT_METHODS).map((m) => (
           <button
             key={m.id}
             role="tab"
             aria-selected={activeMethod === m.id}
             onClick={() => onMethodChange(m.id)}
-            className={`tab-button flex-1 min-w-[120px] text-center ${activeMethod === m.id ? "tab-button-active" : ""}`}
+            className={`tab-button flex-1 text-center text-xs px-2 py-2 ${activeMethod === m.id ? "tab-button-active" : ""}`}
           >
-            <span className="block text-sm font-medium">{m.label}</span>
-            <span className="block text-xs mt-0.5">{m.badge}</span>
+            <span className="block font-medium leading-tight">{m.label}</span>
+            <span className="block text-[10px] mt-0.5 leading-tight">{m.badge}</span>
           </button>
         ))}
       </div>

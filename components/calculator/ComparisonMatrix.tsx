@@ -24,17 +24,17 @@ export default function ComparisonMatrix({ weightG, density, activeMethod, state
   }
 
   return (
-    <div className="overflow-x-auto">
-      <table className="w-full text-sm min-w-[500px]">
+    <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
+      <table className="w-full text-sm min-w-[450px]">
         <thead>
           <tr className="table-header">
-            <th className="table-cell text-left sticky left-0 bg-slate-100 z-10">Unit</th>
+            <th className="table-cell text-left sticky left-0 bg-slate-100 z-10 min-w-[80px]">Unit</th>
             {methods.map((m) => (
               <th
                 key={m}
-                className={`table-cell text-center ${m === activeMethod ? "bg-accent-light text-accent-hover" : ""}`}
+                className={`table-cell text-center px-2 sm:px-4 ${m === activeMethod ? "bg-accent-light text-accent-hover" : ""}`}
               >
-                {MEASUREMENT_METHODS[m].label}
+                <span className="text-xs sm:text-sm">{MEASUREMENT_METHODS[m].label}</span>
               </th>
             ))}
           </tr>
@@ -42,13 +42,13 @@ export default function ComparisonMatrix({ weightG, density, activeMethod, state
         <tbody>
           {units.map((unit, idx) => (
             <tr key={unit.key} className={`table-row ${idx % 2 === 1 ? "table-row-alt" : ""}`}>
-              <td className="table-cell font-medium text-slate-800 sticky left-0 bg-inherit z-10">
+              <td className="table-cell font-medium text-slate-800 sticky left-0 bg-inherit z-10 min-w-[80px] text-xs sm:text-sm">
                 {unit.label}
               </td>
               {methods.map((m) => (
                 <td
                   key={m}
-                  className={`table-cell text-center font-mono ${m === activeMethod ? "bg-accent-light font-bold" : ""}`}
+                  className={`table-cell text-center font-mono text-xs sm:text-sm px-2 sm:px-4 ${m === activeMethod ? "bg-accent-light font-bold" : ""}`}
                 >
                   {results[m][unit.key]}
                 </td>

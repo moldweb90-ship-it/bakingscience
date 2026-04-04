@@ -7,11 +7,11 @@ import { ingredients } from '@/lib/converter';
 import { SITE_URL, SITE_NAME } from '@/lib/constants';
 
 export const metadata: Metadata = {
-  title: 'BakingScience - Precision Baking Conversions (Grams to Cups)',
+  title: 'Grams to Cups Converter - 20 Baking Ingredients, 3 Methods',
   description:
     'Stop guessing. Convert baking ingredients from grams to cups with scientific accuracy. Accounts for sifted, packed, and spooned methods. Free interactive calculator for 20+ ingredients.',
   openGraph: {
-    title: 'BakingScience - Precision Baking Conversions (Grams to Cups)',
+    title: 'Grams to Cups Converter - 20 Baking Ingredients, 3 Methods',
     description:
       'Stop guessing. Convert baking ingredients from grams to cups with scientific accuracy.',
     url: SITE_URL,
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'BakingScience - Precision Baking Conversions (Grams to Cups)',
+    title: 'Grams to Cups Converter - 20 Baking Ingredients, 3 Methods',
     description:
       'Stop guessing. Convert baking ingredients from grams to cups with scientific accuracy.',
     images: ['/og-default.png'],
@@ -185,7 +185,7 @@ export default function HomePage() {
             it, scoop it, or sift it.
           </p>
           <p>
-            BakingScience gives you exact conversions based on USDA density data, adjusted for your
+            BakingConverter gives you exact conversions based on USDA density data, adjusted for your
             specific measurement method. Whether you spoon and level, dip and sweep, or sift your
             ingredients, we calculate the precise volume so your recipe turns out right every time.
             No ranges. No &ldquo;approximately.&rdquo; Just science-backed numbers you can trust.

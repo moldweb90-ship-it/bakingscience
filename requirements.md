@@ -1,4 +1,4 @@
-# Technical Requirements Document: BakingScience.io
+# Technical Requirements Document: BakingConverter.io
 ## Version: 3.0 Final (Anti-Snippet Strategy)
 ## Date: 2025
 ## Type: Programmatic SEO Platform — Baking Science Lab
@@ -162,7 +162,7 @@ Our user is:
 }
 3. FILE STRUCTURE
 
-bakingscience.io/
+bakingconverter.com/
 ├── app/
 │   ├── layout.tsx
 │   ├── page.tsx
@@ -504,7 +504,7 @@ Whole Milk:             270g  =  1.11 cups
 7. SITE ARCHITECTURE & URL STRUCTURE
 7.1 URL Patterns
 Page Type	URL Pattern	Example
-Homepage	/	bakingscience.io
+Homepage	/	bakingconverter.com
 Ingredient Hub	/[ingredient]/	/cake-flour/
 Leaf Page	/[ingredient]/[value]-grams-to-cups/	/cake-flour/150-grams-to-cups/
 Blog Listing	/blog/	/blog/
@@ -943,7 +943,7 @@ Use when: Targeting users who want a tool, not an article
 - Values ending in 2, 3, 6, 8, 9 → Formula 3
 
 ### Fallback Title (if rotation logic fails):
-"[X]g [Ingredient] to Cups — Precise Conversion (Sifted vs Packed) | BakingScience"
+"[X]g [Ingredient] to Cups — Precise Conversion (Sifted vs Packed) | BakingConverter"
 
 
 
@@ -1015,13 +1015,13 @@ json
       "@type": "ListItem",
       "position": 1,
       "name": "Home",
-      "item": "https://bakingscience.io"
+      "item": "https://bakingconverter.com"
     },
     {
       "@type": "ListItem",
       "position": 2,
       "name": "Cake Flour",
-      "item": "https://bakingscience.io/cake-flour/"
+      "item": "https://bakingconverter.com/cake-flour/"
     },
     {
       "@type": "ListItem",
@@ -1080,7 +1080,7 @@ og:description	Same as meta description
 og:image	Dynamic per ingredient (1200x630)
 og:url	Canonical URL
 og:type	website
-og:site_name	BakingScience
+og:site_name	BakingConverter
 twitter:card	summary_large_image
 twitter:title	Same as page title
 twitter:description	Same as meta description
@@ -1090,7 +1090,7 @@ Every page must have a self-referencing canonical URL.
 
 html
 
-<link rel="canonical" href="https://bakingscience.io/cake-flour/150-grams-to-cups/" />
+<link rel="canonical" href="https://bakingconverter.com/cake-flour/150-grams-to-cups/" />
 9.6 Sitemap Strategy
 Problem: 40,000+ URLs cannot fit in one sitemap (limit: 50,000 but Google recommends smaller).
 Solution: Sitemap index with clustered sitemaps.
@@ -1127,7 +1127,7 @@ Sitemap Entry Format:
 xml
 
 <url>
-  <loc>https://bakingscience.io/cake-flour/150-grams-to-cups/</loc>
+  <loc>https://bakingconverter.com/cake-flour/150-grams-to-cups/</loc>
   <lastmod>2025-01-01</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.7</priority>
@@ -1146,7 +1146,7 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://bakingscience.io/sitemap.xml
+Sitemap: https://bakingconverter.com/sitemap.xml
 9.8 Additional SEO Elements
 Heading Hierarchy (Every Leaf Page):
 
@@ -1202,7 +1202,7 @@ Dimensions: 1080x1080px (square, Instagram/Pinterest optimal)
 Layout:
 
 ┌─────────────────────────────────┐
-│  🧁 BakingScience.io            │
+│  🧁 BakingConverter.io            │
 │                                 │
 │  CAKE FLOUR                     │
 │                                 │
@@ -1215,7 +1215,7 @@ Layout:
 │  Sifted: 1.60 cups             │
 │  Packed: 1.15 cups             │
 │                                 │
-│  bakingscience.io/cake-flour/   │
+│  bakingconverter.com/cake-flour/   │
 └─────────────────────────────────┘
 Design:
 Background: Cream (#FDF6E3)
@@ -1230,7 +1230,7 @@ Tall card format for Pinterest (1000x1500px).
 Layout:
 
 ┌──────────────────────────────┐
-│  🧁 BakingScience.io         │
+│  🧁 BakingConverter.io         │
 │                              │
 │  ALL-PURPOSE FLOUR           │
 │  Grams to Cups Cheat Sheet   │
@@ -1250,7 +1250,7 @@ Layout:
 │  Results may vary ±5%        │
 │                              │
 │  Save this pin!              │
-│  bakingscience.io            │
+│  bakingconverter.com            │
 └──────────────────────────────┘
 Generate one CheatSheetCard per ingredient.
 These are the PRIMARY Pinterest content.
@@ -1268,7 +1268,7 @@ When user clicks Print:
 Open print-specific CSS layout
 Remove: ads, navigation, footer, sharing buttons, sidebar
 Show: Result, comparison table, recipe (if any), tips, branding
-Include: Small "bakingscience.io" watermark at bottom
+Include: Small "bakingconverter.com" watermark at bottom
 Paper size: US Letter, single page
 12. PINTEREST STRATEGY
 12.1 Why Pinterest is Critical
@@ -1282,7 +1282,7 @@ Type 1: Cheat Sheet Pins (Primary)
 One per ingredient (20 at launch)
 CheatSheetCard component format (1000x1500px)
 Contains common weights → cups table
-Branded with bakingscience.io
+Branded with bakingconverter.com
 Type 2: Single Conversion Pins
 ConversionCard format (1080x1080px)
 For popular conversions (e.g., "200g butter to cups")
@@ -1318,7 +1318,7 @@ Every pin must have:
 
 Keyword-rich title: "[Ingredient] Grams to Cups — Free Conversion Chart"
 Description with keywords: "Convert [ingredient] from grams to cups. Includes sifted, packed, and spoon & level methods. Save this cheat sheet for your kitchen!"
-Link to relevant page on bakingscience.io
+Link to relevant page on bakingconverter.com
 Alt text on image
 13. ADVERTISING (ADSENSE)
 13.1 Ad Placement Strategy
@@ -1463,7 +1463,7 @@ Every blog post must contain:
 - 1-2 embedded mini-calculators or conversion tables
 - At least 1 image or diagram per 300 words
 - FAQ section at the bottom (2-3 questions, with FAQPage schema)
-- Author byline: "The BakingScience Team"
+- Author byline: "The BakingConverter Team"
 - Published date and "Last Updated" date
 - Related posts section (3 related articles)
 - Share buttons (Pinterest, Twitter/X, Copy Link)
@@ -1786,7 +1786,7 @@ Cookie categories: Necessary, Analytics, Advertising
 Last updated date
 Statement: "We do not collect personal information directly"
 18.3 About Us Page Must Include
-What BakingScience.io is
+What BakingConverter.io is
 Why it was created ("Because 'roughly 0.8 cups' isn't good enough")
 Data sources (USDA, King Arthur)
 Mission: "Precision baking measurements for everyone"
@@ -1816,7 +1816,7 @@ Design: Matches site theme (Cream background, Orange accept button)
 19.1 Google Analytics 4 Setup
 Property type: Web
 Enhanced measurement: ON
-Data stream: bakingscience.io
+Data stream: bakingconverter.com
 Load GA4 ONLY after cookie consent for analytics is granted
 19.2 Custom Events to Track
 Event Name	Trigger	Parameters
@@ -2134,13 +2134,13 @@ Before creating any page or content block, ask:
 ## Phase 0: Pre-Development (Week 0)
 
 ### Domain & Accounts
-- [ ] Register domain (bakingscience.io or .com alternative)
+- [ ] Register domain (bakingconverter.com or .com alternative)
 - [ ] Create Vercel account and link to GitHub repo
 - [ ] Create Google Analytics 4 property
 - [ ] Create Google Search Console property
 - [ ] Create Pinterest Business account
 - [ ] Create Twitter/X account (@bakingscience)
-- [ ] Create Gmail for the project (contact@bakingscience.io)
+- [ ] Create Gmail for the project (contact@bakingconverter.com)
 
 ### Branding
 - [ ] Design simple text logo (clean sans-serif + icon)
@@ -2789,7 +2789,7 @@ app/[ingredient]/[conversion]/page.tsx (Server Component)
 # APPENDIX C: METADATA GENERATION EXAMPLES
 
 ## C.1 Homepage Metadata
-title: "BakingScience — Precision Baking Conversions (Grams to Cups)"
+title: "BakingConverter — Precision Baking Conversions (Grams to Cups)"
 description: "Stop guessing. Convert baking ingredients from grams to cups
 with scientific accuracy. Accounts for sifted, packed, and spooned methods.
 Free interactive calculator for 20+ ingredients."
@@ -2797,7 +2797,7 @@ Free interactive calculator for 20+ ingredients."
 
 
 ## C.2 Ingredient Hub Metadata (Example: Cake Flour)
-title: "Cake Flour — Grams to Cups Calculator (12 Methods Compared) | BakingScience"
+title: "Cake Flour — Grams to Cups Calculator (12 Methods Compared) | BakingConverter"
 description: "Convert cake flour from grams to cups with precision.
 See how sifted, packed, and spooned methods change your measurement.
 Includes nutrition facts and expert baking tips."
@@ -2829,7 +2829,7 @@ with recipe scaler."
 
 
 ## C.6 Blog Post Metadata (Example)
-title: "The 20% Error: Why Your Cup Measurements Are Ruining Your Baking | BakingScience"
+title: "The 20% Error: Why Your Cup Measurements Are Ruining Your Baking | BakingConverter"
 description: "How you fill your measuring cup changes the weight by up to 20%.
 Learn the three methods, see the math, and find out which one
 professional bakers actually use."
@@ -2858,19 +2858,19 @@ Return sitemap index XML
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
-    <loc>https://bakingscience.io/sitemap-pages.xml</loc>
+    <loc>https://bakingconverter.com/sitemap-pages.xml</loc>
   </sitemap>
   <sitemap>
-    <loc>https://bakingscience.io/sitemap-blog.xml</loc>
+    <loc>https://bakingconverter.com/sitemap-blog.xml</loc>
   </sitemap>
   <sitemap>
-    <loc>https://bakingscience.io/sitemap-hubs.xml</loc>
+    <loc>https://bakingconverter.com/sitemap-hubs.xml</loc>
   </sitemap>
   <sitemap>
-    <loc>https://bakingscience.io/sitemap-all-purpose-flour.xml</loc>
+    <loc>https://bakingconverter.com/sitemap-all-purpose-flour.xml</loc>
   </sitemap>
   <sitemap>
-    <loc>https://bakingscience.io/sitemap-cake-flour.xml</loc>
+    <loc>https://bakingconverter.com/sitemap-cake-flour.xml</loc>
   </sitemap>
   <!-- ... one per ingredient ... -->
 </sitemapindex>

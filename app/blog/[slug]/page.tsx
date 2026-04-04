@@ -153,7 +153,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               {"\ud83e\uddc1"}
             </div>
             <div>
-              <p className="font-semibold text-slate-900">BakingScience Team</p>
+              <p className="font-semibold text-slate-900">BakingConverter Team</p>
               <p className="text-sm text-slate-600 mt-1">
                 We&apos;re obsessed with precise baking measurements. Every conversion on this site is backed by USDA density data and tested in real kitchens.
               </p>

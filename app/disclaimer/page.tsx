@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
 
 export const metadata: Metadata = {
-  title: 'Disclaimer — BakingScience',
-  description: 'Important disclaimer about the accuracy and limitations of BakingScience.io conversion tools.',
+  title: 'Disclaimer — BakingConverter',
+  description: 'Important disclaimer about the accuracy and limitations of BakingConverter.io conversion tools.',
 };
 
 export default function DisclaimerPage() {
@@ -25,7 +25,7 @@ export default function DisclaimerPage() {
         <section>
           <h2 className="text-xl font-semibold text-slate-900 mt-8 mb-3">Conversion Accuracy</h2>
           <p>
-            All conversion results provided by BakingScience.io are approximate estimates based on published ingredient
+            All conversion results provided by BakingConverter.io are approximate estimates based on published ingredient
             density data. The actual volume of any ingredient can vary by &plusmn;5% or more depending on factors including
             but not limited to: the specific brand, batch variation, humidity, temperature, altitude, particle size,
             moisture content, and the measurement technique used.
@@ -40,7 +40,7 @@ export default function DisclaimerPage() {
         <section>
           <h2 className="text-xl font-semibold text-slate-900 mt-8 mb-3">Not a Substitute for a Kitchen Scale</h2>
           <p>
-            BakingScience.io is not a substitute for a digital kitchen scale. For professional or commercial baking,
+            BakingConverter.io is not a substitute for a digital kitchen scale. For professional or commercial baking,
             we strongly recommend always weighing ingredients. Weight measurements are inherently more accurate than
             volume measurements because they are not affected by how the ingredient is packed, the shape of the
             measuring cup, or environmental factors.
@@ -70,7 +70,7 @@ export default function DisclaimerPage() {
         <section>
           <h2 className="text-xl font-semibold text-slate-900 mt-8 mb-3">No Warranty</h2>
           <p>
-            BakingScience.io is provided &ldquo;as is&rdquo; without any warranties, express or implied. We do not warrant that
+            BakingConverter.io is provided &ldquo;as is&rdquo; without any warranties, express or implied. We do not warrant that
             the conversion results will be accurate, complete, reliable, or suitable for any particular purpose. We
             are not responsible for any recipe outcomes, baking failures, food safety issues, or other consequences
             resulting from the use of our conversion tools.
@@ -90,8 +90,8 @@ export default function DisclaimerPage() {
           <h2 className="text-xl font-semibold text-slate-900 mt-8 mb-3">Contact</h2>
           <p>
             If you believe any of our data is incorrect, please contact us at{' '}
-            <a href="mailto:contact@bakingscience.io" className="text-accent hover:text-accent-hover">
-              contact@bakingscience.io
+            <a href="mailto:contact@bakingconverter.com" className="text-accent hover:text-accent-hover">
+              contact@bakingconverter.com
             </a>{' '}
             with the specific ingredient, the value in question, and your source. We review and update our data quarterly.
           </p>

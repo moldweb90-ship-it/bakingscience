@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: HubPageProps): Promise<Metada
       title,
       description,
       url: canonical,
-      siteName: 'BakingScience',
+      siteName: 'BakingConverter',
       type: 'article',
       images: [{ url: '/og-default.png', width: 1200, height: 630 }],
     },

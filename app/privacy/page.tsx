@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy — BakingScience',
-  description: 'Learn how BakingScience.io collects, uses, and protects your data. GDPR and CCPA compliant privacy policy.',
+  title: 'Privacy Policy — BakingConverter',
+  description: 'Learn how BakingConverter.io collects, uses, and protects your data. GDPR and CCPA compliant privacy policy.',
 };
 
 export default function PrivacyPage() {
@@ -25,9 +25,9 @@ export default function PrivacyPage() {
         <section>
           <h2 className="text-xl font-semibold text-slate-900 mt-8 mb-3">1. Introduction</h2>
           <p>
-            BakingScience.io (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;) is committed to protecting your privacy.
+            BakingConverter.io (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;) is committed to protecting your privacy.
             This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website
-            bakingscience.io. We do not collect personal information directly. Our site is a static baking conversion tool that
+            bakingconverter.com. We do not collect personal information directly. Our site is a static baking conversion tool that
             performs calculations in your browser.
           </p>
           <p>
@@ -113,7 +113,7 @@ export default function PrivacyPage() {
             <li><strong>Right to withdraw consent</strong> — You may withdraw your cookie consent at any time via our Cookie Settings link.</li>
           </ul>
           <p className="mt-3">
-            To exercise any of these rights, please contact us at <a href="mailto:privacy@bakingscience.io" className="text-accent hover:text-accent-hover">privacy@bakingscience.io</a>.
+            To exercise any of these rights, please contact us at <a href="mailto:privacy@bakingconverter.com" className="text-accent hover:text-accent-hover">privacy@bakingconverter.com</a>.
             We will respond to your request within 30 days.
           </p>
         </section>
@@ -130,7 +130,7 @@ export default function PrivacyPage() {
             <li><strong>Right to non-discrimination</strong> — We will not discriminate against you for exercising your CCPA rights.</li>
           </ul>
           <p className="mt-3">
-            To exercise your CCPA rights, please contact us at <a href="mailto:privacy@bakingscience.io" className="text-accent hover:text-accent-hover">privacy@bakingscience.io</a>.
+            To exercise your CCPA rights, please contact us at <a href="mailto:privacy@bakingconverter.com" className="text-accent hover:text-accent-hover">privacy@bakingconverter.com</a>.
           </p>
         </section>
 
@@ -165,8 +165,8 @@ export default function PrivacyPage() {
           <h2 className="text-xl font-semibold text-slate-900 mt-8 mb-3">10. Contact Us</h2>
           <p>
             If you have any questions about this Privacy Policy, please contact us at{' '}
-            <a href="mailto:privacy@bakingscience.io" className="text-accent hover:text-accent-hover">
-              privacy@bakingscience.io
+            <a href="mailto:privacy@bakingconverter.com" className="text-accent hover:text-accent-hover">
+              privacy@bakingconverter.com
             </a>.
           </p>
         </section>

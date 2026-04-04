@@ -198,12 +198,7 @@ export default async function LeafPage({ params }: LeafPageProps) {
           {/* Section A: Breadcrumbs */}
           <Breadcrumbs items={breadcrumbItems} />
 
-          {/* Section B: H1 + Answer Box */}
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
-            How Many Cups is {weight}g of {ing.name}{aliasesText}?
-          </h1>
-
-          {/* Answer Box for Featured Snippet */}
+          {/* Section B: H1 + Answer Box — H1 is inside ResultHero */}
           <p className="text-lg text-slate-700 mb-6 max-w-2xl leading-relaxed">
             <strong>{weight}g of {ing.name.toLowerCase()}</strong> equals{' '}
             <strong>{spoonLevel.cups} cups</strong> using the Spoon &amp; Level method.{' '}

@@ -79,9 +79,9 @@ export const RECIPE_MATCH_TOLERANCE = 0.2;
 /**
  * Site base URL
  */
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://bakingscience.io';
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://bakingconverter.com';
 
 /**
  * Site name
  */
-export const SITE_NAME = 'BakingScience';
+export const SITE_NAME = 'BakingConverter';

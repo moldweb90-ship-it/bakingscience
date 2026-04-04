@@ -3,8 +3,8 @@ import Breadcrumbs from '@/components/layout/Breadcrumbs';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Cookie Policy — BakingScience',
-  description: 'Learn about the cookies used on BakingScience.io and how to manage your cookie preferences.',
+  title: 'Cookie Policy — BakingConverter',
+  description: 'Learn about the cookies used on BakingConverter.io and how to manage your cookie preferences.',
 };
 
 export default function CookiesPage() {
@@ -124,8 +124,8 @@ export default function CookiesPage() {
           <h2 className="text-xl font-semibold text-slate-900 mt-8 mb-3">Contact</h2>
           <p>
             If you have any questions about our use of cookies, please contact us at{' '}
-            <a href="mailto:privacy@bakingscience.io" className="text-accent hover:text-accent-hover">
-              privacy@bakingscience.io
+            <a href="mailto:privacy@bakingconverter.com" className="text-accent hover:text-accent-hover">
+              privacy@bakingconverter.com
             </a>{' '}
             or visit our <Link href="/contact/" className="text-accent hover:text-accent-hover">Contact page</Link>.
           </p>

@@ -66,7 +66,7 @@ export default async function Image() {
           }}
         >
           <span>🧪</span>
-          <span>bakingscience.io</span>
+          <span>bakingconverter.com</span>
         </div>
       </div>
     ),

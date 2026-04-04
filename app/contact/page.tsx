@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
 
 export const metadata: Metadata = {
-  title: 'Contact BakingScience — Get in Touch',
-  description: 'Have a question or suggestion? Contact the BakingScience team.',
+  title: 'Contact BakingConverter — Get in Touch',
+  description: 'Have a question or suggestion? Contact the BakingConverter team.',
 };
 
 export default function ContactPage() {
@@ -30,24 +30,24 @@ export default function ContactPage() {
           <div>
             <h2 className="font-semibold text-slate-900 mb-1">General Inquiries</h2>
             <p>
-              <a href="mailto:contact@bakingscience.io" className="text-accent hover:text-accent-hover font-medium">
-                contact@bakingscience.io
+              <a href="mailto:contact@bakingconverter.com" className="text-accent hover:text-accent-hover font-medium">
+                contact@bakingconverter.com
               </a>
             </p>
           </div>
           <div>
             <h2 className="font-semibold text-slate-900 mb-1">Privacy &amp; Data</h2>
             <p>
-              <a href="mailto:privacy@bakingscience.io" className="text-accent hover:text-accent-hover font-medium">
-                privacy@bakingscience.io
+              <a href="mailto:privacy@bakingconverter.com" className="text-accent hover:text-accent-hover font-medium">
+                privacy@bakingconverter.com
               </a>
             </p>
           </div>
           <div>
             <h2 className="font-semibold text-slate-900 mb-1">Advertising Inquiries</h2>
             <p>
-              <a href="mailto:ads@bakingscience.io" className="text-accent hover:text-accent-hover font-medium">
-                ads@bakingscience.io
+              <a href="mailto:ads@bakingconverter.com" className="text-accent hover:text-accent-hover font-medium">
+                ads@bakingconverter.com
               </a>
             </p>
           </div>
@@ -55,7 +55,7 @@ export default function ContactPage() {
 
         <p className="text-sm text-slate-500">
           We aim to respond to all inquiries within 2-3 business days. For data deletion requests under GDPR or CCPA,
-          please email privacy@bakingscience.io with &ldquo;Data Deletion Request&rdquo; in the subject line.
+          please email privacy@bakingconverter.com with &ldquo;Data Deletion Request&rdquo; in the subject line.
         </p>
       </article>
     </div>
