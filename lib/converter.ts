@@ -33,6 +33,7 @@ export interface Ingredient {
   description: string;
   photo_available: boolean;
   density_source: string;
+  aliases: string[];
 }
 
 export interface ConversionResult {

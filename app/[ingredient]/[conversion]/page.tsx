@@ -13,7 +13,7 @@ import WhyItMatters from '@/components/calculator/WhyItMatters';
 import FAQAccordion from '@/components/seo/FAQAccordion';
 import AdBanner from '@/components/ads/AdBanner';
 import AdSidebar from '@/components/ads/AdSidebar';
-import { ingredients, convert, MEASUREMENT_METHODS } from '@/lib/converter';
+import { ingredients, convert, MEASUREMENT_METHODS, cupsToAllUnits } from '@/lib/converter';
 import { findMatchingRecipes } from '@/lib/recipe-scaler';
 import { parseConversionSlug, buildLeafUrl, buildHubUrl } from '@/lib/slug-utils';
 import { generateLeafTitle, generateFallbackTitle } from '@/lib/title-generator';
@@ -79,20 +79,36 @@ export async function generateMetadata({ params }: LeafPageProps): Promise<Metad
   };
 }
 
+function decimalToFraction(cups: number): string {
+  const whole = Math.floor(cups);
+  const remainder = cups - whole;
+  const fractions: [number, string][] = [
+    [0, ''], [0.25, '\u00BC'], [0.33, '\u2153'],
+    [0.5, '\u00BD'], [0.67, '\u2154'], [0.75, '\u00BE'],
+  ];
+  let closest = '';
+  let minDiff = Infinity;
+  for (const [val, label] of fractions) {
+    const diff = Math.abs(remainder - val);
+    if (diff < minDiff) { minDiff = diff; closest = label; }
+  }
+  if (whole === 0 && closest) return closest;
+  if (whole === 0) return cups.toFixed(2);
+  if (!closest) return `${whole}`;
+  return `${whole} and ${closest}`;
+}
+
 export default async function LeafPage({ params }: LeafPageProps) {
   const { ingredient: ingredientId, conversion } = await params;
 
-  // Validate ingredient
   const ing = ingredients[ingredientId];
   if (!ing) notFound();
 
-  // Validate slug — trailingSlash handled by next.config.ts
   const lowerConversion = conversion.toLowerCase();
   if (conversion !== lowerConversion) {
     redirect(`/${ingredientId}/${lowerConversion}/`);
   }
 
-  // Check for decimal
   const decimalMatch = conversion.match(/^(\d+)\.(\d+)-grams-to-cups$/);
   if (decimalMatch) {
     const rounded = Math.round(parseFloat(decimalMatch[1]));
@@ -108,9 +124,9 @@ export default async function LeafPage({ params }: LeafPageProps) {
   const spoonLevel = convert(weight, ingredientId, 'spoon_level');
   const sifted = convert(weight, ingredientId, 'sifted');
   const dipSweep = convert(weight, ingredientId, 'dip_sweep');
+  const fraction = decimalToFraction(spoonLevel.cups);
 
   const isFat = ing.type === 'fat';
-  const isLiquid = ing.type === 'liquid';
   const stateModifier = isFat ? (ing.states?.solid ?? 1.0) : 1.0;
 
   // Find matching recipe
@@ -125,16 +141,9 @@ export default async function LeafPage({ params }: LeafPageProps) {
   ];
 
   // JSON-LD Schemas
-  const faqSchema = generateFAQSchema(weight, ing.name, ingredientId, ing.faq);
-  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbItems.map((item) => ({
-    name: item.label,
-    item: item.href ? `${SITE_URL}${item.href}` : undefined,
-  })));
-  const softwareAppSchema = generateSoftwareAppSchema(ing.name);
-  const howToSchema = generateHowToSchema(weight, ing.name, spoonLevel.cups);
-
-  // Auto-generated FAQ questions
   const variancePercent = Math.round(((sifted.cups - dipSweep.cups) / spoonLevel.cups) * 100);
+
+  // Auto-generated FAQ + reverse question
   const autoFaqs = [
     {
       question: `How many cups is ${weight}g of ${ing.name.toLowerCase()}?`,
@@ -148,19 +157,32 @@ export default async function LeafPage({ params }: LeafPageProps) {
       question: `How do I measure ${ing.name.toLowerCase()} without a scale?`,
       answer: `Use the Spoon & Level method: lightly spoon the ${ing.name.toLowerCase()} into a measuring cup until overflowing, then level off with a straight edge. Do not tap or shake the cup.`,
     },
+    {
+      question: `How many grams is 1 cup of ${ing.name.toLowerCase()}?`,
+      answer: `1 cup of ${ing.name.toLowerCase()} weighs ${Math.round(1 * ing.base_density_g_per_ml * 236.588)}g (spoon & level), ${Math.round(1 * ing.base_density_g_per_ml * 236.588 * 1.18)}g (dip & sweep), or ${Math.round(1 * ing.base_density_g_per_ml * 236.588 * 0.85)}g (sifted). The most common standard is ${Math.round(1 * ing.base_density_g_per_ml * 236.588)}g per cup.`,
+    },
   ];
 
   const allFaqs = [...autoFaqs, ...ing.faq];
+
+  const faqSchema = generateFAQSchema(weight, ing.name, ingredientId, allFaqs);
+  const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbItems.map((item) => ({
+    name: item.label,
+    item: item.href ? `${SITE_URL}${item.href}` : undefined,
+  })));
+  const softwareAppSchema = generateSoftwareAppSchema(ing.name);
+  const howToSchema = generateHowToSchema(weight, ing.name, spoonLevel.cups);
 
   // Nearby weights for Section S
   const nearbyWeights = [-100, -50, -25, -10, 10, 25, 50, 100]
     .map((o) => weight + o)
     .filter((v) => v >= 1 && v <= 1000 && v !== weight);
 
-  // Same weight, different ingredients
   const sameWeightRelated = ing.related_ingredients
     .filter((id) => ingredients[id])
     .slice(0, 5);
+
+  const aliasesText = ing.aliases.length > 0 ? ` (${ing.aliases[0]})` : '';
 
   return (
     <div className="py-8 sm:py-12">
@@ -175,6 +197,20 @@ export default async function LeafPage({ params }: LeafPageProps) {
         <div className="flex-1 min-w-0">
           {/* Section A: Breadcrumbs */}
           <Breadcrumbs items={breadcrumbItems} />
+
+          {/* Section B: H1 + Answer Box */}
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
+            How Many Cups is {weight}g of {ing.name}{aliasesText}?
+          </h1>
+
+          {/* Answer Box for Featured Snippet */}
+          <p className="text-lg text-slate-700 mb-6 max-w-2xl leading-relaxed">
+            <strong>{weight}g of {ing.name.toLowerCase()}</strong> equals{' '}
+            <strong>{spoonLevel.cups} cups</strong> using the Spoon &amp; Level method.{' '}
+            That&apos;s approximately <strong>{fraction}</strong>.{' '}
+            With Dip &amp; Sweep it&apos;s {dipSweep.cups} cups,{' '}
+            and sifted it&apos;s {sifted.cups} cups.
+          </p>
 
           {/* Interactive Calculator (Sections B-J, K, L, M, N, O, P, Q, R) */}
           <LeafPageCalculator
@@ -191,7 +227,7 @@ export default async function LeafPage({ params }: LeafPageProps) {
             pageDescription={generateLeafDescription(weight, ing.name, ingredientId)}
           />
 
-          {/* Section H: Visual Measurement Guide (server-rendered for SEO) */}
+          {/* Section H: Visual Measurement Guide */}
           <section className="mt-8">
             <VisualMeasurementGuide
               ingredientId={ingredientId}
@@ -203,7 +239,9 @@ export default async function LeafPage({ params }: LeafPageProps) {
 
           {/* Section I: Nearby Values Table */}
           <section className="mt-8">
-            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4">Nearby Conversions</h2>
+            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4">
+              {ing.name}: Grams to Cups Quick Reference
+            </h2>
             <NearbyValuesTable
               currentWeight={weight}
               ingredientId={ingredientId}
@@ -211,7 +249,7 @@ export default async function LeafPage({ params }: LeafPageProps) {
             />
           </section>
 
-          {/* Section L: Recipe Context (server-rendered for SEO) */}
+          {/* Section L: Recipe Context */}
           {matchedRecipe && (
             <section className="mt-8">
               <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4">
@@ -221,7 +259,7 @@ export default async function LeafPage({ params }: LeafPageProps) {
             </section>
           )}
 
-          {/* Section N: Nutrition Block (server-rendered) */}
+          {/* Section N: Nutrition Block */}
           <section className="mt-8">
             <NutritionBlock
               ingredientName={ing.name}
@@ -230,14 +268,14 @@ export default async function LeafPage({ params }: LeafPageProps) {
             />
           </section>
 
-          {/* Section O: Pro Tips (server-rendered) */}
+          {/* Section O: Pro Tips */}
           {ing.pro_tips.length > 0 && (
             <section className="mt-8">
               <ProTips tips={ing.pro_tips} ingredientName={ing.name} />
             </section>
           )}
 
-          {/* Section P: Why It Matters (server-rendered) */}
+          {/* Section P: Why It Matters */}
           <section className="mt-8">
             <WhyItMatters
               ingredientName={ing.name}
@@ -246,9 +284,11 @@ export default async function LeafPage({ params }: LeafPageProps) {
             />
           </section>
 
-          {/* Section Q: FAQ (server-rendered for SEO) */}
+          {/* Section Q: FAQ */}
           <section className="mt-8 max-w-3xl">
-            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-6">Frequently Asked Questions</h2>
+            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-6">
+              Common Questions About {ing.name} Measurements
+            </h2>
             <FAQAccordion faqs={allFaqs} />
           </section>
 
@@ -269,7 +309,7 @@ export default async function LeafPage({ params }: LeafPageProps) {
                       className="card p-3 text-center hover:border-accent transition-colors text-sm"
                     >
                       <span className="font-medium text-accent">{w}g</span>
-                      <span className="block text-slate-500 text-xs">{result.cups === 1 ? "1 cup" : `${result.cups} cups`}</span>
+                      <span className="block text-slate-500 text-xs">{result.cups === 1 ? '1 cup' : `${result.cups} cups`}</span>
                     </Link>
                   );
                 })}

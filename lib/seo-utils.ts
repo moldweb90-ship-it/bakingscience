@@ -3,7 +3,7 @@ import { convert, gramsToCups, getMethodModifier, getStateModifier, ingredients,
 
 /**
  * Generate meta description for a leaf page (Section 9.2)
- * Must be 150-160 characters.
+ * Must be 150-160 characters with specific numbers.
  */
 export function generateLeafDescription(
   value: number,
@@ -24,13 +24,14 @@ export function generateLeafDescription(
 }
 
 /**
- * Generate hub page description
+ * Generate hub page description with aliases
  */
 export function generateHubDescription(
   ingredientName: string,
   ingredient: Ingredient,
 ): string {
-  return `Convert ${ingredientName.toLowerCase()} from grams to cups with precision. See how sifted, packed, and spooned methods change your measurement. Includes nutrition facts and expert baking tips.`;
+  const aliasesText = ingredient.aliases.length > 0 ? ` (${ingredient.aliases[0]})` : '';
+  return `Convert ${ingredientName.toLowerCase()}${aliasesText} from grams to cups with precision. ${ingredient.common_weights_g.length} weights with 3 methods compared. USDA density data. Free calculator.`;
 }
 
 /**

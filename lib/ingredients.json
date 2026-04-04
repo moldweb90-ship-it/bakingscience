@@ -20,8 +20,40 @@
       "Always spoon flour into the measuring cup and level with a knife — never scoop directly from the bag.",
       "For the most accurate results, weigh your flour. 1 cup of AP flour weighs approximately 125g when spooned and leveled."
     ],
-    "common_weights_g": [25, 50, 75, 100, 120, 125, 130, 140, 150, 160, 175, 180, 200, 225, 240, 250, 300, 350, 360, 400, 480, 500, 750, 1000],
-    "related_ingredients": ["bread-flour", "cake-flour", "whole-wheat-flour", "almond-flour", "coconut-flour", "cornstarch"],
+    "common_weights_g": [
+      25,
+      50,
+      75,
+      100,
+      120,
+      125,
+      130,
+      140,
+      150,
+      160,
+      175,
+      180,
+      200,
+      225,
+      240,
+      250,
+      300,
+      350,
+      360,
+      400,
+      480,
+      500,
+      750,
+      1000
+    ],
+    "related_ingredients": [
+      "bread-flour",
+      "cake-flour",
+      "whole-wheat-flour",
+      "almond-flour",
+      "coconut-flour",
+      "cornstarch"
+    ],
     "faq": [
       {
         "question": "How many cups is 125g of all-purpose flour?",
@@ -38,7 +70,11 @@
     ],
     "description": "All-purpose flour is the most widely used flour in baking, with a moderate protein content (10-12%) that works for everything from cookies to bread. It is a blend of hard and soft wheat, providing a balance of structure and tenderness.",
     "photo_available": false,
-    "density_source": "USDA FoodData Central"
+    "density_source": "USDA FoodData Central",
+    "aliases": [
+      "AP Flour",
+      "Plain Flour"
+    ]
   },
   {
     "id": "bread-flour",
@@ -61,8 +97,31 @@
       "Use bread flour for yeast breads, pizza dough, and bagels where structure and chew are desired.",
       "Do not substitute bread flour for cake flour — the high protein will make cakes tough and dense."
     ],
-    "common_weights_g": [25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 300, 350, 400, 450, 500, 750, 1000],
-    "related_ingredients": ["all-purpose-flour", "cake-flour", "whole-wheat-flour", "cornstarch"],
+    "common_weights_g": [
+      25,
+      50,
+      75,
+      100,
+      125,
+      150,
+      175,
+      200,
+      225,
+      250,
+      300,
+      350,
+      400,
+      450,
+      500,
+      750,
+      1000
+    ],
+    "related_ingredients": [
+      "all-purpose-flour",
+      "cake-flour",
+      "whole-wheat-flour",
+      "cornstarch"
+    ],
     "faq": [
       {
         "question": "How many cups is 500g of bread flour?",
@@ -79,7 +138,11 @@
     ],
     "description": "Bread flour is a high-protein flour (12-14% protein) milled from hard wheat. Its strong gluten-forming ability makes it ideal for yeast breads, pizza dough, and other baked goods that need structure and chew.",
     "photo_available": false,
-    "density_source": "USDA FoodData Central"
+    "density_source": "USDA FoodData Central",
+    "aliases": [
+      "Strong Flour",
+      "High Protein Flour"
+    ]
   },
   {
     "id": "cake-flour",
@@ -102,8 +165,34 @@
       "Always sift cake flour before measuring for the most accurate result.",
       "If you don't have cake flour, use AP flour minus 2 tbsp per cup, plus 2 tbsp cornstarch."
     ],
-    "common_weights_g": [25, 50, 75, 100, 125, 130, 140, 150, 175, 200, 225, 240, 250, 300, 350, 360, 400, 500, 750, 1000],
-    "related_ingredients": ["all-purpose-flour", "bread-flour", "whole-wheat-flour", "cornstarch"],
+    "common_weights_g": [
+      25,
+      50,
+      75,
+      100,
+      125,
+      130,
+      140,
+      150,
+      175,
+      200,
+      225,
+      240,
+      250,
+      300,
+      350,
+      360,
+      400,
+      500,
+      750,
+      1000
+    ],
+    "related_ingredients": [
+      "all-purpose-flour",
+      "bread-flour",
+      "whole-wheat-flour",
+      "cornstarch"
+    ],
     "faq": [
       {
         "question": "Does sifting cake flour change the cup measurement?",
@@ -120,7 +209,10 @@
     ],
     "description": "Cake flour is a finely milled, low-protein flour (7-8% protein) used for tender cakes, cupcakes, and delicate pastries. Its lower gluten content produces a softer crumb than all-purpose flour.",
     "photo_available": false,
-    "density_source": "USDA FoodData Central"
+    "density_source": "USDA FoodData Central",
+    "aliases": [
+      "Pastry Flour"
+    ]
   },
   {
     "id": "whole-wheat-flour",
@@ -143,8 +235,30 @@
       "For lighter results, substitute half whole wheat flour and half all-purpose flour in any recipe.",
       "Store whole wheat flour in the refrigerator or freezer — the natural oils in the bran can go rancid at room temperature."
     ],
-    "common_weights_g": [25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 300, 350, 400, 500, 750, 1000],
-    "related_ingredients": ["all-purpose-flour", "bread-flour", "cake-flour", "almond-flour"],
+    "common_weights_g": [
+      25,
+      50,
+      75,
+      100,
+      125,
+      150,
+      175,
+      200,
+      225,
+      250,
+      300,
+      350,
+      400,
+      500,
+      750,
+      1000
+    ],
+    "related_ingredients": [
+      "all-purpose-flour",
+      "bread-flour",
+      "cake-flour",
+      "almond-flour"
+    ],
     "faq": [
       {
         "question": "How many cups is 125g of whole wheat flour?",
@@ -161,7 +275,11 @@
     ],
     "description": "Whole wheat flour is made from the entire wheat kernel — bran, germ, and endosperm. It provides more fiber, vitamins, and minerals than refined flours, but produces denser baked goods due to bran interference with gluten development.",
     "photo_available": false,
-    "density_source": "USDA FoodData Central"
+    "density_source": "USDA FoodData Central",
+    "aliases": [
+      "Wholemeal Flour",
+      "Graham Flour"
+    ]
   },
   {
     "id": "almond-flour",
@@ -184,8 +302,29 @@
       "Store almond flour in the refrigerator or freezer to prevent the natural oils from going rancid.",
       "Almond flour browns quickly — reduce oven temperature by 25°F and watch for over-browning."
     ],
-    "common_weights_g": [25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 300, 350, 400, 500, 750, 1000],
-    "related_ingredients": ["coconut-flour", "all-purpose-flour", "whole-wheat-flour"],
+    "common_weights_g": [
+      25,
+      50,
+      75,
+      100,
+      125,
+      150,
+      175,
+      200,
+      225,
+      250,
+      300,
+      350,
+      400,
+      500,
+      750,
+      1000
+    ],
+    "related_ingredients": [
+      "coconut-flour",
+      "all-purpose-flour",
+      "whole-wheat-flour"
+    ],
     "faq": [
       {
         "question": "How many cups is 100g of almond flour?",
@@ -202,7 +341,11 @@
     ],
     "description": "Almond flour is made from finely ground blanched almonds. It is gluten-free, high in protein and healthy fats, and popular in low-carb and paleo baking. Its fine texture produces tender, moist baked goods.",
     "photo_available": false,
-    "density_source": "King Arthur Weight Chart"
+    "density_source": "King Arthur Weight Chart",
+    "aliases": [
+      "Almond Meal",
+      "Ground Almonds"
+    ]
   },
   {
     "id": "coconut-flour",
@@ -225,8 +368,29 @@
       "Never substitute coconut flour 1:1 for other flours. Use about 1/4 cup coconut flour for every 1 cup of wheat flour.",
       "Coconut flour recipes typically require extra eggs to provide structure since coconut flour has no gluten."
     ],
-    "common_weights_g": [25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 300, 350, 400, 500, 750, 1000],
-    "related_ingredients": ["almond-flour", "all-purpose-flour", "cornstarch"],
+    "common_weights_g": [
+      25,
+      50,
+      75,
+      100,
+      125,
+      150,
+      175,
+      200,
+      225,
+      250,
+      300,
+      350,
+      400,
+      500,
+      750,
+      1000
+    ],
+    "related_ingredients": [
+      "almond-flour",
+      "all-purpose-flour",
+      "cornstarch"
+    ],
     "faq": [
       {
         "question": "How many cups is 100g of coconut flour?",
@@ -243,7 +407,8 @@
     ],
     "description": "Coconut flour is a highly absorbent, gluten-free flour made from dried coconut meat. It is extremely high in fiber and requires significantly more liquid and eggs than traditional flours. Always follow coconut flour-specific recipes.",
     "photo_available": false,
-    "density_source": "King Arthur Weight Chart"
+    "density_source": "King Arthur Weight Chart",
+    "aliases": []
   },
   {
     "id": "granulated-sugar",
@@ -266,8 +431,33 @@
       "For the most accurate sugar measurement, use a kitchen scale. 1 cup of granulated sugar weighs approximately 200g.",
       "Sugar is hygroscopic — it absorbs moisture from the air. Store in an airtight container to prevent clumping."
     ],
-    "common_weights_g": [12, 25, 50, 67, 75, 100, 125, 134, 150, 175, 200, 225, 250, 268, 300, 350, 400, 500, 750, 1000],
-    "related_ingredients": ["brown-sugar", "powdered-sugar", "honey"],
+    "common_weights_g": [
+      12,
+      25,
+      50,
+      67,
+      75,
+      100,
+      125,
+      134,
+      150,
+      175,
+      200,
+      225,
+      250,
+      268,
+      300,
+      350,
+      400,
+      500,
+      750,
+      1000
+    ],
+    "related_ingredients": [
+      "brown-sugar",
+      "powdered-sugar",
+      "honey"
+    ],
     "faq": [
       {
         "question": "How many cups is 200g of granulated sugar?",
@@ -284,7 +474,12 @@
     ],
     "description": "Granulated sugar is the most common form of sucrose used in baking. Its uniform crystal size provides consistent sweetness and contributes to browning, texture, and moisture retention in baked goods.",
     "photo_available": false,
-    "density_source": "USDA FoodData Central"
+    "density_source": "USDA FoodData Central",
+    "aliases": [
+      "White Sugar",
+      "Table Sugar",
+      "Caster Sugar"
+    ]
   },
   {
     "id": "brown-sugar",
@@ -307,8 +502,30 @@
       "If brown sugar has hardened, place a slice of bread in the container overnight to restore moisture.",
       "Brown sugar adds moisture and chew to cookies due to its molasses content."
     ],
-    "common_weights_g": [25, 50, 75, 100, 125, 150, 165, 175, 200, 225, 250, 300, 350, 400, 500, 750, 1000],
-    "related_ingredients": ["granulated-sugar", "powdered-sugar", "honey"],
+    "common_weights_g": [
+      25,
+      50,
+      75,
+      100,
+      125,
+      150,
+      165,
+      175,
+      200,
+      225,
+      250,
+      300,
+      350,
+      400,
+      500,
+      750,
+      1000
+    ],
+    "related_ingredients": [
+      "granulated-sugar",
+      "powdered-sugar",
+      "honey"
+    ],
     "faq": [
       {
         "question": "How many cups is 200g of brown sugar?",
@@ -325,7 +542,11 @@
     ],
     "description": "Brown sugar is granulated sugar with molasses added back in, giving it a moist texture, rich flavor, and higher density than white sugar. It is always measured using the packed method for accuracy.",
     "photo_available": false,
-    "density_source": "USDA FoodData Central"
+    "density_source": "USDA FoodData Central",
+    "aliases": [
+      "Light Brown Sugar",
+      "Dark Brown Sugar"
+    ]
   },
   {
     "id": "powdered-sugar",
@@ -348,8 +569,30 @@
       "Sift powdered sugar before making frosting or glazes to remove any lumps.",
       "Powdered sugar contains about 3% cornstarch to prevent caking — this affects thickening in recipes."
     ],
-    "common_weights_g": [25, 50, 60, 75, 100, 125, 150, 175, 200, 225, 250, 300, 350, 400, 500, 750, 1000],
-    "related_ingredients": ["granulated-sugar", "brown-sugar", "cornstarch"],
+    "common_weights_g": [
+      25,
+      50,
+      60,
+      75,
+      100,
+      125,
+      150,
+      175,
+      200,
+      225,
+      250,
+      300,
+      350,
+      400,
+      500,
+      750,
+      1000
+    ],
+    "related_ingredients": [
+      "granulated-sugar",
+      "brown-sugar",
+      "cornstarch"
+    ],
     "faq": [
       {
         "question": "How many cups is 125g of powdered sugar?",
@@ -366,7 +609,11 @@
     ],
     "description": "Powdered sugar (also called confectioners' sugar or icing sugar) is granulated sugar ground to a fine powder with a small amount of cornstarch added. It dissolves instantly, making it ideal for frostings, glazes, and dusting.",
     "photo_available": false,
-    "density_source": "USDA FoodData Central"
+    "density_source": "USDA FoodData Central",
+    "aliases": [
+      "Confectioners Sugar",
+      "Icing Sugar"
+    ]
   },
   {
     "id": "honey",
@@ -389,8 +636,30 @@
       "To measure honey accurately by volume, lightly coat the measuring cup with oil first — the honey will slide right out.",
       "When substituting honey for sugar in baking, reduce other liquids by 1/4 cup per cup of honey and lower oven temperature by 25°F."
     ],
-    "common_weights_g": [21, 25, 42, 50, 75, 85, 100, 150, 170, 200, 250, 300, 340, 400, 500, 750, 1000],
-    "related_ingredients": ["granulated-sugar", "brown-sugar", "whole-milk"],
+    "common_weights_g": [
+      21,
+      25,
+      42,
+      50,
+      75,
+      85,
+      100,
+      150,
+      170,
+      200,
+      250,
+      300,
+      340,
+      400,
+      500,
+      750,
+      1000
+    ],
+    "related_ingredients": [
+      "granulated-sugar",
+      "brown-sugar",
+      "whole-milk"
+    ],
     "faq": [
       {
         "question": "How many cups is 340g of honey?",
@@ -407,7 +676,11 @@
     ],
     "description": "Honey is a natural liquid sweetener produced by bees, with a density of 1.42 g/ml — significantly denser than water. It adds moisture, flavor, and browning to baked goods, and has natural preservative qualities.",
     "photo_available": false,
-    "density_source": "USDA FoodData Central"
+    "density_source": "USDA FoodData Central",
+    "aliases": [
+      "Pure Honey",
+      "Raw Honey"
+    ]
   },
   {
     "id": "butter",
@@ -434,8 +707,38 @@
       "For baking, softened butter (65-68°F) creams best with sugar. Cold butter is for pie crusts and biscuits.",
       "Melted butter takes up less volume than solid butter for the same weight. Always check your recipe's required state."
     ],
-    "common_weights_g": [14, 25, 28, 50, 57, 75, 85, 100, 113, 115, 125, 150, 175, 200, 225, 227, 250, 300, 350, 400, 454, 500, 750, 1000],
-    "related_ingredients": ["coconut-oil", "vegetable-oil", "olive-oil", "sour-cream"],
+    "common_weights_g": [
+      14,
+      25,
+      28,
+      50,
+      57,
+      75,
+      85,
+      100,
+      113,
+      115,
+      125,
+      150,
+      175,
+      200,
+      225,
+      227,
+      250,
+      300,
+      350,
+      400,
+      454,
+      500,
+      750,
+      1000
+    ],
+    "related_ingredients": [
+      "coconut-oil",
+      "vegetable-oil",
+      "olive-oil",
+      "sour-cream"
+    ],
     "faq": [
       {
         "question": "How many cups is 113g of butter (solid)?",
@@ -452,7 +755,11 @@
     ],
     "description": "Butter is a dairy fat essential in baking for flavor, tenderness, and leavening. Its state (solid, softened, or melted) dramatically affects volume measurements and recipe outcomes. One US stick = 113g = 1/2 cup.",
     "photo_available": false,
-    "density_source": "USDA FoodData Central"
+    "density_source": "USDA FoodData Central",
+    "aliases": [
+      "Unsalted Butter",
+      "Salted Butter"
+    ]
   },
   {
     "id": "coconut-oil",
@@ -478,8 +785,29 @@
       "When a recipe calls for melted coconut oil, measure it after melting, not before.",
       "Coconut oil can substitute for butter in most recipes at a 1:1 ratio by weight, but the flavor will be different."
     ],
-    "common_weights_g": [25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 300, 350, 400, 500, 750, 1000],
-    "related_ingredients": ["butter", "vegetable-oil", "olive-oil"],
+    "common_weights_g": [
+      25,
+      50,
+      75,
+      100,
+      125,
+      150,
+      175,
+      200,
+      225,
+      250,
+      300,
+      350,
+      400,
+      500,
+      750,
+      1000
+    ],
+    "related_ingredients": [
+      "butter",
+      "vegetable-oil",
+      "olive-oil"
+    ],
     "faq": [
       {
         "question": "How many cups is 200g of coconut oil (solid)?",
@@ -496,7 +824,10 @@
     ],
     "description": "Coconut oil is a versatile fat that is solid at room temperature (below 76°F) and liquid when warm. It is popular in vegan baking as a butter substitute and adds a subtle tropical flavor to baked goods.",
     "photo_available": false,
-    "density_source": "USDA FoodData Central"
+    "density_source": "USDA FoodData Central",
+    "aliases": [
+      "Virgin Coconut Oil"
+    ]
   },
   {
     "id": "vegetable-oil",
@@ -519,8 +850,29 @@
       "Oil makes cakes and muffins more moist than butter because it remains liquid at room temperature.",
       "For the most accurate measurement, pour oil into a liquid measuring cup and read at eye level."
     ],
-    "common_weights_g": [25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 300, 350, 400, 500, 750, 1000],
-    "related_ingredients": ["olive-oil", "butter", "coconut-oil"],
+    "common_weights_g": [
+      25,
+      50,
+      75,
+      100,
+      125,
+      150,
+      175,
+      200,
+      225,
+      250,
+      300,
+      350,
+      400,
+      500,
+      750,
+      1000
+    ],
+    "related_ingredients": [
+      "olive-oil",
+      "butter",
+      "coconut-oil"
+    ],
     "faq": [
       {
         "question": "How many cups is 200g of vegetable oil?",
@@ -537,7 +889,11 @@
     ],
     "description": "Vegetable oil is a neutral-tasting liquid fat commonly used in cakes, muffins, and quick breads. It keeps baked goods moist longer than butter because it remains liquid at room temperature.",
     "photo_available": false,
-    "density_source": "USDA FoodData Central"
+    "density_source": "USDA FoodData Central",
+    "aliases": [
+      "Canola Oil",
+      "Neutral Oil"
+    ]
   },
   {
     "id": "olive-oil",
@@ -560,8 +916,29 @@
       "Olive oil works beautifully in focaccia, certain breads, and Mediterranean-style cakes.",
       "Like all liquid oils, olive oil does not have state modifiers — it is always liquid at baking temperatures."
     ],
-    "common_weights_g": [25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 300, 350, 400, 500, 750, 1000],
-    "related_ingredients": ["vegetable-oil", "butter", "coconut-oil"],
+    "common_weights_g": [
+      25,
+      50,
+      75,
+      100,
+      125,
+      150,
+      175,
+      200,
+      225,
+      250,
+      300,
+      350,
+      400,
+      500,
+      750,
+      1000
+    ],
+    "related_ingredients": [
+      "vegetable-oil",
+      "butter",
+      "coconut-oil"
+    ],
     "faq": [
       {
         "question": "How many cups is 200g of olive oil?",
@@ -578,7 +955,11 @@
     ],
     "description": "Olive oil is a flavorful liquid fat used in Mediterranean baking and bread-making. Extra virgin olive oil adds distinctive flavor, while light olive oil is more neutral. Its density is 0.916 g/ml.",
     "photo_available": false,
-    "density_source": "USDA FoodData Central"
+    "density_source": "USDA FoodData Central",
+    "aliases": [
+      "Extra Virgin Olive Oil",
+      "EVOO"
+    ]
   },
   {
     "id": "whole-milk",
@@ -601,8 +982,30 @@
       "Room temperature milk incorporates better into batters than cold milk, especially when creaming butter.",
       "Milk adds protein, sugar (lactose), and fat to baked goods — all of which affect browning and tenderness."
     ],
-    "common_weights_g": [25, 50, 75, 100, 125, 150, 180, 200, 225, 240, 250, 300, 350, 400, 500, 750, 1000],
-    "related_ingredients": ["heavy-cream", "sour-cream", "butter"],
+    "common_weights_g": [
+      25,
+      50,
+      75,
+      100,
+      125,
+      150,
+      180,
+      200,
+      225,
+      240,
+      250,
+      300,
+      350,
+      400,
+      500,
+      750,
+      1000
+    ],
+    "related_ingredients": [
+      "heavy-cream",
+      "sour-cream",
+      "butter"
+    ],
     "faq": [
       {
         "question": "How many cups is 240g of whole milk?",
@@ -619,7 +1022,11 @@
     ],
     "description": "Whole milk (3.25% fat) is the standard liquid dairy ingredient in baking. It contributes to browning, tenderness, and flavor. Its density of 1.030 g/ml makes it slightly heavier than water.",
     "photo_available": false,
-    "density_source": "USDA FoodData Central"
+    "density_source": "USDA FoodData Central",
+    "aliases": [
+      "Regular Milk",
+      "Full Fat Milk"
+    ]
   },
   {
     "id": "heavy-cream",
@@ -641,8 +1048,30 @@
       "Cold heavy cream whips better than warm cream. Chill your bowl and beaters for best results.",
       "Heavy cream can be thinned with milk to make a half-and-half substitute: equal parts cream and milk."
     ],
-    "common_weights_g": [25, 50, 75, 100, 120, 125, 150, 175, 200, 225, 250, 300, 350, 400, 500, 750, 1000],
-    "related_ingredients": ["whole-milk", "sour-cream", "butter"],
+    "common_weights_g": [
+      25,
+      50,
+      75,
+      100,
+      120,
+      125,
+      150,
+      175,
+      200,
+      225,
+      250,
+      300,
+      350,
+      400,
+      500,
+      750,
+      1000
+    ],
+    "related_ingredients": [
+      "whole-milk",
+      "sour-cream",
+      "butter"
+    ],
     "faq": [
       {
         "question": "How many cups is 240g of heavy cream?",
@@ -659,7 +1088,11 @@
     ],
     "description": "Heavy cream (36%+ milk fat) is the richest liquid dairy product used in baking. It creates luxurious textures in ganache, custards, and whipped toppings. Its density of 0.994 g/ml is very close to water.",
     "photo_available": false,
-    "density_source": "USDA FoodData Central"
+    "density_source": "USDA FoodData Central",
+    "aliases": [
+      "Heavy Whipping Cream",
+      "Whipping Cream"
+    ]
   },
   {
     "id": "sour-cream",
@@ -681,8 +1114,31 @@
       "Full-fat sour cream works best in baking. Low-fat versions can make baked goods gummy.",
       "Sour cream activates baking soda due to its acidity, providing additional leavening in quick breads."
     ],
-    "common_weights_g": [25, 50, 60, 75, 100, 120, 125, 150, 175, 200, 225, 250, 300, 350, 400, 500, 750, 1000],
-    "related_ingredients": ["whole-milk", "heavy-cream", "butter"],
+    "common_weights_g": [
+      25,
+      50,
+      60,
+      75,
+      100,
+      120,
+      125,
+      150,
+      175,
+      200,
+      225,
+      250,
+      300,
+      350,
+      400,
+      500,
+      750,
+      1000
+    ],
+    "related_ingredients": [
+      "whole-milk",
+      "heavy-cream",
+      "butter"
+    ],
     "faq": [
       {
         "question": "How many cups is 240g of sour cream?",
@@ -699,7 +1155,10 @@
     ],
     "description": "Sour cream is a cultured dairy product that adds moisture, tenderness, and tang to baked goods. Its acidity activates baking soda, making it valuable in quick breads, cakes, and muffins.",
     "photo_available": false,
-    "density_source": "USDA FoodData Central"
+    "density_source": "USDA FoodData Central",
+    "aliases": [
+      "Sour Cream Full Fat"
+    ]
   },
   {
     "id": "cocoa-powder",
@@ -722,8 +1181,30 @@
       "Natural cocoa powder is acidic and reacts with baking soda. Dutch-processed cocoa is alkalized and pairs with baking powder.",
       "Sifting cocoa powder is especially important as it tends to clump. Sift before measuring for the most accurate result."
     ],
-    "common_weights_g": [25, 50, 75, 85, 100, 125, 150, 175, 200, 225, 250, 300, 350, 400, 500, 750, 1000],
-    "related_ingredients": ["all-purpose-flour", "granulated-sugar", "butter"],
+    "common_weights_g": [
+      25,
+      50,
+      75,
+      85,
+      100,
+      125,
+      150,
+      175,
+      200,
+      225,
+      250,
+      300,
+      350,
+      400,
+      500,
+      750,
+      1000
+    ],
+    "related_ingredients": [
+      "all-purpose-flour",
+      "granulated-sugar",
+      "butter"
+    ],
     "faq": [
       {
         "question": "How many cups is 85g of cocoa powder?",
@@ -740,7 +1221,11 @@
     ],
     "description": "Unsweetened cocoa powder is pure chocolate liquor with most of the cocoa butter removed. It is very light (0.449 g/ml) and clumps easily. Natural and Dutch-processed varieties are not interchangeable in all recipes due to pH differences.",
     "photo_available": false,
-    "density_source": "USDA FoodData Central"
+    "density_source": "USDA FoodData Central",
+    "aliases": [
+      "Unsweetened Cocoa",
+      "Cacao Powder"
+    ]
   },
   {
     "id": "rolled-oats",
@@ -763,8 +1248,29 @@
       "Do not substitute instant oats for rolled oats in baking — they absorb liquid faster and can make textures gummy.",
       "For oat flour, pulse rolled oats in a food processor until finely ground. 1 cup rolled oats makes about 3/4 cup oat flour."
     ],
-    "common_weights_g": [25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 300, 350, 400, 500, 750, 1000],
-    "related_ingredients": ["all-purpose-flour", "almond-flour", "coconut-flour"],
+    "common_weights_g": [
+      25,
+      50,
+      75,
+      100,
+      125,
+      150,
+      175,
+      200,
+      225,
+      250,
+      300,
+      350,
+      400,
+      500,
+      750,
+      1000
+    ],
+    "related_ingredients": [
+      "all-purpose-flour",
+      "almond-flour",
+      "coconut-flour"
+    ],
     "faq": [
       {
         "question": "How many cups is 100g of rolled oats?",
@@ -781,7 +1287,11 @@
     ],
     "description": "Rolled oats (old-fashioned oats) are whole oat groats that have been steamed and flattened. They are the least dense ingredient in our database and add texture, fiber, and nutrition to cookies, granola, and breads.",
     "photo_available": false,
-    "density_source": "USDA FoodData Central"
+    "density_source": "USDA FoodData Central",
+    "aliases": [
+      "Old Fashioned Oats",
+      "Oatmeal"
+    ]
   },
   {
     "id": "cornstarch",
@@ -804,8 +1314,30 @@
       "Mix cornstarch with cold liquid before adding to hot mixtures to prevent lumps.",
       "Cornstarch mixed with all-purpose flour (2 tbsp per cup) makes a good substitute for cake flour."
     ],
-    "common_weights_g": [15, 25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 300, 350, 400, 500, 750, 1000],
-    "related_ingredients": ["all-purpose-flour", "cake-flour", "powdered-sugar"],
+    "common_weights_g": [
+      15,
+      25,
+      50,
+      75,
+      100,
+      125,
+      150,
+      175,
+      200,
+      225,
+      250,
+      300,
+      350,
+      400,
+      500,
+      750,
+      1000
+    ],
+    "related_ingredients": [
+      "all-purpose-flour",
+      "cake-flour",
+      "powdered-sugar"
+    ],
     "faq": [
       {
         "question": "How many cups is 125g of cornstarch?",
@@ -822,6 +1354,10 @@
     ],
     "description": "Cornstarch is a fine, white powder extracted from corn kernels. It is used as a thickener in sauces and fillings, and as a cake flour substitute when combined with all-purpose flour. Its density is 0.541 g/ml.",
     "photo_available": false,
-    "density_source": "USDA FoodData Central"
+    "density_source": "USDA FoodData Central",
+    "aliases": [
+      "Corn Starch",
+      "Cornflour"
+    ]
   }
 ]

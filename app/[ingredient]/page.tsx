@@ -8,7 +8,7 @@ import NutritionFacts from '@/components/calculator/NutritionFacts';
 import FAQAccordion from '@/components/seo/FAQAccordion';
 import RelatedIngredientsCards from '@/components/ui/RelatedIngredientsCards';
 import AdBanner from '@/components/ads/AdBanner';
-import { ingredients, Ingredient } from '@/lib/converter';
+import { ingredients, Ingredient, convert } from '@/lib/converter';
 import { generateHubTitle, generateHubDescription } from '@/lib/title-generator';
 import { generateCanonicalHub, generateBreadcrumbSchema, generateFAQSchema } from '@/lib/seo-utils';
 import { SITE_URL } from '@/lib/constants';
@@ -27,7 +27,8 @@ export async function generateMetadata({ params }: HubPageProps): Promise<Metada
   if (!ing) return { title: 'Not Found' };
 
   const title = generateHubTitle(ing.name);
-  const description = generateHubDescription(ing.name, ing);
+  const aliasesText = ing.aliases.length > 0 ? ` (${ing.aliases[0]})` : '';
+  const description = `Convert ${ing.name.toLowerCase()}${aliasesText} from grams to cups with precision. ${ing.common_weights_g.length} weights with 3 methods compared. USDA density data. Free calculator.`;
   const canonical = generateCanonicalHub(ingredient);
 
   return {
@@ -53,6 +54,27 @@ export async function generateMetadata({ params }: HubPageProps): Promise<Metada
   };
 }
 
+// Fractional cup conversions for FAQ
+const fractions = [
+  { cups: 0.25, label: '1/4 cup' },
+  { cups: 0.333, label: '1/3 cup' },
+  { cups: 0.5, label: '1/2 cup' },
+  { cups: 1, label: '1 cup' },
+  { cups: 1.5, label: '1 1/2 cups' },
+  { cups: 2, label: '2 cups' },
+];
+
+function generateFractionalFAQs(ing: Ingredient) {
+  return fractions.map((f) => {
+    const grams = Math.round(f.cups * ing.base_density_g_per_ml * 236.588);
+    const gramsDS = Math.round(f.cups * ing.base_density_g_per_ml * 236.588 * 1.18);
+    return {
+      question: `How many grams is ${f.label} of ${ing.name.toLowerCase()}?`,
+      answer: `${f.label} of ${ing.name.toLowerCase()} weighs approximately ${grams}g when spooned and leveled, or ${gramsDS}g with dip & sweep.`,
+    };
+  });
+}
+
 export default async function IngredientHubPage({ params }: HubPageProps) {
   const { ingredient: ingredientId } = await params;
   const ing = ingredients[ingredientId];
@@ -68,13 +90,18 @@ export default async function IngredientHubPage({ params }: HubPageProps) {
   const isLiquid = ing.type === 'liquid';
   const isFlour = ing.category === 'flour';
 
-  const faqSchema = generateFAQSchema(100, ing.name, ingredientId, ing.faq);
+  // Combine existing FAQ + fractional FAQ
+  const fractionalFAQs = generateFractionalFAQs(ing);
+  const allFaqs = [...ing.faq, ...fractionalFAQs];
+
+  const faqSchema = generateFAQSchema(100, ing.name, ingredientId, allFaqs);
   const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbItems.map((item) => ({
     name: item.label,
     item: item.href ? `${SITE_URL}${item.href}` : undefined,
   })));
 
   const typeLabel = isFlour ? 'flour' : isFat ? 'fat' : isLiquid ? 'liquid' : ing.category;
+  const aliasesText = ing.aliases.length > 0 ? ` — also known as ${ing.aliases.join(', ')}` : '';
 
   return (
     <div className="py-8 sm:py-12">
@@ -99,7 +126,7 @@ export default async function IngredientHubPage({ params }: HubPageProps) {
           {ing.name} &mdash; Grams to Cups Conversion Calculator
         </h1>
         <p className="text-lg text-slate-600">
-          Precise measurements for {typeLabel} using three methods{isFat ? ' and multiple states' : ''}
+          Precise measurements for {typeLabel} using three methods{isFat ? ' and multiple states' : ''}{aliasesText}
         </p>
       </header>
 
@@ -118,7 +145,12 @@ export default async function IngredientHubPage({ params }: HubPageProps) {
       <section className="mb-10 max-w-3xl">
         <h2 className="text-2xl font-bold text-slate-900 mb-4">About {ing.name}</h2>
         <div className="space-y-4 text-slate-700 leading-relaxed">
-          <p>{ing.description}</p>
+          <p>
+            {ing.description}
+            {ing.aliases.length > 0 && (
+              <> It is also commonly known as {ing.aliases.join(' or ').toLowerCase()}.</>
+            )}
+          </p>
           <p>
             {ing.name} has a density of <strong>{ing.base_density_g_per_ml} g/ml</strong> when measured
             using the Spoon &amp; Level method.
@@ -163,7 +195,7 @@ export default async function IngredientHubPage({ params }: HubPageProps) {
             {ing.pro_tips.map((tip, index) => (
               <div key={index} className="callout-tip">
                 <div className="flex gap-3">
-                  <span className="text-xl flex-shrink-0 mt-0.5">\ud83d\udca1</span>
+                  <span className="text-xl flex-shrink-0 mt-0.5">{"\ud83d\udca1"}</span>
                   <p className="text-slate-700 text-sm leading-relaxed">{tip}</p>
                 </div>
               </div>
@@ -193,10 +225,12 @@ export default async function IngredientHubPage({ params }: HubPageProps) {
       )}
 
       {/* Section 9: FAQ */}
-      {ing.faq.length > 0 && (
+      {allFaqs.length > 0 && (
         <section className="mb-10 max-w-3xl">
-          <h2 className="text-2xl font-bold text-slate-900 mb-6">Frequently Asked Questions</h2>
-          <FAQAccordion faqs={ing.faq} />
+          <h2 className="text-2xl font-bold text-slate-900 mb-6">
+            Frequently Asked Questions About {ing.name} Measurements
+          </h2>
+          <FAQAccordion faqs={allFaqs} />
         </section>
       )}
 
