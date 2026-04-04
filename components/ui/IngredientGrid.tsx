@@ -1,16 +1,22 @@
-﻿import Link from 'next/link';
-import type { Ingredient } from '@/lib/converter';
+import Link from 'next/link';
+
+export interface GridIngredient {
+  id: string;
+  name: string;
+  category: string;
+  common_weights_g: number[];
+}
 
 export interface IngredientGridProps {
-  ingredients: Ingredient[];
+  ingredients: GridIngredient[];
 }
 
 const categoryEmojis: Record<string, string> = {
-  flour: '\ud83c\udf3e',
-  sugar: '\ud83c\udf6c',
-  fat: '\ud83e\uddc8',
-  dairy: '\ud83e\udd5b',
-  other: '\ud83e\uddc3',
+  flour: '🌾',
+  sugar: '🍬',
+  fat: '🧈',
+  dairy: '🥛',
+  other: '🧃',
 };
 
 const categoryLabels: Record<string, string> = {
@@ -31,7 +37,7 @@ export default function IngredientGrid({ ingredients }: IngredientGridProps) {
           className="card p-5 flex flex-col items-center text-center gap-2 group hover:border-accent transition-colors duration-200"
         >
           <span className="text-3xl mb-1 group-hover:scale-110 transition-transform duration-200">
-            {categoryEmojis[ing.category] || '\ud83e\uddc3'}
+            {categoryEmojis[ing.category] || '🧃'}
           </span>
           <span className="font-semibold text-slate-800 text-sm leading-tight">
             {ing.name}

@@ -1,16 +1,22 @@
-'use client';
+"use client";
 
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { Search, X, ArrowRight } from 'lucide-react';
-import type { Ingredient } from '@/lib/converter';
+
+export interface SearchIngredient {
+  id: string;
+  name: string;
+  category: string;
+  common_weights_g: number[];
+}
 
 export interface SearchBarProps {
-  ingredients: Ingredient[];
+  ingredients: SearchIngredient[];
 }
 
 interface SearchResult {
-  ingredient: Ingredient;
+  ingredient: SearchIngredient;
   weight: number | null;
   score: number;
 }
@@ -18,7 +24,6 @@ interface SearchResult {
 function parseQuery(query: string): { weight: number | null; terms: string[] } {
   const trimmed = query.trim();
 
-  // Try to extract weight: "150g flour", "150 g flour", "150 flour"
   const weightMatch = trimmed.match(/^(\d+)\s*g?\s*(.*)/i);
   if (weightMatch) {
     const weight = parseInt(weightMatch[1], 10);
@@ -27,12 +32,11 @@ function parseQuery(query: string): { weight: number | null; terms: string[] } {
     return { weight: weight >= 1 && weight <= 1000 ? weight : null, terms };
   }
 
-  // No weight, just search terms
   const terms = trimmed.length > 0 ? trimmed.toLowerCase().split(/\s+/) : [];
   return { weight: null, terms };
 }
 
-function scoreIngredient(ing: Ingredient, terms: string[]): number {
+function scoreIngredient(ing: SearchIngredient, terms: string[]): number {
   if (terms.length === 0) return 0.5;
 
   let score = 0;
@@ -41,21 +45,13 @@ function scoreIngredient(ing: Ingredient, terms: string[]): number {
   const categoryLower = ing.category.toLowerCase();
 
   for (const term of terms) {
-    // Exact name match
     if (nameLower === term) { score += 10; continue; }
-    // Exact ID match
     if (idLower === term) { score += 10; continue; }
-    // Name starts with term
     if (nameLower.startsWith(term)) { score += 5; continue; }
-    // ID starts with term
     if (idLower.startsWith(term)) { score += 5; continue; }
-    // Name contains term
     if (nameLower.includes(term)) { score += 3; continue; }
-    // ID contains term
     if (idLower.includes(term)) { score += 3; continue; }
-    // Category match
     if (categoryLower.includes(term)) { score += 2; continue; }
-    // Partial match (term is substring of any word in name)
     const nameWords = nameLower.split(/[\s-]+/);
     if (nameWords.some((w) => w.startsWith(term))) { score += 2; continue; }
     if (nameWords.some((w) => w.includes(term))) { score += 1; continue; }
@@ -64,13 +60,11 @@ function scoreIngredient(ing: Ingredient, terms: string[]): number {
   return score;
 }
 
-function searchIngredients(query: string, ingredients: Ingredient[]): SearchResult[] {
+function searchIngredients(query: string, ingredients: SearchIngredient[]): SearchResult[] {
   const { weight, terms } = parseQuery(query);
-
   if (terms.length === 0 && weight === null) return [];
 
   const results: SearchResult[] = [];
-
   for (const ing of ingredients) {
     const s = scoreIngredient(ing, terms);
     if (s > 0) {
@@ -90,8 +84,6 @@ export default function SearchBar({ ingredients }: SearchBarProps) {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const results = searchIngredients(query, ingredients);
-
-  // Separate: results with weight (direct conversion) vs without (hub pages)
   const conversionResults = results.filter((r) => r.weight !== null);
   const hubResults = results.filter((r) => r.weight === null);
 
@@ -115,7 +107,6 @@ export default function SearchBar({ ingredients }: SearchBarProps) {
       setHighlightedIndex((prev) => Math.max(prev - 1, 0));
     } else if (e.key === 'Enter') {
       e.preventDefault();
-      // Navigate to first result
       if (allItems.length > 0) {
         const item = allItems[highlightedIndex >= 0 ? highlightedIndex : 0];
         if (item.weight) {
@@ -137,11 +128,11 @@ export default function SearchBar({ ingredients }: SearchBarProps) {
   }
 
   const categoryEmojis: Record<string, string> = {
-    flour: '\ud83c\udf3e',
-    sugar: '\ud83c\udf6c',
-    fat: '\ud83e\uddc8',
-    dairy: '\ud83e\udd5b',
-    other: '\ud83e\uddc3',
+    flour: '🌾',
+    sugar: '🍬',
+    fat: '🧈',
+    dairy: '🥛',
+    other: '🧃',
   };
 
   return (
@@ -183,7 +174,6 @@ export default function SearchBar({ ingredients }: SearchBarProps) {
           className="absolute z-50 mt-1 w-full bg-warm-white border border-slate-200 rounded-card shadow-card-hover max-h-72 overflow-y-auto"
           role="listbox"
         >
-          {/* Direct conversion results */}
           {conversionResults.map((r, i) => {
             const globalIndex = i;
             return (
@@ -217,7 +207,6 @@ export default function SearchBar({ ingredients }: SearchBarProps) {
             );
           })}
 
-          {/* Hub page results */}
           {hubResults.map((r, i) => {
             const globalIndex = conversionResults.length + i;
             return (
@@ -238,7 +227,7 @@ export default function SearchBar({ ingredients }: SearchBarProps) {
                   onClick={() => { setOpen(false); setQuery(''); }}
                 >
                   <span className="text-xl flex-shrink-0">
-                    {categoryEmojis[r.ingredient.category] || '\ud83e\uddc3'}
+                    {categoryEmojis[r.ingredient.category] || '🧃'}
                   </span>
                   <div className="flex-1 min-w-0">
                     <span className="font-medium text-slate-800 text-sm">{r.ingredient.name}</span>

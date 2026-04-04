@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import Link from 'next/link';
 import SearchBar from '@/components/ui/SearchBar';
 import IngredientGrid from '@/components/ui/IngredientGrid';
 import { ingredients } from '@/lib/converter';
-import { SITE_NAME, SITE_URL } from '@/lib/constants';
+import { SITE_URL, SITE_NAME } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: 'BakingScience - Precision Baking Conversions (Grams to Cups)',
@@ -12,32 +13,50 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'BakingScience - Precision Baking Conversions (Grams to Cups)',
     description:
-      'Stop guessing. Convert baking ingredients from grams to cups with scientific accuracy. Accounts for sifted, packed, and spooned methods. Free interactive calculator for 20+ ingredients.',
+      'Stop guessing. Convert baking ingredients from grams to cups with scientific accuracy.',
     url: SITE_URL,
     siteName: SITE_NAME,
     type: 'website',
+    images: [{ url: '/og-default.png', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'BakingScience - Precision Baking Conversions (Grams to Cups)',
     description:
       'Stop guessing. Convert baking ingredients from grams to cups with scientific accuracy.',
+    images: ['/og-default.png'],
   },
+  alternates: { canonical: '/' },
 };
+
+// Reduced payload: only send what UI components need
+const searchIngredients = Object.values(ingredients).map((i) => ({
+  id: i.id,
+  name: i.name,
+  category: i.category,
+  common_weights_g: i.common_weights_g,
+}));
+
+const gridIngredients = Object.values(ingredients).map((i) => ({
+  id: i.id,
+  name: i.name,
+  category: i.category,
+  common_weights_g: i.common_weights_g,
+}));
 
 const howItWorksSteps = [
   {
-    icon: '\ud8e2\ude02',
+    icon: '🔍',
     title: 'Choose your ingredient',
     description: 'Select from 20+ baking ingredients including flours, sugars, fats, and dairy.',
   },
   {
-    icon: '\ud83d\udcca',
+    icon: '📊',
     title: 'Select your method',
     description: 'Spoon & Level, Dip & Sweep, or Sifted - each gives a different result.',
   },
   {
-    icon: '\ud83c\udfaf',
+    icon: '🎯',
     title: 'Get your exact measurement',
     description: 'See precise cup, tablespoon, and teaspoon values for your specific weight.',
   },
@@ -47,41 +66,79 @@ const blogPostPlaceholders = [
   {
     title: 'The 20% Error: Why Your Cup Measurements Are Ruining Your Baking',
     slug: 'why-cup-measurements-fail',
-    excerpt: 'How you fill your measuring cup changes the weight by up to 20%. Learn the three methods professional bakers use.',
+    excerpt: 'How you fill your measuring cup changes the weight by up to 20%. Learn the three methods professional bakers use and why Google AI can never give you the full picture.',
     date: '2025-01-15',
+    emoji: '📐',
   },
   {
     title: 'Baking in Denver: The High-Altitude Adjustment Guide You Actually Need',
     slug: 'high-altitude-baking-guide',
-    excerpt: 'Altitude changes everything. Learn exactly how much extra flour and liquid you need above 3,500 feet.',
+    excerpt: 'Altitude changes everything. Learn exactly how much extra flour and liquid you need above 3,500 feet, with a city-by-city adjustment table.',
     date: '2025-01-22',
+    emoji: '⛰️',
   },
   {
     title: 'Butter Math: Why Solid vs Melted Changes Everything in Your Recipe',
     slug: 'butter-solid-vs-melted-measurement',
-    excerpt: 'The same 113g of butter measures differently depending on whether it is solid, softened, or melted.',
+    excerpt: 'The same 113g of butter measures differently depending on whether it is solid, softened, or melted. See the visual comparison that will change how you bake.',
     date: '2025-01-29',
+    emoji: '🧈',
   },
 ];
 
-export default function HomePage() {
-  const allIngredients = Object.values(ingredients);
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: SITE_NAME,
+  url: SITE_URL + '/',
+  description: 'Precision baking conversions from grams to cups',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: SITE_URL + '/{search_term_string}',
+    },
+    'query-input': 'required name=search_term_string',
+  },
+};
 
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: SITE_NAME,
+  url: SITE_URL + '/',
+  logo: SITE_URL + '/logo.png',
+  sameAs: [],
+};
+
+export default function HomePage() {
   return (
     <div className="py-8 sm:py-12">
+      {/* JSON-LD Schemas */}
+      <Script
+        id="website-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
+      <Script
+        id="organization-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+
       {/* Section 1: Hero */}
       <section className="text-center mb-12">
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4 max-w-3xl mx-auto leading-tight">
-          Bakking Conversions Done Right - Not 'Roughly'
+          Baking Conversions Done Right - Not &lsquo;Roughly&rsquo;
         </h1>
         <p className="text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto mb-8">
-          Because Google’s „approximately 0.8 cups” isn’t good enough for your sourdough
+          Because Google&rsquo;s &ldquo;approximately 0.8 cups&rdquo; isn&rsquo;t good enough for your sourdough
         </p>
       </section>
 
       {/* Section 2: SearchBar */}
       <section className="max-w-xl mx-auto mb-16">
-        <SearchBar ingredients={allIngredients} />
+        <SearchBar ingredients={searchIngredients} />
       </section>
 
       {/* Section 3: IngredientGrid */}
@@ -89,7 +146,7 @@ export default function HomePage() {
         <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-6 text-center">
           All Ingredients
         </h2>
-        <IngredientGrid ingredients={allIngredients} />
+        <IngredientGrid ingredients={gridIngredients} />
       </section>
 
       {/* Section 4: How It Works */}
@@ -121,7 +178,7 @@ export default function HomePage() {
             is filled.
           </p>
           <p>
-            Google’s AI Overview tells you "roughly 0.72 to 0.8 cups" for 100g of flour. That
+            Google&rsquo;s AI Overview tells you &ldquo;roughly 0.72 to 0.8 cups&rdquo; for 100g of flour. That
             range represents a 10% difference - enough to ruin a delicate recipe. Professional
             bakers weigh ingredients because volume measurements are inherently inconsistent. The
             same cup of flour can weigh anywhere from 120g to 150g depending on whether you spoon
@@ -131,7 +188,7 @@ export default function HomePage() {
             BakingScience gives you exact conversions based on USDA density data, adjusted for your
             specific measurement method. Whether you spoon and level, dip and sweep, or sift your
             ingredients, we calculate the precise volume so your recipe turns out right every time.
-            No ranges. No "approximately." Just science-backed numbers you can trust.
+            No ranges. No &ldquo;approximately.&rdquo; Just science-backed numbers you can trust.
           </p>
           <p>
             Our interactive tools let you compare methods side by side, scale entire recipes, and
@@ -159,7 +216,7 @@ export default function HomePage() {
               className="card p-6 flex flex-col gap-3 group hover:border-accent transition-colors"
             >
               <div className="bg-slate-100 rounded-card h-40 flex items-center justify-center text-4xl">
-                \ud83d\udd45
+                {post.emoji}
               </div>
               <h3 className="font-semibold text-slate-900 group-hover:text-accent transition-colors leading-snug">
                 {post.title}

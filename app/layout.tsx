@@ -5,25 +5,27 @@ import Footer from '@/components/layout/Footer';
 import CookieConsent from '@/components/layout/CookieConsent';
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://bakingscience.io'),
   title: {
-    default: 'BakingScience — Precision Baking Conversions (Grams to Cups)',
+    default: 'BakingScience - Precision Baking Conversions (Grams to Cups)',
     template: '%s | BakingScience',
   },
   description:
     'Stop guessing. Convert baking ingredients from grams to cups with scientific accuracy. Accounts for sifted, packed, and spooned methods. Free interactive calculator for 20+ ingredients.',
   openGraph: {
-    title: 'BakingScience — Precision Baking Conversions (Grams to Cups)',
+    title: 'BakingScience - Precision Baking Conversions (Grams to Cups)',
     description:
-      'Stop guessing. Convert baking ingredients from grams to cups with scientific accuracy. Accounts for sifted, packed, and spooned methods.',
-    url: process.env.NEXT_PUBLIC_SITE_URL || 'https://bakingscience.io',
+      'Stop guessing. Convert baking ingredients from grams to cups with scientific accuracy.',
     siteName: 'BakingScience',
     type: 'website',
+    images: [{ url: '/og-default.png', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'BakingScience — Precision Baking Conversions (Grams to Cups)',
+    title: 'BakingScience - Precision Baking Conversions (Grams to Cups)',
     description:
       'Stop guessing. Convert baking ingredients from grams to cups with scientific accuracy.',
+    images: ['/og-default.png'],
   },
   robots: {
     index: true,
