@@ -11,20 +11,20 @@ export const metadata: Metadata = {
     template: '%s | BakingConverter',
   },
   description:
-    'Stop guessing. Convert baking ingredients from grams to cups with scientific accuracy. Accounts for sifted, packed, and spooned methods. Free interactive calculator for 20+ ingredients.',
+    'Convert grams to cups for 20 baking ingredients. 3 methods: spooned, scooped, and sifted. Exact results, not rounded. Free calculator.',
   openGraph: {
-    title: 'BakingConverter - Precision Baking Conversions (Grams to Cups)',
+    title: 'Grams to Cups Converter - 20 Baking Ingredients, 3 Methods',
     description:
-      'Stop guessing. Convert baking ingredients from grams to cups with scientific accuracy.',
+      'Convert grams to cups for 20 baking ingredients. 3 methods: spooned, scooped, and sifted. Exact results, not rounded. Free calculator.',
     siteName: 'BakingConverter',
     type: 'website',
     images: [{ url: '/og-default.png', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'BakingConverter - Precision Baking Conversions (Grams to Cups)',
+    title: 'Grams to Cups Converter - 20 Baking Ingredients, 3 Methods',
     description:
-      'Stop guessing. Convert baking ingredients from grams to cups with scientific accuracy.',
+      'Convert grams to cups for 20 baking ingredients. 3 methods: spooned, scooped, and sifted. Exact results, not rounded. Free calculator.',
     images: ['/og-default.png'],
   },
   robots: {
