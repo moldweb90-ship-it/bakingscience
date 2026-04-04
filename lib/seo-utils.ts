@@ -191,11 +191,15 @@ function decimalToFraction(cups: number): string {
 
   const fractions: [number, string][] = [
     [0, ''],
+    [0.125, '1/8'],
     [0.25, '1/4'],
     [0.33, '1/3'],
+    [0.375, '3/8'],
     [0.5, '1/2'],
+    [0.625, '5/8'],
     [0.67, '2/3'],
     [0.75, '3/4'],
+    [0.875, '7/8'],
   ];
 
   let closest = '';

@@ -83,8 +83,9 @@ function decimalToFraction(cups: number): string {
   const whole = Math.floor(cups);
   const remainder = cups - whole;
   const fractions: [number, string][] = [
-    [0, ''], [0.25, '\u00BC'], [0.33, '\u2153'],
-    [0.5, '\u00BD'], [0.67, '\u2154'], [0.75, '\u00BE'],
+    [0, ''], [0.125, '\u215B'], [0.25, '\u00BC'], [0.333, '\u2153'],
+    [0.375, '\u215C'], [0.5, '\u00BD'], [0.625, '\u215D'], [0.667, '\u2154'],
+    [0.75, '\u00BE'], [0.875, '\u215E'],
   ];
   let closest = '';
   let minDiff = Infinity;
