@@ -175,13 +175,13 @@
   }
 
   a[href^='/']::after {
-    content: ' (bakingscience.io' attr(href) ')';
+    content: ' (bakingconverter.com' attr(href) ')';
     font-size: 10pt;
     color: #666;
   }
 
   .print-watermark::after {
-    content: 'Source: bakingscience.io';
+    content: 'Source: bakingconverter.com';
     display: block;
     text-align: center;
     font-size: 10pt;
