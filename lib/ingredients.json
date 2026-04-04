@@ -1,0 +1,827 @@
+[
+  {
+    "id": "all-purpose-flour",
+    "name": "All-Purpose Flour",
+    "category": "flour",
+    "base_density_g_per_ml": 0.529,
+    "type": "dry",
+    "states": null,
+    "measurement_method_overrides": null,
+    "nutrition_per_100g": {
+      "calories": 364,
+      "protein_g": 10.3,
+      "carbs_g": 76.3,
+      "fat_g": 1.0,
+      "fiber_g": 2.7,
+      "sugar_g": 0.3
+    },
+    "pro_tips": [
+      "All-purpose flour is the most versatile flour for everyday baking, with a protein content of 10-12%.",
+      "Always spoon flour into the measuring cup and level with a knife — never scoop directly from the bag.",
+      "For the most accurate results, weigh your flour. 1 cup of AP flour weighs approximately 125g when spooned and leveled."
+    ],
+    "common_weights_g": [25, 50, 75, 100, 120, 125, 130, 140, 150, 160, 175, 180, 200, 225, 240, 250, 300, 350, 360, 400, 480, 500, 750, 1000],
+    "related_ingredients": ["bread-flour", "cake-flour", "whole-wheat-flour", "almond-flour", "coconut-flour", "cornstarch"],
+    "faq": [
+      {
+        "question": "How many cups is 125g of all-purpose flour?",
+        "answer": "Using the Spoon & Level method, 125g of all-purpose flour equals exactly 1.00 cup. With Dip & Sweep it's about 0.85 cups, and sifted it's about 1.18 cups."
+      },
+      {
+        "question": "Does sifting all-purpose flour change the measurement?",
+        "answer": "Yes. Sifted all-purpose flour is lighter and more aerated. 125g of sifted AP flour fills approximately 1.18 cups, compared to 1.00 cup when spooned and leveled — an 18% difference."
+      },
+      {
+        "question": "What's the difference between all-purpose flour and bread flour by weight?",
+        "answer": "All-purpose flour has a density of 0.529 g/ml compared to bread flour's 0.550 g/ml. This means 125g of AP flour = 1.00 cups, while 125g of bread flour = 0.96 cups."
+      }
+    ],
+    "description": "All-purpose flour is the most widely used flour in baking, with a moderate protein content (10-12%) that works for everything from cookies to bread. It is a blend of hard and soft wheat, providing a balance of structure and tenderness.",
+    "photo_available": false,
+    "density_source": "USDA FoodData Central"
+  },
+  {
+    "id": "bread-flour",
+    "name": "Bread Flour",
+    "category": "flour",
+    "base_density_g_per_ml": 0.55,
+    "type": "dry",
+    "states": null,
+    "measurement_method_overrides": null,
+    "nutrition_per_100g": {
+      "calories": 361,
+      "protein_g": 12.0,
+      "carbs_g": 72.0,
+      "fat_g": 1.5,
+      "fiber_g": 2.6,
+      "sugar_g": 1.5
+    },
+    "pro_tips": [
+      "Bread flour has a higher protein content (12-14%) than all-purpose flour, creating stronger gluten networks for chewy bread.",
+      "Use bread flour for yeast breads, pizza dough, and bagels where structure and chew are desired.",
+      "Do not substitute bread flour for cake flour — the high protein will make cakes tough and dense."
+    ],
+    "common_weights_g": [25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 300, 350, 400, 450, 500, 750, 1000],
+    "related_ingredients": ["all-purpose-flour", "cake-flour", "whole-wheat-flour", "cornstarch"],
+    "faq": [
+      {
+        "question": "How many cups is 500g of bread flour?",
+        "answer": "Using the Spoon & Level method, 500g of bread flour equals approximately 3.82 cups. Bread flour is denser than all-purpose flour, so the same weight yields fewer cups."
+      },
+      {
+        "question": "Can I substitute all-purpose flour for bread flour?",
+        "answer": "Yes, but your bread will have less chew and structure. For every cup of bread flour, substitute 1 cup minus 1 tablespoon of all-purpose flour plus 1 tablespoon of vital wheat gluten."
+      },
+      {
+        "question": "Why does bread flour weigh more per cup than all-purpose flour?",
+        "answer": "Bread flour is milled from hard wheat with higher protein content, making it denser. Its density is 0.550 g/ml vs all-purpose flour's 0.529 g/ml."
+      }
+    ],
+    "description": "Bread flour is a high-protein flour (12-14% protein) milled from hard wheat. Its strong gluten-forming ability makes it ideal for yeast breads, pizza dough, and other baked goods that need structure and chew.",
+    "photo_available": false,
+    "density_source": "USDA FoodData Central"
+  },
+  {
+    "id": "cake-flour",
+    "name": "Cake Flour",
+    "category": "flour",
+    "base_density_g_per_ml": 0.467,
+    "type": "dry",
+    "states": null,
+    "measurement_method_overrides": null,
+    "nutrition_per_100g": {
+      "calories": 362,
+      "protein_g": 8.0,
+      "carbs_g": 76.3,
+      "fat_g": 1.0,
+      "fiber_g": 1.8,
+      "sugar_g": 0.3
+    },
+    "pro_tips": [
+      "Cake flour has less protein (7-8%) than AP flour, producing a tender crumb.",
+      "Always sift cake flour before measuring for the most accurate result.",
+      "If you don't have cake flour, use AP flour minus 2 tbsp per cup, plus 2 tbsp cornstarch."
+    ],
+    "common_weights_g": [25, 50, 75, 100, 125, 130, 140, 150, 175, 200, 225, 240, 250, 300, 350, 360, 400, 500, 750, 1000],
+    "related_ingredients": ["all-purpose-flour", "bread-flour", "whole-wheat-flour", "cornstarch"],
+    "faq": [
+      {
+        "question": "Does sifting cake flour change the cup measurement?",
+        "answer": "Yes. 100g of sifted cake flour takes up approximately 15% more volume than unsifted. That's 0.96 cups sifted vs 0.83 cups spooned & leveled."
+      },
+      {
+        "question": "Can I substitute all-purpose flour for cake flour?",
+        "answer": "Yes, but adjust the weight. Use 100g AP flour minus 14g, plus 14g cornstarch. The density differs, so cup measurements will change."
+      },
+      {
+        "question": "Why is cake flour lighter than all-purpose flour?",
+        "answer": "Cake flour is more finely milled and has lower protein content (7-8% vs 10-12%), giving it a density of 0.467 g/ml compared to AP flour's 0.529 g/ml."
+      }
+    ],
+    "description": "Cake flour is a finely milled, low-protein flour (7-8% protein) used for tender cakes, cupcakes, and delicate pastries. Its lower gluten content produces a softer crumb than all-purpose flour.",
+    "photo_available": false,
+    "density_source": "USDA FoodData Central"
+  },
+  {
+    "id": "whole-wheat-flour",
+    "name": "Whole Wheat Flour",
+    "category": "flour",
+    "base_density_g_per_ml": 0.512,
+    "type": "dry",
+    "states": null,
+    "measurement_method_overrides": null,
+    "nutrition_per_100g": {
+      "calories": 340,
+      "protein_g": 13.2,
+      "carbs_g": 72.0,
+      "fat_g": 2.5,
+      "fiber_g": 12.2,
+      "sugar_g": 0.4
+    },
+    "pro_tips": [
+      "Whole wheat flour absorbs more liquid than white flour. Add 1-2 extra tablespoons of liquid per cup when substituting.",
+      "For lighter results, substitute half whole wheat flour and half all-purpose flour in any recipe.",
+      "Store whole wheat flour in the refrigerator or freezer — the natural oils in the bran can go rancid at room temperature."
+    ],
+    "common_weights_g": [25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 300, 350, 400, 500, 750, 1000],
+    "related_ingredients": ["all-purpose-flour", "bread-flour", "cake-flour", "almond-flour"],
+    "faq": [
+      {
+        "question": "How many cups is 125g of whole wheat flour?",
+        "answer": "Using the Spoon & Level method, 125g of whole wheat flour equals approximately 1.03 cups. It is slightly less dense than all-purpose flour."
+      },
+      {
+        "question": "Can I substitute whole wheat flour for all-purpose flour?",
+        "answer": "You can substitute up to 50% whole wheat flour in most recipes without major changes. For 100% substitution, increase liquid by 2 tbsp per cup and expect a denser result."
+      },
+      {
+        "question": "Why does whole wheat flour make baked goods denser?",
+        "answer": "The bran particles in whole wheat flour cut through gluten strands, weakening the structure. This is why 100% whole wheat breads are denser than white breads."
+      }
+    ],
+    "description": "Whole wheat flour is made from the entire wheat kernel — bran, germ, and endosperm. It provides more fiber, vitamins, and minerals than refined flours, but produces denser baked goods due to bran interference with gluten development.",
+    "photo_available": false,
+    "density_source": "USDA FoodData Central"
+  },
+  {
+    "id": "almond-flour",
+    "name": "Almond Flour",
+    "category": "flour",
+    "base_density_g_per_ml": 0.406,
+    "type": "dry",
+    "states": null,
+    "measurement_method_overrides": null,
+    "nutrition_per_100g": {
+      "calories": 571,
+      "protein_g": 21.4,
+      "carbs_g": 18.7,
+      "fat_g": 50.0,
+      "fiber_g": 11.8,
+      "sugar_g": 3.6
+    },
+    "pro_tips": [
+      "Almond flour is not a 1:1 substitute for wheat flour. It lacks gluten, so baked goods may be crumbly.",
+      "Store almond flour in the refrigerator or freezer to prevent the natural oils from going rancid.",
+      "Almond flour browns quickly — reduce oven temperature by 25°F and watch for over-browning."
+    ],
+    "common_weights_g": [25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 300, 350, 400, 500, 750, 1000],
+    "related_ingredients": ["coconut-flour", "all-purpose-flour", "whole-wheat-flour"],
+    "faq": [
+      {
+        "question": "How many cups is 100g of almond flour?",
+        "answer": "Using the Spoon & Level method, 100g of almond flour equals approximately 1.02 cups. Almond flour is the least dense flour in our database at 0.406 g/ml."
+      },
+      {
+        "question": "Can I substitute almond flour for all-purpose flour?",
+        "answer": "Not directly. Almond flour lacks gluten and absorbs moisture differently. Use about 1:1 by volume but expect a denser, more crumbly result. Add an extra egg as a binder."
+      },
+      {
+        "question": "Is almond flour the same as almond meal?",
+        "answer": "No. Almond flour is made from blanched (skinless) almonds and is finely ground. Almond meal includes the skins and is coarser. They are not interchangeable in all recipes."
+      }
+    ],
+    "description": "Almond flour is made from finely ground blanched almonds. It is gluten-free, high in protein and healthy fats, and popular in low-carb and paleo baking. Its fine texture produces tender, moist baked goods.",
+    "photo_available": false,
+    "density_source": "King Arthur Weight Chart"
+  },
+  {
+    "id": "coconut-flour",
+    "name": "Coconut Flour",
+    "category": "flour",
+    "base_density_g_per_ml": 0.54,
+    "type": "dry",
+    "states": null,
+    "measurement_method_overrides": null,
+    "nutrition_per_100g": {
+      "calories": 443,
+      "protein_g": 14.4,
+      "carbs_g": 61.2,
+      "fat_g": 11.3,
+      "fiber_g": 38.5,
+      "sugar_g": 7.7
+    },
+    "pro_tips": [
+      "Coconut flour absorbs 4-6 times its weight in liquid. You need far less coconut flour than wheat flour in any recipe.",
+      "Never substitute coconut flour 1:1 for other flours. Use about 1/4 cup coconut flour for every 1 cup of wheat flour.",
+      "Coconut flour recipes typically require extra eggs to provide structure since coconut flour has no gluten."
+    ],
+    "common_weights_g": [25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 300, 350, 400, 500, 750, 1000],
+    "related_ingredients": ["almond-flour", "all-purpose-flour", "cornstarch"],
+    "faq": [
+      {
+        "question": "How many cups is 100g of coconut flour?",
+        "answer": "Using the Spoon & Level method, 100g of coconut flour equals approximately 0.78 cups. Despite being light, coconut flour is extremely absorbent."
+      },
+      {
+        "question": "Can I substitute coconut flour for all-purpose flour?",
+        "answer": "Not directly. Use only 1/4 the amount of coconut flour compared to AP flour, and increase liquid and eggs significantly. Coconut flour absorbs far more moisture."
+      },
+      {
+        "question": "Why does coconut flour need so many eggs in recipes?",
+        "answer": "Coconut flour has no gluten, so it cannot form the structure needed for baking. Eggs provide the binding and structure that gluten normally would."
+      }
+    ],
+    "description": "Coconut flour is a highly absorbent, gluten-free flour made from dried coconut meat. It is extremely high in fiber and requires significantly more liquid and eggs than traditional flours. Always follow coconut flour-specific recipes.",
+    "photo_available": false,
+    "density_source": "King Arthur Weight Chart"
+  },
+  {
+    "id": "granulated-sugar",
+    "name": "Granulated Sugar",
+    "category": "sugar",
+    "base_density_g_per_ml": 0.845,
+    "type": "dry",
+    "states": null,
+    "measurement_method_overrides": null,
+    "nutrition_per_100g": {
+      "calories": 387,
+      "protein_g": 0.0,
+      "carbs_g": 99.98,
+      "fat_g": 0.0,
+      "fiber_g": 0.0,
+      "sugar_g": 99.98
+    },
+    "pro_tips": [
+      "Granulated sugar should be spooned and leveled, not packed. It does not compress like brown sugar.",
+      "For the most accurate sugar measurement, use a kitchen scale. 1 cup of granulated sugar weighs approximately 200g.",
+      "Sugar is hygroscopic — it absorbs moisture from the air. Store in an airtight container to prevent clumping."
+    ],
+    "common_weights_g": [12, 25, 50, 67, 75, 100, 125, 134, 150, 175, 200, 225, 250, 268, 300, 350, 400, 500, 750, 1000],
+    "related_ingredients": ["brown-sugar", "powdered-sugar", "honey"],
+    "faq": [
+      {
+        "question": "How many cups is 200g of granulated sugar?",
+        "answer": "Using the Spoon & Level method, 200g of granulated sugar equals approximately 1.00 cup. Granulated sugar has a consistent density, making it one of the easier ingredients to measure by volume."
+      },
+      {
+        "question": "Should I pack granulated sugar when measuring?",
+        "answer": "No. Granulated sugar should be spooned into the cup and leveled, not packed. Packing it will give an inaccurate, higher weight."
+      },
+      {
+        "question": "How does granulated sugar compare to brown sugar by weight?",
+        "answer": "Granulated sugar has a density of 0.845 g/ml vs brown sugar's 0.930 g/ml (packed). 200g of granulated sugar = 1.00 cup, while 200g of packed brown sugar = 0.91 cups."
+      }
+    ],
+    "description": "Granulated sugar is the most common form of sucrose used in baking. Its uniform crystal size provides consistent sweetness and contributes to browning, texture, and moisture retention in baked goods.",
+    "photo_available": false,
+    "density_source": "USDA FoodData Central"
+  },
+  {
+    "id": "brown-sugar",
+    "name": "Brown Sugar (packed)",
+    "category": "sugar",
+    "base_density_g_per_ml": 0.93,
+    "type": "dry",
+    "states": null,
+    "measurement_method_overrides": null,
+    "nutrition_per_100g": {
+      "calories": 380,
+      "protein_g": 0.0,
+      "carbs_g": 98.09,
+      "fat_g": 0.0,
+      "fiber_g": 0.0,
+      "sugar_g": 97.02
+    },
+    "pro_tips": [
+      "Brown sugar must be packed firmly into the measuring cup. Press it down until it holds the shape of the cup when inverted.",
+      "If brown sugar has hardened, place a slice of bread in the container overnight to restore moisture.",
+      "Brown sugar adds moisture and chew to cookies due to its molasses content."
+    ],
+    "common_weights_g": [25, 50, 75, 100, 125, 150, 165, 175, 200, 225, 250, 300, 350, 400, 500, 750, 1000],
+    "related_ingredients": ["granulated-sugar", "powdered-sugar", "honey"],
+    "faq": [
+      {
+        "question": "How many cups is 200g of brown sugar?",
+        "answer": "Using the packed method, 200g of brown sugar equals approximately 0.91 cups. Brown sugar is denser than granulated sugar due to its molasses content."
+      },
+      {
+        "question": "Should I pack brown sugar when measuring?",
+        "answer": "Yes. Brown sugar is traditionally packed firmly into the measuring cup. Press it down until it holds the shape of the cup. This is the standard method used in virtually all recipes."
+      },
+      {
+        "question": "Can I substitute granulated sugar for brown sugar?",
+        "answer": "You can, but you'll lose the moisture and flavor that molasses provides. For each cup of brown sugar, use 1 cup granulated sugar plus 1 tablespoon molasses."
+      }
+    ],
+    "description": "Brown sugar is granulated sugar with molasses added back in, giving it a moist texture, rich flavor, and higher density than white sugar. It is always measured using the packed method for accuracy.",
+    "photo_available": false,
+    "density_source": "USDA FoodData Central"
+  },
+  {
+    "id": "powdered-sugar",
+    "name": "Powdered Sugar",
+    "category": "sugar",
+    "base_density_g_per_ml": 0.508,
+    "type": "dry",
+    "states": null,
+    "measurement_method_overrides": null,
+    "nutrition_per_100g": {
+      "calories": 389,
+      "protein_g": 0.0,
+      "carbs_g": 99.8,
+      "fat_g": 0.0,
+      "fiber_g": 0.0,
+      "sugar_g": 99.8
+    },
+    "pro_tips": [
+      "Powdered sugar should be spooned and leveled, never packed. It compacts easily and will give inaccurate measurements if pressed.",
+      "Sift powdered sugar before making frosting or glazes to remove any lumps.",
+      "Powdered sugar contains about 3% cornstarch to prevent caking — this affects thickening in recipes."
+    ],
+    "common_weights_g": [25, 50, 60, 75, 100, 125, 150, 175, 200, 225, 250, 300, 350, 400, 500, 750, 1000],
+    "related_ingredients": ["granulated-sugar", "brown-sugar", "cornstarch"],
+    "faq": [
+      {
+        "question": "How many cups is 125g of powdered sugar?",
+        "answer": "Using the Spoon & Level method, 125g of powdered sugar equals approximately 1.04 cups. Powdered sugar is one of the least dense dry ingredients."
+      },
+      {
+        "question": "Should I sift powdered sugar before measuring?",
+        "answer": "For frostings and glazes, yes — sifting removes lumps. For general baking, spoon and level is sufficient. Sifted powdered sugar will take up about 15% more volume."
+      },
+      {
+        "question": "Why does powdered sugar have cornstarch in it?",
+        "answer": "Commercial powdered sugar contains about 3% cornstarch to prevent clumping during storage. This is usually negligible in recipes but can affect very delicate glazes."
+      }
+    ],
+    "description": "Powdered sugar (also called confectioners' sugar or icing sugar) is granulated sugar ground to a fine powder with a small amount of cornstarch added. It dissolves instantly, making it ideal for frostings, glazes, and dusting.",
+    "photo_available": false,
+    "density_source": "USDA FoodData Central"
+  },
+  {
+    "id": "honey",
+    "name": "Honey",
+    "category": "sugar",
+    "base_density_g_per_ml": 1.42,
+    "type": "liquid",
+    "states": null,
+    "measurement_method_overrides": null,
+    "nutrition_per_100g": {
+      "calories": 304,
+      "protein_g": 0.3,
+      "carbs_g": 82.4,
+      "fat_g": 0.0,
+      "fiber_g": 0.2,
+      "sugar_g": 82.1
+    },
+    "pro_tips": [
+      "Honey is denser than water (1.42 g/ml vs 1.0 g/ml), so 1 cup of honey weighs significantly more than 1 cup of water.",
+      "To measure honey accurately by volume, lightly coat the measuring cup with oil first — the honey will slide right out.",
+      "When substituting honey for sugar in baking, reduce other liquids by 1/4 cup per cup of honey and lower oven temperature by 25°F."
+    ],
+    "common_weights_g": [21, 25, 42, 50, 75, 85, 100, 150, 170, 200, 250, 300, 340, 400, 500, 750, 1000],
+    "related_ingredients": ["granulated-sugar", "brown-sugar", "whole-milk"],
+    "faq": [
+      {
+        "question": "How many cups is 340g of honey?",
+        "answer": "340g of honey equals approximately 1.01 cups. Honey is very dense at 1.42 g/ml, making it one of the heaviest ingredients per cup."
+      },
+      {
+        "question": "Is 340g of honey the same as 340ml?",
+        "answer": "Not exactly. Honey has a density of 1.42 g/ml, so 340g = 239.4 ml. Water is the only liquid where grams approximately equal milliliters."
+      },
+      {
+        "question": "Can I measure honey by weight instead of volume?",
+        "answer": "Yes, and it's much more accurate and less messy. 340g on a kitchen scale is more precise than 1 cup in a measuring cup, and you don't need to coat the cup with oil."
+      }
+    ],
+    "description": "Honey is a natural liquid sweetener produced by bees, with a density of 1.42 g/ml — significantly denser than water. It adds moisture, flavor, and browning to baked goods, and has natural preservative qualities.",
+    "photo_available": false,
+    "density_source": "USDA FoodData Central"
+  },
+  {
+    "id": "butter",
+    "name": "Butter",
+    "category": "fat",
+    "base_density_g_per_ml": 0.959,
+    "type": "fat",
+    "states": {
+      "solid": 1.0,
+      "softened": 0.95,
+      "melted": 0.88
+    },
+    "measurement_method_overrides": null,
+    "nutrition_per_100g": {
+      "calories": 717,
+      "protein_g": 0.9,
+      "carbs_g": 0.1,
+      "fat_g": 81.1,
+      "fiber_g": 0.0,
+      "sugar_g": 0.1
+    },
+    "pro_tips": [
+      "One standard US stick of butter is 113g (1/2 cup or 8 tablespoons). Use the wrapper markings for quick measurement.",
+      "For baking, softened butter (65-68°F) creams best with sugar. Cold butter is for pie crusts and biscuits.",
+      "Melted butter takes up less volume than solid butter for the same weight. Always check your recipe's required state."
+    ],
+    "common_weights_g": [14, 25, 28, 50, 57, 75, 85, 100, 113, 115, 125, 150, 175, 200, 225, 227, 250, 300, 350, 400, 454, 500, 750, 1000],
+    "related_ingredients": ["coconut-oil", "vegetable-oil", "olive-oil", "sour-cream"],
+    "faq": [
+      {
+        "question": "How many cups is 113g of butter (solid)?",
+        "answer": "113g of solid butter equals 0.50 cups (1 stick). Note: melted butter measures 0.57 cups for the same weight — a 14% difference."
+      },
+      {
+        "question": "Does melting butter change its volume?",
+        "answer": "Yes. Melted butter takes up less volume than solid. 113g solid = 0.50 cups, but 113g melted = 0.57 cups. Always check your recipe to see which state is needed."
+      },
+      {
+        "question": "How many sticks of butter is 200g?",
+        "answer": "One standard US stick of butter is 113g (1/2 cup). So 200g is approximately 1.77 sticks, or just under 2 sticks."
+      }
+    ],
+    "description": "Butter is a dairy fat essential in baking for flavor, tenderness, and leavening. Its state (solid, softened, or melted) dramatically affects volume measurements and recipe outcomes. One US stick = 113g = 1/2 cup.",
+    "photo_available": false,
+    "density_source": "USDA FoodData Central"
+  },
+  {
+    "id": "coconut-oil",
+    "name": "Coconut Oil",
+    "category": "fat",
+    "base_density_g_per_ml": 0.924,
+    "type": "fat",
+    "states": {
+      "solid": 1.0,
+      "melted": 0.9
+    },
+    "measurement_method_overrides": null,
+    "nutrition_per_100g": {
+      "calories": 892,
+      "protein_g": 0.0,
+      "carbs_g": 0.0,
+      "fat_g": 100.0,
+      "fiber_g": 0.0,
+      "sugar_g": 0.0
+    },
+    "pro_tips": [
+      "Coconut oil is solid below 76°F and liquid above. The state dramatically changes volume measurements.",
+      "When a recipe calls for melted coconut oil, measure it after melting, not before.",
+      "Coconut oil can substitute for butter in most recipes at a 1:1 ratio by weight, but the flavor will be different."
+    ],
+    "common_weights_g": [25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 300, 350, 400, 500, 750, 1000],
+    "related_ingredients": ["butter", "vegetable-oil", "olive-oil"],
+    "faq": [
+      {
+        "question": "How many cups is 200g of coconut oil (solid)?",
+        "answer": "200g of solid coconut oil equals approximately 0.92 cups. When melted, the same 200g measures about 1.02 cups."
+      },
+      {
+        "question": "Does melting coconut oil change its volume?",
+        "answer": "Yes. Melted coconut oil takes up less volume than solid. 200g solid = 0.92 cups, but 200g melted = 1.02 cups. Always measure in the state your recipe requires."
+      },
+      {
+        "question": "Can I substitute coconut oil for butter?",
+        "answer": "Yes, at a 1:1 ratio by weight. By volume, the substitution is close but not exact due to different densities. Coconut oil adds a subtle coconut flavor unless you use refined (neutral) coconut oil."
+      }
+    ],
+    "description": "Coconut oil is a versatile fat that is solid at room temperature (below 76°F) and liquid when warm. It is popular in vegan baking as a butter substitute and adds a subtle tropical flavor to baked goods.",
+    "photo_available": false,
+    "density_source": "USDA FoodData Central"
+  },
+  {
+    "id": "vegetable-oil",
+    "name": "Vegetable Oil",
+    "category": "fat",
+    "base_density_g_per_ml": 0.92,
+    "type": "liquid",
+    "states": null,
+    "measurement_method_overrides": null,
+    "nutrition_per_100g": {
+      "calories": 884,
+      "protein_g": 0.0,
+      "carbs_g": 0.0,
+      "fat_g": 100.0,
+      "fiber_g": 0.0,
+      "sugar_g": 0.0
+    },
+    "pro_tips": [
+      "Vegetable oil is always liquid, so there is no state modifier to worry about.",
+      "Oil makes cakes and muffins more moist than butter because it remains liquid at room temperature.",
+      "For the most accurate measurement, pour oil into a liquid measuring cup and read at eye level."
+    ],
+    "common_weights_g": [25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 300, 350, 400, 500, 750, 1000],
+    "related_ingredients": ["olive-oil", "butter", "coconut-oil"],
+    "faq": [
+      {
+        "question": "How many cups is 200g of vegetable oil?",
+        "answer": "200g of vegetable oil equals approximately 0.92 cups. Unlike dry ingredients, liquids don't vary by measurement method."
+      },
+      {
+        "question": "Is 200g of vegetable oil the same as 200ml?",
+        "answer": "Not exactly. Vegetable oil has a density of 0.920 g/ml, so 200g = 217.4 ml. Water is the only liquid where grams approximately equal milliliters."
+      },
+      {
+        "question": "Can I substitute vegetable oil for butter?",
+        "answer": "Yes, in many recipes. Use about 3/4 the amount of oil compared to butter by volume. By weight, substitute 1:1. Oil will make the result more moist but less flavorful."
+      }
+    ],
+    "description": "Vegetable oil is a neutral-tasting liquid fat commonly used in cakes, muffins, and quick breads. It keeps baked goods moist longer than butter because it remains liquid at room temperature.",
+    "photo_available": false,
+    "density_source": "USDA FoodData Central"
+  },
+  {
+    "id": "olive-oil",
+    "name": "Olive Oil",
+    "category": "fat",
+    "base_density_g_per_ml": 0.916,
+    "type": "liquid",
+    "states": null,
+    "measurement_method_overrides": null,
+    "nutrition_per_100g": {
+      "calories": 884,
+      "protein_g": 0.0,
+      "carbs_g": 0.0,
+      "fat_g": 100.0,
+      "fiber_g": 0.0,
+      "sugar_g": 0.0
+    },
+    "pro_tips": [
+      "Extra virgin olive oil has a distinct flavor — use light or refined olive oil for neutral-tasting baked goods.",
+      "Olive oil works beautifully in focaccia, certain breads, and Mediterranean-style cakes.",
+      "Like all liquid oils, olive oil does not have state modifiers — it is always liquid at baking temperatures."
+    ],
+    "common_weights_g": [25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 300, 350, 400, 500, 750, 1000],
+    "related_ingredients": ["vegetable-oil", "butter", "coconut-oil"],
+    "faq": [
+      {
+        "question": "How many cups is 200g of olive oil?",
+        "answer": "200g of olive oil equals approximately 0.92 cups. Olive oil is slightly less dense than vegetable oil at 0.916 g/ml."
+      },
+      {
+        "question": "Can I use extra virgin olive oil in baking?",
+        "answer": "Yes, but it will impart a fruity, peppery flavor. This is desirable in focaccia, olive oil cakes, and some breads. For neutral flavor, use light or refined olive oil."
+      },
+      {
+        "question": "Is olive oil a healthy substitute for butter in baking?",
+        "answer": "Olive oil is higher in monounsaturated fats and lower in saturated fat than butter. It works well in many baked goods, though the texture and flavor will differ."
+      }
+    ],
+    "description": "Olive oil is a flavorful liquid fat used in Mediterranean baking and bread-making. Extra virgin olive oil adds distinctive flavor, while light olive oil is more neutral. Its density is 0.916 g/ml.",
+    "photo_available": false,
+    "density_source": "USDA FoodData Central"
+  },
+  {
+    "id": "whole-milk",
+    "name": "Whole Milk",
+    "category": "dairy",
+    "base_density_g_per_ml": 1.03,
+    "type": "liquid",
+    "states": null,
+    "measurement_method_overrides": null,
+    "nutrition_per_100g": {
+      "calories": 61,
+      "protein_g": 3.2,
+      "carbs_g": 4.8,
+      "fat_g": 3.3,
+      "fiber_g": 0.0,
+      "sugar_g": 5.1
+    },
+    "pro_tips": [
+      "Whole milk (3.25% fat) is the standard for most baking recipes. Do not substitute skim milk without expecting texture changes.",
+      "Room temperature milk incorporates better into batters than cold milk, especially when creaming butter.",
+      "Milk adds protein, sugar (lactose), and fat to baked goods — all of which affect browning and tenderness."
+    ],
+    "common_weights_g": [25, 50, 75, 100, 125, 150, 180, 200, 225, 240, 250, 300, 350, 400, 500, 750, 1000],
+    "related_ingredients": ["heavy-cream", "sour-cream", "butter"],
+    "faq": [
+      {
+        "question": "How many cups is 240g of whole milk?",
+        "answer": "240g of whole milk equals approximately 0.98 cups. Milk is slightly denser than water at 1.030 g/ml."
+      },
+      {
+        "question": "Is 240g of whole milk the same as 240ml?",
+        "answer": "Not exactly. Whole milk has a density of 1.030 g/ml, so 240g = 233.0 ml. The difference is small but noticeable in precision baking."
+      },
+      {
+        "question": "Can I measure milk by weight instead of volume?",
+        "answer": "Yes, and it's more accurate. 240g on a kitchen scale is more precise than 1 cup in a measuring cup, especially for small amounts."
+      }
+    ],
+    "description": "Whole milk (3.25% fat) is the standard liquid dairy ingredient in baking. It contributes to browning, tenderness, and flavor. Its density of 1.030 g/ml makes it slightly heavier than water.",
+    "photo_available": false,
+    "density_source": "USDA FoodData Central"
+  },
+  {
+    "id": "heavy-cream",
+    "name": "Heavy Cream",
+    "category": "dairy",
+    "base_density_g_per_ml": 0.994,
+    "type": "liquid",
+    "states": null,
+    "nutrition_per_100g": {
+      "calories": 340,
+      "protein_g": 2.1,
+      "carbs_g": 2.8,
+      "fat_g": 36.1,
+      "fiber_g": 0.0,
+      "sugar_g": 2.8
+    },
+    "pro_tips": [
+      "Heavy cream (36%+ fat) whips to stiff peaks and is essential for ganache, whipped cream, and rich sauces.",
+      "Cold heavy cream whips better than warm cream. Chill your bowl and beaters for best results.",
+      "Heavy cream can be thinned with milk to make a half-and-half substitute: equal parts cream and milk."
+    ],
+    "common_weights_g": [25, 50, 75, 100, 120, 125, 150, 175, 200, 225, 250, 300, 350, 400, 500, 750, 1000],
+    "related_ingredients": ["whole-milk", "sour-cream", "butter"],
+    "faq": [
+      {
+        "question": "How many cups is 240g of heavy cream?",
+        "answer": "240g of heavy cream equals approximately 1.02 cups. Heavy cream is very close to water in density at 0.994 g/ml."
+      },
+      {
+        "question": "Is heavy cream the same as whipping cream?",
+        "answer": "Not exactly. Heavy cream has at least 36% milk fat, while whipping cream has 30-36%. Heavy cream whips more stably. For most baking purposes, they can be used interchangeably."
+      },
+      {
+        "question": "Can I substitute heavy cream for milk?",
+        "answer": "You can, but the result will be much richer and heavier. Thin heavy cream with equal parts water or milk to approximate whole milk in recipes."
+      }
+    ],
+    "description": "Heavy cream (36%+ milk fat) is the richest liquid dairy product used in baking. It creates luxurious textures in ganache, custards, and whipped toppings. Its density of 0.994 g/ml is very close to water.",
+    "photo_available": false,
+    "density_source": "USDA FoodData Central"
+  },
+  {
+    "id": "sour-cream",
+    "name": "Sour Cream",
+    "category": "dairy",
+    "base_density_g_per_ml": 1.013,
+    "type": "liquid",
+    "states": null,
+    "nutrition_per_100g": {
+      "calories": 198,
+      "protein_g": 2.4,
+      "carbs_g": 4.6,
+      "fat_g": 19.4,
+      "fiber_g": 0.0,
+      "sugar_g": 4.1
+    },
+    "pro_tips": [
+      "Sour cream adds moisture and tang to cakes, muffins, and quick breads. It also tenderizes gluten.",
+      "Full-fat sour cream works best in baking. Low-fat versions can make baked goods gummy.",
+      "Sour cream activates baking soda due to its acidity, providing additional leavening in quick breads."
+    ],
+    "common_weights_g": [25, 50, 60, 75, 100, 120, 125, 150, 175, 200, 225, 250, 300, 350, 400, 500, 750, 1000],
+    "related_ingredients": ["whole-milk", "heavy-cream", "butter"],
+    "faq": [
+      {
+        "question": "How many cups is 240g of sour cream?",
+        "answer": "240g of sour cream equals approximately 1.00 cups. Sour cream has a density of 1.013 g/ml, very close to water."
+      },
+      {
+        "question": "Can I substitute Greek yogurt for sour cream in baking?",
+        "answer": "Yes, in most recipes. Greek yogurt has a similar tang and acidity. The texture may be slightly different, but the results are generally comparable."
+      },
+      {
+        "question": "Why do recipes use sour cream in cakes?",
+        "answer": "Sour cream adds moisture, tenderness, and a subtle tang. Its acidity also activates baking soda, providing extra leavening. The fat content keeps cakes moist longer."
+      }
+    ],
+    "description": "Sour cream is a cultured dairy product that adds moisture, tenderness, and tang to baked goods. Its acidity activates baking soda, making it valuable in quick breads, cakes, and muffins.",
+    "photo_available": false,
+    "density_source": "USDA FoodData Central"
+  },
+  {
+    "id": "cocoa-powder",
+    "name": "Cocoa Powder (unsweetened)",
+    "category": "other",
+    "base_density_g_per_ml": 0.449,
+    "type": "dry",
+    "states": null,
+    "measurement_method_overrides": null,
+    "nutrition_per_100g": {
+      "calories": 228,
+      "protein_g": 19.6,
+      "carbs_g": 57.9,
+      "fat_g": 13.7,
+      "fiber_g": 33.2,
+      "sugar_g": 1.8
+    },
+    "pro_tips": [
+      "Cocoa powder is very light and airy — always spoon and level, never scoop or pack.",
+      "Natural cocoa powder is acidic and reacts with baking soda. Dutch-processed cocoa is alkalized and pairs with baking powder.",
+      "Sifting cocoa powder is especially important as it tends to clump. Sift before measuring for the most accurate result."
+    ],
+    "common_weights_g": [25, 50, 75, 85, 100, 125, 150, 175, 200, 225, 250, 300, 350, 400, 500, 750, 1000],
+    "related_ingredients": ["all-purpose-flour", "granulated-sugar", "butter"],
+    "faq": [
+      {
+        "question": "How many cups is 85g of cocoa powder?",
+        "answer": "Using the Spoon & Level method, 85g of cocoa powder equals approximately 0.80 cups. Cocoa powder is one of the lightest dry ingredients at 0.449 g/ml."
+      },
+      {
+        "question": "Does sifting cocoa powder change the measurement?",
+        "answer": "Yes, significantly. Cocoa powder clumps easily and sifting makes a big difference. 85g of sifted cocoa powder fills about 0.94 cups vs 0.80 cups unsifted — a 17% difference."
+      },
+      {
+        "question": "What's the difference between natural and Dutch-processed cocoa powder?",
+        "answer": "Natural cocoa is acidic (pH 5-6) and pairs with baking soda. Dutch-processed cocoa is alkalized (pH 7-8) and pairs with baking powder. They are not always interchangeable in recipes."
+      }
+    ],
+    "description": "Unsweetened cocoa powder is pure chocolate liquor with most of the cocoa butter removed. It is very light (0.449 g/ml) and clumps easily. Natural and Dutch-processed varieties are not interchangeable in all recipes due to pH differences.",
+    "photo_available": false,
+    "density_source": "USDA FoodData Central"
+  },
+  {
+    "id": "rolled-oats",
+    "name": "Rolled Oats",
+    "category": "other",
+    "base_density_g_per_ml": 0.381,
+    "type": "dry",
+    "states": null,
+    "measurement_method_overrides": null,
+    "nutrition_per_100g": {
+      "calories": 379,
+      "protein_g": 13.2,
+      "carbs_g": 67.7,
+      "fat_g": 6.5,
+      "fiber_g": 10.1,
+      "sugar_g": 1.1
+    },
+    "pro_tips": [
+      "Rolled oats are the least dense ingredient in our database at 0.381 g/ml — they take up a lot of volume for their weight.",
+      "Do not substitute instant oats for rolled oats in baking — they absorb liquid faster and can make textures gummy.",
+      "For oat flour, pulse rolled oats in a food processor until finely ground. 1 cup rolled oats makes about 3/4 cup oat flour."
+    ],
+    "common_weights_g": [25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 300, 350, 400, 500, 750, 1000],
+    "related_ingredients": ["all-purpose-flour", "almond-flour", "coconut-flour"],
+    "faq": [
+      {
+        "question": "How many cups is 100g of rolled oats?",
+        "answer": "Using the Spoon & Level method, 100g of rolled oats equals approximately 1.11 cups. Rolled oats are the least dense ingredient in our database."
+      },
+      {
+        "question": "Can I substitute instant oats for rolled oats?",
+        "answer": "Not recommended for baking. Instant oats are thinner and absorb liquid faster, which can make baked goods gummy. Rolled oats (old-fashioned oats) provide better texture."
+      },
+      {
+        "question": "How do I make oat flour from rolled oats?",
+        "answer": "Pulse rolled oats in a food processor or blender until finely ground. 1 cup of rolled oats yields about 3/4 cup of oat flour. Oat flour has no gluten, so it works best combined with other flours."
+      }
+    ],
+    "description": "Rolled oats (old-fashioned oats) are whole oat groats that have been steamed and flattened. They are the least dense ingredient in our database and add texture, fiber, and nutrition to cookies, granola, and breads.",
+    "photo_available": false,
+    "density_source": "USDA FoodData Central"
+  },
+  {
+    "id": "cornstarch",
+    "name": "Cornstarch",
+    "category": "other",
+    "base_density_g_per_ml": 0.541,
+    "type": "dry",
+    "states": null,
+    "measurement_method_overrides": null,
+    "nutrition_per_100g": {
+      "calories": 381,
+      "protein_g": 0.3,
+      "carbs_g": 91.3,
+      "fat_g": 0.1,
+      "fiber_g": 0.9,
+      "sugar_g": 0.0
+    },
+    "pro_tips": [
+      "Cornstarch is a powerful thickener — use 1 tablespoon per cup of liquid for medium thickness.",
+      "Mix cornstarch with cold liquid before adding to hot mixtures to prevent lumps.",
+      "Cornstarch mixed with all-purpose flour (2 tbsp per cup) makes a good substitute for cake flour."
+    ],
+    "common_weights_g": [15, 25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 300, 350, 400, 500, 750, 1000],
+    "related_ingredients": ["all-purpose-flour", "cake-flour", "powdered-sugar"],
+    "faq": [
+      {
+        "question": "How many cups is 125g of cornstarch?",
+        "answer": "Using the Spoon & Level method, 125g of cornstarch equals approximately 0.98 cups. Cornstarch has a density of 0.541 g/ml, similar to all-purpose flour."
+      },
+      {
+        "question": "Can I substitute cornstarch for flour as a thickener?",
+        "answer": "Yes, but use half the amount. Cornstarch has twice the thickening power of flour. Mix it with cold liquid first to prevent lumps."
+      },
+      {
+        "question": "How does cornstarch make a cake flour substitute?",
+        "answer": "Replace 2 tablespoons of all-purpose flour per cup with 2 tablespoons of cornstarch. The cornstarch dilutes the protein content, mimicking cake flour's lower protein level."
+      }
+    ],
+    "description": "Cornstarch is a fine, white powder extracted from corn kernels. It is used as a thickener in sauces and fillings, and as a cake flour substitute when combined with all-purpose flour. Its density is 0.541 g/ml.",
+    "photo_available": false,
+    "density_source": "USDA FoodData Central"
+  }
+]

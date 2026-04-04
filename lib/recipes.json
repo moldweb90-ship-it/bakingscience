@@ -1,0 +1,196 @@
+[
+  {
+    "id": "basic-vanilla-cake",
+    "name": "Basic Vanilla Cake",
+    "category": "cake",
+    "serves": 8,
+    "ingredients": [
+      { "ingredient_id": "cake-flour", "weight_g": 240, "note": "sifted" },
+      { "ingredient_id": "granulated-sugar", "weight_g": 200, "note": "" },
+      { "ingredient_id": "butter", "weight_g": 115, "note": "softened" },
+      { "ingredient_id": "whole-milk", "weight_g": 180, "note": "room temperature" }
+    ],
+    "source_note": "Classic American vanilla cake recipe"
+  },
+  {
+    "id": "chocolate-chip-cookies",
+    "name": "Chocolate Chip Cookies",
+    "category": "cookie",
+    "serves": 24,
+    "ingredients": [
+      { "ingredient_id": "all-purpose-flour", "weight_g": 280, "note": "" },
+      { "ingredient_id": "brown-sugar", "weight_g": 165, "note": "packed" },
+      { "ingredient_id": "granulated-sugar", "weight_g": 100, "note": "" },
+      { "ingredient_id": "butter", "weight_g": 230, "note": "softened" }
+    ],
+    "source_note": "Classic chocolate chip cookie recipe"
+  },
+  {
+    "id": "banana-bread",
+    "name": "Banana Bread",
+    "category": "bread",
+    "serves": 10,
+    "ingredients": [
+      { "ingredient_id": "all-purpose-flour", "weight_g": 250, "note": "" },
+      { "ingredient_id": "granulated-sugar", "weight_g": 150, "note": "" },
+      { "ingredient_id": "butter", "weight_g": 75, "note": "melted" },
+      { "ingredient_id": "sour-cream", "weight_g": 60, "note": "" }
+    ],
+    "source_note": "Classic banana bread recipe"
+  },
+  {
+    "id": "pizza-dough",
+    "name": "Pizza Dough",
+    "category": "bread",
+    "serves": 4,
+    "ingredients": [
+      { "ingredient_id": "bread-flour", "weight_g": 500, "note": "" },
+      { "ingredient_id": "olive-oil", "weight_g": 30, "note": "" },
+      { "ingredient_id": "granulated-sugar", "weight_g": 10, "note": "" }
+    ],
+    "source_note": "Classic Italian-style pizza dough"
+  },
+  {
+    "id": "pancakes",
+    "name": "Pancakes",
+    "category": "other",
+    "serves": 8,
+    "ingredients": [
+      { "ingredient_id": "all-purpose-flour", "weight_g": 190, "note": "" },
+      { "ingredient_id": "granulated-sugar", "weight_g": 25, "note": "" },
+      { "ingredient_id": "whole-milk", "weight_g": 240, "note": "" },
+      { "ingredient_id": "butter", "weight_g": 30, "note": "melted" }
+    ],
+    "source_note": "Classic American buttermilk-style pancakes"
+  },
+  {
+    "id": "simple-white-bread",
+    "name": "Simple White Bread",
+    "category": "bread",
+    "serves": 12,
+    "ingredients": [
+      { "ingredient_id": "bread-flour", "weight_g": 450, "note": "" },
+      { "ingredient_id": "granulated-sugar", "weight_g": 25, "note": "" },
+      { "ingredient_id": "butter", "weight_g": 30, "note": "softened" },
+      { "ingredient_id": "whole-milk", "weight_g": 300, "note": "" }
+    ],
+    "source_note": "Classic American white sandwich bread"
+  },
+  {
+    "id": "blueberry-muffins",
+    "name": "Blueberry Muffins",
+    "category": "other",
+    "serves": 12,
+    "ingredients": [
+      { "ingredient_id": "all-purpose-flour", "weight_g": 300, "note": "" },
+      { "ingredient_id": "granulated-sugar", "weight_g": 150, "note": "" },
+      { "ingredient_id": "butter", "weight_g": 80, "note": "melted" },
+      { "ingredient_id": "sour-cream", "weight_g": 120, "note": "" }
+    ],
+    "source_note": "Classic bakery-style blueberry muffins"
+  },
+  {
+    "id": "pie-crust-single",
+    "name": "Pie Crust (Single)",
+    "category": "pastry",
+    "serves": 8,
+    "ingredients": [
+      { "ingredient_id": "all-purpose-flour", "weight_g": 160, "note": "" },
+      { "ingredient_id": "butter", "weight_g": 115, "note": "cold, solid" },
+      { "ingredient_id": "granulated-sugar", "weight_g": 10, "note": "" }
+    ],
+    "source_note": "Classic all-butter pie crust"
+  },
+  {
+    "id": "brownies",
+    "name": "Brownies",
+    "category": "cake",
+    "serves": 16,
+    "ingredients": [
+      { "ingredient_id": "all-purpose-flour", "weight_g": 60, "note": "" },
+      { "ingredient_id": "granulated-sugar", "weight_g": 200, "note": "" },
+      { "ingredient_id": "butter", "weight_g": 115, "note": "melted" },
+      { "ingredient_id": "cocoa-powder", "weight_g": 50, "note": "" }
+    ],
+    "source_note": "Classic fudgy brownie recipe"
+  },
+  {
+    "id": "sugar-cookies",
+    "name": "Sugar Cookies",
+    "category": "cookie",
+    "serves": 30,
+    "ingredients": [
+      { "ingredient_id": "all-purpose-flour", "weight_g": 375, "note": "" },
+      { "ingredient_id": "granulated-sugar", "weight_g": 200, "note": "" },
+      { "ingredient_id": "butter", "weight_g": 230, "note": "softened" },
+      { "ingredient_id": "powdered-sugar", "weight_g": 60, "note": "" }
+    ],
+    "source_note": "Classic cut-out sugar cookie recipe"
+  },
+  {
+    "id": "biscuits",
+    "name": "Biscuits",
+    "category": "bread",
+    "serves": 8,
+    "ingredients": [
+      { "ingredient_id": "all-purpose-flour", "weight_g": 300, "note": "" },
+      { "ingredient_id": "butter", "weight_g": 85, "note": "cold, solid" },
+      { "ingredient_id": "whole-milk", "weight_g": 180, "note": "" }
+    ],
+    "source_note": "Classic Southern-style buttermilk biscuits"
+  },
+  {
+    "id": "cornbread",
+    "name": "Cornbread",
+    "category": "bread",
+    "serves": 9,
+    "ingredients": [
+      { "ingredient_id": "all-purpose-flour", "weight_g": 125, "note": "" },
+      { "ingredient_id": "cornstarch", "weight_g": 15, "note": "" },
+      { "ingredient_id": "granulated-sugar", "weight_g": 65, "note": "" },
+      { "ingredient_id": "butter", "weight_g": 60, "note": "melted" },
+      { "ingredient_id": "whole-milk", "weight_g": 240, "note": "" }
+    ],
+    "source_note": "Classic Southern cornbread"
+  },
+  {
+    "id": "crepes",
+    "name": "Crepes",
+    "category": "other",
+    "serves": 8,
+    "ingredients": [
+      { "ingredient_id": "all-purpose-flour", "weight_g": 125, "note": "" },
+      { "ingredient_id": "whole-milk", "weight_g": 300, "note": "" },
+      { "ingredient_id": "butter", "weight_g": 30, "note": "melted" },
+      { "ingredient_id": "granulated-sugar", "weight_g": 25, "note": "" }
+    ],
+    "source_note": "Classic French crepe recipe"
+  },
+  {
+    "id": "scones",
+    "name": "Scones",
+    "category": "pastry",
+    "serves": 8,
+    "ingredients": [
+      { "ingredient_id": "all-purpose-flour", "weight_g": 250, "note": "" },
+      { "ingredient_id": "granulated-sugar", "weight_g": 50, "note": "" },
+      { "ingredient_id": "butter", "weight_g": 75, "note": "cold, solid" },
+      { "ingredient_id": "heavy-cream", "weight_g": 120, "note": "" }
+    ],
+    "source_note": "Classic British-style scones"
+  },
+  {
+    "id": "cinnamon-rolls",
+    "name": "Cinnamon Rolls",
+    "category": "bread",
+    "serves": 12,
+    "ingredients": [
+      { "ingredient_id": "bread-flour", "weight_g": 400, "note": "" },
+      { "ingredient_id": "granulated-sugar", "weight_g": 50, "note": "" },
+      { "ingredient_id": "butter", "weight_g": 60, "note": "softened" },
+      { "ingredient_id": "whole-milk", "weight_g": 240, "note": "" },
+      { "ingredient_id": "brown-sugar", "weight_g": 165, "note": "packed, for filling" }
+    ],
+    "source_note": "Classic American cinnamon rolls"
+  }
+]
