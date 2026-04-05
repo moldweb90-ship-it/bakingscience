@@ -7,24 +7,24 @@ import CookieConsent from '@/components/layout/CookieConsent';
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://bakingconverter.com'),
   title: {
-    default: 'BakingConverter - Precision Baking Conversions (Grams to Cups)',
+    default: 'Grams to Cups — Baking Conversion Chart | BakingConverter',
     template: '%s | BakingConverter',
   },
   description:
-    'Convert grams to cups for 20 baking ingredients. 3 methods: spooned, scooped, and sifted. Exact results, not rounded. Free calculator.',
+    "Baking conversion charts done right — not 'roughly'. Convert grams to cups for 50+ ingredients. Precise results for every recipe.",
   openGraph: {
-    title: 'Grams to Cups Converter - 20 Baking Ingredients, 3 Methods',
+    title: 'Grams to Cups — Baking Conversion Chart | BakingConverter',
     description:
-      'Convert grams to cups for 20 baking ingredients. 3 methods: spooned, scooped, and sifted. Exact results, not rounded. Free calculator.',
+      "Baking conversion charts done right — not 'roughly'. Convert grams to cups for 50+ ingredients. Precise results for every recipe.",
     siteName: 'BakingConverter',
     type: 'website',
     images: [{ url: '/og-default.png', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Grams to Cups Converter - 20 Baking Ingredients, 3 Methods',
+    title: 'Grams to Cups — Baking Conversion Chart | BakingConverter',
     description:
-      'Convert grams to cups for 20 baking ingredients. 3 methods: spooned, scooped, and sifted. Exact results, not rounded. Free calculator.',
+      "Baking conversion charts done right — not 'roughly'. Convert grams to cups for 50+ ingredients. Precise results for every recipe.",
     images: ['/og-default.png'],
   },
   robots: {

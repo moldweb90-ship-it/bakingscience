@@ -1,19 +1,20 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import Link from 'next/link';
+import { Search, BarChart3, Target } from 'lucide-react';
 import SearchBar from '@/components/ui/SearchBar';
 import IngredientGrid from '@/components/ui/IngredientGrid';
 import { ingredients } from '@/lib/converter';
 import { SITE_URL, SITE_NAME } from '@/lib/constants';
 
 export const metadata: Metadata = {
-  title: 'Grams to Cups — Baking Calculator | BakingConverter',
+  title: 'Grams to Cups — Baking Conversion Chart | BakingConverter',
   description:
-    "Convert grams to cups for 50+ baking ingredients. Precise flour, sugar, and butter conversions — no rounding, no guessing. Free calculator.",
+    "Baking conversion charts done right — not 'roughly'. Convert grams to cups for 50+ ingredients. Precise results for every recipe.",
   openGraph: {
-    title: 'Grams to Cups — Baking Calculator | BakingConverter',
+    title: 'Grams to Cups — Baking Conversion Chart | BakingConverter',
     description:
-      "Baking conversions done right — not 'roughly'. Convert grams to cups for 50+ ingredients including flour, sugar, and butter. Precise results for every recipe.",
+      "Baking conversion charts done right — not 'roughly'. Convert grams to cups for 50+ ingredients. Precise results for every recipe.",
     url: SITE_URL,
     siteName: SITE_NAME,
     type: 'website',
@@ -21,9 +22,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Grams to Cups — Baking Calculator | BakingConverter',
+    title: 'Grams to Cups — Baking Conversion Chart | BakingConverter',
     description:
-      "Baking conversions done right — not 'roughly'. Convert grams to cups for 50+ ingredients including flour, sugar, and butter. Precise results for every recipe.",
+      "Baking conversion charts done right — not 'roughly'. Convert grams to cups for 50+ ingredients. Precise results for every recipe.",
     images: ['/og-default.png'],
   },
   alternates: { canonical: '/' },
@@ -46,17 +47,17 @@ const gridIngredients = Object.values(ingredients).map((i) => ({
 
 const howItWorksSteps = [
   {
-    icon: '\U0001f50d',
+    icon: Search,
     title: 'Choose your ingredient',
     description: 'Select from 20+ baking ingredients including flours, sugars, fats, and dairy.',
   },
   {
-    icon: '\U0001f4ca',
+    icon: BarChart3,
     title: 'Select your method',
     description: 'Spoon & Level, Dip & Sweep, or Sifted - each gives a different result.',
   },
   {
-    icon: '\U0001f3af',
+    icon: Target,
     title: 'Get your exact measurement',
     description: 'See precise cup, tablespoon, and teaspoon values for your specific weight.',
   },
@@ -68,21 +69,24 @@ const blogPostPlaceholders = [
     slug: 'why-cup-measurements-fail',
     excerpt: 'How you fill your measuring cup changes the weight by up to 20%. Learn the three methods professional bakers use and why Google AI can never give you the full picture.',
     date: '2025-01-15',
-    emoji: '\U0001f4d0',
+    gradient: 'from-blue-400 to-blue-600',
+    icon: '\u274C',
   },
   {
     title: 'Baking in Denver: The High-Altitude Adjustment Guide You Actually Need',
     slug: 'high-altitude-baking-guide',
     excerpt: 'Altitude changes everything. Learn exactly how much extra flour and liquid you need above 3,500 feet, with a city-by-city adjustment table.',
     date: '2025-01-22',
-    emoji: '\u26f0\ufe0f',
+    gradient: 'from-amber-400 to-orange-600',
+    icon: '\u26F0',
   },
   {
     title: 'Butter Math: Why Solid vs Melted Changes Everything in Your Recipe',
     slug: 'butter-solid-vs-melted-measurement',
     excerpt: 'The same 113g of butter measures differently depending on whether it is solid, softened, or melted. See the visual comparison that will change how you bake.',
     date: '2025-01-29',
-    emoji: '\U0001f9c8',
+    gradient: 'from-yellow-300 to-amber-500',
+    icon: '\uD83E\uDDC8',
   },
 ];
 
@@ -129,10 +133,10 @@ export default function HomePage() {
       {/* Section 1: Hero */}
       <section className="text-center mb-12">
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4 max-w-3xl mx-auto leading-tight">
-          Grams to Cups &mdash; Baking Conversion Calculator
+          Grams to Cups &mdash; Baking Conversion Chart &amp; Calculator
         </h1>
         <p className="text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto mb-8">
-          Precise gram-to-cup conversions for flour, sugar, butter and 50+ baking ingredients. No rounding. No guessing.
+          Precise gram-to-cup conversion charts for flour, sugar, butter and 50+ baking ingredients. No rounding. No guessing.
         </p>
       </section>
 
@@ -155,13 +159,18 @@ export default function HomePage() {
           How It Works
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          {howItWorksSteps.map((step, index) => (
-            <div key={index} className="card p-6 text-center">
-              <span className="text-4xl mb-3 block">{step.icon}</span>
-              <h3 className="font-semibold text-slate-900 mb-2">{step.title}</h3>
-              <p className="text-sm text-slate-600">{step.description}</p>
-            </div>
-          ))}
+          {howItWorksSteps.map((step, index) => {
+            const Icon = step.icon;
+            return (
+              <div key={index} className="card p-6 text-center">
+                <div className="flex justify-center mb-3">
+                  <Icon className="w-10 h-10 text-accent" />
+                </div>
+                <h3 className="font-semibold text-slate-900 mb-2">{step.title}</h3>
+                <p className="text-sm text-slate-600">{step.description}</p>
+              </div>
+            );
+          })}
         </div>
       </section>
 
@@ -215,8 +224,8 @@ export default function HomePage() {
               href={`/blog/${post.slug}/`}
               className="card p-6 flex flex-col gap-3 group hover:border-accent transition-colors"
             >
-              <div className="bg-slate-100 rounded-card h-40 flex items-center justify-center text-4xl">
-                {post.emoji}
+              <div className={`bg-gradient-to-br ${post.gradient} rounded-card h-40 flex items-center justify-center text-5xl text-white`}>
+                {post.icon}
               </div>
               <h3 className="font-semibold text-slate-900 group-hover:text-accent transition-colors leading-snug">
                 {post.title}

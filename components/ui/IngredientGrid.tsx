@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Wheat, Candy, Droplets, Milk, Cookie } from 'lucide-react';
 
 export interface GridIngredient {
   id: string;
@@ -11,12 +12,12 @@ export interface IngredientGridProps {
   ingredients: GridIngredient[];
 }
 
-const categoryEmojis: Record<string, string> = {
-  flour: '🌾',
-  sugar: '🍬',
-  fat: '🧈',
-  dairy: '🥛',
-  other: '🧃',
+const categoryIcons: Record<string, React.ComponentType<{ className?: string }>> = {
+  flour: Wheat,
+  sugar: Candy,
+  fat: Droplets,
+  dairy: Milk,
+  other: Cookie,
 };
 
 const categoryLabels: Record<string, string> = {
@@ -55,6 +56,7 @@ export default function IngredientGrid({ ingredients }: IngredientGridProps) {
       {ingredients.map((ing) => {
         const topWeights = getTopWeights(ing.common_weights_g);
         const hasMore = ing.common_weights_g.length > 5;
+        const Icon = categoryIcons[ing.category] || Cookie;
 
         return (
           <div
@@ -62,9 +64,9 @@ export default function IngredientGrid({ ingredients }: IngredientGridProps) {
             className="card p-5 flex flex-col items-center text-center gap-2 group hover:border-accent transition-colors duration-200"
           >
             <Link href={`/${ing.id}/`} className="flex flex-col items-center">
-              <span className="text-3xl mb-1 group-hover:scale-110 transition-transform duration-200">
-                {categoryEmojis[ing.category] || '🧃'}
-              </span>
+              <div className="mb-1 text-accent group-hover:scale-110 transition-transform duration-200">
+                <Icon className="w-8 h-8" />
+              </div>
               <span className="font-semibold text-slate-800 text-sm leading-tight">
                 {ing.name}
               </span>
