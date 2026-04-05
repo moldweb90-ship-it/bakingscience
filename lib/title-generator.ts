@@ -25,7 +25,7 @@ const shortName: Record<string, string> = {
 
 /**
  * Generate leaf title optimized for real search queries.
- * Format: "150g Sugar to Cups: 1.25 Cups | BakingConverter"
+ * Format: "250 g sugar to Cups: 2.77 Cups | BakingConverter"
  */
 export function generateLeafTitle(
   value: number,
@@ -33,7 +33,7 @@ export function generateLeafTitle(
   spoonLevelCups: number,
 ): string {
   const name = shortName[ingredientId] || ingredientId.replace(/-/g, ' ');
-  return `${value}g ${name} to Cups: ${spoonLevelCups} Cups | ${SITE_NAME}`;
+  return `${value} g ${name} to Cups: ${spoonLevelCups} Cups | BakingConverter`;
 }
 
 /**
@@ -44,7 +44,7 @@ export function generateFallbackTitle(
   ingredientId: string,
 ): string {
   const name = shortName[ingredientId] || ingredientId.replace(/-/g, ' ');
-  return `${value}g ${name} to Cups | ${SITE_NAME}`;
+  return `${value} g ${name} to Cups | BakingConverter`;
 }
 
 /**

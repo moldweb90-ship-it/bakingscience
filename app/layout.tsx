@@ -7,10 +7,10 @@ import CookieConsent from '@/components/layout/CookieConsent';
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://bakingconverter.com'),
-  title: {
-    default: 'Grams to Cups — Baking Conversion Chart | BakingConverter',
-    template: '%s | BakingConverter',
-  },
+    title: {
+      default: 'Grams to Cups — Baking Conversion Chart | BakingConverter',
+      template: '%s',
+    },
   description:
     "Baking conversion charts done right — not 'roughly'. Convert grams to cups for 50+ ingredients. Precise results for every recipe.",
   openGraph: {
