@@ -228,6 +228,7 @@ export default async function LeafPage({ params }: LeafPageProps) {
             <VisualMeasurementGuide
               ingredientId={ingredientId}
               ingredientName={ing.name}
+              ingredientDensity={ing.base_density_g_per_ml}
               weightG={weight}
               photoAvailable={ing.photo_available}
             />
