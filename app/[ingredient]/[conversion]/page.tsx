@@ -16,7 +16,7 @@ import { ingredients, convert, MEASUREMENT_METHODS, cupsToAllUnits } from '@/lib
 import { findMatchingRecipes } from '@/lib/recipe-scaler';
 import { parseConversionSlug, buildLeafUrl, buildHubUrl } from '@/lib/slug-utils';
 import { generateFAQ } from '@/lib/faq-generator';
-import { generateLeafTitle, generateFallbackTitle } from '@/lib/title-generator';
+import { generateLeafTitle, generateFallbackTitle, getShortName } from '@/lib/title-generator';
 import {
   generateLeafDescription,
   generateCanonicalLeaf,
@@ -58,9 +58,13 @@ export async function generateMetadata({ params }: LeafPageProps): Promise<Metad
 
   const spoonLevel = convert(weight, ingredientId, 'spoon_level');
   const sifted = convert(weight, ingredientId, 'sifted');
+  const dipSweep = convert(weight, ingredientId, 'dip_sweep');
 
-  const title = generateLeafTitle(weight, ing.name, spoonLevel.cups);
-  const description = generateLeafDescription(weight, ing.name, ingredientId);
+  const shortName = getShortName(ingredientId);
+  const title = generateLeafTitle(weight, ingredientId, spoonLevel.cups);
+
+  // Description optimized for "how many cups is X grams" queries
+  const description = `${weight}g ${shortName} = ${spoonLevel.cups} cups. How many cups is ${weight} grams of ${shortName}? Sifted: ${sifted.cups} cups. Packed: ${dipSweep.cups} cups. Free calculator.`;
   const canonical = generateCanonicalLeaf(ingredientId, weight);
 
   return {

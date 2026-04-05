@@ -1,40 +1,65 @@
 import { SITE_NAME } from './constants';
 
+const shortName: Record<string, string> = {
+  'all-purpose-flour': 'flour',
+  'whole-wheat-flour': 'whole wheat flour',
+  'bread-flour': 'bread flour',
+  'cake-flour': 'cake flour',
+  'almond-flour': 'almond flour',
+  'coconut-flour': 'coconut flour',
+  'granulated-sugar': 'sugar',
+  'powdered-sugar': 'powdered sugar',
+  'brown-sugar': 'brown sugar',
+  'butter': 'butter',
+  'coconut-oil': 'coconut oil',
+  'vegetable-oil': 'vegetable oil',
+  'olive-oil': 'olive oil',
+  'heavy-cream': 'heavy cream',
+  'whole-milk': 'milk',
+  'sour-cream': 'sour cream',
+  'honey': 'honey',
+  'cornstarch': 'cornstarch',
+  'rolled-oats': 'oats',
+  'cocoa-powder': 'cocoa powder',
+};
+
 /**
- * Anti-snippet title rotation (Section 9.1)
- * Optimized for CTR: answer in title, differentiation from competitors
- *
- * Formula 1 — Answer + Anti-AI (values ending in 0 or 5)
- * Formula 2 — Precision (values ending in 1, 4, 7)
- * Formula 3 — Tool/Interactive (values ending in 2, 3, 6, 8, 9)
+ * Generate leaf title optimized for real search queries.
+ * Pattern: "{grams} Grams {shortName} to Cups: {result} Cups | BakingConverter"
  */
 export function generateLeafTitle(
   value: number,
-  ingredientName: string,
+  ingredientId: string,
   spoonLevelCups: number,
 ): string {
-  const lastDigit = value % 10;
-  const fullName = ingredientName.replace(' (unsweetened)', '');
-
-  if (lastDigit === 0 || lastDigit === 5) {
-    return `${value}g ${fullName} in Cups: Exactly ${spoonLevelCups} (Not ~${(spoonLevelCups * 1.1).toFixed(1)}) — 3 Methods`;
+  const name = shortName[ingredientId] || ingredientId.replace(/-/g, ' ');
+  
+  // Try full "Grams" first
+  let title = `${value} Grams ${name} to Cups: ${spoonLevelCups} Cups | ${SITE_NAME}`;
+  
+  // If too long (>60 chars), switch to "g"
+  if (title.length > 60) {
+    title = `${value}g ${name} to Cups: ${spoonLevelCups} Cups | ${SITE_NAME}`;
+  }
+  
+  // If still too long, truncate name
+  if (title.length > 60) {
+    const short = name.split(' ').slice(0, 2).join(' ');
+    title = `${value}g ${short} to Cups: ${spoonLevelCups} Cups | ${SITE_NAME}`;
   }
 
-  if (lastDigit === 1 || lastDigit === 4 || lastDigit === 7) {
-    return `${value}g ${fullName} to Cups: ${spoonLevelCups} Cups Exact (Sifted vs Packed vs Spooned)`;
-  }
-
-  return `${value}g ${fullName} Converter: ${spoonLevelCups} Cups — Adjust for Method & Altitude`;
+  return title;
 }
 
 /**
- * Fallback title if rotation logic fails
+ * Fallback title
  */
 export function generateFallbackTitle(
   value: number,
-  ingredientName: string,
+  ingredientId: string,
 ): string {
-  return `${value}g ${ingredientName} to Cups — Precise Conversion (Sifted vs Packed)`;
+  const name = shortName[ingredientId] || ingredientId.replace(/-/g, ' ');
+  return `${value} Grams ${name} to Cups | ${SITE_NAME}`;
 }
 
 /**
@@ -46,4 +71,8 @@ export function generateHubTitle(ingredientName: string): string {
 
 export function generateHubDescription(ingredientName: string, _ingredient: { category: string }): string {
   return `Convert ${ingredientName.toLowerCase()} from grams to cups with precision. See how sifted, packed, and spooned methods change your measurement. Includes nutrition facts and expert baking tips.`;
+}
+
+export function getShortName(ingredientId: string): string {
+  return shortName[ingredientId] || ingredientId.replace(/-/g, ' ');
 }
