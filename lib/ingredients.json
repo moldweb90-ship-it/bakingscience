@@ -17,7 +17,7 @@
     },
     "pro_tips": [
       "All-purpose flour is the most versatile flour for everyday baking, with a protein content of 10-12%.",
-      "Always spoon flour into the measuring cup and level with a knife — never scoop directly from the bag.",
+      "Always spoon flour into the measuring cup and level with a knife - never scoop directly from the bag.",
       "For the most accurate results, weigh your flour. 1 cup of AP flour weighs approximately 125g when spooned and leveled."
     ],
     "common_weights_g": [
@@ -61,7 +61,7 @@
       },
       {
         "question": "Does sifting all-purpose flour change the measurement?",
-        "answer": "Yes. Sifted all-purpose flour is lighter and more aerated. 125g of sifted AP flour fills approximately 1.18 cups, compared to 1.00 cup when spooned and leveled — an 18% difference."
+        "answer": "Yes. Sifted all-purpose flour is lighter and more aerated. 125g of sifted AP flour fills approximately 1.18 cups, compared to 1.00 cup when spooned and leveled - an 18% difference."
       },
       {
         "question": "What's the difference between all-purpose flour and bread flour by weight?",
@@ -95,7 +95,7 @@
     "pro_tips": [
       "Bread flour has a higher protein content (12-14%) than all-purpose flour, creating stronger gluten networks for chewy bread.",
       "Use bread flour for yeast breads, pizza dough, and bagels where structure and chew are desired.",
-      "Do not substitute bread flour for cake flour — the high protein will make cakes tough and dense."
+      "Do not substitute bread flour for cake flour - the high protein will make cakes tough and dense."
     ],
     "common_weights_g": [
       25,
@@ -233,7 +233,7 @@
     "pro_tips": [
       "Whole wheat flour absorbs more liquid than white flour. Add 1-2 extra tablespoons of liquid per cup when substituting.",
       "For lighter results, substitute half whole wheat flour and half all-purpose flour in any recipe.",
-      "Store whole wheat flour in the refrigerator or freezer — the natural oils in the bran can go rancid at room temperature."
+      "Store whole wheat flour in the refrigerator or freezer - the natural oils in the bran can go rancid at room temperature."
     ],
     "common_weights_g": [
       25,
@@ -273,7 +273,7 @@
         "answer": "The bran particles in whole wheat flour cut through gluten strands, weakening the structure. This is why 100% whole wheat breads are denser than white breads."
       }
     ],
-    "description": "Whole wheat flour is made from the entire wheat kernel — bran, germ, and endosperm. It provides more fiber, vitamins, and minerals than refined flours, but produces denser baked goods due to bran interference with gluten development.",
+    "description": "Whole wheat flour is made from the entire wheat kernel - bran, germ, and endosperm. It provides more fiber, vitamins, and minerals than refined flours, but produces denser baked goods due to bran interference with gluten development.",
     "photo_available": false,
     "density_source": "USDA FoodData Central",
     "aliases": [
@@ -300,7 +300,7 @@
     "pro_tips": [
       "Almond flour is not a 1:1 substitute for wheat flour. It lacks gluten, so baked goods may be crumbly.",
       "Store almond flour in the refrigerator or freezer to prevent the natural oils from going rancid.",
-      "Almond flour browns quickly — reduce oven temperature by 25°F and watch for over-browning."
+      "Almond flour browns quickly - reduce oven temperature by 25°F and watch for over-browning."
     ],
     "common_weights_g": [
       25,
@@ -429,7 +429,7 @@
     "pro_tips": [
       "Granulated sugar should be spooned and leveled, not packed. It does not compress like brown sugar.",
       "For the most accurate sugar measurement, use a kitchen scale. 1 cup of granulated sugar weighs approximately 200g.",
-      "Sugar is hygroscopic — it absorbs moisture from the air. Store in an airtight container to prevent clumping."
+      "Sugar is hygroscopic - it absorbs moisture from the air. Store in an airtight container to prevent clumping."
     ],
     "common_weights_g": [
       12,
@@ -567,7 +567,7 @@
     "pro_tips": [
       "Powdered sugar should be spooned and leveled, never packed. It compacts easily and will give inaccurate measurements if pressed.",
       "Sift powdered sugar before making frosting or glazes to remove any lumps.",
-      "Powdered sugar contains about 3% cornstarch to prevent caking — this affects thickening in recipes."
+      "Powdered sugar contains about 3% cornstarch to prevent caking - this affects thickening in recipes."
     ],
     "common_weights_g": [
       25,
@@ -600,7 +600,7 @@
       },
       {
         "question": "Should I sift powdered sugar before measuring?",
-        "answer": "For frostings and glazes, yes — sifting removes lumps. For general baking, spoon and level is sufficient. Sifted powdered sugar will take up about 15% more volume."
+        "answer": "For frostings and glazes, yes - sifting removes lumps. For general baking, spoon and level is sufficient. Sifted powdered sugar will take up about 15% more volume."
       },
       {
         "question": "Why does powdered sugar have cornstarch in it?",
@@ -633,7 +633,7 @@
     },
     "pro_tips": [
       "Honey is denser than water (1.42 g/ml vs 1.0 g/ml), so 1 cup of honey weighs significantly more than 1 cup of water.",
-      "To measure honey accurately by volume, lightly coat the measuring cup with oil first — the honey will slide right out.",
+      "To measure honey accurately by volume, lightly coat the measuring cup with oil first - the honey will slide right out.",
       "When substituting honey for sugar in baking, reduce other liquids by 1/4 cup per cup of honey and lower oven temperature by 25°F."
     ],
     "common_weights_g": [
@@ -674,7 +674,7 @@
         "answer": "Yes, and it's much more accurate and less messy. 340g on a kitchen scale is more precise than 1 cup in a measuring cup, and you don't need to coat the cup with oil."
       }
     ],
-    "description": "Honey is a natural liquid sweetener produced by bees, with a density of 1.42 g/ml — significantly denser than water. It adds moisture, flavor, and browning to baked goods, and has natural preservative qualities.",
+    "description": "Honey is a natural liquid sweetener produced by bees, with a density of 1.42 g/ml - significantly denser than water. It adds moisture, flavor, and browning to baked goods, and has natural preservative qualities.",
     "photo_available": false,
     "density_source": "USDA FoodData Central",
     "aliases": [
@@ -742,7 +742,7 @@
     "faq": [
       {
         "question": "How many cups is 113g of butter (solid)?",
-        "answer": "113g of solid butter equals 0.50 cups (1 stick). Note: melted butter measures 0.57 cups for the same weight — a 14% difference."
+        "answer": "113g of solid butter equals 0.50 cups (1 stick). Note: melted butter measures 0.57 cups for the same weight - a 14% difference."
       },
       {
         "question": "Does melting butter change its volume?",
@@ -912,9 +912,9 @@
       "sugar_g": 0.0
     },
     "pro_tips": [
-      "Extra virgin olive oil has a distinct flavor — use light or refined olive oil for neutral-tasting baked goods.",
+      "Extra virgin olive oil has a distinct flavor - use light or refined olive oil for neutral-tasting baked goods.",
       "Olive oil works beautifully in focaccia, certain breads, and Mediterranean-style cakes.",
-      "Like all liquid oils, olive oil does not have state modifiers — it is always liquid at baking temperatures."
+      "Like all liquid oils, olive oil does not have state modifiers - it is always liquid at baking temperatures."
     ],
     "common_weights_g": [
       25,
@@ -980,7 +980,7 @@
     "pro_tips": [
       "Whole milk (3.25% fat) is the standard for most baking recipes. Do not substitute skim milk without expecting texture changes.",
       "Room temperature milk incorporates better into batters than cold milk, especially when creaming butter.",
-      "Milk adds protein, sugar (lactose), and fat to baked goods — all of which affect browning and tenderness."
+      "Milk adds protein, sugar (lactose), and fat to baked goods - all of which affect browning and tenderness."
     ],
     "common_weights_g": [
       25,
@@ -1177,7 +1177,7 @@
       "sugar_g": 1.8
     },
     "pro_tips": [
-      "Cocoa powder is very light and airy — always spoon and level, never scoop or pack.",
+      "Cocoa powder is very light and airy - always spoon and level, never scoop or pack.",
       "Natural cocoa powder is acidic and reacts with baking soda. Dutch-processed cocoa is alkalized and pairs with baking powder.",
       "Sifting cocoa powder is especially important as it tends to clump. Sift before measuring for the most accurate result."
     ],
@@ -1212,7 +1212,7 @@
       },
       {
         "question": "Does sifting cocoa powder change the measurement?",
-        "answer": "Yes, significantly. Cocoa powder clumps easily and sifting makes a big difference. 85g of sifted cocoa powder fills about 0.94 cups vs 0.80 cups unsifted — a 17% difference."
+        "answer": "Yes, significantly. Cocoa powder clumps easily and sifting makes a big difference. 85g of sifted cocoa powder fills about 0.94 cups vs 0.80 cups unsifted - a 17% difference."
       },
       {
         "question": "What's the difference between natural and Dutch-processed cocoa powder?",
@@ -1244,8 +1244,8 @@
       "sugar_g": 1.1
     },
     "pro_tips": [
-      "Rolled oats are the least dense ingredient in our database at 0.381 g/ml — they take up a lot of volume for their weight.",
-      "Do not substitute instant oats for rolled oats in baking — they absorb liquid faster and can make textures gummy.",
+      "Rolled oats are the least dense ingredient in our database at 0.381 g/ml - they take up a lot of volume for their weight.",
+      "Do not substitute instant oats for rolled oats in baking - they absorb liquid faster and can make textures gummy.",
       "For oat flour, pulse rolled oats in a food processor until finely ground. 1 cup rolled oats makes about 3/4 cup oat flour."
     ],
     "common_weights_g": [
@@ -1310,7 +1310,7 @@
       "sugar_g": 0.0
     },
     "pro_tips": [
-      "Cornstarch is a powerful thickener — use 1 tablespoon per cup of liquid for medium thickness.",
+      "Cornstarch is a powerful thickener - use 1 tablespoon per cup of liquid for medium thickness.",
       "Mix cornstarch with cold liquid before adding to hot mixtures to prevent lumps.",
       "Cornstarch mixed with all-purpose flour (2 tbsp per cup) makes a good substitute for cake flour."
     ],

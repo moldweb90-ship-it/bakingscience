@@ -137,7 +137,7 @@ export function generateHowToSchema(
       },
       {
         '@type': 'HowToStep',
-        text: `Take a straight knife or spatula and level off the top — you need ${cups} cups (about ${fraction}).`,
+        text: `Take a straight knife or spatula and level off the top - you need ${cups} cups (about ${fraction}).`,
       },
       {
         '@type': 'HowToStep',

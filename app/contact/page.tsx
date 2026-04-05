@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
 
 export const metadata: Metadata = {
-  title: 'Contact BakingConverter — Get in Touch',
+  title: 'Contact BakingConverter - Get in Touch',
   description: 'Have a question or suggestion? Contact the BakingConverter team.',
 };
 

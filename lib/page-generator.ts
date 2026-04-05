@@ -49,6 +49,6 @@ export function generateAllLeafParams() {
 }
 
 /**
- * ISR revalidation config (Section 7.2) — 7 days
+ * ISR revalidation config (Section 7.2) - 7 days
  */
 export const revalidate = ISR_REVALIDATE_SECONDS;

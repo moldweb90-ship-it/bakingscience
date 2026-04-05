@@ -48,7 +48,7 @@ export default async function Image() {
             marginBottom: 30,
           }}
         >
-          Not &quot;roughly&quot; — exactly. 20+ ingredients, 3 methods.
+          Not &quot;roughly&quot; - exactly. 20+ ingredients, 3 methods.
         </div>
 
         {/* URL badge */}

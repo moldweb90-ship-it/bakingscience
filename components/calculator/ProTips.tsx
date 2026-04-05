@@ -55,7 +55,7 @@ export default function ProTips({ tips, ingredientName, weightG, fractionText }:
   const fracOnly = frac.replace(/^\d+/, "");
   const cupWord = whole === 1 ? "cup" : "cups";
 
-  const weightTip = `${weightG}g of ${ingredientName.toLowerCase()} is about ${frac} ${cupWord} — that's ${whole} full ${cupWord} plus ${fracOnly || "a full cup"} of another.`;
+  const weightTip = `${weightG}g of ${ingredientName.toLowerCase()} is about ${frac} ${cupWord} - that's ${whole} full ${cupWord} plus ${fracOnly || "a full cup"} of another.`;
 
   return (
     <div>

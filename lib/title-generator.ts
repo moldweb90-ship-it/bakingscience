@@ -51,7 +51,7 @@ export function generateFallbackTitle(
  * Generate hub page title
  */
 export function generateHubTitle(ingredientName: string): string {
-  return `${ingredientName} — Grams to Cups Calculator (3 Methods Compared)`;
+  return `${ingredientName} - Grams to Cups Calculator (3 Methods Compared)`;
 }
 
 export function generateHubDescription(ingredientName: string, _ingredient: { category: string }): string {

@@ -12,7 +12,7 @@ export interface StateSwitcherProps {
 const stateDescriptions: Record<string, string> = {
   solid: "Cold {name} straight from the refrigerator",
   softened: "Room temperature {name} that gives slightly when pressed",
-  melted: "Fully liquid {name} — volume decreases significantly",
+  melted: "Fully liquid {name} - volume decreases significantly",
 };
 
 export default function StateSwitcher({ states, activeState, onStateChange, ingredientName }: StateSwitcherProps) {

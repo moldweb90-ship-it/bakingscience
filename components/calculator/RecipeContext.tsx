@@ -87,7 +87,7 @@ export default function RecipeContext({ ingredientId, ingredientName, weightG }:
           <div key={recipe.id} className="card p-5">
             <h3 className="font-semibold text-slate-900 mb-2">{recipe.name}</h3>
             <p className="text-sm text-slate-600 mb-3">
-              Serves {recipe.serves} &mdash; Uses {matchWeight}g {ingredientName.toLowerCase().split(" ")[0]}{isExactMatch ? "" : ` (close to your ${weightG}g)`}
+              Serves {recipe.serves} - Uses {matchWeight}g {ingredientName.toLowerCase().split(" ")[0]}{isExactMatch ? "" : ` (close to your ${weightG}g)`}
             </p>
             <ul className="space-y-1 text-sm">
               {recipe.ingredients.map((ing) => {

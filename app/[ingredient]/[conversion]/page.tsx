@@ -180,7 +180,7 @@ export default async function LeafPage({ params }: LeafPageProps) {
 
   return (
     <div className="py-8 sm:py-12">
-      {/* JSON-LD Schemas — rendered as plain <script> for Google crawlers */}
+      {/* JSON-LD Schemas - rendered as plain <script> for Google crawlers */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
@@ -204,7 +204,7 @@ export default async function LeafPage({ params }: LeafPageProps) {
           {/* Section A: Breadcrumbs */}
           <Breadcrumbs items={breadcrumbItems} />
 
-          {/* Section B: H1 + Answer Box — H1 is inside ResultHero */}
+          {/* Section B: H1 + Answer Box - H1 is inside ResultHero */}
           <p className="text-lg text-slate-700 mb-6 max-w-2xl leading-relaxed">
             <strong>{weight}g of {ing.name.toLowerCase()}</strong> equals{' '}
             <strong>{spoonLevel.cups} cups</strong> using the Spoon &amp; Level method.{' '}
@@ -242,7 +242,7 @@ export default async function LeafPage({ params }: LeafPageProps) {
           {/* Section I: Nearby Values Table */}
           <section className="mt-8">
             <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4">
-              {ing.name} — Grams to Cups Conversion Table
+              {ing.name} - Grams to Cups Conversion Table
             </h2>
             <NearbyValuesTable
               currentWeight={weight}
@@ -291,7 +291,7 @@ export default async function LeafPage({ params }: LeafPageProps) {
           {/* Section Q: FAQ */}
           <section className="mt-8 max-w-3xl">
             <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-6">
-              Frequently Asked Questions — {ing.name} Conversions
+              Frequently Asked Questions - {ing.name} Conversions
             </h2>
             <FAQAccordion faqs={allFaqs} />
           </section>

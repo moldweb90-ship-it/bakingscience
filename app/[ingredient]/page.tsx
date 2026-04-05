@@ -100,11 +100,11 @@ export default async function IngredientHubPage({ params }: HubPageProps) {
   })));
 
   const typeLabel = isFlour ? 'flour' : isFat ? 'fat' : isLiquid ? 'liquid' : ing.category;
-  const aliasesText = ing.aliases.length > 0 ? ` — also known as ${ing.aliases.join(', ')}` : '';
+  const aliasesText = ing.aliases.length > 0 ? ` - also known as ${ing.aliases.join(', ')}` : '';
 
   return (
     <div className="py-8 sm:py-12">
-      {/* JSON-LD Schemas — plain <script> for Google crawlers */}
+      {/* JSON-LD Schemas - plain <script> for Google crawlers */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
@@ -120,7 +120,7 @@ export default async function IngredientHubPage({ params }: HubPageProps) {
       {/* Section 2: Header */}
       <header className="mb-8">
         <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-2">
-          {ing.name} &mdash; Grams to Cups Conversion Calculator
+          {ing.name} - Grams to Cups Conversion Calculator
         </h1>
         <p className="text-lg text-slate-600">
           Precise measurements for {typeLabel} using three methods{isFat ? ' and multiple states' : ''}{aliasesText}
@@ -158,7 +158,7 @@ export default async function IngredientHubPage({ params }: HubPageProps) {
               <> Like all dry ingredients, the measurement method significantly affects the volume.</>
             )}
             {isLiquid && (
-              <> As a liquid ingredient, the measurement method does not affect volume &mdash; grams to cups conversion is consistent.</>
+              <> As a liquid ingredient, the measurement method does not affect volume - grams to cups conversion is consistent.</>
             )}
           </p>
           <p>
@@ -169,7 +169,7 @@ export default async function IngredientHubPage({ params }: HubPageProps) {
           </p>
           <p className="text-xs text-slate-400">
             Density data sourced from {ing.density_source}. US Cup = 236.588ml (NIST).
-            Results are estimates &mdash; actual volume may vary by &plusmn;5% depending on brand and batch.
+            Results are estimates - actual volume may vary by &plusmn;5% depending on brand and batch.
           </p>
         </div>
       </section>

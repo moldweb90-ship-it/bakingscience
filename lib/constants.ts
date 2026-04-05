@@ -67,12 +67,12 @@ export const MIN_WEIGHT_G = 1;
 export const MAX_WEIGHT_G = 1000;
 
 /**
- * ISR revalidation period (Section 7.2) — 7 days
+ * ISR revalidation period (Section 7.2) - 7 days
  */
 export const ISR_REVALIDATE_SECONDS = 604800;
 
 /**
- * Recipe matching tolerance (Section 6.2) — ±20%
+ * Recipe matching tolerance (Section 6.2) - ±20%
  */
 export const RECIPE_MATCH_TOLERANCE = 0.2;
 

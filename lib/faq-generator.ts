@@ -106,7 +106,7 @@ export function generateFAQ(
   faqs.push({
     question: `Does the measurement method matter for ${ing.name.toLowerCase()}?`,
     answer: sub(
-      "Yes, significantly. The same {grams}g of {ingredient} can measure anywhere from {dsCups} cups (dip & sweep) to {sfCups} cups (sifted) — that's a {variance}% difference. This happens because dip & sweep compresses the ingredient, fitting more into each cup, while sifting aerates it. For consistent baking results, always use the same method your recipe specifies.",
+      "Yes, significantly. The same {grams}g of {ingredient} can measure anywhere from {dsCups} cups (dip & sweep) to {sfCups} cups (sifted) - that's a {variance}% difference. This happens because dip & sweep compresses the ingredient, fitting more into each cup, while sifting aerates it. For consistent baking results, always use the same method your recipe specifies.",
       { ...vars, variance: Math.round(((sfCups.cups - dsCups.cups) / slCups.cups) * 100) },
     ),
   });
@@ -115,7 +115,7 @@ export function generateFAQ(
   faqs.push({
     question: `How do I measure ${ing.name.toLowerCase()} without a scale?`,
     answer: sub(
-      "Use the Spoon & Level method: fluff the {ingredient} in its container first, then lightly spoon it into your measuring cup until slightly overflowing. Level off the top with the flat edge of a knife. Never scoop directly from the bag — this compresses the ingredient and you'll end up with up to 20% more than intended.",
+      "Use the Spoon & Level method: fluff the {ingredient} in its container first, then lightly spoon it into your measuring cup until slightly overflowing. Level off the top with the flat edge of a knife. Never scoop directly from the bag - this compresses the ingredient and you'll end up with up to 20% more than intended.",
       vars,
     ),
   });
@@ -124,7 +124,7 @@ export function generateFAQ(
   faqs.push({
     question: `How many grams is 1 cup of ${ing.name.toLowerCase()}?`,
     answer: sub(
-      "It depends on how you measure. Using the Spoon & Level method, 1 cup of {ingredient} weighs approximately {gpc}g. With Dip & Sweep, it's heavier at about {dipWeight}g per cup. Sifted {ingredient} is lighter — about {siftedWeight}g per cup. This is why professional bakers prefer weighing ingredients in grams.",
+      "It depends on how you measure. Using the Spoon & Level method, 1 cup of {ingredient} weighs approximately {gpc}g. With Dip & Sweep, it's heavier at about {dipWeight}g per cup. Sifted {ingredient} is lighter - about {siftedWeight}g per cup. This is why professional bakers prefer weighing ingredients in grams.",
       {
         ...vars,
         dipWeight: Math.round(ing.base_density_g_per_ml * 236.588 * 1.18),
@@ -133,7 +133,7 @@ export function generateFAQ(
     ),
   });
 
-  // Q5 — depends on grams
+  // Q5 - depends on grams
   if (diff === 0) {
     faqs.push({
       question: `Is ${weightG}g of ${ing.name.toLowerCase()} the same as ${nearestCups} cups?`,
@@ -146,13 +146,13 @@ export function generateFAQ(
     faqs.push({
       question: `Is ${weightG}g of ${ing.name.toLowerCase()} the same as ${nearestCups} cups?`,
       answer: sub(
-        "Not exactly. {nearestCups} cups of {ingredient} weighs approximately {nearestWeight}g. {grams}g equals about {cups} cups — roughly {diff}g {moreLess} than {nearestCups} full cups. For precision in baking, it's worth measuring the exact amount rather than rounding to the nearest cup.",
+        "Not exactly. {nearestCups} cups of {ingredient} weighs approximately {nearestWeight}g. {grams}g equals about {cups} cups - roughly {diff}g {moreLess} than {nearestCups} full cups. For precision in baking, it's worth measuring the exact amount rather than rounding to the nearest cup.",
         vars,
       ),
     });
   }
 
-  // Q6 — depends on ingredient type
+  // Q6 - depends on ingredient type
   if (ing.type === "dry") {
     faqs.push({
       question: `Does sifting ${ing.name.toLowerCase()} change the measurement?`,
@@ -169,7 +169,7 @@ export function generateFAQ(
     faqs.push({
       question: `Does melted ${ing.name.toLowerCase()} measure differently than solid?`,
       answer: sub(
-        "Yes, significantly. When {ingredient} melts, its density changes. {grams}g of solid {ingredient} measures about {cups} cups, but when melted it takes up about {meltedCups} cups — a {meltedDiff}% difference. Always measure {ingredient} in the state your recipe specifies for accurate results.",
+        "Yes, significantly. When {ingredient} melts, its density changes. {grams}g of solid {ingredient} measures about {cups} cups, but when melted it takes up about {meltedCups} cups - a {meltedDiff}% difference. Always measure {ingredient} in the state your recipe specifies for accurate results.",
         {
           ...vars,
           meltedCups: decimalToFraction(
@@ -191,11 +191,11 @@ export function generateFAQ(
     });
   }
 
-  // Q7 — ingredient specific
+  // Q7 - ingredient specific
   const specificFAQ = getIngredientSpecificFAQ(ingredientId, vars);
   if (specificFAQ.q7) faqs.push(specificFAQ.q7);
 
-  // Q8 — calories (same template for all)
+  // Q8 - calories (same template for all)
   faqs.push({
     question: `How many calories are in ${weightG}g of ${ing.name.toLowerCase()}?`,
     answer: sub(
@@ -204,7 +204,7 @@ export function generateFAQ(
     ),
   });
 
-  // Q9 — ingredient specific
+  // Q9 - ingredient specific
   if (specificFAQ.q9) faqs.push(specificFAQ.q9);
 
   return faqs;
@@ -242,7 +242,7 @@ function getIngredientSpecificFAQ(
       q9: {
         question: "Can I substitute all-purpose flour for bread flour?",
         answer: sub(
-          "Yes, but your bread will have less chew and structure. For every cup of bread flour, substitute 1 cup minus 1 tablespoon of all-purpose flour plus 1 tablespoon of vital wheat gluten. By weight, use the same amount — {grams}g of all-purpose flour instead of {grams}g of bread flour.",
+          "Yes, but your bread will have less chew and structure. For every cup of bread flour, substitute 1 cup minus 1 tablespoon of all-purpose flour plus 1 tablespoon of vital wheat gluten. By weight, use the same amount - {grams}g of all-purpose flour instead of {grams}g of bread flour.",
           v,
         ),
       },
@@ -267,14 +267,14 @@ function getIngredientSpecificFAQ(
       q7: {
         question: "Is whole wheat flour heavier than all-purpose flour?",
         answer: sub(
-          "Whole wheat flour is actually slightly lighter per cup than all-purpose flour — about {gpc}g vs 125g. This is because the bran particles create air pockets. However, whole wheat absorbs more liquid, so recipes often need extra moisture when substituting.",
+          "Whole wheat flour is actually slightly lighter per cup than all-purpose flour - about {gpc}g vs 125g. This is because the bran particles create air pockets. However, whole wheat absorbs more liquid, so recipes often need extra moisture when substituting.",
           v,
         ),
       },
       q9: {
         question: "Can I substitute whole wheat flour for all-purpose flour?",
         answer: sub(
-          "You can substitute up to 50% whole wheat flour in most recipes. For 100% substitution, increase liquid by 2 tablespoons per cup and expect a denser result. By weight, use the same amount — {grams}g of whole wheat instead of {grams}g of all-purpose.",
+          "You can substitute up to 50% whole wheat flour in most recipes. For 100% substitution, increase liquid by 2 tablespoons per cup and expect a denser result. By weight, use the same amount - {grams}g of whole wheat instead of {grams}g of all-purpose.",
           v,
         ),
       },
@@ -299,7 +299,7 @@ function getIngredientSpecificFAQ(
       q7: {
         question: "Why does coconut flour absorb so much liquid?",
         answer: sub(
-          "Coconut flour is made from dried, ground coconut meat that's had most of its oil removed. The remaining fiber is extremely absorbent — it can soak up 4-6 times its weight in liquid. One cup of coconut flour weighs about {gpc}g but behaves very differently from wheat flour.",
+          "Coconut flour is made from dried, ground coconut meat that's had most of its oil removed. The remaining fiber is extremely absorbent - it can soak up 4-6 times its weight in liquid. One cup of coconut flour weighs about {gpc}g but behaves very differently from wheat flour.",
           v,
         ),
       },
@@ -354,7 +354,7 @@ function getIngredientSpecificFAQ(
       q9: {
         question: "Can I make powdered sugar from granulated sugar?",
         answer: sub(
-          "Yes. Blend granulated sugar in a high-speed blender or food processor for 30-60 seconds until it reaches a fine powder. Add 1 teaspoon of cornstarch per cup to prevent clumping. The weight stays the same — {grams}g of granulated sugar makes {grams}g of powdered sugar.",
+          "Yes. Blend granulated sugar in a high-speed blender or food processor for 30-60 seconds until it reaches a fine powder. Add 1 teaspoon of cornstarch per cup to prevent clumping. The weight stays the same - {grams}g of granulated sugar makes {grams}g of powdered sugar.",
           v,
         ),
       },
@@ -379,7 +379,7 @@ function getIngredientSpecificFAQ(
       q7: {
         question: "Does salted butter weigh the same as unsalted butter?",
         answer: sub(
-          "Yes, salted and unsalted butter weigh the same — about {gpc}g per cup. The only difference is roughly 1.5-2g of salt per stick (113g). For baking, unsalted is preferred so you can control the salt content precisely.",
+          "Yes, salted and unsalted butter weigh the same - about {gpc}g per cup. The only difference is roughly 1.5-2g of salt per stick (113g). For baking, unsalted is preferred so you can control the salt content precisely.",
           v,
         ),
       },
@@ -434,7 +434,7 @@ function getIngredientSpecificFAQ(
       q9: {
         question: "Can I substitute olive oil for butter?",
         answer: sub(
-          "Use about 80% of the butter weight in olive oil. For {grams}g of butter, use about {oilGrams}g of olive oil. Extra virgin olive oil adds a distinct flavor — great for savory breads and Mediterranean-style cakes.",
+          "Use about 80% of the butter weight in olive oil. For {grams}g of butter, use about {oilGrams}g of olive oil. Extra virgin olive oil adds a distinct flavor - great for savory breads and Mediterranean-style cakes.",
           { ...v, oilGrams: Math.round((v.grams as number) * 0.8) },
         ),
       },
@@ -523,7 +523,7 @@ function getIngredientSpecificFAQ(
       q7: {
         question: "Is cornstarch the same as corn flour?",
         answer: sub(
-          "No. Cornstarch is pure starch extracted from corn, while corn flour is finely ground whole corn. One cup of cornstarch weighs about {gpc}g. They're not interchangeable — cornstarch is a thickener, while corn flour is used for baking.",
+          "No. Cornstarch is pure starch extracted from corn, while corn flour is finely ground whole corn. One cup of cornstarch weighs about {gpc}g. They're not interchangeable - cornstarch is a thickener, while corn flour is used for baking.",
           v,
         ),
       },

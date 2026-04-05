@@ -88,7 +88,7 @@ export default function CookieConsent() {
                 />
                 <div>
                   <span className="font-medium text-slate-800 text-sm">Analytics</span>
-                  <p className="text-xs text-slate-500">Google Analytics — helps us understand how visitors use the site.</p>
+                  <p className="text-xs text-slate-500">Google Analytics - helps us understand how visitors use the site.</p>
                 </div>
               </label>
               <label className="flex items-center gap-3 cursor-pointer">
@@ -100,7 +100,7 @@ export default function CookieConsent() {
                 />
                 <div>
                   <span className="font-medium text-slate-800 text-sm">Advertising</span>
-                  <p className="text-xs text-slate-500">Google AdSense — shows relevant ads to support the site.</p>
+                  <p className="text-xs text-slate-500">Google AdSense - shows relevant ads to support the site.</p>
                 </div>
               </label>
             </div>

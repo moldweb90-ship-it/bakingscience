@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
 
 export const metadata: Metadata = {
-  title: 'Terms of Service — BakingConverter',
+  title: 'Terms of Service - BakingConverter',
   description: 'Terms and conditions for using BakingConverter.io baking conversion tools.',
 };
 

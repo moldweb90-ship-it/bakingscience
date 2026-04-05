@@ -32,11 +32,11 @@ export default function NutritionBlock({ ingredientName, weightG, ingredientDens
   return (
     <div>
       <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4">
-        {ingredientName} Nutrition Facts — {weightG}g (Calories, Carbs &amp; Protein)
+        {ingredientName} Nutrition Facts - {weightG}g (Calories, Carbs &amp; Protein)
       </h2>
       <div
         className="card p-6 max-w-sm border-2 border-slate-800"
-        aria-label={`${ingredientName} nutrition label — ${weightG}g serving`}
+        aria-label={`${ingredientName} nutrition label - ${weightG}g serving`}
       >
         <h3 className="text-2xl font-bold text-slate-900 border-b-4 border-slate-800 pb-2 mb-1">
           Nutrition Facts

@@ -7,13 +7,13 @@ import { ingredients } from '@/lib/converter';
 import { SITE_URL, SITE_NAME } from '@/lib/constants';
 
 export const metadata: Metadata = {
-  title: 'Grams to Cups — Baking Conversion Chart | BakingConverter',
+  title: 'Grams to Cups - Baking Conversion Chart | BakingConverter',
   description:
-    "Baking conversion charts done right — not 'roughly'. Convert grams to cups for 50+ ingredients. Precise results for every recipe.",
+    "Baking conversion charts done right - not 'roughly'. Convert grams to cups for 50+ ingredients. Precise results for every recipe.",
   openGraph: {
-    title: 'Grams to Cups — Baking Conversion Chart | BakingConverter',
+    title: 'Grams to Cups - Baking Conversion Chart | BakingConverter',
     description:
-      "Baking conversion charts done right — not 'roughly'. Convert grams to cups for 50+ ingredients. Precise results for every recipe.",
+      "Baking conversion charts done right - not 'roughly'. Convert grams to cups for 50+ ingredients. Precise results for every recipe.",
     url: SITE_URL,
     siteName: SITE_NAME,
     type: 'website',
@@ -21,9 +21,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Grams to Cups — Baking Conversion Chart | BakingConverter',
+    title: 'Grams to Cups - Baking Conversion Chart | BakingConverter',
     description:
-      "Baking conversion charts done right — not 'roughly'. Convert grams to cups for 50+ ingredients. Precise results for every recipe.",
+      "Baking conversion charts done right - not 'roughly'. Convert grams to cups for 50+ ingredients. Precise results for every recipe.",
     images: ['/og-default.png'],
   },
   alternates: { canonical: '/' },
@@ -117,7 +117,7 @@ const organizationSchema = {
 export default function HomePage() {
   return (
     <div className="py-8 sm:py-12">
-      {/* JSON-LD Schemas — plain <script> for Google crawlers */}
+      {/* JSON-LD Schemas - plain <script> for Google crawlers */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
@@ -130,7 +130,7 @@ export default function HomePage() {
       {/* Section 1: Hero */}
       <section className="text-center mb-12">
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4 max-w-3xl mx-auto leading-tight">
-          Grams to Cups &mdash; Baking Conversion Chart &amp; Calculator
+          Grams to Cups - Baking Conversion Chart &amp; Calculator
         </h1>
         <p className="text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto mb-8">
           Precise gram-to-cup conversion charts for flour, sugar, butter and 50+ baking ingredients. No rounding. No guessing.

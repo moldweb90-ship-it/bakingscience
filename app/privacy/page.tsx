@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy — BakingConverter',
+  title: 'Privacy Policy - BakingConverter',
   description: 'Learn how BakingConverter.io collects, uses, and protects your data. GDPR and CCPA compliant privacy policy.',
 };
 
@@ -87,9 +87,9 @@ export default function PrivacyPage() {
             We use the following third-party services that may collect information:
           </p>
           <ul className="list-disc list-inside space-y-1 ml-4">
-            <li><strong>Google Analytics 4</strong> — Web analytics service. <a href="https://policies.google.com/privacy" className="text-accent hover:text-accent-hover" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
-            <li><strong>Google AdSense</strong> — Advertising service. <a href="https://policies.google.com/technologies/ads" className="text-accent hover:text-accent-hover" target="_blank" rel="noopener noreferrer">Ads Privacy Policy</a></li>
-            <li><strong>Vercel</strong> — Hosting provider. <a href="https://vercel.com/legal/privacy-policy" className="text-accent hover:text-accent-hover" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
+            <li><strong>Google Analytics 4</strong> - Web analytics service. <a href="https://policies.google.com/privacy" className="text-accent hover:text-accent-hover" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
+            <li><strong>Google AdSense</strong> - Advertising service. <a href="https://policies.google.com/technologies/ads" className="text-accent hover:text-accent-hover" target="_blank" rel="noopener noreferrer">Ads Privacy Policy</a></li>
+            <li><strong>Vercel</strong> - Hosting provider. <a href="https://vercel.com/legal/privacy-policy" className="text-accent hover:text-accent-hover" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
           </ul>
           <p className="mt-3">
             These third-party services have their own privacy policies addressing how they use such information. We recommend
@@ -104,13 +104,13 @@ export default function PrivacyPage() {
             General Data Protection Regulation (GDPR). These include:
           </p>
           <ul className="list-disc list-inside space-y-1 ml-4">
-            <li><strong>Right of access</strong> — You have the right to request copies of your personal data.</li>
-            <li><strong>Right to rectification</strong> — You have the right to request correction of inaccurate data.</li>
-            <li><strong>Right to erasure</strong> — You have the right to request deletion of your personal data.</li>
-            <li><strong>Right to restrict processing</strong> — You have the right to request restriction of processing.</li>
-            <li><strong>Right to data portability</strong> — You have the right to request transfer of your data.</li>
-            <li><strong>Right to object</strong> — You have the right to object to our processing of your personal data.</li>
-            <li><strong>Right to withdraw consent</strong> — You may withdraw your cookie consent at any time via our Cookie Settings link.</li>
+            <li><strong>Right of access</strong> - You have the right to request copies of your personal data.</li>
+            <li><strong>Right to rectification</strong> - You have the right to request correction of inaccurate data.</li>
+            <li><strong>Right to erasure</strong> - You have the right to request deletion of your personal data.</li>
+            <li><strong>Right to restrict processing</strong> - You have the right to request restriction of processing.</li>
+            <li><strong>Right to data portability</strong> - You have the right to request transfer of your data.</li>
+            <li><strong>Right to object</strong> - You have the right to object to our processing of your personal data.</li>
+            <li><strong>Right to withdraw consent</strong> - You may withdraw your cookie consent at any time via our Cookie Settings link.</li>
           </ul>
           <p className="mt-3">
             To exercise any of these rights, please contact us at <a href="mailto:privacy@bakingconverter.com" className="text-accent hover:text-accent-hover">privacy@bakingconverter.com</a>.
@@ -124,10 +124,10 @@ export default function PrivacyPage() {
             If you are a California resident, you have rights under the California Consumer Privacy Act (CCPA):
           </p>
           <ul className="list-disc list-inside space-y-1 ml-4">
-            <li><strong>Right to know</strong> — You can request information about the categories and sources of personal information we collect.</li>
-            <li><strong>Right to delete</strong> — You can request deletion of your personal information.</li>
-            <li><strong>Right to opt out</strong> — You can opt out of the sale of your personal information. We do not sell personal information.</li>
-            <li><strong>Right to non-discrimination</strong> — We will not discriminate against you for exercising your CCPA rights.</li>
+            <li><strong>Right to know</strong> - You can request information about the categories and sources of personal information we collect.</li>
+            <li><strong>Right to delete</strong> - You can request deletion of your personal information.</li>
+            <li><strong>Right to opt out</strong> - You can opt out of the sale of your personal information. We do not sell personal information.</li>
+            <li><strong>Right to non-discrimination</strong> - We will not discriminate against you for exercising your CCPA rights.</li>
           </ul>
           <p className="mt-3">
             To exercise your CCPA rights, please contact us at <a href="mailto:privacy@bakingconverter.com" className="text-accent hover:text-accent-hover">privacy@bakingconverter.com</a>.

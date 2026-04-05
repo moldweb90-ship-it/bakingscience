@@ -3,7 +3,7 @@ import Breadcrumbs from '@/components/layout/Breadcrumbs';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'About BakingConverter — Precision Baking Measurements for Everyone',
+  title: 'About BakingConverter - Precision Baking Measurements for Everyone',
   description: 'Learn why BakingConverter.io was created, our data sources, and our mission to bring precision to baking measurements.',
 };
 
@@ -42,7 +42,7 @@ export default function AboutPage() {
           </p>
           <p>
             Google&apos;s AI Overview tells you &ldquo;approximately 0.72 to 0.8 cups&rdquo; for 100g of flour. That range represents
-            a 10% difference — enough to ruin a delicate recipe. We built BakingConverter to give you one exact number
+            a 10% difference - enough to ruin a delicate recipe. We built BakingConverter to give you one exact number
             based on your specific inputs: the ingredient, the weight, the measurement method, and the state.
           </p>
         </section>
@@ -53,8 +53,8 @@ export default function AboutPage() {
             All ingredient density data is sourced from two authoritative references:
           </p>
           <ul className="list-disc list-inside space-y-1 ml-4">
-            <li><strong>USDA FoodData Central</strong> — The United States Department of Agriculture&apos;s comprehensive food composition database. This is the gold standard for nutritional and density data.</li>
-            <li><strong>King Arthur Baking Ingredient Weight Chart</strong> — A widely respected reference from one of America&apos;s most trusted baking authorities, providing real-world cup-to-weight conversions.</li>
+            <li><strong>USDA FoodData Central</strong> - The United States Department of Agriculture&apos;s comprehensive food composition database. This is the gold standard for nutritional and density data.</li>
+            <li><strong>King Arthur Baking Ingredient Weight Chart</strong> - A widely respected reference from one of America&apos;s most trusted baking authorities, providing real-world cup-to-weight conversions.</li>
           </ul>
           <p className="mt-3">
             When USDA and King Arthur data differ, we use USDA as the primary source and note the discrepancy. All
@@ -67,7 +67,7 @@ export default function AboutPage() {
           <p>
             <strong>Precision baking measurements for everyone.</strong> Whether you&apos;re a home baker who has ruined a
             recipe due to bad measurement, a professional who needs exactness, or a recipe blogger who needs reliable
-            conversions for your content — BakingConverter is built for you.
+            conversions for your content - BakingConverter is built for you.
           </p>
           <p>
             We believe that understanding the science behind baking measurements makes everyone a better baker. Our

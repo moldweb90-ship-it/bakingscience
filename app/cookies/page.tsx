@@ -3,7 +3,7 @@ import Breadcrumbs from '@/components/layout/Breadcrumbs';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Cookie Policy — BakingConverter',
+  title: 'Cookie Policy - BakingConverter',
   description: 'Learn about the cookies used on BakingConverter.io and how to manage your cookie preferences.',
 };
 
@@ -54,9 +54,9 @@ export default function CookiesPage() {
             user experience and content. Google Analytics sets the following cookies:
           </p>
           <div className="bg-slate-50 rounded-card p-4 text-sm space-y-2">
-            <p><strong>_ga, _ga_*</strong> — Distinguish unique users. Duration: 2 years.</p>
-            <p><strong>_gid</strong> — Distinguish users. Duration: 24 hours.</p>
-            <p><strong>_gat</strong> — Throttle request rate. Duration: 1 minute.</p>
+            <p><strong>_ga, _ga_*</strong> - Distinguish unique users. Duration: 2 years.</p>
+            <p><strong>_gid</strong> - Distinguish users. Duration: 24 hours.</p>
+            <p><strong>_gat</strong> - Throttle request rate. Duration: 1 minute.</p>
           </div>
           <p className="mt-3">
             You can opt out of Google Analytics by installing the{' '}
@@ -71,9 +71,9 @@ export default function CookiesPage() {
             based on your prior visits to our website or other websites. These cookies may include:
           </p>
           <div className="bg-slate-50 rounded-card p-4 text-sm space-y-2">
-            <p><strong>__gads</strong> — Google advertising cookie. Duration: 13 months.</p>
-            <p><strong>__gpi</strong> — Google advertising cookie. Duration: 13 months.</p>
-            <p><strong>_fbp</strong> — Facebook pixel (if applicable). Duration: 3 months.</p>
+            <p><strong>__gads</strong> - Google advertising cookie. Duration: 13 months.</p>
+            <p><strong>__gpi</strong> - Google advertising cookie. Duration: 13 months.</p>
+            <p><strong>_fbp</strong> - Facebook pixel (if applicable). Duration: 3 months.</p>
           </div>
           <p className="mt-3">
             You can opt out of personalized advertising by visiting{' '}

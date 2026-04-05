@@ -10,7 +10,7 @@ export default function NotFound() {
   return (
     <div className="py-16 text-center">
       <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
-        This conversion doesn&apos;t exist &mdash; yet
+        This conversion doesn&apos;t exist - yet
       </h1>
       <p className="text-slate-600 mb-8 max-w-md mx-auto">
         We couldn&apos;t find this conversion. Try a weight between 1g and 1000g, or search for your ingredient below.

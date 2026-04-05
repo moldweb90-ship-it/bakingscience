@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
 
 export const metadata: Metadata = {
-  title: 'Disclaimer — BakingConverter',
+  title: 'Disclaimer - BakingConverter',
   description: 'Important disclaimer about the accuracy and limitations of BakingConverter.io conversion tools.',
 };
 
@@ -58,8 +58,8 @@ export default function DisclaimerPage() {
             Ingredient density data is sourced from:
           </p>
           <ul className="list-disc list-inside space-y-1 ml-4">
-            <li><strong>USDA FoodData Central</strong> (fdc.nal.usda.gov) — Primary source for most ingredients.</li>
-            <li><strong>King Arthur Baking Ingredient Weight Chart</strong> (kingarthurbaking.com) — Used for almond flour and coconut flour.</li>
+            <li><strong>USDA FoodData Central</strong> (fdc.nal.usda.gov) - Primary source for most ingredients.</li>
+            <li><strong>King Arthur Baking Ingredient Weight Chart</strong> (kingarthurbaking.com) - Used for almond flour and coconut flour.</li>
           </ul>
           <p className="mt-3">
             We cross-reference values where possible and use USDA as the primary source when discrepancies exist.

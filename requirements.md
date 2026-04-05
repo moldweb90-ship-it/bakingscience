@@ -1,7 +1,7 @@
 # Technical Requirements Document: BakingConverter.io
 ## Version: 3.0 Final (Anti-Snippet Strategy)
 ## Date: 2025
-## Type: Programmatic SEO Platform — Baking Science Lab
+## Type: Programmatic SEO Platform - Baking Science Lab
 
 ---
 
@@ -55,7 +55,7 @@ Google AI: "Roughly 0.72 to 0.8 cups"
 ### Three weaknesses of Google AI Overview we exploit:
 
 **Weakness 1: Range instead of precision**
-Google says "0.72 to 0.8 cups" — a 10% difference.
+Google says "0.72 to 0.8 cups" - a 10% difference.
 For a baker, 10% error = dry cake vs fluffy cake.
 We give ONE exact number based on the user's specific inputs.
 
@@ -583,7 +583,7 @@ Global metadata defaults
 Sections (top to bottom):
 Section 1: Hero
 
-H1: "Baking Conversions Done Right — Not 'Roughly'"
+H1: "Baking Conversions Done Right - Not 'Roughly'"
 Subtitle: "Because Google's 'approximately 0.8 cups' isn't good enough for your sourdough"
 Search bar with autocomplete
 Section 2: SearchBar
@@ -625,7 +625,7 @@ Section 1: Breadcrumbs
 Home > [Ingredient Name]
 Section 2: Header
 
-H1: "[Ingredient Name] — Grams to Cups Conversion Calculator"
+H1: "[Ingredient Name] - Grams to Cups Conversion Calculator"
 Subtitle: "Precise measurements for [type] using three methods"
 Section 3: Quick Calculator
 
@@ -668,11 +668,11 @@ AdBanner after FAQ (Section 9)
 Total word count: 600-900 words
 
 
-## 8.4 Leaf Page — THE MONEY PAGE (app/[ingredient]/[conversion]/page.tsx)
+## 8.4 Leaf Page - THE MONEY PAGE (app/[ingredient]/[conversion]/page.tsx)
 
 This is the most important page on the entire site.
 Every section listed below MUST be present.
-Order matters — it is optimized for engagement and ad revenue.
+Order matters - it is optimized for engagement and ad revenue.
 
 ### Section A: Breadcrumbs
 - Home > [Ingredient Name] > [Value]g to Cups
@@ -689,13 +689,13 @@ Order matters — it is optimized for engagement and ad revenue.
   - Shows fraction: "≈ 1 and ⅓ cups" below gauge
 - Background: Subtle branded card with slight shadow
 
-### Section C: Method Switcher (Client Component — "use client")
+### Section C: Method Switcher (Client Component - "use client")
 - Three tab buttons: [Spoon & Level] [Dip & Sweep] [Sifted]
 - Active tab highlighted with brand orange color
 - Each tab shows badge:
   - Spoon & Level: "✅ Recommended"
-  - Dip & Sweep: "⚠️ Heavy — adds 18% more"
-  - Sifted: "🪶 Light — 15% less"
+  - Dip & Sweep: "⚠️ Heavy - adds 18% more"
+  - Sifted: "🪶 Light - 15% less"
 - Clicking a tab:
   - Recalculates Result Hero number instantly (no page reload)
   - Updates CupGauge fill level
@@ -706,7 +706,7 @@ Order matters — it is optimized for engagement and ad revenue.
   - Dip & Sweep: "Dip the measuring cup directly into the container, then sweep off the excess. This packs the [ingredient] and adds ~18% more weight."
   - Sifted: "Sift [ingredient] through a fine mesh sieve into the measuring cup. This aerates the [ingredient] and reduces weight by ~15%."
 
-### Section D: State Switcher (Client Component — ONLY for fats)
+### Section D: State Switcher (Client Component - ONLY for fats)
 - Render ONLY if ingredient has `states` in database
 - Toggle buttons: [Solid] [Softened] [Melted]
 - Visual indicator for each state (icon or color)
@@ -714,7 +714,7 @@ Order matters — it is optimized for engagement and ad revenue.
 - Below toggles: One sentence explaining the active state
   - Solid: "Cold [ingredient] straight from the refrigerator"
   - Softened: "Room temperature [ingredient] that gives slightly when pressed"
-  - Melted: "Fully liquid [ingredient] — volume decreases significantly"
+  - Melted: "Fully liquid [ingredient] - volume decreases significantly"
 
 ### Section E: Altitude Toggle (Client Component)
 - Small toggle switch: "⛰️ Baking above 3,500 ft?"
@@ -805,7 +805,7 @@ Table with links to nearby conversions:
     "The closest recipe is [Name] which uses [Y]g. That's [Z]g more/less than your conversion."
   - Link to that recipe's exact weight page
 
-### Section M: Recipe Scaler (Client Component — KILLER FEATURE)
+### Section M: Recipe Scaler (Client Component - KILLER FEATURE)
 - Only shows if Recipe Context found a match
 - H2: "Scale This Recipe"
 - Full ingredient list with grams AND cups for each
@@ -918,20 +918,20 @@ Table with links to nearby conversions:
 The title generator must rotate between three title formulas
 to avoid pattern detection and maximize CTR against AI Overview.
 
-### Formula 1 — Fear/Doubt
-"Google Says [Google's Answer] for [X]g [Ingredient] — Here's Why That's Wrong for YOUR Recipe"
+### Formula 1 - Fear/Doubt
+"Google Says [Google's Answer] for [X]g [Ingredient] - Here's Why That's Wrong for YOUR Recipe"
 
 
 Use when: Google AI Overview gives a range or uses "roughly"
 
-### Formula 2 — Ultra-Precision
+### Formula 2 - Ultra-Precision
 "[X]g [Ingredient] to Cups: Exact Measurements for [N] Methods (Not 'Approximately')"
 
 
 Use when: Targeting users frustrated with imprecise answers
 
-### Formula 3 — Tool/Interactive
-"[X]g [Ingredient] Converter: Adjust for Sifted, Packed & Altitude — Interactive Calculator"
+### Formula 3 - Tool/Interactive
+"[X]g [Ingredient] Converter: Adjust for Sifted, Packed & Altitude - Interactive Calculator"
 
 
 Use when: Targeting users who want a tool, not an article
@@ -943,7 +943,7 @@ Use when: Targeting users who want a tool, not an article
 - Values ending in 2, 3, 6, 8, 9 → Formula 3
 
 ### Fallback Title (if rotation logic fails):
-"[X]g [Ingredient] to Cups — Precise Conversion (Sifted vs Packed) | BakingConverter"
+"[X]g [Ingredient] to Cups - Precise Conversion (Sifted vs Packed) | BakingConverter"
 
 
 
@@ -991,7 +991,7 @@ Every leaf page must inject ALL FOUR schemas:
       "name": "Does sifting cake flour change the cup measurement?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Sifted cake flour is lighter and more aerated. 150g of sifted cake flour fills approximately 1.60 cups, compared to 1.36 cups when spooned and leveled — a 17% difference."
+        "text": "Yes. Sifted cake flour is lighter and more aerated. 150g of sifted cake flour fills approximately 1.60 cups, compared to 1.36 cups when spooned and leveled - a 17% difference."
       }
     },
     {
@@ -1065,7 +1065,7 @@ json
     },
     {
       "@type": "HowToStep",
-      "text": "Take a straight knife or spatula and level off the top — you need 1.36 cups (about 1 and 1/3 cups)."
+      "text": "Take a straight knife or spatula and level off the top - you need 1.36 cups (about 1 and 1/3 cups)."
     },
     {
       "@type": "HowToStep",
@@ -1295,7 +1295,7 @@ Title overlay on image
 Links to blog post
 Type 4: Infographic Pins
 "Flour Comparison: AP vs Bread vs Cake"
-"Butter: Solid vs Softened vs Melted — Volume Changes"
+"Butter: Solid vs Softened vs Melted - Volume Changes"
 One infographic per blog post
 12.3 Pinterest Account Setup
 Create Pinterest Business account
@@ -1316,7 +1316,7 @@ Re-pins from group boards	5 per day	Manual
 12.5 Pinterest SEO
 Every pin must have:
 
-Keyword-rich title: "[Ingredient] Grams to Cups — Free Conversion Chart"
+Keyword-rich title: "[Ingredient] Grams to Cups - Free Conversion Chart"
 Description with keywords: "Convert [ingredient] from grams to cups. Includes sifted, packed, and spoon & level methods. Save this cheat sheet for your kitchen!"
 Link to relevant page on bakingconverter.com
 Alt text on image
@@ -1473,7 +1473,7 @@ Every blog post must contain:
 
 | Week | Article Topic | Target Keyword |
 |------|--------------|----------------|
-| 7 | "Brown Sugar: Packed vs Loose — The 30% Weight Trap" | "brown sugar measurement" |
+| 7 | "Brown Sugar: Packed vs Loose - The 30% Weight Trap" | "brown sugar measurement" |
 | 8 | "Coconut Flour is NOT Regular Flour: Conversion Mistakes" | "coconut flour substitute" |
 | 9 | "The Kitchen Scale: Why Every Serious Baker Needs One" | "best kitchen scale baking" |
 | 10 | "Honey, Maple Syrup & Molasses: Liquid Sugar Conversions" | "honey to cups" |
@@ -1523,7 +1523,7 @@ Target: 2 blog posts per week after launch.
 | Caption | Regular (400) | 12px | 14px | 1.4 |
 | Badge | Medium (500) | 12px | 14px | 1.0 |
 
-### Font Stack (System Fonts — Zero Network Requests):
+### Font Stack (System Fonts - Zero Network Requests):
 ```css
 font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 
   Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
@@ -1535,7 +1535,7 @@ Border radius: 12px
 Shadow: 0 1px 3px rgba(0,0,0,0.08)
 Padding: 24px (desktop), 16px (mobile)
 Hover state: shadow increases to 0 4px 12px rgba(0,0,0,0.1)
-Buttons — Primary
+Buttons - Primary
 Background: Orange 500 (#F97316)
 Text: White (#FFFFFF)
 Border radius: 8px
@@ -1546,7 +1546,7 @@ Hover: Orange 600 (#EA580C)
 Active: scale(0.98) transform
 Focus: 2px Orange 500 outline, 2px offset
 Disabled: opacity 0.5, cursor not-allowed
-Buttons — Secondary
+Buttons - Secondary
 Background: Slate 100 (#F1F5F9)
 Text: Slate 800 (#1E293B)
 Border: 1px solid Slate 200 (#E2E8F0)
@@ -1852,16 +1852,16 @@ Conversion path	Monthly	Do users visit multiple pages
 Verify property on Day 1 of deployment
 Submit sitemap index immediately after launch
 Monitor:
-Index coverage (weekly) — watch for "Crawled but not indexed"
+Index coverage (weekly) - watch for "Crawled but not indexed"
 Core Web Vitals (weekly)
 Top queries and clicks (weekly)
 Top pages by impressions (weekly)
 Mobile usability issues (monthly)
-Manual actions (monthly — should always be zero)
+Manual actions (monthly - should always be zero)
 20. ERROR HANDLING
 20.1 Custom 404 Page
 Design: Matches site theme
-H1: "This conversion doesn't exist — yet"
+H1: "This conversion doesn't exist - yet"
 Content:
 Search bar: "Find your ingredient"
 Popular ingredient links (grid of 8)
@@ -1949,7 +1949,7 @@ Butter (solid)	113g	Spoon & Level	0.
 ### Post-Launch SEO Monitoring:
 - [ ] Submit sitemap to Google Search Console within 1 hour of launch
 - [ ] Check index coverage report after 48 hours
-- [ ] Check for "Crawled — currently not indexed" issues after 1 week
+- [ ] Check for "Crawled - currently not indexed" issues after 1 week
 - [ ] Verify FAQ rich results appearing in search after 2 weeks
 - [ ] Monitor for manual actions (should always be zero)
 
@@ -2072,7 +2072,7 @@ frame-src https://googleads.g.doubleclick.net;
 - No API routes exposing data
 - No environment variables with secrets in client bundle
 - All calculations happen client-side in the browser
-- Static/ISR site — minimal server-side attack surface
+- Static/ISR site - minimal server-side attack surface
 
 ## 22.3 Contact Form Security (if implemented)
 - Use a third-party form service (Formspree, Netlify Forms) OR
@@ -2526,14 +2526,14 @@ With 100 ingredients: 500,000+ possible pages.
 ## 27.3 Calculation Transparency
 Every leaf page must include (in small text, footer area or disclaimer):
 "Density data sourced from USDA FoodData Central.
-US Cup = 236.588ml (NIST). Results are estimates —
+US Cup = 236.588ml (NIST). Results are estimates -
 actual volume may vary by ±5% depending on brand and batch."
 
 
 
 ---
 
-# APPENDIX A: QUICK REFERENCE — ALL COMPONENT PROPS
+# APPENDIX A: QUICK REFERENCE - ALL COMPONENT PROPS
 
 ## ResultHero
 | Prop | Type | Description |
@@ -2755,7 +2755,7 @@ app/[ingredient]/[conversion]/page.tsx (Server Component)
 ├── Static content: Nutrition data, Pro Tips, Why It Matters
 ├── Static content: FAQ section (server-rendered for SEO)
 │
-└── <LeafPageCalculator> (Client Component — "use client")
+└── <LeafPageCalculator> (Client Component - "use client")
 │
 ├── State: activeMethod, activeState, altitudeEnabled, sliderWeight, recipeScale
 │
@@ -2789,7 +2789,7 @@ app/[ingredient]/[conversion]/page.tsx (Server Component)
 # APPENDIX C: METADATA GENERATION EXAMPLES
 
 ## C.1 Homepage Metadata
-title: "BakingConverter — Precision Baking Conversions (Grams to Cups)"
+title: "BakingConverter - Precision Baking Conversions (Grams to Cups)"
 description: "Stop guessing. Convert baking ingredients from grams to cups
 with scientific accuracy. Accounts for sifted, packed, and spooned methods.
 Free interactive calculator for 20+ ingredients."
@@ -2797,22 +2797,22 @@ Free interactive calculator for 20+ ingredients."
 
 
 ## C.2 Ingredient Hub Metadata (Example: Cake Flour)
-title: "Cake Flour — Grams to Cups Calculator (12 Methods Compared) | BakingConverter"
+title: "Cake Flour - Grams to Cups Calculator (12 Methods Compared) | BakingConverter"
 description: "Convert cake flour from grams to cups with precision.
 See how sifted, packed, and spooned methods change your measurement.
 Includes nutrition facts and expert baking tips."
 
 
 
-## C.3 Leaf Page Metadata (Example: 150g Cake Flour — Formula 1: Fear/Doubt)
-title: "Google Says 1.2 Cups for 150g Cake Flour — Here's Why That's Wrong for YOUR Recipe"
+## C.3 Leaf Page Metadata (Example: 150g Cake Flour - Formula 1: Fear/Doubt)
+title: "Google Says 1.2 Cups for 150g Cake Flour - Here's Why That's Wrong for YOUR Recipe"
 description: "150g cake flour = 1.36 cups (spoon & level). But sifted?
 1.60 cups. Packed? 1.15 cups. A 28% variance. Get YOUR exact number
 with our free interactive tool."
 
 
 
-## C.4 Leaf Page Metadata (Example: 200g All-Purpose Flour — Formula 2: Precision)
+## C.4 Leaf Page Metadata (Example: 200g All-Purpose Flour - Formula 2: Precision)
 title: "200g All-Purpose Flour to Cups: Exact Measurements for 3 Methods (Not 'Approximately')"
 description: "200g AP flour = 1.60 cups (spoon & level), 1.36 cups
 (dip & sweep), or 1.88 cups (sifted). Choose YOUR method for the
@@ -2820,8 +2820,8 @@ exact measurement. Free calculator."
 
 
 
-## C.5 Leaf Page Metadata (Example: 113g Butter — Formula 3: Tool)
-title: "113g Butter Converter: Solid vs Softened vs Melted — Interactive Calculator"
+## C.5 Leaf Page Metadata (Example: 113g Butter - Formula 3: Tool)
+title: "113g Butter Converter: Solid vs Softened vs Melted - Interactive Calculator"
 description: "113g butter = 0.50 cups solid, 0.53 cups softened,
 0.57 cups melted. Switch between states instantly. Free baking tool
 with recipe scaler."
@@ -3126,7 +3126,7 @@ A1: "Using the Spoon & Level method, [X]g of [flour type] equals [Y] cups.
 
 Q2: "Does sifting [flour type] change the measurement?"
 A2: "Yes. Sifted [flour type] is lighter and takes up more volume. 
-    [X]g sifted = [Y] cups vs [Z] cups unsifted — a [N]% difference."
+    [X]g sifted = [Y] cups vs [Z] cups unsifted - a [N]% difference."
 
 Q3: "What's the difference between [flour type] and all-purpose flour by weight?"
 A3: "[flour type] has a density of [D1] g/ml compared to all-purpose flour's 
@@ -3136,7 +3136,7 @@ I.2 Fat FAQ Template
 
 Q1: "How many cups is [X]g of [fat] ([state])?"
 A1: "[X]g of [state] [fat] equals [Y] cups. Note: [melted/solid] [fat] 
-    measures [Z] cups — a [N]% difference."
+    measures [Z] cups - a [N]% difference."
 
 Q2: "Does melting [fat] change its volume?"
 A2: "Yes. Melted [fat] takes up less volume than solid. [X]g solid = [Y1] cups, 

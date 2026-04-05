@@ -115,7 +115,7 @@ export default function VisualMeasurementGuide({ ingredientName, ingredientDensi
     },
   ];
 
-  const title = `How to Measure ${weightG}g of ${ingredientName} — 3 Methods Compared`;
+  const title = `How to Measure ${weightG}g of ${ingredientName} - 3 Methods Compared`;
 
   if (photoAvailable) {
     return (
