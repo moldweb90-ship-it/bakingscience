@@ -7,11 +7,40 @@ export interface NearbyValuesTableProps {
   density: number;
 }
 
-function formatCups(n: number): string {
-  return n === 1 ? "1 cup" : `${n} cups`;
+function decimalToFraction(cups: number): string {
+  const whole = Math.floor(cups);
+  const remainder = cups - whole;
+
+  const fractions: [number, string][] = [
+    [0, ""],
+    [0.125, "\u215B"],
+    [0.25, "\u00BC"],
+    [0.333, "\u2153"],
+    [0.375, "\u215C"],
+    [0.5, "\u00BD"],
+    [0.625, "\u215D"],
+    [0.667, "\u2154"],
+    [0.75, "\u00BE"],
+    [0.875, "\u215E"],
+  ];
+
+  let closest = "";
+  let minDiff = Infinity;
+  for (const [val, label] of fractions) {
+    const diff = Math.abs(remainder - val);
+    if (diff < minDiff) {
+      minDiff = diff;
+      closest = label;
+    }
+  }
+
+  if (whole === 0 && closest) return closest;
+  if (whole === 0) return cups.toFixed(2);
+  if (!closest) return `${whole}`;
+  return `${whole} and ${closest}`;
 }
 
-export default function NearbyValuesTable({ currentWeight, ingredientId, density }: NearbyValuesTableProps) {
+export default function NearbyValuesTable({ currentWeight, ingredientId }: NearbyValuesTableProps) {
   const offsets = [-50, -25, -10, 0, 10, 25, 50];
   const values = offsets
     .map((o) => currentWeight + o)
@@ -43,13 +72,13 @@ export default function NearbyValuesTable({ currentWeight, ingredientId, density
                     </Link>
                   )}
                 </td>
-                <td className="table-cell">{formatCups(result.cups)}</td>
+                <td className="table-cell">{decimalToFraction(result.cups)}</td>
                 <td className="table-cell">
                   {isCurrent ? (
                     <span className="text-xs text-slate-500">You are here</span>
                   ) : (
                     <Link href={`/${ingredientId}/${v}-grams-to-cups/`} className="text-accent hover:text-accent-hover text-xs">
-                      &rarr; View
+                      &rarr; Convert
                     </Link>
                   )}
                 </td>

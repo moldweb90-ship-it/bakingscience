@@ -16,6 +16,7 @@ import AdSidebar from '@/components/ads/AdSidebar';
 import { ingredients, convert, MEASUREMENT_METHODS, cupsToAllUnits } from '@/lib/converter';
 import { findMatchingRecipes } from '@/lib/recipe-scaler';
 import { parseConversionSlug, buildLeafUrl, buildHubUrl } from '@/lib/slug-utils';
+import { generateFAQ } from '@/lib/faq-generator';
 import { generateLeafTitle, generateFallbackTitle } from '@/lib/title-generator';
 import {
   generateLeafDescription,
@@ -142,31 +143,20 @@ export default async function LeafPage({ params }: LeafPageProps) {
   ];
 
   // JSON-LD Schemas
-  const variancePercent = Math.round(((sifted.cups - dipSweep.cups) / spoonLevel.cups) * 100);
+  const allFaqs = generateFAQ(ingredientId, weight);
 
-  // Auto-generated FAQ + reverse question
-  const autoFaqs = [
-    {
-      question: `How many cups is ${weight}g of ${ing.name.toLowerCase()}?`,
-      answer: `Using the Spoon & Level method, ${weight}g of ${ing.name.toLowerCase()} equals ${spoonLevel.cups} cups. With Dip & Sweep it's ${dipSweep.cups} cups, and sifted it's ${sifted.cups} cups.`,
-    },
-    {
-      question: `Does the measurement method matter for ${ing.name.toLowerCase()}?`,
-      answer: `Yes. The same ${weight}g can measure ${sifted.cups} cups (sifted) or ${dipSweep.cups} cups (packed). That's a ${variancePercent}% difference.`,
-    },
-    {
-      question: `How do I measure ${ing.name.toLowerCase()} without a scale?`,
-      answer: `Use the Spoon & Level method: lightly spoon the ${ing.name.toLowerCase()} into a measuring cup until overflowing, then level off with a straight edge. Do not tap or shake the cup.`,
-    },
-    {
-      question: `How many grams is 1 cup of ${ing.name.toLowerCase()}?`,
-      answer: `1 cup of ${ing.name.toLowerCase()} weighs ${Math.round(1 * ing.base_density_g_per_ml * 236.588)}g (spoon & level), ${Math.round(1 * ing.base_density_g_per_ml * 236.588 * 1.18)}g (dip & sweep), or ${Math.round(1 * ing.base_density_g_per_ml * 236.588 * 0.85)}g (sifted). The most common standard is ${Math.round(1 * ing.base_density_g_per_ml * 236.588)}g per cup.`,
-    },
-  ];
-
-  const allFaqs = [...autoFaqs, ...ing.faq];
-
-  const faqSchema = generateFAQSchema(weight, ing.name, ingredientId, allFaqs);
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: allFaqs.map((q) => ({
+      '@type': 'Question',
+      name: q.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: q.answer,
+      },
+    })),
+  };
   const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbItems.map((item) => ({
     name: item.label,
     item: item.href ? `${SITE_URL}${item.href}` : undefined,
@@ -237,7 +227,7 @@ export default async function LeafPage({ params }: LeafPageProps) {
           {/* Section I: Nearby Values Table */}
           <section className="mt-8">
             <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4">
-              {ing.name}: Grams to Cups Quick Reference
+              {ing.name} — Grams to Cups Conversion Table
             </h2>
             <NearbyValuesTable
               currentWeight={weight}
@@ -250,9 +240,9 @@ export default async function LeafPage({ params }: LeafPageProps) {
           {matchedRecipe && (
             <section className="mt-8">
               <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4">
-                Common Recipes Using {weight}g of {ing.name}
+                Baking Recipes Using {ing.name} (in Grams &amp; Cups)
               </h2>
-              <RecipeContext ingredientId={ingredientId} weightG={weight} />
+              <RecipeContext ingredientId={ingredientId} ingredientName={ing.name} weightG={weight} />
             </section>
           )}
 
@@ -260,6 +250,7 @@ export default async function LeafPage({ params }: LeafPageProps) {
           <section className="mt-8">
             <NutritionBlock
               ingredientName={ing.name}
+              ingredientDensity={ing.base_density_g_per_ml}
               weightG={weight}
               nutritionPer100g={ing.nutrition_per_100g}
             />
@@ -268,7 +259,7 @@ export default async function LeafPage({ params }: LeafPageProps) {
           {/* Section O: Pro Tips */}
           {ing.pro_tips.length > 0 && (
             <section className="mt-8">
-              <ProTips tips={ing.pro_tips} ingredientName={ing.name} />
+              <ProTips tips={ing.pro_tips} ingredientName={ing.name} weightG={weight} fractionText={fraction} />
             </section>
           )}
 
@@ -278,13 +269,14 @@ export default async function LeafPage({ params }: LeafPageProps) {
               ingredientName={ing.name}
               weightG={weight}
               ingredientId={ingredientId}
+              fractionText={fraction}
             />
           </section>
 
           {/* Section Q: FAQ */}
           <section className="mt-8 max-w-3xl">
             <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-6">
-              Common Questions About {ing.name} Measurements
+              Frequently Asked Questions — {ing.name} Conversions
             </h2>
             <FAQAccordion faqs={allFaqs} />
           </section>
