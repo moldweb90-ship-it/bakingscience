@@ -2,17 +2,17 @@ import { SITE_NAME } from './constants';
 
 const shortName: Record<string, string> = {
   'all-purpose-flour': 'flour',
-  'whole-wheat-flour': 'whole wheat flour',
-  'bread-flour': 'bread flour',
-  'cake-flour': 'cake flour',
+  'whole-wheat-flour': 'flour',
+  'bread-flour': 'flour',
+  'cake-flour': 'flour',
   'almond-flour': 'almond flour',
   'coconut-flour': 'coconut flour',
   'granulated-sugar': 'sugar',
-  'powdered-sugar': 'powdered sugar',
-  'brown-sugar': 'brown sugar',
+  'powdered-sugar': 'sugar',
+  'brown-sugar': 'sugar',
   'butter': 'butter',
   'coconut-oil': 'coconut oil',
-  'vegetable-oil': 'vegetable oil',
+  'vegetable-oil': 'oil',
   'olive-oil': 'olive oil',
   'heavy-cream': 'heavy cream',
   'whole-milk': 'milk',
@@ -20,12 +20,12 @@ const shortName: Record<string, string> = {
   'honey': 'honey',
   'cornstarch': 'cornstarch',
   'rolled-oats': 'oats',
-  'cocoa-powder': 'cocoa powder',
+  'cocoa-powder': 'cocoa',
 };
 
 /**
  * Generate leaf title optimized for real search queries.
- * Pattern: "{grams} Grams {shortName} to Cups: {result} Cups | BakingConverter"
+ * Format: "150g Sugar to Cups: 1.25 Cups | BakingConverter"
  */
 export function generateLeafTitle(
   value: number,
@@ -33,22 +33,7 @@ export function generateLeafTitle(
   spoonLevelCups: number,
 ): string {
   const name = shortName[ingredientId] || ingredientId.replace(/-/g, ' ');
-  
-  // Try full "Grams" first
-  let title = `${value} Grams ${name} to Cups: ${spoonLevelCups} Cups | ${SITE_NAME}`;
-  
-  // If too long (>60 chars), switch to "g"
-  if (title.length > 60) {
-    title = `${value}g ${name} to Cups: ${spoonLevelCups} Cups | ${SITE_NAME}`;
-  }
-  
-  // If still too long, truncate name
-  if (title.length > 60) {
-    const short = name.split(' ').slice(0, 2).join(' ');
-    title = `${value}g ${short} to Cups: ${spoonLevelCups} Cups | ${SITE_NAME}`;
-  }
-
-  return title;
+  return `${value}g ${name} to Cups: ${spoonLevelCups} Cups | ${SITE_NAME}`;
 }
 
 /**
@@ -59,7 +44,7 @@ export function generateFallbackTitle(
   ingredientId: string,
 ): string {
   const name = shortName[ingredientId] || ingredientId.replace(/-/g, ' ');
-  return `${value} Grams ${name} to Cups | ${SITE_NAME}`;
+  return `${value}g ${name} to Cups | ${SITE_NAME}`;
 }
 
 /**

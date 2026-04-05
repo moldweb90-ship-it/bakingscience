@@ -63,8 +63,8 @@ export async function generateMetadata({ params }: LeafPageProps): Promise<Metad
   const shortName = getShortName(ingredientId);
   const title = generateLeafTitle(weight, ingredientId, spoonLevel.cups);
 
-  // Description optimized for "how many cups is X grams" queries
-  const description = `${weight}g ${shortName} = ${spoonLevel.cups} cups. How many cups is ${weight} grams of ${shortName}? Sifted: ${sifted.cups} cups. Packed: ${dipSweep.cups} cups. Free calculator.`;
+  // Description optimized for "how many cups is Xg" queries
+  const description = `${weight}g ${shortName} = ${spoonLevel.cups} cups. How many cups is ${weight}g of ${shortName}? Sifted: ${sifted.cups} cups. Packed: ${dipSweep.cups} cups. Free calculator.`;
   const canonical = generateCanonicalLeaf(ingredientId, weight);
 
   return {
