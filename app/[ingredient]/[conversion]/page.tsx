@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
-import Script from 'next/script';
 import Link from 'next/link';
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
 import LeafPageCalculator from '@/components/calculator/LeafPageCalculator';
@@ -177,11 +176,23 @@ export default async function LeafPage({ params }: LeafPageProps) {
 
   return (
     <div className="py-8 sm:py-12">
-      {/* JSON-LD Schemas */}
-      <Script id="faq-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      <Script id="breadcrumb-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <Script id="software-app-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareAppSchema) }} />
-      <Script id="howto-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
+      {/* JSON-LD Schemas — rendered as plain <script> for Google crawlers */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareAppSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+      />
 
       {/* Desktop Sidebar */}
       <div className="flex flex-col lg:flex-row gap-8">

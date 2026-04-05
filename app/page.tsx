@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Script from 'next/script';
 import Link from 'next/link';
 import { Search, BarChart3, Target } from 'lucide-react';
 import SearchBar from '@/components/ui/SearchBar';
@@ -118,14 +117,12 @@ const organizationSchema = {
 export default function HomePage() {
   return (
     <div className="py-8 sm:py-12">
-      {/* JSON-LD Schemas */}
-      <Script
-        id="website-schema"
+      {/* JSON-LD Schemas — plain <script> for Google crawlers */}
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
       />
-      <Script
-        id="organization-schema"
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
       />

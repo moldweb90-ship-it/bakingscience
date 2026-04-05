@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import Script from 'next/script';
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
 import HubQuickCalculator from '@/components/calculator/HubQuickCalculator';
 import PopularConversionsTable from '@/components/calculator/PopularConversionsTable';
@@ -105,14 +104,12 @@ export default async function IngredientHubPage({ params }: HubPageProps) {
 
   return (
     <div className="py-8 sm:py-12">
-      {/* JSON-LD Schemas */}
-      <Script
-        id="breadcrumb-schema"
+      {/* JSON-LD Schemas — plain <script> for Google crawlers */}
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      <Script
-        id="faq-schema"
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
