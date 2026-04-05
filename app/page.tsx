@@ -7,13 +7,13 @@ import { ingredients } from '@/lib/converter';
 import { SITE_URL, SITE_NAME } from '@/lib/constants';
 
 export const metadata: Metadata = {
-  title: 'Grams to Cups Converter - 20 Baking Ingredients, 3 Methods',
+  title: 'Grams to Cups — Baking Calculator | BakingConverter',
   description:
-    'Convert grams to cups for 20 baking ingredients. 3 methods: spooned, scooped, and sifted. Exact results, not rounded. Free calculator.',
+    "Convert grams to cups for 50+ baking ingredients. Precise flour, sugar, and butter conversions — no rounding, no guessing. Free calculator.",
   openGraph: {
-    title: 'Grams to Cups Converter - 20 Baking Ingredients, 3 Methods',
+    title: 'Grams to Cups — Baking Calculator | BakingConverter',
     description:
-      'Convert grams to cups for 20 baking ingredients. 3 methods: spooned, scooped, and sifted. Exact results, not rounded. Free calculator.',
+      "Baking conversions done right — not 'roughly'. Convert grams to cups for 50+ ingredients including flour, sugar, and butter. Precise results for every recipe.",
     url: SITE_URL,
     siteName: SITE_NAME,
     type: 'website',
@@ -21,9 +21,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Grams to Cups Converter - 20 Baking Ingredients, 3 Methods',
+    title: 'Grams to Cups — Baking Calculator | BakingConverter',
     description:
-      'Convert grams to cups for 20 baking ingredients. 3 methods: spooned, scooped, and sifted. Exact results, not rounded. Free calculator.',
+      "Baking conversions done right — not 'roughly'. Convert grams to cups for 50+ ingredients including flour, sugar, and butter. Precise results for every recipe.",
     images: ['/og-default.png'],
   },
   alternates: { canonical: '/' },
@@ -46,17 +46,17 @@ const gridIngredients = Object.values(ingredients).map((i) => ({
 
 const howItWorksSteps = [
   {
-    icon: '🔍',
+    icon: '\U0001f50d',
     title: 'Choose your ingredient',
     description: 'Select from 20+ baking ingredients including flours, sugars, fats, and dairy.',
   },
   {
-    icon: '📊',
+    icon: '\U0001f4ca',
     title: 'Select your method',
     description: 'Spoon & Level, Dip & Sweep, or Sifted - each gives a different result.',
   },
   {
-    icon: '🎯',
+    icon: '\U0001f3af',
     title: 'Get your exact measurement',
     description: 'See precise cup, tablespoon, and teaspoon values for your specific weight.',
   },
@@ -68,21 +68,21 @@ const blogPostPlaceholders = [
     slug: 'why-cup-measurements-fail',
     excerpt: 'How you fill your measuring cup changes the weight by up to 20%. Learn the three methods professional bakers use and why Google AI can never give you the full picture.',
     date: '2025-01-15',
-    emoji: '📐',
+    emoji: '\U0001f4d0',
   },
   {
     title: 'Baking in Denver: The High-Altitude Adjustment Guide You Actually Need',
     slug: 'high-altitude-baking-guide',
     excerpt: 'Altitude changes everything. Learn exactly how much extra flour and liquid you need above 3,500 feet, with a city-by-city adjustment table.',
     date: '2025-01-22',
-    emoji: '⛰️',
+    emoji: '\u26f0\ufe0f',
   },
   {
     title: 'Butter Math: Why Solid vs Melted Changes Everything in Your Recipe',
     slug: 'butter-solid-vs-melted-measurement',
     excerpt: 'The same 113g of butter measures differently depending on whether it is solid, softened, or melted. See the visual comparison that will change how you bake.',
     date: '2025-01-29',
-    emoji: '🧈',
+    emoji: '\U0001f9c8',
   },
 ];
 
@@ -129,10 +129,10 @@ export default function HomePage() {
       {/* Section 1: Hero */}
       <section className="text-center mb-12">
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4 max-w-3xl mx-auto leading-tight">
-          Baking Conversions Done Right - Not &lsquo;Roughly&rsquo;
+          Grams to Cups &mdash; Baking Conversion Calculator
         </h1>
         <p className="text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto mb-8">
-          Because Google&rsquo;s &ldquo;approximately 0.8 cups&rdquo; isn&rsquo;t good enough for your sourdough
+          Precise gram-to-cup conversions for flour, sugar, butter and 50+ baking ingredients. No rounding. No guessing.
         </p>
       </section>
 
@@ -178,7 +178,7 @@ export default function HomePage() {
             is filled.
           </p>
           <p>
-            Google&rsquo;s AI Overview tells you &ldquo;roughly 0.72 to 0.8 cups&rdquo; for 100g of flour. That
+            Google&apos;s AI Overview tells you &ldquo;roughly 0.72 to 0.8 cups&rdquo; for 100g of flour. That
             range represents a 10% difference - enough to ruin a delicate recipe. Professional
             bakers weigh ingredients because volume measurements are inherently inconsistent. The
             same cup of flour can weigh anywhere from 120g to 150g depending on whether you spoon
