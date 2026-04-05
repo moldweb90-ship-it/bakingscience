@@ -1162,7 +1162,7 @@
   },
   {
     "id": "cocoa-powder",
-    "name": "Cocoa Powder (unsweetened)",
+    "name": "Cocoa Powder",
     "category": "other",
     "base_density_g_per_ml": 0.449,
     "type": "dry",

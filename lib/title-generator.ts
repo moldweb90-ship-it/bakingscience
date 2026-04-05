@@ -14,17 +14,17 @@ export function generateLeafTitle(
   spoonLevelCups: number,
 ): string {
   const lastDigit = value % 10;
-  const shortName = ingredientName.split(' ')[0];
+  const fullName = ingredientName.replace(' (unsweetened)', '');
 
   if (lastDigit === 0 || lastDigit === 5) {
-    return `${value}g ${shortName} in Cups: Exactly ${spoonLevelCups} (Not ~${(spoonLevelCups * 1.1).toFixed(1)}) — 3 Methods`;
+    return `${value}g ${fullName} in Cups: Exactly ${spoonLevelCups} (Not ~${(spoonLevelCups * 1.1).toFixed(1)}) — 3 Methods`;
   }
 
   if (lastDigit === 1 || lastDigit === 4 || lastDigit === 7) {
-    return `${value}g ${shortName} to Cups: ${spoonLevelCups} Cups Exact (Sifted vs Packed vs Spooned)`;
+    return `${value}g ${fullName} to Cups: ${spoonLevelCups} Cups Exact (Sifted vs Packed vs Spooned)`;
   }
 
-  return `${value}g ${shortName} Converter: ${spoonLevelCups} Cups — Adjust for Method & Altitude`;
+  return `${value}g ${fullName} Converter: ${spoonLevelCups} Cups — Adjust for Method & Altitude`;
 }
 
 /**
