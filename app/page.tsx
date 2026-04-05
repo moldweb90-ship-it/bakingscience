@@ -9,11 +9,11 @@ import { SITE_URL, SITE_NAME } from '@/lib/constants';
 export const metadata: Metadata = {
   title: 'Grams to Cups - Baking Conversion Chart | BakingConverter',
   description:
-    "Baking conversion charts done right - not 'roughly'. Convert grams to cups for 50+ ingredients. Precise results for every recipe.",
+    'Free baking conversion chart. Convert grams to cups for flour, sugar, butter. Online baking calculator with precise results.',
   openGraph: {
     title: 'Grams to Cups - Baking Conversion Chart | BakingConverter',
     description:
-      "Baking conversion charts done right - not 'roughly'. Convert grams to cups for 50+ ingredients. Precise results for every recipe.",
+      'Free baking conversion chart. Convert grams to cups for flour, sugar, butter. Online baking calculator with precise results.',
     url: SITE_URL,
     siteName: SITE_NAME,
     type: 'website',
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Grams to Cups - Baking Conversion Chart | BakingConverter',
     description:
-      "Baking conversion charts done right - not 'roughly'. Convert grams to cups for 50+ ingredients. Precise results for every recipe.",
+      'Free baking conversion chart. Convert grams to cups for flour, sugar, butter. Online baking calculator with precise results.',
     images: ['/og-default.png'],
   },
   alternates: { canonical: '/' },
