@@ -103,8 +103,13 @@ export default function VisualMeasurementGuide({ ingredientName, ingredientDensi
         {methods.map((m) => {
           const cups = weightG / (ingredientDensity * 236.588 * m.modifier);
           const gPerCup = Math.round(ingredientDensity * 236.588 * m.modifier);
-          const fillPercent = Math.min((cups / Math.max(cups, 1)) * 100, 100);
-          const relativeFill = Math.min((cups / (weightG / (ingredientDensity * 236.588))) * 80, 95);
+          
+          // Fix 3: Calculate fill based on fractional part
+          const fractionalPart = cups % 1;
+          const fillPercent = fractionalPart < 0.01 ? 100 : fractionalPart * 100;
+          
+          // Fix 2: Unique ID for clipPath
+          const clipId = `vmg-clip-${m.label.replace(/[\s&]/g, "")}`;
 
           return (
             <div key={m.label} className={`card p-5 text-center ${m.cupClass}`}>
@@ -112,20 +117,23 @@ export default function VisualMeasurementGuide({ ingredientName, ingredientDensi
                 <div className="relative w-16 h-20">
                   <svg viewBox="0 0 100 140" className="w-full h-full">
                     <defs>
-                      <clipPath id={`vmg-clip-${m.label}`}>
+                      <clipPath id={clipId}>
                         <path d="M15,10 L85,10 L75,130 L25,130 Z" />
                       </clipPath>
                     </defs>
+                    {/* Cup outline */}
                     <path d="M15,10 L85,10 L75,130 L25,130 Z" fill="none" stroke="#94A3B8" strokeWidth="2" />
+                    {/* Fill rect */}
                     <rect
                       x="0"
-                      y={140 - (130 * relativeFill) / 100}
+                      y={140 - (130 * fillPercent) / 100}
                       width="100"
-                      height={(130 * relativeFill) / 100}
+                      height={(130 * fillPercent) / 100}
                       fill="#F97316"
                       fillOpacity="0.5"
-                      clipPath={`url(#vmg-clip-${m.label})`}
+                      clipPath={`url(#${clipId})`}
                     />
+                    {/* Measurement lines */}
                     {[0.25, 0.5, 0.75, 1].map((mark) => (
                       <line
                         key={mark}
