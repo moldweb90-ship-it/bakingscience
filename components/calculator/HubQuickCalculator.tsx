@@ -92,6 +92,14 @@ export default function HubQuickCalculator({ ingredientId }: HubQuickCalculatorP
             >
               See full breakdown &rarr;
             </Link>
+            <div className="mt-2">
+              <Link
+                href={`/${ingredientId}/cups-to-grams/`}
+                className="inline-block text-slate-500 hover:text-accent text-xs"
+              >
+                Need reverse? Open Cups -&gt; Grams
+              </Link>
+            </div>
           </div>
         )}
       </div>

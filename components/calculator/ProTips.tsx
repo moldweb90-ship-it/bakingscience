@@ -5,57 +5,52 @@ export interface ProTipsProps {
   fractionText: string;
 }
 
-function decimalToFraction(cups: number): string {
-  const fractions: [number, string][] = [
-    [0, ""],
-    [0.125, "\u215B"],
-    [0.25, "\u00BC"],
-    [0.333, "\u2153"],
-    [0.375, "\u215C"],
-    [0.5, "\u00BD"],
-    [0.625, "\u215D"],
-    [0.667, "\u2154"],
-    [0.75, "\u00BE"],
-    [0.875, "\u215E"],
-    [1.0, ""],
-  ];
+function parseFractionString(input: string): number | null {
+  const raw = input.trim().replace(/\s+/g, " ");
+  if (!raw) return null;
 
-  const base = Math.floor(cups);
-  const remainder = cups - base;
+  const unicodeFractions: Record<string, number> = {
+    "⅛": 0.125,
+    "¼": 0.25,
+    "⅓": 0.333,
+    "⅜": 0.375,
+    "½": 0.5,
+    "⅝": 0.625,
+    "⅔": 0.667,
+    "¾": 0.75,
+    "⅞": 0.875,
+  };
 
-  let bestLabel = "";
-  let bestDiff = Infinity;
-  let bestWhole = base;
+  if (unicodeFractions[raw] !== undefined) return unicodeFractions[raw];
 
-  for (const [val, label] of fractions) {
-    const diff = Math.abs(remainder - val);
-    if (diff < bestDiff) {
-      bestDiff = diff;
-      bestLabel = label;
-      if (val >= 1.0) bestWhole = base + 1;
-    }
+  const simpleFraction = raw.match(/^(\d+)\s*\/\s*(\d+)$/);
+  if (simpleFraction) {
+    const numerator = parseInt(simpleFraction[1], 10);
+    const denominator = parseInt(simpleFraction[2], 10);
+    if (denominator === 0) return null;
+    return numerator / denominator;
   }
 
-  if (bestWhole === 0 && bestLabel) return bestLabel;
-  if (bestWhole === 0) return cups.toFixed(2);
-  if (!bestLabel) return `${bestWhole}`;
-  return `${bestWhole}${bestLabel}`;
+  const mixedFraction = raw.match(/^(\d+)\s+(\d+)\s*\/\s*(\d+)$/);
+  if (mixedFraction) {
+    const whole = parseInt(mixedFraction[1], 10);
+    const numerator = parseInt(mixedFraction[2], 10);
+    const denominator = parseInt(mixedFraction[3], 10);
+    if (denominator === 0) return null;
+    return whole + numerator / denominator;
+  }
+
+  const numeric = Number(raw);
+  return Number.isFinite(numeric) ? numeric : null;
 }
 
 export default function ProTips({ tips, ingredientName, weightG, fractionText }: ProTipsProps) {
   if (tips.length === 0) return null;
 
-  const cleanedTips = tips.map((tip) =>
-    tip.replace(/\bAP flour\b/gi, ingredientName.toLowerCase())
-  );
-
-  const cups = parseFloat(fractionText);
-  const whole = Math.floor(cups);
-  const frac = decimalToFraction(cups);
-  const fracOnly = frac.replace(/^\d+/, "");
-  const cupWord = whole === 1 ? "cup" : "cups";
-
-  const weightTip = `${weightG}g of ${ingredientName.toLowerCase()} is about ${frac} ${cupWord} - that's ${whole} full ${cupWord} plus ${fracOnly || "a full cup"} of another.`;
+  const cups = parseFractionString(fractionText);
+  const unitLabel = cups !== null && cups > 1 ? "cups" : "cup";
+  const measured = cups !== null ? `${fractionText} ${unitLabel}` : "the measured cup amount";
+  const weightTip = `${weightG}g of ${ingredientName.toLowerCase()} is about ${measured} using Spoon & Level. For consistency, stick to one measuring method across the whole recipe.`;
 
   return (
     <div>
@@ -63,7 +58,7 @@ export default function ProTips({ tips, ingredientName, weightG, fractionText }:
         How to Measure {ingredientName} Correctly
       </h2>
       <div className="space-y-4">
-        {cleanedTips.map((tip, index) => (
+        {tips.map((tip, index) => (
           <div key={index} className="callout-tip">
             <div className="flex gap-3">
               <span className="text-xl flex-shrink-0 mt-0.5">{"\ud83d\udca1"}</span>

@@ -119,6 +119,27 @@ export function convert(
   return cupsToAllUnits(cups);
 }
 
+export function cupsToGrams(
+  cups: number,
+  ingredientId: string,
+  methodId: string = 'spoon_level',
+  stateId: string | null = null,
+): number {
+  const ingredient = ingredients[ingredientId];
+  if (!ingredient) {
+    throw new Error(`Ingredient not found: ${ingredientId}`);
+  }
+
+  if (cups <= 0) return 0;
+
+  const methodMod = getMethodModifier(methodId, ingredientId);
+  const stateMod = getStateModifier(ingredient, stateId);
+  const grams =
+    cups * ingredient.base_density_g_per_ml * US_CUP_ML * methodMod * stateMod;
+
+  return Math.round(grams * 100) / 100;
+}
+
 export function getPrimaryDisplayUnit(cups: number): 'cups' | 'tbsp' | 'tsp' {
   if (cups < 0.01) return 'tsp';
   if (cups < 0.125) return 'tbsp';

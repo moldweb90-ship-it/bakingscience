@@ -3,6 +3,8 @@
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { Search, X, ArrowRight } from 'lucide-react';
+import { buildCupToGramsUrl } from '@/lib/slug-utils';
+import { REVERSE_ENABLED_INGREDIENTS } from '@/lib/cups-to-grams';
 
 export interface SearchIngredient {
   id: string;
@@ -18,22 +20,73 @@ export interface SearchBarProps {
 interface SearchResult {
   ingredient: SearchIngredient;
   weight: number | null;
+  cups: number | null;
   score: number;
 }
 
-function parseQuery(query: string): { weight: number | null; terms: string[] } {
-  const trimmed = query.trim();
+type SearchMode = 'grams_to_cups' | 'cups_to_grams';
 
-  const weightMatch = trimmed.match(/^(\d+)\s*g?\s*(.*)/i);
-  if (weightMatch) {
-    const weight = parseInt(weightMatch[1], 10);
-    const rest = weightMatch[2].trim();
-    const terms = rest.length > 0 ? rest.toLowerCase().split(/\s+/) : [];
-    return { weight: weight >= 1 && weight <= 1000 ? weight : null, terms };
+function parseCupValue(raw: string): number | null {
+  const normalized = raw.trim().toLowerCase();
+  if (!normalized) return null;
+
+  const simpleFraction = normalized.match(/^(\d+)\s*\/\s*(\d+)$/);
+  if (simpleFraction) {
+    const numerator = parseInt(simpleFraction[1], 10);
+    const denominator = parseInt(simpleFraction[2], 10);
+    if (denominator === 0) return null;
+    return numerator / denominator;
   }
 
-  const terms = trimmed.length > 0 ? trimmed.toLowerCase().split(/\s+/) : [];
-  return { weight: null, terms };
+  const mixedFraction = normalized.match(/^(\d+)\s+(\d+)\s*\/\s*(\d+)$/);
+  if (mixedFraction) {
+    const whole = parseInt(mixedFraction[1], 10);
+    const numerator = parseInt(mixedFraction[2], 10);
+    const denominator = parseInt(mixedFraction[3], 10);
+    if (denominator === 0) return null;
+    return whole + numerator / denominator;
+  }
+
+  const asNumber = Number(normalized.replace(',', '.'));
+  if (Number.isFinite(asNumber)) return asNumber;
+
+  return null;
+}
+
+function parseQuery(query: string, mode: SearchMode): { weight: number | null; cups: number | null; terms: string[] } {
+  const trimmed = query.trim();
+  if (!trimmed) return { weight: null, cups: null, terms: [] };
+
+  if (mode === 'grams_to_cups') {
+    const weightMatch = trimmed.match(/^(\d+)\s*g?\s*(.*)/i);
+    if (weightMatch) {
+      const weight = parseInt(weightMatch[1], 10);
+      const rest = weightMatch[2].trim();
+      const terms = rest.length > 0 ? rest.toLowerCase().split(/\s+/) : [];
+      return { weight: weight >= 1 && weight <= 1000 ? weight : null, cups: null, terms };
+    }
+
+    const terms = trimmed.toLowerCase().split(/\s+/);
+    return { weight: null, cups: null, terms };
+  }
+
+  const cupMatch = trimmed.match(/^(\d+(?:[.,]\d+)?|\d+\s*\/\s*\d+|\d+\s+\d+\s*\/\s*\d+)\s*(cups?|c)?\s*(.*)$/i);
+  if (cupMatch) {
+    const cups = parseCupValue(cupMatch[1]);
+    const rest = cupMatch[3].trim();
+    const terms = rest
+      .toLowerCase()
+      .split(/\s+/)
+      .filter((t) => t.length > 0 && !['cup', 'cups', 'gram', 'grams', 'to', 'in'].includes(t));
+    const validCups = cups !== null && cups > 0 && cups <= 10 ? Math.round(cups * 1000) / 1000 : null;
+    return { weight: null, cups: validCups, terms };
+  }
+
+  const terms = trimmed
+    .toLowerCase()
+    .split(/\s+/)
+    .filter((t) => t.length > 0 && !['cup', 'cups', 'gram', 'grams', 'to', 'in'].includes(t));
+  return { weight: null, cups: null, terms };
 }
 
 function scoreIngredient(ing: SearchIngredient, terms: string[]): number {
@@ -60,15 +113,20 @@ function scoreIngredient(ing: SearchIngredient, terms: string[]): number {
   return score;
 }
 
-function searchIngredients(query: string, ingredients: SearchIngredient[]): SearchResult[] {
-  const { weight, terms } = parseQuery(query);
-  if (terms.length === 0 && weight === null) return [];
+function searchIngredients(query: string, ingredients: SearchIngredient[], mode: SearchMode): SearchResult[] {
+  const { weight, cups, terms } = parseQuery(query, mode);
+  if (terms.length === 0 && weight === null && cups === null) return [];
+
+  const sourceIngredients =
+    mode === 'cups_to_grams'
+      ? ingredients.filter((ing) => REVERSE_ENABLED_INGREDIENTS.includes(ing.id))
+      : ingredients;
 
   const results: SearchResult[] = [];
-  for (const ing of ingredients) {
+  for (const ing of sourceIngredients) {
     const s = scoreIngredient(ing, terms);
-    if (s > 0) {
-      results.push({ ingredient: ing, weight, score: s });
+    if (s > 0 || (terms.length === 0 && (weight !== null || cups !== null))) {
+      results.push({ ingredient: ing, weight, cups, score: s || 0.5 });
     }
   }
 
@@ -78,14 +136,15 @@ function searchIngredients(query: string, ingredients: SearchIngredient[]): Sear
 
 export default function SearchBar({ ingredients }: SearchBarProps) {
   const [query, setQuery] = useState('');
+  const [mode, setMode] = useState<SearchMode>('grams_to_cups');
   const [open, setOpen] = useState(false);
   const [highlightedIndex, setHighlightedIndex] = useState(-1);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const results = searchIngredients(query, ingredients);
-  const conversionResults = results.filter((r) => r.weight !== null);
-  const hubResults = results.filter((r) => r.weight === null);
+  const results = searchIngredients(query, ingredients, mode);
+  const conversionResults = results.filter((r) => mode === 'grams_to_cups' ? r.weight !== null : r.cups !== null);
+  const hubResults = results.filter((r) => mode === 'grams_to_cups' ? r.weight === null : r.cups === null);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -109,10 +168,18 @@ export default function SearchBar({ ingredients }: SearchBarProps) {
       e.preventDefault();
       if (allItems.length > 0) {
         const item = allItems[highlightedIndex >= 0 ? highlightedIndex : 0];
-        if (item.weight) {
-          window.location.href = `/${item.ingredient.id}/${item.weight}-grams-to-cups/`;
+        if (mode === 'grams_to_cups') {
+          if (item.weight) {
+            window.location.href = `/${item.ingredient.id}/${item.weight}-grams-to-cups/`;
+          } else {
+            window.location.href = `/${item.ingredient.id}/`;
+          }
         } else {
-          window.location.href = `/${item.ingredient.id}/`;
+          if (item.cups) {
+            window.location.href = buildCupToGramsUrl(item.ingredient.id, item.cups);
+          } else {
+            window.location.href = `/${item.ingredient.id}/cups-to-grams/`;
+          }
         }
       }
     } else if (e.key === 'Escape') {
@@ -137,6 +204,36 @@ export default function SearchBar({ ingredients }: SearchBarProps) {
 
   return (
     <div ref={wrapperRef} className="relative w-full">
+      <div className="mb-3">
+        <p className="text-sm font-medium text-slate-700 mb-2 text-left">Conversion direction</p>
+        <div className="flex flex-wrap gap-2">
+          <button
+            type="button"
+            onClick={() => {
+              setMode('grams_to_cups');
+              setQuery('');
+              setOpen(false);
+              setHighlightedIndex(-1);
+            }}
+            className={`tab-button ${mode === 'grams_to_cups' ? 'tab-button-active' : ''}`}
+          >
+            Grams -&gt; Cups
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              setMode('cups_to_grams');
+              setQuery('');
+              setOpen(false);
+              setHighlightedIndex(-1);
+            }}
+            className={`tab-button ${mode === 'cups_to_grams' ? 'tab-button-active' : ''}`}
+          >
+            Cups -&gt; Grams
+          </button>
+        </div>
+      </div>
+
       <div className="relative">
         <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
         <input
@@ -150,7 +247,11 @@ export default function SearchBar({ ingredients }: SearchBarProps) {
           }}
           onFocus={() => query.length > 0 && setOpen(true)}
           onKeyDown={handleKeyDown}
-          placeholder='Try: "150g flour", "150 sugar", "butter", "cake flour"'
+          placeholder={
+            mode === 'grams_to_cups'
+              ? 'Try: "150g flour", "150 sugar", "butter", "cake flour"'
+              : 'Try: "1 cup flour", "1/2 sugar", "1.5 butter", "cake flour"'
+          }
           className="input-field w-full pl-12 pr-10 text-base"
           role="combobox"
           aria-expanded={open && results.length > 0}
@@ -189,17 +290,23 @@ export default function SearchBar({ ingredients }: SearchBarProps) {
                 onMouseEnter={() => setHighlightedIndex(globalIndex)}
               >
                 <Link
-                  href={`/${r.ingredient.id}/${r.weight}-grams-to-cups/`}
+                  href={
+                    mode === 'grams_to_cups'
+                      ? `/${r.ingredient.id}/${r.weight}-grams-to-cups/`
+                      : buildCupToGramsUrl(r.ingredient.id, r.cups || 1)
+                  }
                   className="flex items-center gap-3 px-4 py-3"
                   onClick={() => { setOpen(false); setQuery(''); }}
                 >
                   <ArrowRight size={16} className="text-accent flex-shrink-0" />
                   <div className="flex-1 min-w-0">
                     <span className="font-semibold text-slate-800 text-sm">
-                      {r.weight}g {r.ingredient.name}
+                      {mode === 'grams_to_cups'
+                        ? `${r.weight}g ${r.ingredient.name}`
+                        : `${r.cups} cup${r.cups === 1 ? '' : 's'} ${r.ingredient.name}`}
                     </span>
                     <span className="block text-xs text-slate-500">
-                      Direct conversion &rarr;
+                      {mode === 'grams_to_cups' ? 'Direct conversion ->' : 'Direct conversion ->'}
                     </span>
                   </div>
                 </Link>
@@ -222,7 +329,7 @@ export default function SearchBar({ ingredients }: SearchBarProps) {
                 onMouseEnter={() => setHighlightedIndex(globalIndex)}
               >
                 <Link
-                  href={`/${r.ingredient.id}/`}
+                  href={mode === 'grams_to_cups' ? `/${r.ingredient.id}/` : `/${r.ingredient.id}/cups-to-grams/`}
                   className="flex items-center gap-3 px-4 py-3"
                   onClick={() => { setOpen(false); setQuery(''); }}
                 >
@@ -248,7 +355,9 @@ export default function SearchBar({ ingredients }: SearchBarProps) {
             No results for &quot;{query}&quot;
           </p>
           <p className="text-xs text-slate-400 mt-1">
-            Try: &quot;150g flour&quot;, &quot;150 sugar&quot;, &quot;butter&quot;
+            {mode === 'grams_to_cups'
+              ? 'Try: "150g flour", "150 sugar", "butter"'
+              : 'Try: "1 cup flour", "1/2 sugar", "cake flour"'}
           </p>
         </div>
       )}

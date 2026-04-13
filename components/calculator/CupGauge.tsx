@@ -93,6 +93,7 @@ export default function CupGauge({ cups, maxCups = 2, animated = true }: CupGaug
   }, [lastCupPercent, animated]);
 
   const fraction = decimalToFraction(cups);
+  const unitLabel = cups > 1 ? "cups" : "cup";
 
   return (
     <div className="flex flex-col items-center">
@@ -177,7 +178,7 @@ export default function CupGauge({ cups, maxCups = 2, animated = true }: CupGaug
       </div>
 
       <p className="text-sm text-slate-600 mt-2 font-medium">
-        &asymp; {fraction} cups
+        &asymp; {fraction} {unitLabel}
       </p>
     </div>
   );

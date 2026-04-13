@@ -4,6 +4,7 @@ export interface VisualMeasurementGuideProps {
   ingredientDensity: number;
   weightG: number;
   photoAvailable: boolean;
+  showTitle?: boolean;
 }
 
 function decimalToFraction(cups: number): string {
@@ -90,7 +91,13 @@ function CupVisualization({ cups, baseClipId }: { cups: number; baseClipId: stri
   );
 }
 
-export default function VisualMeasurementGuide({ ingredientName, ingredientDensity, weightG, photoAvailable }: VisualMeasurementGuideProps) {
+export default function VisualMeasurementGuide({
+  ingredientName,
+  ingredientDensity,
+  weightG,
+  photoAvailable,
+  showTitle = true,
+}: VisualMeasurementGuideProps) {
   const methods = [
     {
       label: "Spoon & Level",
@@ -120,9 +127,11 @@ export default function VisualMeasurementGuide({ ingredientName, ingredientDensi
   if (photoAvailable) {
     return (
       <div>
-        <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4">
-          {title}
-        </h2>
+        {showTitle && (
+          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4">
+            {title}
+          </h2>
+        )}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {methods.map((m) => {
             const cups = weightG / (ingredientDensity * 236.588 * m.modifier);
@@ -149,9 +158,11 @@ export default function VisualMeasurementGuide({ ingredientName, ingredientDensi
 
   return (
     <div>
-      <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4">
-        {title}
-      </h2>
+      {showTitle && (
+        <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4">
+          {title}
+        </h2>
+      )}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {methods.map((m) => {
           const cups = weightG / (ingredientDensity * 236.588 * m.modifier);

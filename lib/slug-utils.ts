@@ -67,3 +67,76 @@ export function buildLeafUrl(ingredientId: string, weightG: number): string {
 export function buildHubUrl(ingredientId: string): string {
   return `/${ingredientId}/`;
 }
+
+const CUP_TO_GRAMS_SUFFIX_RE =
+  /^(.+)-(?:c|cup|cups)(?:-(?:to|in))-grams$/i;
+
+function parseCupToken(token: string): number | null {
+  const cleaned = token.trim().replace(/_/g, '-');
+  if (!cleaned) return null;
+
+  const fractionMatch = cleaned.match(/^(\d+)-(\d+)$/);
+  if (fractionMatch) {
+    const numerator = parseInt(fractionMatch[1], 10);
+    const denominator = parseInt(fractionMatch[2], 10);
+    if (denominator === 0) return null;
+    return numerator / denominator;
+  }
+
+  const mixedMatch = cleaned.match(/^(\d+)-(\d+)-(\d+)$/);
+  if (mixedMatch) {
+    const whole = parseInt(mixedMatch[1], 10);
+    const numerator = parseInt(mixedMatch[2], 10);
+    const denominator = parseInt(mixedMatch[3], 10);
+    if (denominator === 0) return null;
+    return whole + numerator / denominator;
+  }
+
+  const numeric = Number(cleaned.replace('-', '.'));
+  return Number.isFinite(numeric) ? numeric : null;
+}
+
+export function parseCupConversionSlug(slug: string): number | null {
+  const match = slug.toLowerCase().match(CUP_TO_GRAMS_SUFFIX_RE);
+  if (!match) return null;
+
+  const cups = parseCupToken(match[1]);
+  if (cups === null || cups <= 0 || cups > 10) return null;
+
+  return Math.round(cups * 1000) / 1000;
+}
+
+export function buildCupConversionSlug(cups: number): string {
+  const epsilon = 0.0001;
+  const whole = Math.floor(cups);
+  const remainder = cups - whole;
+  const commonFractions: Array<{ value: number; token: string }> = [
+    { value: 0.125, token: '1-8' },
+    { value: 0.25, token: '1-4' },
+    { value: 0.333, token: '1-3' },
+    { value: 0.5, token: '1-2' },
+    { value: 0.667, token: '2-3' },
+    { value: 0.75, token: '3-4' },
+  ];
+
+  if (Math.abs(remainder) < epsilon) {
+    return `${whole}-cup-to-grams`;
+  }
+
+  let best = commonFractions[0];
+  let minDiff = Infinity;
+  for (const f of commonFractions) {
+    const diff = Math.abs(remainder - f.value);
+    if (diff < minDiff) {
+      minDiff = diff;
+      best = f;
+    }
+  }
+
+  if (whole === 0) return `${best.token}-cup-to-grams`;
+  return `${whole}-${best.token}-cups-to-grams`;
+}
+
+export function buildCupToGramsUrl(ingredientId: string, cups: number): string {
+  return `/${ingredientId}/cups-to-grams/${buildCupConversionSlug(cups)}/`;
+}

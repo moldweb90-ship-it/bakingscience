@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import Link from 'next/link';
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
 import HubQuickCalculator from '@/components/calculator/HubQuickCalculator';
 import PopularConversionsTable from '@/components/calculator/PopularConversionsTable';
@@ -125,6 +126,17 @@ export default async function IngredientHubPage({ params }: HubPageProps) {
         <p className="text-lg text-slate-600">
           Precise measurements for {typeLabel} using three methods{isFat ? ' and multiple states' : ''}{aliasesText}
         </p>
+        <div className="mt-4">
+          <p className="text-sm font-medium text-slate-700 mb-2">Conversion direction</p>
+          <div className="flex flex-wrap gap-2">
+            <Link href={`/${ingredientId}/`} className="tab-button tab-button-active">
+              Grams -&gt; Cups
+            </Link>
+            <Link href={`/${ingredientId}/cups-to-grams/`} className="tab-button">
+              Cups -&gt; Grams
+            </Link>
+          </div>
+        </div>
       </header>
 
       {/* Section 3: Quick Calculator */}
