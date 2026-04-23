@@ -26,9 +26,14 @@ export async function generateMetadata({ params }: HubPageProps): Promise<Metada
   const ing = ingredients[ingredient];
   if (!ing) return { title: 'Not Found' };
 
-  const title = generateHubTitle(ing.name);
+  const isPriorityHub = ingredient === 'all-purpose-flour';
+  const title = isPriorityHub
+    ? 'All-Purpose Flour in Cups (Grams to Cups) | Conversion Chart & Calculator'
+    : generateHubTitle(ing.name);
   const aliasesText = ing.aliases.length > 0 ? ` (${ing.aliases[0]})` : '';
-  const description = `Convert ${ing.name.toLowerCase()}${aliasesText} from grams to cups with precision. ${ing.common_weights_g.length} weights with 3 methods compared. USDA density data. Free calculator.`;
+  const description = isPriorityHub
+    ? 'Convert all-purpose flour from grams to cups with an instant chart and calculator. Includes spooned, sifted, and packed methods for accurate baking results.'
+    : `Convert ${ing.name.toLowerCase()}${aliasesText} from grams to cups with precision. ${ing.common_weights_g.length} weights with 3 methods compared. USDA density data. Free calculator.`;
   const canonical = generateCanonicalHub(ingredient);
 
   return {

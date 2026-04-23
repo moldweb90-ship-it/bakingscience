@@ -8,9 +8,8 @@ const nextConfig: NextConfig = {
     remotePatterns: [],
   },
 
-  experimental: {
-    optimizePackageImports: ['lucide-react'],
-  },
+  // Keep dev/build stable on Windows: this optimization intermittently
+  // breaks chunk resolution in Next 15 + webpack dev mode.
 
   async headers() {
     return [

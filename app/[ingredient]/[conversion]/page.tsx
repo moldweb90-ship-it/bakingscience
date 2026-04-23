@@ -48,6 +48,34 @@ export async function generateStaticParams() {
 
 export const revalidate = 604800;
 
+const PRIORITY_LEAF_PAGES = new Set([
+  'granulated-sugar:100',
+  'granulated-sugar:140',
+  'bread-flour:100',
+  'all-purpose-flour:250',
+  'all-purpose-flour:500',
+  'powdered-sugar:100',
+]);
+
+const PRIORITY_PAGE_NEARBY_WEIGHTS: Record<string, number[]> = {
+  'granulated-sugar:100': [50, 70, 120, 140, 160, 250],
+  'granulated-sugar:140': [100, 120, 150, 160, 180, 250],
+  'bread-flour:100': [140, 200, 250, 280, 320, 500],
+  'all-purpose-flour:250': [100, 180, 200, 280, 300, 500],
+  'all-purpose-flour:500': [250, 280, 300, 600, 750, 1000],
+  'powdered-sugar:100': [110, 140, 200, 250, 350, 500],
+};
+
+function getCupWord(value: number): string {
+  return value === 1 ? 'cup' : 'cups';
+}
+
+function buildPriorityLeafMeta(weight: number, shortName: string, cups: number, siftedCups: number, packedCups: number) {
+  const title = `${weight}g ${shortName} in cups | Grams to Cups Chart & Calculator`;
+  const description = `Need ${weight}g ${shortName} in cups? Get the exact US-cup conversion with spooned, sifted, and packed methods. Instant chart + converter.`;
+  return { title, description };
+}
+
 export async function generateMetadata({ params }: LeafPageProps): Promise<Metadata> {
   const { ingredient: ingredientId, conversion } = await params;
   const ing = ingredients[ingredientId];
@@ -61,10 +89,15 @@ export async function generateMetadata({ params }: LeafPageProps): Promise<Metad
   const dipSweep = convert(weight, ingredientId, 'dip_sweep');
 
   const shortName = getShortName(ingredientId);
-  const title = generateLeafTitle(weight, ingredientId, spoonLevel.cups);
+  const pageKey = `${ingredientId}:${weight}`;
+  const isPriorityPage = PRIORITY_LEAF_PAGES.has(pageKey);
+  const priorityMeta = buildPriorityLeafMeta(weight, shortName, spoonLevel.cups, sifted.cups, dipSweep.cups);
+  const title = isPriorityPage ? priorityMeta.title : generateLeafTitle(weight, ingredientId, spoonLevel.cups);
 
-  // Description optimized for "how many cups is Xg" queries
-  const description = `${weight}g ${shortName} = ${spoonLevel.cups} cups. How many cups is ${weight}g of ${shortName}? Sifted: ${sifted.cups} cups. Packed: ${dipSweep.cups} cups. Free calculator.`;
+  // Keep exact-match intent and still give a reason to click through.
+  const description = isPriorityPage
+    ? priorityMeta.description
+    : `${weight}g ${shortName} = ${spoonLevel.cups} ${getCupWord(spoonLevel.cups)}. How many cups is ${weight}g of ${shortName}? Sifted: ${sifted.cups} cups. Packed: ${dipSweep.cups} cups. Free calculator.`;
   const canonical = generateCanonicalLeaf(ingredientId, weight);
 
   return {
@@ -124,11 +157,14 @@ export default async function LeafPage({ params }: LeafPageProps) {
 
   const weight = parseConversionSlug(conversion);
   if (weight === null) notFound();
+  const pageKey = `${ingredientId}:${weight}`;
+  const isPriorityPage = PRIORITY_LEAF_PAGES.has(pageKey);
 
   // Calculate conversions
   const spoonLevel = convert(weight, ingredientId, 'spoon_level');
   const sifted = convert(weight, ingredientId, 'sifted');
   const dipSweep = convert(weight, ingredientId, 'dip_sweep');
+  const allUnits = cupsToAllUnits(spoonLevel.cups);
   const fraction = decimalToFraction(spoonLevel.cups);
 
   const isFat = ing.type === 'fat';
@@ -177,6 +213,8 @@ export default async function LeafPage({ params }: LeafPageProps) {
     .slice(0, 5);
 
   const aliasesText = ing.aliases.length > 0 ? ` (${ing.aliases[0]})` : '';
+  const priorityNearbyWeights = (PRIORITY_PAGE_NEARBY_WEIGHTS[pageKey] || [])
+    .filter((v) => v >= 1 && v <= 1000 && v !== weight);
 
   return (
     <div className="py-8 sm:py-12">
@@ -212,6 +250,48 @@ export default async function LeafPage({ params }: LeafPageProps) {
             With Dip &amp; Sweep it&apos;s {dipSweep.cups} cups,{' '}
             and sifted it&apos;s {sifted.cups} cups.
           </p>
+
+          {isPriorityPage && (
+            <section className="card p-5 mb-6">
+              <h2 className="text-lg font-semibold text-slate-900 mb-3">
+                Quick Answer + Useful Kitchen Units
+              </h2>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+                <div className="rounded-lg bg-slate-50 p-3">
+                  <p className="text-xs text-slate-500">US Cups</p>
+                  <p className="text-base font-semibold text-slate-900">{allUnits.cups}</p>
+                </div>
+                <div className="rounded-lg bg-slate-50 p-3">
+                  <p className="text-xs text-slate-500">Tablespoons</p>
+                  <p className="text-base font-semibold text-slate-900">{allUnits.tbsp}</p>
+                </div>
+                <div className="rounded-lg bg-slate-50 p-3">
+                  <p className="text-xs text-slate-500">Teaspoons</p>
+                  <p className="text-base font-semibold text-slate-900">{allUnits.tsp}</p>
+                </div>
+                <div className="rounded-lg bg-slate-50 p-3">
+                  <p className="text-xs text-slate-500">Milliliters</p>
+                  <p className="text-base font-semibold text-slate-900">{allUnits.ml}</p>
+                </div>
+              </div>
+              {priorityNearbyWeights.length > 0 && (
+                <>
+                  <p className="text-sm font-medium text-slate-800 mb-2">Try nearby popular conversions</p>
+                  <div className="flex flex-wrap gap-2">
+                    {priorityNearbyWeights.map((w) => (
+                      <Link
+                        key={w}
+                        href={`/${ingredientId}/${w}-grams-to-cups/`}
+                        className="text-xs bg-slate-100 hover:bg-accent-light hover:text-accent-hover text-slate-700 px-3 py-1.5 rounded-full transition-colors"
+                      >
+                        {w}g {getShortName(ingredientId)} in cups
+                      </Link>
+                    ))}
+                  </div>
+                </>
+              )}
+            </section>
+          )}
 
           {/* Interactive Calculator (Sections B-J, K, L, M, N, O, P, Q, R) */}
           <LeafPageCalculator
