@@ -15,6 +15,7 @@ export interface SearchIngredient {
 
 export interface SearchBarProps {
   ingredients: SearchIngredient[];
+  initialMode?: SearchMode;
 }
 
 interface SearchResult {
@@ -134,9 +135,9 @@ function searchIngredients(query: string, ingredients: SearchIngredient[], mode:
   return results;
 }
 
-export default function SearchBar({ ingredients }: SearchBarProps) {
+export default function SearchBar({ ingredients, initialMode = 'grams_to_cups' }: SearchBarProps) {
   const [query, setQuery] = useState('');
-  const [mode, setMode] = useState<SearchMode>('grams_to_cups');
+  const [mode, setMode] = useState<SearchMode>(initialMode);
   const [open, setOpen] = useState(false);
   const [highlightedIndex, setHighlightedIndex] = useState(-1);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -207,8 +208,8 @@ export default function SearchBar({ ingredients }: SearchBarProps) {
       <div className="mb-3">
         <p className="text-sm font-medium text-slate-700 mb-2 text-left">Conversion direction</p>
         <div className="flex flex-wrap gap-2">
-          <button
-            type="button"
+          <Link
+            href="/"
             onClick={() => {
               setMode('grams_to_cups');
               setQuery('');
@@ -218,9 +219,9 @@ export default function SearchBar({ ingredients }: SearchBarProps) {
             className={`tab-button ${mode === 'grams_to_cups' ? 'tab-button-active' : ''}`}
           >
             Grams -&gt; Cups
-          </button>
-          <button
-            type="button"
+          </Link>
+          <Link
+            href="/cups-to-grams/"
             onClick={() => {
               setMode('cups_to_grams');
               setQuery('');
@@ -230,7 +231,7 @@ export default function SearchBar({ ingredients }: SearchBarProps) {
             className={`tab-button ${mode === 'cups_to_grams' ? 'tab-button-active' : ''}`}
           >
             Cups -&gt; Grams
-          </button>
+          </Link>
         </div>
       </div>
 

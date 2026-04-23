@@ -10,24 +10,24 @@ import YandexMetrikaPageTracker from '@/components/analytics/YandexMetrikaPageTr
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://bakingconverter.com'),
     title: {
-      default: 'Grams to Cups - Baking Conversion Chart | BakingConverter',
+      default: 'Grams to Cups Converter (g to cups) | BakingConverter',
       template: '%s',
     },
   description:
-    'Free baking conversion chart. Convert grams to cups for flour, sugar, butter. Online baking calculator with precise results.',
+    'Free grams to cups converter for flour, sugar, butter and 50+ ingredients. Instant US cup conversions, charts, and reverse cups-to-grams calculator.',
   openGraph: {
-    title: 'Grams to Cups - Baking Conversion Chart | BakingConverter',
+    title: 'Grams to Cups Converter (g to cups) | BakingConverter',
     description:
-      'Free baking conversion chart. Convert grams to cups for flour, sugar, butter. Online baking calculator with precise results.',
+      'Free grams to cups converter for flour, sugar, butter and 50+ ingredients. Instant US cup conversions, charts, and reverse cups-to-grams calculator.',
     siteName: 'BakingConverter',
     type: 'website',
     images: [{ url: '/og-default.png', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Grams to Cups - Baking Conversion Chart | BakingConverter',
+    title: 'Grams to Cups Converter (g to cups) | BakingConverter',
     description:
-      'Free baking conversion chart. Convert grams to cups for flour, sugar, butter. Online baking calculator with precise results.',
+      'Free grams to cups converter for flour, sugar, butter and 50+ ingredients. Instant US cup conversions, charts, and reverse cups-to-grams calculator.',
     images: ['/og-default.png'],
   },
   robots: {

@@ -9,6 +9,7 @@ const baseUrl = SITE_URL;
 
   const pages = [
     { loc: `${baseUrl}/`, changefreq: 'daily', priority: 1.0 },
+    { loc: `${baseUrl}/cups-to-grams/`, changefreq: 'daily', priority: 0.9 },
     { loc: `${baseUrl}/about/`, changefreq: 'monthly', priority: 0.5 },
     { loc: `${baseUrl}/contact/`, changefreq: 'monthly', priority: 0.5 },
     { loc: `${baseUrl}/privacy/`, changefreq: 'yearly', priority: 0.3 },
