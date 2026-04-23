@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import Script from 'next/script';
 import Link from 'next/link';
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
@@ -13,16 +13,22 @@ interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
 }
 
+const LEGACY_BLOG_REDIRECTS: Record<string, string> = {
+  'flour-types-weight-comparison': 'baking-conversion-chart-printable',
+  'precision-measurement-guide': 'how-to-measure-flour-correctly',
+};
+
 export async function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = blogPosts.find((p) => p.slug === slug);
+  const resolvedSlug = LEGACY_BLOG_REDIRECTS[slug] ?? slug;
+  const post = blogPosts.find((p) => p.slug === resolvedSlug);
   if (!post) return { title: 'Not Found' };
 
-  const canonical = `${SITE_URL}/blog/${slug}/`;
+  const canonical = `${SITE_URL}/blog/${resolvedSlug}/`;
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -84,6 +90,10 @@ function extractTOC(content: string): { id: string; text: string }[] {
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
+  const redirectSlug = LEGACY_BLOG_REDIRECTS[slug];
+  if (redirectSlug) {
+    redirect(`/blog/${redirectSlug}/`);
+  }
   const post = blogPosts.find((p) => p.slug === slug);
   if (!post) notFound();
 
