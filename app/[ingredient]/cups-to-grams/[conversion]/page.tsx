@@ -23,9 +23,7 @@ interface ReverseLeafPageProps {
 }
 
 function formatGrams(value: number): string {
-  const roundedInt = Math.round(value);
-  if (Math.abs(value - roundedInt) < 0.005) return `${roundedInt}`;
-  return `${Math.round(value * 100) / 100}`;
+  return `${Math.round(value)}`;
 }
 
 function cupWord(cups: number): string {
@@ -135,12 +133,13 @@ export default async function CupsToGramsLeafPage({ params }: ReverseLeafPagePro
   }
 
   const grams = cupsToGrams(cups, ingredientId, "spoon_level");
+  const displayGrams = Math.round(grams);
   const cupLabel = formatCupLabel(cups);
   const dip = cupsToGrams(cups, ingredientId, "dip_sweep");
   const sifted = cupsToGrams(cups, ingredientId, "sifted");
   const allFaqs = buildReverseFaq(ingredientId, cups);
 
-  const matches = findMatchingRecipes(ingredientId, grams);
+  const matches = findMatchingRecipes(ingredientId, displayGrams);
   const matchedRecipe = matches.length > 0 ? matches[0].recipe : null;
 
   const breadcrumbItems = [
@@ -150,7 +149,7 @@ export default async function CupsToGramsLeafPage({ params }: ReverseLeafPagePro
     { label: `${cupLabel} ${cupWord(cups)} to grams` },
   ];
 
-  const faqSchema = generateFAQSchema(grams, ing.name, ingredientId, allFaqs);
+  const faqSchema = generateFAQSchema(displayGrams, ing.name, ingredientId, allFaqs);
   const breadcrumbSchema = generateBreadcrumbSchema(
     breadcrumbItems.map((item) => ({
       name: item.label,
@@ -194,7 +193,7 @@ export default async function CupsToGramsLeafPage({ params }: ReverseLeafPagePro
               ingredientId={ingredientId}
               ingredientName={ing.name}
               ingredientDensity={ing.base_density_g_per_ml}
-              weightG={grams}
+              weightG={displayGrams}
               photoAvailable={ing.photo_available}
               showTitle={false}
             />
@@ -219,7 +218,7 @@ export default async function CupsToGramsLeafPage({ params }: ReverseLeafPagePro
               <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4">
                 Baking Recipes Using {ing.name} (in Grams &amp; Cups)
               </h2>
-              <RecipeContext ingredientId={ingredientId} ingredientName={ing.name} weightG={grams} />
+              <RecipeContext ingredientId={ingredientId} ingredientName={ing.name} weightG={displayGrams} />
             </section>
           )}
 
@@ -227,14 +226,14 @@ export default async function CupsToGramsLeafPage({ params }: ReverseLeafPagePro
             <NutritionBlock
               ingredientName={ing.name}
               ingredientDensity={ing.base_density_g_per_ml}
-              weightG={grams}
+              weightG={displayGrams}
               nutritionPer100g={ing.nutrition_per_100g}
             />
           </section>
 
           {ing.pro_tips.length > 0 && (
             <section className="mt-8">
-              <ProTips tips={ing.pro_tips} ingredientName={ing.name} weightG={grams} fractionText={cupLabel} />
+              <ProTips tips={ing.pro_tips} ingredientName={ing.name} weightG={displayGrams} fractionText={cupLabel} />
             </section>
           )}
 

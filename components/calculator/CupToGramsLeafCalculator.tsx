@@ -24,9 +24,7 @@ export interface CupToGramsLeafCalculatorProps {
 }
 
 function formatGrams(value: number): string {
-  const roundedInt = Math.round(value);
-  if (Math.abs(value - roundedInt) < 0.005) return `${roundedInt}`;
-  return `${Math.round(value * 100) / 100}`;
+  return `${Math.round(value)}`;
 }
 
 function cupWord(cups: number): string {

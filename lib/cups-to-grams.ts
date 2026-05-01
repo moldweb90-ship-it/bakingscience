@@ -4,7 +4,25 @@ export const COMMON_CUP_VALUES = [
 
 export const REVERSE_ENABLED_INGREDIENTS = [
   "all-purpose-flour",
+  "almond-flour",
+  "bread-flour",
+  "brown-sugar",
+  "butter",
   "cake-flour",
+  "cocoa-powder",
+  "coconut-flour",
+  "coconut-oil",
+  "cornstarch",
+  "granulated-sugar",
+  "heavy-cream",
+  "honey",
+  "olive-oil",
+  "powdered-sugar",
+  "rolled-oats",
+  "sour-cream",
+  "vegetable-oil",
+  "whole-milk",
+  "whole-wheat-flour",
 ];
 
 export function formatCupLabel(cups: number): string {

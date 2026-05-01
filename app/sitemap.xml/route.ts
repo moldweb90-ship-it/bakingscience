@@ -12,8 +12,8 @@ const baseUrl = SITE_URL;
     { loc: `${baseUrl}/sitemap-pages.xml`, lastmod: today },
     { loc: `${baseUrl}/sitemap-blog.xml`, lastmod: today },
     { loc: `${baseUrl}/sitemap-hubs.xml`, lastmod: today },
-    { loc: `${baseUrl}/sitemap-all-purpose-flour-cups-to-grams.xml`, lastmod: today },
-    { loc: `${baseUrl}/sitemap-cake-flour-cups-to-grams.xml`, lastmod: today },
+    { loc: `${baseUrl}/sitemap-generic-conversions.xml`, lastmod: today },
+    { loc: `${baseUrl}/sitemap-cups-to-grams.xml`, lastmod: today },
   ];
 
   for (const ing of Object.values(ingredients)) {

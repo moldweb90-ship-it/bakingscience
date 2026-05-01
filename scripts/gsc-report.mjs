@@ -301,7 +301,7 @@ async function listSites() {
   }
 }
 
-async function querySearchAnalytics({ dimensions, rowLimit = 20, days = 28, pageFilter }) {
+async function querySearchAnalytics({ dimensions, rowLimit = 20, days = 28, pageFilter, queryFilter }) {
   const siteUrl = getSiteUrl();
   const { startDate, endDate } = getDateRange(days);
   const body = {
@@ -313,16 +313,26 @@ async function querySearchAnalytics({ dimensions, rowLimit = 20, days = 28, page
     searchType: 'web',
   };
 
+  const filters = [];
   if (pageFilter) {
+    filters.push({
+      dimension: 'page',
+      operator: 'equals',
+      expression: pageFilter,
+    });
+  }
+  if (queryFilter) {
+    filters.push({
+      dimension: 'query',
+      operator: 'equals',
+      expression: queryFilter,
+    });
+  }
+
+  if (filters.length > 0) {
     body.dimensionFilterGroups = [
       {
-        filters: [
-          {
-            dimension: 'page',
-            operator: 'equals',
-            expression: pageFilter,
-          },
-        ],
+        filters,
       },
     ];
   }
@@ -392,6 +402,32 @@ async function sitemaps() {
   }
 }
 
+async function queryReport(query) {
+  if (!query) {
+    throw new Error('Pass a query: npm run seo:gsc:query -- "100g sugar to cups"');
+  }
+
+  const siteUrl = getSiteUrl();
+  const { startDate, endDate } = getDateRange(28);
+  console.log(`GSC query report for ${siteUrl}`);
+  console.log(`Query: ${query}`);
+  console.log(`Date range: ${startDate} to ${endDate}`);
+
+  const pages = await querySearchAnalytics({
+    dimensions: ['page'],
+    rowLimit: 20,
+    queryFilter: query,
+  });
+  printRows('Pages shown for this query', pages.rows || []);
+
+  const byQueryPage = await querySearchAnalytics({
+    dimensions: ['query', 'page'],
+    rowLimit: 20,
+    queryFilter: query,
+  });
+  printRows('Query + page rows', byQueryPage.rows || []);
+}
+
 async function inspectUrl(url) {
   const siteUrl = getSiteUrl();
   const inspectionUrl = url || process.env.GSC_INSPECT_URL;
@@ -428,6 +464,7 @@ function printHelp() {
   npm run seo:gsc:sites
   npm run seo:gsc:summary
   npm run seo:gsc:sitemaps
+  npm run seo:gsc:query -- "100g sugar to cups"
   npm run seo:gsc:inspect -- https://bakingconverter.com/granulated-sugar/100-grams-to-cups/
   npm run seo:gsc:auth
 
@@ -452,6 +489,7 @@ async function main() {
   if (command === 'sites') return listSites();
   if (command === 'summary') return summary();
   if (command === 'sitemaps') return sitemaps();
+  if (command === 'query') return queryReport(process.argv.slice(3).join(' '));
   if (command === 'inspect') return inspectUrl(process.argv[3]);
   if (command === 'help' || command === '--help' || command === '-h') return printHelp();
 

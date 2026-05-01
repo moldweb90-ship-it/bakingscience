@@ -31,9 +31,9 @@ export default function PopularCupConversionsTable({ ingredientId }: PopularCupC
                     {formatCupLabel(cups)} cup{cups === 1 ? "" : "s"}
                   </Link>
                 </td>
-                <td className="table-cell">{spoon}g</td>
-                <td className="table-cell">{dip}g</td>
-                <td className="table-cell">{sifted}g</td>
+                <td className="table-cell">{Math.round(spoon)}g</td>
+                <td className="table-cell">{Math.round(dip)}g</td>
+                <td className="table-cell">{Math.round(sifted)}g</td>
               </tr>
             );
           })}

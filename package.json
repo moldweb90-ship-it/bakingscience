@@ -12,7 +12,16 @@
     "seo:gsc:sites": "node scripts/gsc-report.mjs sites",
     "seo:gsc:summary": "node scripts/gsc-report.mjs summary",
     "seo:gsc:sitemaps": "node scripts/gsc-report.mjs sitemaps",
-    "seo:gsc:inspect": "node scripts/gsc-report.mjs inspect"
+    "seo:gsc:query": "node scripts/gsc-report.mjs query",
+    "seo:gsc:inspect": "node scripts/gsc-report.mjs inspect",
+    "seo:dfs": "node scripts/dataforseo-report.mjs",
+    "seo:dfs:user": "node scripts/dataforseo-report.mjs user",
+    "seo:dfs:ideas": "node scripts/dataforseo-report.mjs ideas",
+    "seo:dfs:suggestions": "node scripts/dataforseo-report.mjs suggestions",
+    "seo:dfs:site": "node scripts/dataforseo-report.mjs site",
+    "seo:dfs:overview": "node scripts/dataforseo-report.mjs overview",
+    "seo:dfs:serp": "node scripts/dataforseo-report.mjs serp",
+    "seo:keywords:analyze": "node scripts/keyword-stats-analyze.mjs"
   },
   "dependencies": {
     "next": "^15.0.0",
