@@ -67,12 +67,13 @@ const PRIORITY_PAGE_NEARBY_WEIGHTS: Record<string, number[]> = {
 };
 
 function getCupWord(value: number): string {
-  return value === 1 ? 'cup' : 'cups';
+  return value <= 1 ? 'cup' : 'cups';
 }
 
 function buildPriorityLeafMeta(weight: number, shortName: string, cups: number, siftedCups: number, packedCups: number) {
-  const title = `${weight}g ${shortName} in cups | Grams to Cups Chart & Calculator`;
-  const description = `Need ${weight}g ${shortName} in cups? Get the exact US-cup conversion with spooned, sifted, and packed methods. Instant chart + converter.`;
+  const cupText = `${decimalToFraction(cups)} ${getCupWord(cups)}`;
+  const title = `${weight}g ${shortName} to cups: ${cupText} | BakingConverter`;
+  const description = `${weight}g ${shortName} equals ${cupText}. Compare spooned, sifted (${siftedCups} cups), and packed (${packedCups} cups) methods with an instant baking calculator.`;
   return { title, description };
 }
 

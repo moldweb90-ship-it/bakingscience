@@ -6,7 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "seo:gsc": "node scripts/gsc-report.mjs",
+    "seo:gsc:auth": "node scripts/gsc-report.mjs auth",
+    "seo:gsc:sites": "node scripts/gsc-report.mjs sites",
+    "seo:gsc:summary": "node scripts/gsc-report.mjs summary",
+    "seo:gsc:sitemaps": "node scripts/gsc-report.mjs sitemaps",
+    "seo:gsc:inspect": "node scripts/gsc-report.mjs inspect"
   },
   "dependencies": {
     "next": "^15.0.0",

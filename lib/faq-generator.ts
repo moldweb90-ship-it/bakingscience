@@ -37,6 +37,18 @@ function decimalToFraction(cups: number): string {
   return `${bestWhole}${bestLabel}`;
 }
 
+function cupWord(cups: number): string {
+  return cups <= 1 ? "cup" : "cups";
+}
+
+function cupPhrase(cups: number): string {
+  return `${decimalToFraction(cups)} ${cupWord(cups)}`;
+}
+
+function wholeCupPhrase(cups: number): string {
+  return `${cups} ${cups === 1 ? "cup" : "cups"}`;
+}
+
 function sub(template: string, vars: Record<string, string | number>): string {
   let result = template;
   for (const [key, value] of Object.entries(vars)) {
@@ -79,6 +91,9 @@ export function generateFAQ(
     cups: slFraction,
     dsCups: dsFraction,
     sfCups: sfFraction,
+    cupPhrase: cupPhrase(slCups.cups),
+    dsCupPhrase: cupPhrase(dsCups.cups),
+    sfCupPhrase: cupPhrase(sfCups.cups),
     gpc: gramsPerCup,
     calories: totalCalories,
     carbs: totalCarbs,
@@ -86,6 +101,7 @@ export function generateFAQ(
     fat: totalFat,
     caloriesPerCup,
     nearestCups,
+    nearestCupPhrase: wholeCupPhrase(nearestCups),
     nearestWeight,
     diff: Math.abs(diff),
     moreLess,
@@ -97,7 +113,7 @@ export function generateFAQ(
   faqs.push({
     question: `How many cups is ${weightG}g of ${ing.name.toLowerCase()}?`,
     answer: sub(
-      "Using the Spoon & Level method (recommended), {grams}g of {ingredient} equals {cups} cups. With the Dip & Sweep method, it's {dsCups} cups, and when sifted it measures {sfCups} cups. We recommend weighing ingredients for best results, but if you're using measuring cups, the Spoon & Level method is the most accurate.",
+      "Using the Spoon & Level method (recommended), {grams}g of {ingredient} equals {cupPhrase}. With the Dip & Sweep method, it's {dsCupPhrase}, and when sifted it measures {sfCupPhrase}. We recommend weighing ingredients for best results, but if you're using measuring cups, the Spoon & Level method is the most accurate.",
       vars,
     ),
   });
@@ -106,7 +122,7 @@ export function generateFAQ(
   faqs.push({
     question: `Does the measurement method matter for ${ing.name.toLowerCase()}?`,
     answer: sub(
-      "Yes, significantly. The same {grams}g of {ingredient} can measure anywhere from {dsCups} cups (dip & sweep) to {sfCups} cups (sifted) - that's a {variance}% difference. This happens because dip & sweep compresses the ingredient, fitting more into each cup, while sifting aerates it. For consistent baking results, always use the same method your recipe specifies.",
+      "Yes, significantly. The same {grams}g of {ingredient} can measure anywhere from {dsCupPhrase} (dip & sweep) to {sfCupPhrase} (sifted) - that's a {variance}% difference. This happens because dip & sweep compresses the ingredient, fitting more into each cup, while sifting aerates it. For consistent baking results, always use the same method your recipe specifies.",
       { ...vars, variance: Math.round(((sfCups.cups - dsCups.cups) / slCups.cups) * 100) },
     ),
   });
@@ -136,17 +152,17 @@ export function generateFAQ(
   // Q5 - depends on grams
   if (diff === 0) {
     faqs.push({
-      question: `Is ${weightG}g of ${ing.name.toLowerCase()} the same as ${nearestCups} cups?`,
+      question: `Is ${weightG}g of ${ing.name.toLowerCase()} the same as ${wholeCupPhrase(nearestCups)}?`,
       answer: sub(
-        "Yes! {grams}g of {ingredient} is exactly {nearestCups} cups when measured with the Spoon & Level method. This is a common weight used in many baking recipes.",
+        "Yes! {grams}g of {ingredient} is exactly {nearestCupPhrase} when measured with the Spoon & Level method. This is a common weight used in many baking recipes.",
         vars,
       ),
     });
   } else {
     faqs.push({
-      question: `Is ${weightG}g of ${ing.name.toLowerCase()} the same as ${nearestCups} cups?`,
+      question: `Is ${weightG}g of ${ing.name.toLowerCase()} the same as ${wholeCupPhrase(nearestCups)}?`,
       answer: sub(
-        "Not exactly. {nearestCups} cups of {ingredient} weighs approximately {nearestWeight}g. {grams}g equals about {cups} cups - roughly {diff}g {moreLess} than {nearestCups} full cups. For precision in baking, it's worth measuring the exact amount rather than rounding to the nearest cup.",
+        "Not exactly. {nearestCupPhrase} of {ingredient} weighs approximately {nearestWeight}g. {grams}g equals about {cupPhrase} - roughly {diff}g {moreLess} than {nearestCupPhrase}. For precision in baking, it's worth measuring the exact amount rather than rounding to the nearest cup.",
         vars,
       ),
     });
@@ -169,10 +185,13 @@ export function generateFAQ(
     faqs.push({
       question: `Does melted ${ing.name.toLowerCase()} measure differently than solid?`,
       answer: sub(
-        "Yes, significantly. When {ingredient} melts, its density changes. {grams}g of solid {ingredient} measures about {cups} cups, but when melted it takes up about {meltedCups} cups - a {meltedDiff}% difference. Always measure {ingredient} in the state your recipe specifies for accurate results.",
+        "Yes, significantly. When {ingredient} melts, its density changes. {grams}g of solid {ingredient} measures about {cupPhrase}, but when melted it takes up about {meltedCupPhrase} - a {meltedDiff}% difference. Always measure {ingredient} in the state your recipe specifies for accurate results.",
         {
           ...vars,
           meltedCups: decimalToFraction(
+            weightG / (ing.base_density_g_per_ml * 236.588 * (ing.states?.melted ?? 0.88)),
+          ),
+          meltedCupPhrase: cupPhrase(
             weightG / (ing.base_density_g_per_ml * 236.588 * (ing.states?.melted ?? 0.88)),
           ),
           meltedDiff: Math.round(

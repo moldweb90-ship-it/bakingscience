@@ -23,9 +23,52 @@ const shortName: Record<string, string> = {
   'cocoa-powder': 'cocoa',
 };
 
+function titleCase(value: string): string {
+  return value.replace(/\b\w/g, (char) => char.toUpperCase());
+}
+
+function formatCupTitleValue(cups: number): string {
+  const rounded = Math.round(cups * 100) / 100;
+  const fractions: Array<[number, string]> = [
+    [0.125, '1/8'],
+    [0.25, '1/4'],
+    [0.333, '1/3'],
+    [0.375, '3/8'],
+    [0.5, '1/2'],
+    [0.625, '5/8'],
+    [0.667, '2/3'],
+    [0.75, '3/4'],
+    [0.875, '7/8'],
+  ];
+
+  const whole = Math.floor(rounded);
+  const remainder = rounded - whole;
+  let closest = '';
+  let minDiff = Infinity;
+
+  for (const [value, label] of fractions) {
+    const diff = Math.abs(remainder - value);
+    if (diff < minDiff) {
+      minDiff = diff;
+      closest = label;
+    }
+  }
+
+  if (minDiff <= 0.015 && closest) {
+    if (whole === 0) return closest;
+    return `${whole} ${closest}`;
+  }
+
+  return String(rounded);
+}
+
+function cupWord(cups: number): string {
+  return Math.abs(cups - 1) < 0.001 ? 'cup' : 'cups';
+}
+
 /**
  * Generate leaf title optimized for real search queries.
- * Format: "250 g sugar to Cups: 2.77 Cups | BakingConverter"
+ * Format: "250g Sugar to cups: 1 1/4 cups | BakingConverter"
  */
 export function generateLeafTitle(
   value: number,
@@ -33,7 +76,8 @@ export function generateLeafTitle(
   spoonLevelCups: number,
 ): string {
   const name = shortName[ingredientId] || ingredientId.replace(/-/g, ' ');
-  return `${value} g ${name} to Cups: ${spoonLevelCups} Cups | BakingConverter`;
+  const cups = formatCupTitleValue(spoonLevelCups);
+  return `${value}g ${titleCase(name)} to cups: ${cups} ${cupWord(spoonLevelCups)} | BakingConverter`;
 }
 
 /**
@@ -44,7 +88,7 @@ export function generateFallbackTitle(
   ingredientId: string,
 ): string {
   const name = shortName[ingredientId] || ingredientId.replace(/-/g, ' ');
-  return `${value} g ${name} to Cups | BakingConverter`;
+  return `${value} g ${name} to cups | BakingConverter`;
 }
 
 /**

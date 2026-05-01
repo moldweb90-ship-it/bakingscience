@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
-import Script from 'next/script';
 import Link from 'next/link';
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
 import AdBanner from '@/components/ads/AdBanner';
@@ -18,6 +17,32 @@ const LEGACY_BLOG_REDIRECTS: Record<string, string> = {
   'precision-measurement-guide': 'how-to-measure-flour-correctly',
 };
 
+function buildArticleSchema(post: (typeof blogPosts)[number], canonical: string) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.description,
+    datePublished: post.date,
+    dateModified: post.date,
+    author: { '@type': 'Organization', name: SITE_NAME },
+    publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
+    mainEntityOfPage: canonical,
+  };
+}
+
+function buildBreadcrumbSchema(post: (typeof blogPosts)[number]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE_URL}/blog/` },
+      { '@type': 'ListItem', position: 3, name: post.title },
+    ],
+  };
+}
+
 export async function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }));
 }
@@ -29,27 +54,6 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   if (!post) return { title: 'Not Found' };
 
   const canonical = `${SITE_URL}/blog/${resolvedSlug}/`;
-  const articleSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: post.title,
-    description: post.description,
-    datePublished: post.date,
-    dateModified: post.date,
-    author: { '@type': 'Organization', name: SITE_NAME },
-    publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
-    mainEntityOfPage: canonical,
-  };
-
-  const breadcrumbSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
-      { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE_URL}/blog/` },
-      { '@type': 'ListItem', position: 3, name: post.title },
-    ],
-  };
 
   return {
     title: post.title,
@@ -69,9 +73,6 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       images: ['/og-default.png'],
     },
     alternates: { canonical },
-    other: {
-      'script:ld+json': JSON.stringify([articleSchema, breadcrumbSchema]),
-    },
   };
 }
 
@@ -112,9 +113,20 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     .filter((ing): ing is NonNullable<typeof ing> => ing !== undefined);
 
   const toc = extractTOC(post.content);
+  const canonical = `${SITE_URL}/blog/${slug}/`;
+  const articleSchema = buildArticleSchema(post, canonical);
+  const breadcrumbSchema = buildBreadcrumbSchema(post);
 
   return (
     <div className="py-8 sm:py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <div className="flex flex-col lg:flex-row gap-8 max-w-page mx-auto px-4 sm:px-6 lg:px-8">
         <article className="flex-1 min-w-0 max-w-3xl">
           <Breadcrumbs items={breadcrumbItems} />
