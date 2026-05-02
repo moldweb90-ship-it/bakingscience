@@ -7,9 +7,27 @@ const TOKEN_URL = 'https://oauth2.googleapis.com/token';
 const AUTH_URL = 'https://accounts.google.com/o/oauth2/v2/auth';
 const GSC_BASE_URL = 'https://www.googleapis.com/webmasters/v3';
 const INSPECTION_URL = 'https://searchconsole.googleapis.com/v1/urlInspection/index:inspect';
-const SCOPES = ['https://www.googleapis.com/auth/webmasters.readonly'];
+const SCOPES = ['https://www.googleapis.com/auth/webmasters'];
 const OAUTH_REDIRECT_PORT = 8765;
 const OAUTH_REDIRECT_URI = `http://127.0.0.1:${OAUTH_REDIRECT_PORT}/oauth2callback`;
+const CORE_SITEMAP_PATHS = [
+  '/sitemap.xml',
+  '/sitemap-pages.xml',
+  '/sitemap-hubs.xml',
+  '/sitemap-generic-conversions.xml',
+  '/sitemap-cups-to-grams.xml',
+  '/sitemap-peanut-butter.xml',
+];
+const PRIORITY_INSPECTION_PATHS = [
+  '/',
+  '/cups-to-grams/',
+  '/grams-to-cups/200-grams-to-cups/',
+  '/cups-to-grams/1-cup-to-grams/',
+  '/granulated-sugar/cups-to-grams/1-cup-to-grams/',
+  '/all-purpose-flour/cups-to-grams/1-cup-to-grams/',
+  '/butter/cups-to-grams/1-cup-to-grams/',
+  '/peanut-butter/cups-to-grams/1-cup-to-grams/',
+];
 
 function loadDotEnv() {
   for (const file of ['.env.local', '.env']) {
@@ -250,6 +268,16 @@ function encodeSiteUrl(siteUrl) {
   return encodeURIComponent(siteUrl);
 }
 
+function getPublicBaseUrl() {
+  return (process.env.NEXT_PUBLIC_SITE_URL || 'https://bakingconverter.com').replace(/\/$/, '');
+}
+
+function absoluteSiteUrl(pathOrUrl) {
+  if (!pathOrUrl) return `${getPublicBaseUrl()}/`;
+  if (/^https?:\/\//i.test(pathOrUrl)) return pathOrUrl;
+  return `${getPublicBaseUrl()}${pathOrUrl.startsWith('/') ? pathOrUrl : `/${pathOrUrl}`}`;
+}
+
 function formatDate(date) {
   return date.toISOString().slice(0, 10);
 }
@@ -402,6 +430,22 @@ async function sitemaps() {
   }
 }
 
+async function submitSitemap(sitemapPathOrUrl = '/sitemap.xml') {
+  const siteUrl = getSiteUrl();
+  const sitemapUrl = absoluteSiteUrl(sitemapPathOrUrl);
+  await googleFetch(`/sites/${encodeSiteUrl(siteUrl)}/sitemaps/${encodeURIComponent(sitemapUrl)}`, {
+    method: 'PUT',
+  });
+
+  console.log(`Submitted sitemap: ${sitemapUrl}`);
+}
+
+async function submitCoreSitemaps() {
+  for (const sitemapPath of CORE_SITEMAP_PATHS) {
+    await submitSitemap(sitemapPath);
+  }
+}
+
 async function queryReport(query) {
   if (!query) {
     throw new Error('Pass a query: npm run seo:gsc:query -- "100g sugar to cups"');
@@ -459,13 +503,28 @@ async function inspectUrl(url) {
   console.log(`- page fetch: ${index.pageFetchState || 'n/a'}`);
 }
 
+async function inspectPriorityUrls() {
+  for (const path of PRIORITY_INSPECTION_PATHS) {
+    const url = absoluteSiteUrl(path);
+    try {
+      await inspectUrl(url);
+    } catch (error) {
+      console.log(`Inspection failed for ${url}: ${error.message}`);
+    }
+    console.log('');
+  }
+}
+
 function printHelp() {
   console.log(`Usage:
   npm run seo:gsc:sites
   npm run seo:gsc:summary
   npm run seo:gsc:sitemaps
+  npm run seo:gsc:submit-sitemap -- https://bakingconverter.com/sitemap.xml
+  npm run seo:gsc:submit-sitemaps
   npm run seo:gsc:query -- "100g sugar to cups"
   npm run seo:gsc:inspect -- https://bakingconverter.com/granulated-sugar/100-grams-to-cups/
+  npm run seo:gsc:inspect-priority
   npm run seo:gsc:auth
 
 Required env:
@@ -489,8 +548,11 @@ async function main() {
   if (command === 'sites') return listSites();
   if (command === 'summary') return summary();
   if (command === 'sitemaps') return sitemaps();
+  if (command === 'submit-sitemap') return submitSitemap(process.argv[3] || '/sitemap.xml');
+  if (command === 'submit-sitemaps') return submitCoreSitemaps();
   if (command === 'query') return queryReport(process.argv.slice(3).join(' '));
   if (command === 'inspect') return inspectUrl(process.argv[3]);
+  if (command === 'inspect-priority') return inspectPriorityUrls();
   if (command === 'help' || command === '--help' || command === '-h') return printHelp();
 
   throw new Error(`Unknown command: ${command}`);
