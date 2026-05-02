@@ -1,5 +1,6 @@
 export const COMMON_CUP_VALUES = [
-  0.125, 0.25, 0.333, 0.5, 0.667, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 3, 4,
+  0.125, 0.25, 0.333, 0.5, 0.667, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 2.75,
+  3, 3.5, 3.75, 4, 4.25, 4.5, 5, 8,
 ];
 
 export const REVERSE_ENABLED_INGREDIENTS = [
@@ -17,6 +18,7 @@ export const REVERSE_ENABLED_INGREDIENTS = [
   "heavy-cream",
   "honey",
   "olive-oil",
+  "peanut-butter",
   "powdered-sugar",
   "rolled-oats",
   "sour-cream",

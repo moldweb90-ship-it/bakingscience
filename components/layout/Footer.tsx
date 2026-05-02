@@ -6,12 +6,17 @@ const popularIngredients = [
   { name: 'All-Purpose Flour', href: '/all-purpose-flour/' },
   { name: 'Cake Flour', href: '/cake-flour/' },
   { name: 'Butter', href: '/butter/' },
+  { name: 'Peanut Butter', href: '/peanut-butter/' },
   { name: 'Granulated Sugar', href: '/granulated-sugar/' },
   { name: 'Whole Milk', href: '/whole-milk/' },
   { name: 'Cocoa Powder', href: '/cocoa-powder/' },
 ];
 
 const resourceLinks = [
+  { label: '200 grams to cups', href: '/grams-to-cups/200-grams-to-cups/' },
+  { label: '1 cup to grams', href: '/cups-to-grams/1-cup-to-grams/' },
+  { label: '1 cup sugar in grams', href: '/granulated-sugar/cups-to-grams/1-cup-to-grams/' },
+  { label: '1 cup flour in grams', href: '/all-purpose-flour/cups-to-grams/1-cup-to-grams/' },
   { label: 'Blog', href: '/blog/' },
   { label: 'About Us', href: '/about/' },
   { label: 'Contact', href: '/contact/' },

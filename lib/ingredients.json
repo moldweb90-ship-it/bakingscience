@@ -734,6 +734,7 @@
       1000
     ],
     "related_ingredients": [
+      "peanut-butter",
       "coconut-oil",
       "vegetable-oil",
       "olive-oil",
@@ -759,6 +760,79 @@
     "aliases": [
       "Unsalted Butter",
       "Salted Butter"
+    ]
+  },
+  {
+    "id": "peanut-butter",
+    "name": "Peanut Butter",
+    "category": "fat",
+    "base_density_g_per_ml": 1.091,
+    "type": "fat",
+    "states": null,
+    "measurement_method_overrides": null,
+    "nutrition_per_100g": {
+      "calories": 588,
+      "protein_g": 25.1,
+      "carbs_g": 20.0,
+      "fat_g": 50.0,
+      "fiber_g": 6.0,
+      "sugar_g": 9.0
+    },
+    "pro_tips": [
+      "Peanut butter is dense and sticky, so a packed measuring cup weighs much more than a loosely filled cup.",
+      "For cleaner measuring, lightly coat the measuring cup with oil before adding peanut butter.",
+      "Natural peanut butter can separate. Stir it fully before weighing or measuring for consistent results."
+    ],
+    "common_weights_g": [
+      16,
+      25,
+      32,
+      50,
+      64,
+      75,
+      85,
+      100,
+      125,
+      129,
+      150,
+      175,
+      200,
+      225,
+      250,
+      258,
+      300,
+      350,
+      400,
+      500,
+      750,
+      1000
+    ],
+    "related_ingredients": [
+      "butter",
+      "almond-flour",
+      "honey",
+      "granulated-sugar"
+    ],
+    "faq": [
+      {
+        "question": "How many grams is 1 cup of peanut butter?",
+        "answer": "1 US cup of peanut butter weighs approximately 258g. Peanut butter is dense, so weighing is more reliable than filling a measuring cup."
+      },
+      {
+        "question": "How many grams is 1/2 cup of peanut butter?",
+        "answer": "1/2 cup of peanut butter weighs approximately 129g. This is a common amount in cookies, bars, frostings, and no-bake desserts."
+      },
+      {
+        "question": "Does natural peanut butter measure differently?",
+        "answer": "It can. Natural peanut butter separates, so stir it thoroughly before measuring. For best results, use grams instead of cups."
+      }
+    ],
+    "description": "Peanut butter is a dense baking ingredient used in cookies, bars, frostings, fillings, and no-bake desserts. Because it is sticky and compact, cup measurements can vary by brand and how firmly the cup is filled.",
+    "photo_available": false,
+    "density_source": "USDA FoodData Central",
+    "aliases": [
+      "Creamy Peanut Butter",
+      "Natural Peanut Butter"
     ]
   },
   {

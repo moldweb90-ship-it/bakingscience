@@ -31,9 +31,28 @@ export async function generateMetadata({ params }: ReverseHubPageProps): Promise
   const ing = ingredients[ingredientId];
   if (!ing || !REVERSE_ENABLED_INGREDIENTS.includes(ingredientId)) return { title: "Not Found" };
 
-  const title = `${ing.name} - Cups to Grams Calculator (3 Methods Compared)`;
+  const priorityMeta: Record<string, { title: string; description: string }> = {
+    'all-purpose-flour': {
+      title: 'Flour Cups to Grams | 1 Cup, 1/2 Cup, 1/4 Cup Chart',
+      description: 'Convert cups of all-purpose flour to grams. Includes 1 cup flour in grams, 1/2 cup, 1/4 cup, 2 cups, spooned flour, sifted flour and dip & sweep.',
+    },
+    'granulated-sugar': {
+      title: 'Sugar Cups to Grams | 1 Cup, 1/2 Cup, 1/4 Cup Chart',
+      description: 'Convert cups of granulated sugar to grams. Includes 1 cup sugar in grams, 1/2 cup, 1/4 cup, 3/4 cup, white sugar and caster sugar conversions.',
+    },
+    butter: {
+      title: 'Butter Cups to Grams | 1 Cup, 1/2 Cup, 1/4 Cup Chart',
+      description: 'Convert cups of butter to grams. Includes 1 cup butter in grams, 1/2 cup, 1/4 cup, 3/4 cup, sticks of butter and melted butter notes.',
+    },
+    'peanut-butter': {
+      title: 'Peanut Butter Cups to Grams | 1 Cup, 1/2 Cup Chart',
+      description: 'Convert cups of peanut butter to grams. Includes 1 cup peanut butter in grams, 1/2 cup, 1/4 cup and common US baking measurements.',
+    },
+  };
+  const title = priorityMeta[ingredientId]?.title ?? `${ing.name} - Cups to Grams Calculator (3 Methods Compared)`;
   const aliasSnippet = ing.aliases.length > 0 ? ` Also known as ${ing.aliases.join(", ")}.` : "";
-  const description = `Convert cups of ${ing.name.toLowerCase()} to grams with precision. Includes 1/8, 1/4, 1/3, 1/2, 3/4, 1, and 1 1/4 cups.${aliasSnippet} Spoon & Level, Dip & Sweep, Sifted.`;
+  const description = priorityMeta[ingredientId]?.description
+    ?? `Convert cups of ${ing.name.toLowerCase()} to grams with precision. Includes 1/8, 1/4, 1/3, 1/2, 3/4, 1, and 1 1/4 cups.${aliasSnippet} Spoon & Level, Dip & Sweep, Sifted.`;
   const canonical = `${SITE_URL}/${ingredientId}/cups-to-grams/`;
 
   return {

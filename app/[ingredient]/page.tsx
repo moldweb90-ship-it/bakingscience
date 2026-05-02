@@ -26,14 +26,28 @@ export async function generateMetadata({ params }: HubPageProps): Promise<Metada
   const ing = ingredients[ingredient];
   if (!ing) return { title: 'Not Found' };
 
-  const isPriorityHub = ingredient === 'all-purpose-flour';
-  const title = isPriorityHub
-    ? 'All-Purpose Flour in Cups (Grams to Cups) | Conversion Chart & Calculator'
-    : generateHubTitle(ing.name);
+  const priorityMeta: Record<string, { title: string; description: string }> = {
+    'all-purpose-flour': {
+      title: 'All-Purpose Flour in Cups (Grams to Cups) | Conversion Chart',
+      description: 'Convert all-purpose flour from grams to cups with an instant chart and calculator. Includes 1 cup, 1/2 cup, spooned, sifted, and packed method comparisons.',
+    },
+    'granulated-sugar': {
+      title: 'Granulated Sugar Grams to Cups | Sugar Conversion Chart',
+      description: 'Convert granulated sugar grams to cups with exact US baking charts. Includes 100g, 200g, 1 cup sugar in grams, 1/2 cup, 1/4 cup and white sugar aliases.',
+    },
+    butter: {
+      title: 'Butter Grams to Cups | Sticks, Cups & Tablespoons Chart',
+      description: 'Convert butter grams to cups, sticks and tablespoons. Includes 113g, 200g, 1 cup butter in grams, 1/2 cup butter, solid butter and melted butter notes.',
+    },
+    'peanut-butter': {
+      title: 'Peanut Butter Grams to Cups | 1 Cup, 1/2 Cup Chart',
+      description: 'Convert peanut butter grams to cups for US baking. Includes 1 cup peanut butter in grams, 1/2 cup, tablespoons, common recipe weights and nutrition notes.',
+    },
+  };
+  const title = priorityMeta[ingredient]?.title ?? generateHubTitle(ing.name);
   const aliasesText = ing.aliases.length > 0 ? ` (${ing.aliases[0]})` : '';
-  const description = isPriorityHub
-    ? 'Convert all-purpose flour from grams to cups with an instant chart and calculator. Includes spooned, sifted, and packed methods for accurate baking results.'
-    : `Convert ${ing.name.toLowerCase()}${aliasesText} from grams to cups with precision. ${ing.common_weights_g.length} weights with 3 methods compared. USDA density data. Free calculator.`;
+  const description = priorityMeta[ingredient]?.description
+    ?? `Convert ${ing.name.toLowerCase()}${aliasesText} from grams to cups with precision. ${ing.common_weights_g.length} weights with 3 methods compared. USDA density data. Free calculator.`;
   const canonical = generateCanonicalHub(ingredient);
 
   return {

@@ -11,6 +11,7 @@ export interface SearchIngredient {
   name: string;
   category: string;
   common_weights_g: number[];
+  aliases?: string[];
 }
 
 export interface SearchBarProps {
@@ -97,6 +98,7 @@ function scoreIngredient(ing: SearchIngredient, terms: string[]): number {
   const nameLower = ing.name.toLowerCase();
   const idLower = ing.id.toLowerCase();
   const categoryLower = ing.category.toLowerCase();
+  const aliasText = (ing.aliases || []).join(' ').toLowerCase();
 
   for (const term of terms) {
     if (nameLower === term) { score += 10; continue; }
@@ -105,6 +107,7 @@ function scoreIngredient(ing: SearchIngredient, terms: string[]): number {
     if (idLower.startsWith(term)) { score += 5; continue; }
     if (nameLower.includes(term)) { score += 3; continue; }
     if (idLower.includes(term)) { score += 3; continue; }
+    if (aliasText.includes(term)) { score += 3; continue; }
     if (categoryLower.includes(term)) { score += 2; continue; }
     const nameWords = nameLower.split(/[\s-]+/);
     if (nameWords.some((w) => w.startsWith(term))) { score += 2; continue; }

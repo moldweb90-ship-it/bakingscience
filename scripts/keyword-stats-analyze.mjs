@@ -9,13 +9,14 @@ const COMMON_CUP_VALUES = [
 ];
 
 const GENERIC_GRAM_WEIGHTS = [
-  15, 25, 28, 30, 35, 40, 50, 60, 70, 75, 80, 85, 90, 100, 110, 120, 125, 130, 140, 150,
+  15, 25, 28, 30, 35, 40, 50, 56, 60, 65, 70, 75, 80, 85, 90, 100, 110, 120, 125, 130, 140, 150,
   160, 170, 175, 180, 200, 225, 240, 250, 270, 280, 300, 340, 350, 400, 450, 500, 600,
   700, 750, 800, 1000,
 ];
 
 const GENERIC_CUP_VALUES = [
-  0.125, 0.25, 0.333, 0.5, 0.667, 0.75, 1, 1.25, 1.333, 1.5, 1.75, 2, 2.25, 2.5, 3, 4, 5,
+  0.125, 0.25, 0.333, 0.5, 0.667, 0.75, 1, 1.25, 1.333, 1.5, 1.75, 2, 2.25, 2.5,
+  2.75, 3, 3.5, 3.75, 4, 4.25, 4.5, 5, 8,
 ];
 
 const REVERSE_ENABLED_INGREDIENTS = [
@@ -33,6 +34,7 @@ const REVERSE_ENABLED_INGREDIENTS = [
   'heavy-cream',
   'honey',
   'olive-oil',
+  'peanut-butter',
   'powdered-sugar',
   'rolled-oats',
   'sour-cream',
@@ -46,6 +48,7 @@ const INGREDIENT_ALIASES = {
   'granulated-sugar': ['granulated sugar', 'white sugar', 'sugar'],
   'brown-sugar': ['brown sugar', 'light brown sugar'],
   'powdered-sugar': ['powdered sugar', 'icing sugar', 'confectioners sugar', 'confectioner sugar'],
+  'peanut-butter': ['peanut butter', 'natural peanut butter', 'creamy peanut butter'],
   butter: ['butter', 'unsalted butter', 'salted butter', 'melted butter'],
   'whole-milk': ['whole milk', 'milk'],
   'heavy-cream': ['heavy cream'],

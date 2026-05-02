@@ -18,6 +18,7 @@ const searchIngredients = Object.values(ingredients).map((i) => ({
   name: i.name,
   category: i.category,
   common_weights_g: i.common_weights_g,
+  aliases: i.aliases,
 }));
 
 const gridIngredients = Object.values(ingredients).map((i) => ({
@@ -72,6 +73,26 @@ const blogPostPlaceholders = [
   },
 ];
 
+const highIntentConversions = [
+  { label: '200 grams to cups', href: '/grams-to-cups/200-grams-to-cups/', note: 'compare flour, sugar, butter and more' },
+  { label: '1 cup to grams', href: '/cups-to-grams/1-cup-to-grams/', note: 'ingredient-by-ingredient chart' },
+  { label: '1/2 cup to grams', href: '/cups-to-grams/1-2-cup-to-grams/', note: 'common baking fraction' },
+  { label: '1/4 cup to grams', href: '/cups-to-grams/1-4-cup-to-grams/', note: 'small batch conversions' },
+  { label: '50 grams to cups', href: '/grams-to-cups/50-grams-to-cups/', note: 'quick dry ingredient lookup' },
+  { label: '500 grams to cups', href: '/grams-to-cups/500-grams-to-cups/', note: 'large batch conversions' },
+];
+
+const priorityIngredientConversions = [
+  { label: '1 cup granulated sugar in grams', href: '/granulated-sugar/cups-to-grams/1-cup-to-grams/' },
+  { label: '1 cup flour in grams', href: '/all-purpose-flour/cups-to-grams/1-cup-to-grams/' },
+  { label: '1 cup butter in grams', href: '/butter/cups-to-grams/1-cup-to-grams/' },
+  { label: '1/2 cup sugar in grams', href: '/granulated-sugar/cups-to-grams/1-2-cup-to-grams/' },
+  { label: '1/2 cup butter in grams', href: '/butter/cups-to-grams/1-2-cup-to-grams/' },
+  { label: '1 cup powdered sugar in grams', href: '/powdered-sugar/cups-to-grams/1-cup-to-grams/' },
+  { label: '1/2 cup brown sugar in grams', href: '/brown-sugar/cups-to-grams/1-2-cup-to-grams/' },
+  { label: '1 cup peanut butter in grams', href: '/peanut-butter/cups-to-grams/1-cup-to-grams/' },
+];
+
 const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
@@ -118,6 +139,46 @@ export default function HomeLanding({ heroTitle, heroSubtitle, initialMode }: Ho
 
       <section className="max-w-xl mx-auto mb-16">
         <SearchBar ingredients={searchIngredients} initialMode={initialMode} />
+      </section>
+
+      <section className="mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div>
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-5">
+              Most Searched Baking Conversions
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {highIntentConversions.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="card p-4 hover:border-accent transition-colors"
+                >
+                  <span className="block font-semibold text-accent-hover">{item.label}</span>
+                  <span className="block text-sm text-slate-500 mt-1">{item.note}</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-5">
+              Popular Ingredient Lookups
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {priorityIngredientConversions.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="card p-4 hover:border-accent transition-colors"
+                >
+                  <span className="block font-semibold text-accent-hover">{item.label}</span>
+                  <span className="block text-sm text-slate-500 mt-1">direct answer with method comparison</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
       </section>
 
       <section className="mb-16">
