@@ -84,6 +84,7 @@ export async function generateMetadata({ params }: LeafPageProps): Promise<Metad
 
   const weight = parseConversionSlug(conversion);
   if (weight === null) return { title: 'Not Found' };
+  if (!ing.common_weights_g.includes(weight)) return { title: 'Not Found' };
 
   const spoonLevel = convert(weight, ingredientId, 'spoon_level');
   const sifted = convert(weight, ingredientId, 'sifted');
@@ -158,6 +159,7 @@ export default async function LeafPage({ params }: LeafPageProps) {
 
   const weight = parseConversionSlug(conversion);
   if (weight === null) notFound();
+  if (!ing.common_weights_g.includes(weight)) notFound();
   const pageKey = `${ingredientId}:${weight}`;
   const isPriorityPage = PRIORITY_LEAF_PAGES.has(pageKey);
 
