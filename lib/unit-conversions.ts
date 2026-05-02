@@ -1,7 +1,7 @@
 import { US_CUP_ML, US_FL_OZ_ML, US_TABLESPOON_ML, US_TEASPOON_ML } from "./constants";
 
 export const CUP_UNIT_VALUES = [
-  0.125, 0.25, 0.333, 0.5, 0.667, 0.75, 1, 1.25, 1.333, 1.5, 1.75, 2, 2.5, 3, 4, 5, 6, 8,
+  1 / 8, 1 / 4, 1 / 3, 1 / 2, 2 / 3, 3 / 4, 1, 1.25, 4 / 3, 1.5, 1.75, 2, 2.5, 3, 4, 5, 6, 8,
 ];
 
 export const TEASPOON_VALUES = [1, 2, 3, 4, 6, 8, 12, 16, 24, 32, 48, 96];
@@ -59,6 +59,8 @@ export function fluidOuncesToMl(fluidOunces: number): number {
 }
 
 export function formatNumber(value: number, decimals = 2): string {
+  const nearestInteger = Math.round(value);
+  if (Math.abs(value - nearestInteger) < 0.000001) return String(nearestInteger);
   const rounded = Number(value.toFixed(decimals));
   return Number.isInteger(rounded) ? String(rounded) : String(rounded);
 }

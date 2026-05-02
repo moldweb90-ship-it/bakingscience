@@ -68,6 +68,59 @@ export default async function CupsToTablespoonsPage({ params }: PageProps) {
             <div className="rounded border border-slate-200 p-3"><span className="block text-slate-500">Teaspoons</span><strong>{formatNumber(tsp)} tsp</strong></div>
           </div>
         </section>
+
+        <section className="mb-8 grid gap-4 md:grid-cols-3">
+          <div className="card p-4">
+            <h2 className="text-base font-semibold text-slate-900 mb-2">Good for Recipe Scaling</h2>
+            <p className="text-sm text-slate-700 leading-relaxed">
+              Tablespoons are easier than cups when you cut a recipe down or need a small amount without filling a full measuring cup.
+            </p>
+          </div>
+          <div className="card p-4">
+            <h2 className="text-base font-semibold text-slate-900 mb-2">Exact US Ratio</h2>
+            <p className="text-sm text-slate-700 leading-relaxed">
+              One US cup contains exactly 16 tablespoons. That makes {label} equal to {formatNumber(tbsp)} tablespoons.
+            </p>
+          </div>
+          <div className="card p-4">
+            <h2 className="text-base font-semibold text-slate-900 mb-2">Volume, Not Weight</h2>
+            <p className="text-sm text-slate-700 leading-relaxed">
+              This result does not change by ingredient. If you need grams, use an ingredient page because flour, sugar, water, and butter weigh differently.
+            </p>
+          </div>
+        </section>
+
+        <section className="card p-5 sm:p-6 mb-8">
+          <h2 className="text-xl font-bold text-slate-900 mb-4">Tablespoon Reference</h2>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="table-header">
+                  <th className="table-cell text-left">Measure</th>
+                  <th className="table-cell text-left">Tablespoons</th>
+                  <th className="table-cell text-left">Teaspoons</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="table-row">
+                  <td className="table-cell font-medium">1/4 cup</td>
+                  <td className="table-cell">4 tbsp</td>
+                  <td className="table-cell">12 tsp</td>
+                </tr>
+                <tr className="table-row table-row-alt">
+                  <td className="table-cell font-medium">1/2 cup</td>
+                  <td className="table-cell">8 tbsp</td>
+                  <td className="table-cell">24 tsp</td>
+                </tr>
+                <tr className="table-row">
+                  <td className="table-cell font-medium">1 cup</td>
+                  <td className="table-cell">16 tbsp</td>
+                  <td className="table-cell">48 tsp</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
         <section className="mb-8">
           <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4">Nearby Cup to Tablespoon Conversions</h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
