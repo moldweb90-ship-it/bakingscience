@@ -78,6 +78,8 @@ const highIntentConversions = [
   { label: '1 cup to grams', href: '/cups-to-grams/1-cup-to-grams/', note: 'ingredient-by-ingredient chart' },
   { label: '1/2 cup to grams', href: '/cups-to-grams/1-2-cup-to-grams/', note: 'common baking fraction' },
   { label: '1/4 cup to grams', href: '/cups-to-grams/1-4-cup-to-grams/', note: 'small batch conversions' },
+  { label: '1/2 cup in teaspoons', href: '/cups-to-teaspoons/1-2-cup-to-teaspoons/', note: 'exact cup to tsp ratio' },
+  { label: '240 ml to grams', href: '/ml-to-grams/240-ml-to-grams/', note: 'water, flour and sugar chart' },
   { label: '50 grams to cups', href: '/grams-to-cups/50-grams-to-cups/', note: 'quick dry ingredient lookup' },
   { label: '500 grams to cups', href: '/grams-to-cups/500-grams-to-cups/', note: 'large batch conversions' },
 ];
@@ -91,6 +93,8 @@ const priorityIngredientConversions = [
   { label: '1 cup powdered sugar in grams', href: '/powdered-sugar/cups-to-grams/1-cup-to-grams/' },
   { label: '1/2 cup brown sugar in grams', href: '/brown-sugar/cups-to-grams/1-2-cup-to-grams/' },
   { label: '1 cup peanut butter in grams', href: '/peanut-butter/cups-to-grams/1-cup-to-grams/' },
+  { label: '1 cup water in grams', href: '/water/cups-to-grams/1-cup-to-grams/' },
+  { label: '1 cup cooked rice in grams', href: '/rice/cups-to-grams/1-cup-to-grams/' },
 ];
 
 const websiteSchema = {

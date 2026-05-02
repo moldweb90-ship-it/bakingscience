@@ -41,6 +41,8 @@ const REVERSE_ENABLED_INGREDIENTS = [
   'vegetable-oil',
   'whole-milk',
   'whole-wheat-flour',
+  'water',
+  'rice',
 ];
 
 const INGREDIENT_ALIASES = {
@@ -64,6 +66,8 @@ const INGREDIENT_ALIASES = {
   'bread-flour': ['bread flour'],
   'cake-flour': ['cake flour'],
   'whole-wheat-flour': ['whole wheat flour'],
+  water: ['water'],
+  rice: ['cooked rice', 'white rice', 'rice'],
 };
 
 const CUP_PATTERNS = [

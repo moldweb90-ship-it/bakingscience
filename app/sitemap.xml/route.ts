@@ -14,6 +14,7 @@ const baseUrl = SITE_URL;
     { loc: `${baseUrl}/sitemap-hubs.xml`, lastmod: today },
     { loc: `${baseUrl}/sitemap-generic-conversions.xml`, lastmod: today },
     { loc: `${baseUrl}/sitemap-cups-to-grams.xml`, lastmod: today },
+    { loc: `${baseUrl}/sitemap-unit-conversions.xml`, lastmod: today },
   ];
 
   for (const ing of Object.values(ingredients)) {

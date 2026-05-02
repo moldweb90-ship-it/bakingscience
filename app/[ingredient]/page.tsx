@@ -43,6 +43,14 @@ export async function generateMetadata({ params }: HubPageProps): Promise<Metada
       title: 'Peanut Butter Grams to Cups | 1 Cup, 1/2 Cup Chart',
       description: 'Convert peanut butter grams to cups for US baking. Includes 1 cup peanut butter in grams, 1/2 cup, tablespoons, common recipe weights and nutrition notes.',
     },
+    water: {
+      title: 'Water Grams to Cups | 100g Water, 1 Cup & ml Chart',
+      description: 'Convert water grams to cups, ml, tablespoons and teaspoons. Includes 100g water to cups, 1 cup water in grams and exact US cup math.',
+    },
+    rice: {
+      title: 'Cooked Rice Grams to Cups | 100g Rice, 1 Cup Chart',
+      description: 'Convert cooked white rice grams to cups. Includes 100g rice to cups, 1 cup cooked rice in grams, 1/2 cup rice and packing notes.',
+    },
   };
   const title = priorityMeta[ingredient]?.title ?? generateHubTitle(ing.name);
   const aliasesText = ing.aliases.length > 0 ? ` (${ing.aliases[0]})` : '';

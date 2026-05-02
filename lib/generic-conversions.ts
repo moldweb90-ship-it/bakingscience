@@ -25,6 +25,8 @@ export const GENERIC_INGREDIENT_IDS = [
   "heavy-cream",
   "honey",
   "olive-oil",
+  "water",
+  "rice",
 ];
 
 export function formatCupAmount(cups: number): string {

@@ -769,7 +769,11 @@
     "base_density_g_per_ml": 1.091,
     "type": "fat",
     "states": null,
-    "measurement_method_overrides": null,
+    "measurement_method_overrides": {
+      "spoon_level": 1.0,
+      "dip_sweep": 1.0,
+      "sifted": 1.0
+    },
     "nutrition_per_100g": {
       "calories": 588,
       "protein_g": 25.1,
@@ -1432,6 +1436,153 @@
     "aliases": [
       "Corn Starch",
       "Cornflour"
+    ]
+  },
+  {
+    "id": "water",
+    "name": "Water",
+    "category": "liquid",
+    "base_density_g_per_ml": 1.0,
+    "type": "liquid",
+    "states": null,
+    "measurement_method_overrides": {
+      "spoon_level": 1.0,
+      "dip_sweep": 1.0,
+      "sifted": 1.0
+    },
+    "nutrition_per_100g": {
+      "calories": 0,
+      "protein_g": 0,
+      "carbs_g": 0,
+      "fat_g": 0,
+      "fiber_g": 0,
+      "sugar_g": 0
+    },
+    "pro_tips": [
+      "For kitchen conversions, 1 ml of water is treated as 1 gram.",
+      "A US cup is 236.588 ml, so 1 cup of water is about 237 grams.",
+      "Use water pages for liquid recipe conversions, hydration math, and checking cup-to-gram values."
+    ],
+    "common_weights_g": [
+      25,
+      50,
+      75,
+      100,
+      120,
+      125,
+      150,
+      180,
+      200,
+      225,
+      237,
+      240,
+      250,
+      300,
+      350,
+      400,
+      500,
+      750,
+      1000
+    ],
+    "related_ingredients": [
+      "whole-milk",
+      "heavy-cream",
+      "honey",
+      "vegetable-oil",
+      "olive-oil"
+    ],
+    "faq": [
+      {
+        "question": "How many grams is 1 cup of water?",
+        "answer": "1 US cup of water is 236.588 grams, usually rounded to 237g for kitchen use."
+      },
+      {
+        "question": "Is 100g of water the same as 100ml?",
+        "answer": "Yes. At kitchen precision, water has a density of 1 g/ml, so 100g water is 100ml."
+      },
+      {
+        "question": "Should I use 236.588g or 240g for 1 cup water?",
+        "answer": "Use 236.588g for a US measuring cup. Nutrition labels often round a cup to 240ml, which is close enough for many recipes but not the exact US cup."
+      }
+    ],
+    "description": "Water is the reference liquid for kitchen conversions: 1 ml equals 1 gram at normal cooking precision. This makes water useful for converting cups, grams, milliliters, and fluid ounces in hydration and baking recipes.",
+    "photo_available": false,
+    "density_source": "NIST US customary cup volume and water density at kitchen precision",
+    "aliases": [
+      "H2O"
+    ]
+  },
+  {
+    "id": "rice",
+    "name": "Cooked White Rice",
+    "category": "grain",
+    "base_density_g_per_ml": 0.668,
+    "type": "dry",
+    "states": null,
+    "measurement_method_overrides": {
+      "spoon_level": 1.0,
+      "dip_sweep": 1.08,
+      "sifted": 1.0
+    },
+    "nutrition_per_100g": {
+      "calories": 130,
+      "protein_g": 2.7,
+      "carbs_g": 28.2,
+      "fat_g": 0.3,
+      "fiber_g": 0.4,
+      "sugar_g": 0.1
+    },
+    "pro_tips": [
+      "Cooked rice varies more than flour or sugar because moisture and packing change the cup weight.",
+      "For nutrition tracking, weigh cooked rice in grams instead of packing it into a measuring cup.",
+      "This converter uses about 158g per US cup for fluffed cooked white rice."
+    ],
+    "common_weights_g": [
+      50,
+      75,
+      100,
+      125,
+      150,
+      158,
+      175,
+      180,
+      200,
+      225,
+      250,
+      300,
+      350,
+      400,
+      500,
+      750,
+      1000
+    ],
+    "related_ingredients": [
+      "water",
+      "all-purpose-flour",
+      "rolled-oats",
+      "cornstarch"
+    ],
+    "faq": [
+      {
+        "question": "How many grams is 1 cup cooked white rice?",
+        "answer": "1 US cup of fluffed cooked white rice is about 158g. Packed rice can weigh more, so use a scale for nutrition tracking."
+      },
+      {
+        "question": "How many cups is 100g cooked rice?",
+        "answer": "100g cooked white rice is about 0.63 US cups using 158g per cup."
+      },
+      {
+        "question": "Is cooked rice the same as uncooked rice for cups to grams?",
+        "answer": "No. Cooked rice absorbs water and becomes much heavier by volume. These pages are for cooked white rice unless a page says otherwise."
+      }
+    ],
+    "description": "Cooked white rice is a high-moisture grain where cup weight depends on how fluffy or packed the rice is. BakingConverter uses about 158g per US cup for fluffed cooked white rice and shows grams, cups, tablespoons, and teaspoons for practical kitchen measurement.",
+    "photo_available": false,
+    "density_source": "USDA FoodData Central serving data and US cup volume",
+    "aliases": [
+      "Rice",
+      "White Rice",
+      "Cooked Rice"
     ]
   }
 ]

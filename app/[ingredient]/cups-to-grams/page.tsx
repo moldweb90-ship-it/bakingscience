@@ -48,6 +48,14 @@ export async function generateMetadata({ params }: ReverseHubPageProps): Promise
       title: 'Peanut Butter Cups to Grams | 1 Cup, 1/2 Cup Chart',
       description: 'Convert cups of peanut butter to grams. Includes 1 cup peanut butter in grams, 1/2 cup, 1/4 cup and common US baking measurements.',
     },
+    water: {
+      title: 'Water Cups to Grams | 1 Cup Water in Grams Chart',
+      description: 'Convert cups of water to grams with exact US cup math. Includes 1 cup water in grams, 1/2 cup, 1/4 cup, 100g water to cups and ml notes.',
+    },
+    rice: {
+      title: 'Cooked Rice Cups to Grams | 1 Cup Rice in Grams',
+      description: 'Convert cooked white rice cups to grams. Includes 1 cup cooked rice in grams, 1/2 cup rice, 100g rice to cups and packing notes.',
+    },
   };
   const title = priorityMeta[ingredientId]?.title ?? `${ing.name} - Cups to Grams Calculator (3 Methods Compared)`;
   const aliasSnippet = ing.aliases.length > 0 ? ` Also known as ${ing.aliases.join(", ")}.` : "";

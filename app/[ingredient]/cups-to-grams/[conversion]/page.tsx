@@ -36,6 +36,7 @@ function buildReverseFaq(ingredientId: string, cups: number) {
   const spoon = cupsToGrams(cups, ingredientId, "spoon_level");
   const dip = cupsToGrams(cups, ingredientId, "dip_sweep");
   const sifted = cupsToGrams(cups, ingredientId, "sifted");
+  const methodSensitive = Math.round(spoon) !== Math.round(dip) || Math.round(spoon) !== Math.round(sifted);
   const baseFaq = [
     {
       question: `How many grams is ${formatCupLabel(cups)} ${cupWord(cups)} of ${ing.name.toLowerCase()}?`,
@@ -43,7 +44,9 @@ function buildReverseFaq(ingredientId: string, cups: number) {
     },
     {
       question: `Does measurement method matter for ${ing.name.toLowerCase()} cups to grams?`,
-      answer: `Yes. The same cup volume can vary by method. For this amount: Spoon & Level ${formatGrams(spoon)}g, Dip & Sweep ${formatGrams(dip)}g, Sifted ${formatGrams(sifted)}g.`,
+      answer: methodSensitive
+        ? `Yes. The same cup volume can vary by method. For this amount: Spoon & Level ${formatGrams(spoon)}g, Dip & Sweep ${formatGrams(dip)}g, Sifted ${formatGrams(sifted)}g.`
+        : `No. For ${ing.name.toLowerCase()}, cup-to-grams conversion is based on volume and density, so this amount stays about ${formatGrams(spoon)}g across measuring methods.`,
     },
     ...(cups === 1
       ? [
@@ -137,6 +140,7 @@ export default async function CupsToGramsLeafPage({ params }: ReverseLeafPagePro
   const cupLabel = formatCupLabel(cups);
   const dip = cupsToGrams(cups, ingredientId, "dip_sweep");
   const sifted = cupsToGrams(cups, ingredientId, "sifted");
+  const methodSensitive = Math.round(grams) !== Math.round(dip) || Math.round(grams) !== Math.round(sifted);
   const allFaqs = buildReverseFaq(ingredientId, cups);
 
   const matches = findMatchingRecipes(ingredientId, displayGrams);
@@ -187,16 +191,27 @@ export default async function CupsToGramsLeafPage({ params }: ReverseLeafPagePro
 
           <section className="mt-8">
             <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4">
-              How to Measure {cupLabel} {cupWord(cups)} of {ing.name} - 3 Methods Compared
+              {methodSensitive
+                ? `How to Measure ${cupLabel} ${cupWord(cups)} of ${ing.name} - 3 Methods Compared`
+                : `How to Measure ${cupLabel} ${cupWord(cups)} of ${ing.name}`}
             </h2>
-            <VisualMeasurementGuide
-              ingredientId={ingredientId}
-              ingredientName={ing.name}
-              ingredientDensity={ing.base_density_g_per_ml}
-              weightG={displayGrams}
-              photoAvailable={ing.photo_available}
-              showTitle={false}
-            />
+            {methodSensitive ? (
+              <VisualMeasurementGuide
+                ingredientId={ingredientId}
+                ingredientName={ing.name}
+                ingredientDensity={ing.base_density_g_per_ml}
+                weightG={displayGrams}
+                photoAvailable={ing.photo_available}
+                showTitle={false}
+              />
+            ) : (
+              <div className="card p-6 text-slate-700 leading-relaxed">
+                <p>
+                  {ing.name} is measured by volume and density here, so packing, scooping, or sifting does not change
+                  the cup-to-grams result the way it can for flour or powdered sugar.
+                </p>
+              </div>
+            )}
           </section>
 
           <section className="mt-8">

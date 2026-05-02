@@ -25,6 +25,8 @@ export const REVERSE_ENABLED_INGREDIENTS = [
   "vegetable-oil",
   "whole-milk",
   "whole-wheat-flour",
+  "water",
+  "rice",
 ];
 
 export function formatCupLabel(cups: number): string {

@@ -16,6 +16,7 @@ const CORE_SITEMAP_PATHS = [
   '/sitemap-hubs.xml',
   '/sitemap-generic-conversions.xml',
   '/sitemap-cups-to-grams.xml',
+  '/sitemap-unit-conversions.xml',
   '/sitemap-peanut-butter.xml',
 ];
 const PRIORITY_INSPECTION_PATHS = [
@@ -27,6 +28,10 @@ const PRIORITY_INSPECTION_PATHS = [
   '/all-purpose-flour/cups-to-grams/1-cup-to-grams/',
   '/butter/cups-to-grams/1-cup-to-grams/',
   '/peanut-butter/cups-to-grams/1-cup-to-grams/',
+  '/cups-to-teaspoons/1-2-cup-to-teaspoons/',
+  '/ml-to-grams/240-ml-to-grams/',
+  '/water/cups-to-grams/1-cup-to-grams/',
+  '/rice/cups-to-grams/1-cup-to-grams/',
 ];
 
 function loadDotEnv() {
