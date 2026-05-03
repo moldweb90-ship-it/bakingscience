@@ -28,36 +28,48 @@ export default function ToolCalculator({ kind }: ToolCalculatorProps) {
   const [originalServings, setOriginalServings] = useState('8');
   const [newServings, setNewServings] = useState('12');
   const [cakeSize, setCakeSize] = useState('8');
+  const [acid, setAcid] = useState('lemon juice');
+  const [eggStyle, setEggStyle] = useState('fudgy');
+  const [oilType, setOilType] = useState('neutral oil');
+  const [panShape, setPanShape] = useState('round');
+  const [servingStyle, setServingStyle] = useState('party');
 
   const result = useMemo(() => {
     if (kind === 'buttermilk') {
       const cups = numberValue(amount, 1);
       return {
-        primary: `${format(cups * 3, 2)} tsp acid`,
-        secondary: `Add milk to the ${format(cups, 2)} cup line and rest 5-10 minutes.`,
+        primary: `${format(cups * 3, 2)} tsp ${acid}`,
+        secondary: `Add ${acid} first, pour milk to the ${format(cups, 2)} cup line, and rest 5-10 minutes.`,
       };
     }
     if (kind === 'egg-brownies') {
       const count = numberValue(eggs, 1);
+      const choice =
+        eggStyle === 'vegan'
+          ? `${format(count, 0)} flax egg${count === 1 ? '' : 's'}`
+          : eggStyle === 'cakey'
+            ? `${format(count * 0.25, 2)} cup yogurt`
+            : `${format(count * 0.25, 2)} cup unsweetened applesauce`;
       return {
-        primary: `${format(count * 0.25, 2)} cup applesauce or yogurt`,
-        secondary: `For flax: ${format(count, 0)} tbsp ground flax + ${format(count * 3, 0)} tbsp water.`,
+        primary: choice,
+        secondary: eggStyle === 'vegan' ? `Mix ${format(count, 0)} tbsp ground flax + ${format(count * 3, 0)} tbsp water and rest 5 minutes.` : 'Cool the brownies fully before judging the set.',
       };
     }
     if (kind === 'butter-oil') {
       const cups = numberValue(butter, 1);
       return {
-        primary: `${format(cups * 0.75, 2)} cup oil`,
-        secondary: `Reverse estimate: ${format(cups / 0.75, 2)} cups melted butter for ${format(cups, 2)} cup oil.`,
+        primary: `${format(cups * 0.75, 2)} cup ${oilType}`,
+        secondary: `Best for pourable batters. Reverse estimate: ${format(cups / 0.75, 2)} cups melted butter for ${format(cups, 2)} cup oil.`,
       };
     }
     if (kind === 'pan-size') {
       const oldDiameter = numberValue(oldSize, 8);
       const newDiameter = numberValue(newSize, 9);
-      const multiplier = (newDiameter * newDiameter) / (oldDiameter * oldDiameter);
+      const areaFactor = panShape === 'round' ? 1 : 1.27;
+      const multiplier = ((newDiameter * newDiameter) / (oldDiameter * oldDiameter)) * areaFactor;
       return {
         primary: `${format(multiplier, 2)}x batter`,
-        secondary: multiplier > 1 ? 'Larger pan: cake will be thinner unless you scale up.' : 'Smaller pan: batter will be deeper; check doneness carefully.',
+        secondary: `${panShape === 'round' ? 'Round pan estimate' : 'Square/rectangle estimate'}: ${multiplier > 1 ? 'scale up or expect thinner batter.' : 'scale down or expect deeper batter.'}`,
       };
     }
     if (kind === 'sourdough') {
@@ -73,8 +85,8 @@ export default function ToolCalculator({ kind }: ToolCalculatorProps) {
       const party = Math.round(size * size * 0.18);
       const wedding = Math.round(size * size * 0.31);
       return {
-        primary: `${party}-${party + 3} party servings`,
-        secondary: `About ${wedding}-${wedding + 3} wedding-style servings for a tall round cake.`,
+        primary: servingStyle === 'wedding' ? `${wedding}-${wedding + 3} wedding servings` : `${party}-${party + 3} party servings`,
+        secondary: servingStyle === 'wedding' ? 'Narrow event slices assume a taller cake and clean cutting guide.' : 'Casual party slices are wider, so the same cake serves fewer people.',
       };
     }
     const original = numberValue(originalServings, 8);
@@ -84,7 +96,7 @@ export default function ToolCalculator({ kind }: ToolCalculatorProps) {
       primary: `${format(multiplier, 2)}x multiplier`,
       secondary: `Multiply every ingredient by ${format(multiplier, 2)}. Watch eggs, salt, spices, and pan size.`,
     };
-  }, [amount, butter, cakeSize, eggs, flour, kind, newServings, newSize, oldSize, originalServings, water]);
+  }, [acid, amount, butter, cakeSize, eggStyle, eggs, flour, kind, newServings, newSize, oilType, oldSize, originalServings, panShape, servingStyle, water]);
 
   return (
     <div className="rounded-lg border border-slate-200 bg-white shadow-sm overflow-hidden">
@@ -105,22 +117,53 @@ export default function ToolCalculator({ kind }: ToolCalculatorProps) {
 
       <div className="p-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
         {kind === 'buttermilk' && (
-          <label className="block">
-            <span className="text-sm font-medium text-slate-700">Cups of buttermilk needed</span>
-            <input className="mt-2 w-full rounded border border-slate-300 px-3 py-2 text-base" inputMode="decimal" value={amount} onChange={(event) => setAmount(event.target.value)} />
-          </label>
+          <>
+            <label className="block">
+              <span className="text-sm font-medium text-slate-700">Cups of buttermilk needed</span>
+              <input className="mt-2 w-full rounded border border-slate-300 px-3 py-2 text-base" inputMode="decimal" value={amount} onChange={(event) => setAmount(event.target.value)} />
+            </label>
+            <label className="block">
+              <span className="text-sm font-medium text-slate-700">Acid</span>
+              <select className="mt-2 w-full rounded border border-slate-300 px-3 py-2 text-base" value={acid} onChange={(event) => setAcid(event.target.value)}>
+                <option>lemon juice</option>
+                <option>white vinegar</option>
+                <option>apple cider vinegar</option>
+              </select>
+            </label>
+          </>
         )}
         {kind === 'egg-brownies' && (
-          <label className="block">
-            <span className="text-sm font-medium text-slate-700">Eggs to replace</span>
-            <input className="mt-2 w-full rounded border border-slate-300 px-3 py-2 text-base" inputMode="decimal" value={eggs} onChange={(event) => setEggs(event.target.value)} />
-          </label>
+          <>
+            <label className="block">
+              <span className="text-sm font-medium text-slate-700">Eggs to replace</span>
+              <input className="mt-2 w-full rounded border border-slate-300 px-3 py-2 text-base" inputMode="decimal" value={eggs} onChange={(event) => setEggs(event.target.value)} />
+            </label>
+            <label className="block">
+              <span className="text-sm font-medium text-slate-700">Target texture</span>
+              <select className="mt-2 w-full rounded border border-slate-300 px-3 py-2 text-base" value={eggStyle} onChange={(event) => setEggStyle(event.target.value)}>
+                <option value="fudgy">Fudgy</option>
+                <option value="cakey">Slightly cakey</option>
+                <option value="vegan">Vegan binder</option>
+              </select>
+            </label>
+          </>
         )}
         {kind === 'butter-oil' && (
-          <label className="block">
-            <span className="text-sm font-medium text-slate-700">Cups of butter or oil</span>
-            <input className="mt-2 w-full rounded border border-slate-300 px-3 py-2 text-base" inputMode="decimal" value={butter} onChange={(event) => setButter(event.target.value)} />
-          </label>
+          <>
+            <label className="block">
+              <span className="text-sm font-medium text-slate-700">Cups of butter</span>
+              <input className="mt-2 w-full rounded border border-slate-300 px-3 py-2 text-base" inputMode="decimal" value={butter} onChange={(event) => setButter(event.target.value)} />
+            </label>
+            <label className="block">
+              <span className="text-sm font-medium text-slate-700">Oil style</span>
+              <select className="mt-2 w-full rounded border border-slate-300 px-3 py-2 text-base" value={oilType} onChange={(event) => setOilType(event.target.value)}>
+                <option>neutral oil</option>
+                <option>vegetable oil</option>
+                <option>canola oil</option>
+                <option>olive oil</option>
+              </select>
+            </label>
+          </>
         )}
         {kind === 'pan-size' && (
           <>
@@ -131,6 +174,13 @@ export default function ToolCalculator({ kind }: ToolCalculatorProps) {
             <label className="block">
               <span className="text-sm font-medium text-slate-700">New round pan, inches</span>
               <input className="mt-2 w-full rounded border border-slate-300 px-3 py-2 text-base" inputMode="decimal" value={newSize} onChange={(event) => setNewSize(event.target.value)} />
+            </label>
+            <label className="block sm:col-span-2">
+              <span className="text-sm font-medium text-slate-700">New pan shape</span>
+              <select className="mt-2 w-full rounded border border-slate-300 px-3 py-2 text-base" value={panShape} onChange={(event) => setPanShape(event.target.value)}>
+                <option value="round">Round pan</option>
+                <option value="square">Square or rectangle estimate</option>
+              </select>
             </label>
           </>
         )}
@@ -159,10 +209,19 @@ export default function ToolCalculator({ kind }: ToolCalculatorProps) {
           </>
         )}
         {kind === 'cake-serving' && (
-          <label className="block">
-            <span className="text-sm font-medium text-slate-700">Round cake size, inches</span>
-            <input className="mt-2 w-full rounded border border-slate-300 px-3 py-2 text-base" inputMode="decimal" value={cakeSize} onChange={(event) => setCakeSize(event.target.value)} />
-          </label>
+          <>
+            <label className="block">
+              <span className="text-sm font-medium text-slate-700">Round cake size, inches</span>
+              <input className="mt-2 w-full rounded border border-slate-300 px-3 py-2 text-base" inputMode="decimal" value={cakeSize} onChange={(event) => setCakeSize(event.target.value)} />
+            </label>
+            <label className="block">
+              <span className="text-sm font-medium text-slate-700">Serving style</span>
+              <select className="mt-2 w-full rounded border border-slate-300 px-3 py-2 text-base" value={servingStyle} onChange={(event) => setServingStyle(event.target.value)}>
+                <option value="party">Party slices</option>
+                <option value="wedding">Wedding slices</option>
+              </select>
+            </label>
+          </>
         )}
       </div>
     </div>

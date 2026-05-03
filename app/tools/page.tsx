@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Breadcrumbs from "@/components/layout/Breadcrumbs";
+import { SITE_NAME, SITE_URL } from "@/lib/constants";
 import { toolCategories, toolPages } from "@/lib/tool-pages";
 
 export const metadata: Metadata = {
@@ -8,6 +9,73 @@ export const metadata: Metadata = {
   description:
     "Use practical baking calculators for pan sizes, recipe scaling, buttermilk substitutes, egg-free brownies, butter-to-oil conversions, sourdough hydration, and cake servings.",
 };
+
+const clusterSections = [
+  {
+    title: "Emergency baking substitutes",
+    text: "Fast swaps for the moment when the recipe is open, the oven is warming, and one ingredient is missing.",
+    links: [
+      ["Buttermilk substitute", "/tools/buttermilk-substitute/"],
+      ["Non-dairy buttermilk", "/tools/non-dairy-buttermilk-substitute/"],
+      ["Greek yogurt for buttermilk", "/tools/buttermilk-substitute-with-greek-yogurt/"],
+      ["Egg substitute for brownies", "/tools/egg-substitute-for-brownies/"],
+    ],
+  },
+  {
+    title: "Box mix and brownie fixes",
+    text: "Specific answers for boxed mixes, vegan pans, fudgy centers, and egg-free brownies that still slice cleanly.",
+    links: [
+      ["Brownie mix without eggs", "/tools/egg-substitutes-for-brownie-mix/"],
+      ["Betty Crocker egg substitute", "/tools/betty-crocker-brownie-mix-egg-substitute/"],
+      ["Ghirardelli egg substitute", "/tools/ghirardelli-brownie-mix-egg-substitute/"],
+      ["Flax egg brownies", "/tools/flax-egg-brownies/"],
+    ],
+  },
+  {
+    title: "Pan, batch, and serving math",
+    text: "Practical calculators for changing pan size, scaling a recipe, and estimating how much cake people will actually eat.",
+    links: [
+      ["Pan conversion calculator", "/tools/baking-pan-conversion-calculator/"],
+      ["8 inch to 6 inch cake", "/tools/convert-8-inch-cake-recipe-to-6-inch/"],
+      ["Recipe scaler", "/tools/recipe-scaler/"],
+      ["Cake serving calculator", "/tools/cake-serving-calculator/"],
+    ],
+  },
+  {
+    title: "Bread and dough control",
+    text: "Weight-based dough math for sourdough bakers who need hydration, flour-water ratios, and starter logic.",
+    links: [
+      ["Sourdough hydration", "/tools/sourdough-hydration-calculator/"],
+      ["Starter hydration", "/tools/sourdough-starter-hydration-calculator/"],
+      ["Hydration formula", "/tools/sourdough-hydration-formula/"],
+    ],
+  },
+];
+
+function buildToolsCollectionSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Baking calculators and substitute tools",
+    description: metadata.description,
+    url: `${SITE_URL}/tools/`,
+    publisher: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+    hasPart: Object.entries(toolCategories).map(([kind, category]) => ({
+      "@type": "ItemList",
+      name: category.label,
+      description: category.description,
+      itemListElement: toolPages
+        .filter((page) => page.kind === kind)
+        .slice(0, 12)
+        .map((page, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: page.h1,
+          url: `${SITE_URL}/tools/${page.slug}/`,
+        })),
+    })),
+  };
+}
 
 export default function ToolsPage() {
   const grouped = toolPages.reduce<Record<string, typeof toolPages>>((acc, page) => {
@@ -69,6 +137,7 @@ export default function ToolsPage() {
 
   return (
     <div className="py-8 sm:py-12">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(buildToolsCollectionSchema()) }} />
       <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Tools" }]} />
 
       <header className="mb-10 max-w-3xl">
@@ -102,6 +171,49 @@ export default function ToolsPage() {
             </Link>
           ))}
         </div>
+      </section>
+
+      <section className="mb-12 rounded-card border border-slate-200 bg-white p-6 shadow-card">
+        <div className="max-w-3xl mb-6">
+          <p className="text-sm font-semibold uppercase tracking-wide text-accent mb-2">Start by intent</p>
+          <h2 className="text-2xl font-bold text-slate-900">Find the tool by what went wrong in the kitchen</h2>
+          <p className="text-slate-600 leading-relaxed mt-2">
+            These clusters are arranged by real baking situations, not alphabetically. Use the broad guide when
+            you need context, or jump straight into a specific long-tail fix when the problem is narrow.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          {clusterSections.map((cluster) => (
+            <div key={cluster.title} className="rounded-lg border border-slate-200 bg-slate-50/70 p-5">
+              <h3 className="text-lg font-bold text-slate-900">{cluster.title}</h3>
+              <p className="text-sm text-slate-600 leading-relaxed mt-2">{cluster.text}</p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {cluster.links.map(([label, href]) => (
+                  <Link
+                    key={href}
+                    href={href}
+                    className="rounded-full bg-white border border-slate-200 px-3 py-2 text-sm font-medium text-slate-700 hover:border-accent hover:text-accent"
+                  >
+                    {label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="mb-12 grid grid-cols-1 md:grid-cols-3 gap-4">
+        {[
+          ["Ratios first", "Every tool starts with a measured kitchen rule before adding texture and recipe notes."],
+          ["Useful limits", "Each guide says where the shortcut works and where it can break a bake."],
+          ["Internal paths", "Broad pages point into narrow long-tail pages so Google and readers can follow the topic cluster."],
+        ].map(([title, text]) => (
+          <div key={title} className="rounded-lg border border-amber-200 bg-amber-50 p-5">
+            <h2 className="text-lg font-bold text-slate-900">{title}</h2>
+            <p className="text-sm text-slate-700 leading-relaxed mt-2">{text}</p>
+          </div>
+        ))}
       </section>
 
       <div className="grid gap-10">

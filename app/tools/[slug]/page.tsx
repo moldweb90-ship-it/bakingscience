@@ -295,6 +295,106 @@ function expertSteps(page: ToolPage): { title: string; text: string }[] {
   ];
 }
 
+function ratioSource(page: ToolPage): { rule: string; works: string; limit: string } {
+  if (page.kind === "buttermilk") {
+    return {
+      rule: "1 tablespoon acid per 1 cup milk, scaled by volume.",
+      works: "Cakes, pancakes, muffins, biscuits, quick breads, dressings, and marinades that need mild acidity.",
+      limit: "It copies acidity, not cultured dairy flavor. For richer batters, yogurt or kefir may taste rounder.",
+    };
+  }
+  if (page.kind === "egg-brownies") {
+    return {
+      rule: "Use 1/4 cup applesauce or yogurt, or 1 prepared flax egg, per large egg.",
+      works: "Dense brownie batters, boxed mixes, vegan brownies, and fudgy pans where moisture matters.",
+      limit: "It is less reliable in airy cakes because eggs also foam, lift, and set structure.",
+    };
+  }
+  if (page.kind === "butter-oil") {
+    return {
+      rule: "Use about 3/4 cup oil for every 1 cup butter in pourable batters.",
+      works: "Muffins, loaf cakes, snack cakes, brownies, and quick breads.",
+      limit: "Do not use this as a blind swap for pie crust, laminated dough, or cookies built around creamed butter.",
+    };
+  }
+  if (page.kind === "pan-size") {
+    return {
+      rule: "Scale batter by surface area: new pan area divided by original pan area.",
+      works: "Layer cakes, brownies, bars, and simple batters where depth stays close.",
+      limit: "Very deep pans, bundt pans, glass pans, and dark metal pans still need judgment on bake time.",
+    };
+  }
+  if (page.kind === "sourdough") {
+    return {
+      rule: "Hydration percentage = total water weight divided by total flour weight, multiplied by 100.",
+      works: "Bread dough, starter feeding, pizza dough, and formulas written in grams.",
+      limit: "Cup measurements are too loose for exact hydration, especially with whole grain flour.",
+    };
+  }
+  if (page.kind === "cake-serving") {
+    return {
+      rule: "Estimate servings from cake size, height, and slice style.",
+      works: "Birthday cakes, event cakes, wedding-style portions, and dessert table planning.",
+      limit: "Serving charts vary because real slices vary. Casual parties usually need a buffer.",
+    };
+  }
+  return {
+    rule: "Multiplier = desired yield divided by original yield.",
+    works: "Most ingredient lists when measurements are weight-based or easy to scale.",
+    limit: "Eggs, salt, spices, leavening, pan area, and bake time need separate judgment.",
+  };
+}
+
+function SourceNote({ page }: { page: ToolPage }) {
+  const note = ratioSource(page);
+  return (
+    <section className="mt-8 rounded-card border border-slate-200 bg-white p-6 shadow-card">
+      <p className="text-sm font-semibold uppercase tracking-wide text-accent mb-2">Ratio note</p>
+      <h2 className="text-2xl font-bold text-slate-900 mb-4">The kitchen rule behind this page</h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="rounded-lg bg-slate-50 p-4">
+          <p className="text-sm font-semibold text-slate-900">Rule used</p>
+          <p className="text-sm text-slate-700 leading-relaxed mt-2">{note.rule}</p>
+        </div>
+        <div className="rounded-lg bg-emerald-50 p-4">
+          <p className="text-sm font-semibold text-slate-900">Where it works</p>
+          <p className="text-sm text-slate-700 leading-relaxed mt-2">{note.works}</p>
+        </div>
+        <div className="rounded-lg bg-rose-50 p-4">
+          <p className="text-sm font-semibold text-slate-900">Where to be careful</p>
+          <p className="text-sm text-slate-700 leading-relaxed mt-2">{note.limit}</p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ClusterMap({ page }: { page: ToolPage }) {
+  const category = toolCategories[page.kind];
+  const hubLinks = toolPages
+    .filter((item) => item.kind === page.kind && item.slug !== page.slug)
+    .slice(0, 6);
+
+  return (
+    <section className="mt-10 rounded-card border border-slate-200 bg-slate-50 p-6">
+      <p className="text-sm font-semibold uppercase tracking-wide text-accent mb-2">Topic cluster</p>
+      <h2 className="text-2xl font-bold text-slate-900">More useful paths in {category.label}</h2>
+      <p className="text-slate-600 leading-relaxed mt-2">
+        This page is part of a baking calculator cluster. Use the main category when you want the broad rule,
+        then move into the narrower pages when the ingredient, pan, or recipe is specific.
+      </p>
+      <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+        {hubLinks.map((item) => (
+          <Link key={item.slug} href={`/tools/${item.slug}/`} className="rounded-lg bg-white border border-slate-200 p-4 hover:border-accent">
+            <p className="font-semibold text-slate-900">{item.h1}</p>
+            <p className="text-sm text-slate-600 mt-1 line-clamp-2">{item.description}</p>
+          </Link>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function ExpertUpgrade({ page }: { page: ToolPage }) {
   if (!isPriorityLongTailPage(page)) return null;
 
@@ -468,6 +568,7 @@ export default async function ToolDetailPage({ params }: ToolPageProps) {
           </section>
 
           <ExpertUpgrade page={page} />
+          <SourceNote page={page} />
 
           <section className="mb-8">
             <h2 className="text-2xl font-bold text-slate-900 mb-3">{page.calculatorTitle}</h2>
@@ -565,6 +666,7 @@ export default async function ToolDetailPage({ params }: ToolPageProps) {
           </section>
 
           <RelatedLinks page={page} />
+          <ClusterMap page={page} />
 
           <div className="mt-10">
             <AdBanner />
