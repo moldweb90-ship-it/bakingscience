@@ -212,10 +212,10 @@ export default async function ToolDetailPage({ params }: ToolPageProps) {
                 {category.label}
               </Link>
               <span className="text-sm text-slate-500 bg-slate-100 px-3 py-1 rounded-full">
-                {page.searchVolume.toLocaleString("en-US")} searches/mo
+                Free baking calculator
               </span>
               <span className="text-sm text-slate-500 bg-slate-100 px-3 py-1 rounded-full">
-                Low competition index {page.competitionIndex}
+                Measured kitchen ratios
               </span>
             </div>
             <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 leading-tight">{page.h1}</h1>
@@ -232,19 +232,19 @@ export default async function ToolDetailPage({ params }: ToolPageProps) {
             <p className="text-slate-600 mb-5">{page.calculatorNote}</p>
             <ToolCalculator kind={page.kind} />
             <div className="overflow-x-auto mt-5 rounded-lg border border-slate-200 bg-white shadow-sm">
-              <table>
+              <table className="w-full min-w-[640px] border-collapse text-left text-sm">
                 <thead>
-                  <tr>
-                    <th>Input</th>
-                    <th>Result</th>
-                    <th>Use</th>
+                  <tr className="bg-slate-50">
+                    <th className="px-5 py-3 font-semibold text-slate-900 border-b border-slate-200">Input</th>
+                    <th className="px-5 py-3 font-semibold text-slate-900 border-b border-slate-200">Result</th>
+                    <th className="px-5 py-3 font-semibold text-slate-900 border-b border-slate-200">Use</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody className="divide-y divide-slate-100">
                   {calculatorRows(page).map((row) => (
-                    <tr key={row.join("-")}>
+                    <tr key={row.join("-")} className="hover:bg-amber-50/50">
                       {row.map((cell) => (
-                        <td key={cell}>{cell}</td>
+                        <td key={cell} className="px-5 py-4 align-top text-slate-700 leading-relaxed">{cell}</td>
                       ))}
                     </tr>
                   ))}
@@ -257,19 +257,21 @@ export default async function ToolDetailPage({ params }: ToolPageProps) {
             <section key={table.title} className="mt-8">
               <h2 className="text-2xl font-bold text-slate-900 mb-4">{table.title}</h2>
               <div className="overflow-x-auto card p-0">
-                <table>
+                <table className="w-full min-w-[680px] border-collapse text-left text-sm">
                   <thead>
-                    <tr>
+                    <tr className="bg-slate-50">
                       {table.headers.map((header) => (
-                        <th key={header}>{header}</th>
+                        <th key={header} className="px-5 py-3 font-semibold text-slate-900 border-b border-slate-200">
+                          {header}
+                        </th>
                       ))}
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody className="divide-y divide-slate-100">
                     {table.rows.map((row) => (
-                      <tr key={row.join("-")}>
+                      <tr key={row.join("-")} className="hover:bg-amber-50/50">
                         {row.map((cell) => (
-                          <td key={cell}>{cell}</td>
+                          <td key={cell} className="px-5 py-4 align-top text-slate-700 leading-relaxed">{cell}</td>
                         ))}
                       </tr>
                     ))}

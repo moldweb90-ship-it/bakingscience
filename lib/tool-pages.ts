@@ -64,6 +64,54 @@ function acidForButtermilk(amount: string): string {
   return "1 tablespoon lemon juice or vinegar";
 }
 
+function titleCase(value: string): string {
+  return value.replace(/\b\w/g, (m) => m.toUpperCase());
+}
+
+function buttermilkDescription(keyword: string, amount: string, nonDairy: boolean, dairySwap: boolean): string {
+  if (keyword.includes("fried chicken")) {
+    return "Use a practical buttermilk swap for fried chicken marinades, with acidity, thickness, and timing notes that still tenderize well.";
+  }
+  if (keyword.includes("ranch") || keyword.includes("dressing") || keyword.includes("coleslaw")) {
+    return "Mix a tangy buttermilk-style dressing base with the right dairy, acid, and thickness for ranch, slaw, and salad dressings.";
+  }
+  if (keyword.includes("red velvet")) {
+    return "Choose a buttermilk replacement for red velvet cake that keeps the crumb tender and preserves the recipe's mild acidity.";
+  }
+  if (keyword.includes("biscuit") || keyword.includes("pancake") || keyword.includes("waffle")) {
+    return `Make ${amount} of buttermilk-style liquid for tender biscuits, pancakes, or waffles without throwing off the batter.`;
+  }
+  if (nonDairy) {
+    return "Make a dairy-free buttermilk substitute with unsweetened plant milk, measured acid, resting time, and baking notes.";
+  }
+  if (dairySwap) {
+    return "Compare yogurt, kefir, sour cream, half-and-half, and soured milk so the substitute matches the recipe's texture.";
+  }
+  return `Make ${amount} of buttermilk substitute with a measured acid-to-milk ratio, resting time, and recipe-specific cautions.`;
+}
+
+function eggDescription(keyword: string): string {
+  if (/betty|ghirardelli|pillsbury/.test(keyword)) {
+    return "Adjust boxed brownie mix without eggs while keeping the center moist, the edges set, and the chocolate flavor clean.";
+  }
+  if (keyword.includes("flax")) {
+    return "Use flax eggs in brownies with the right water ratio, gel time, and texture expectations for a denser vegan pan.";
+  }
+  if (keyword.includes("applesauce")) {
+    return "Use unsweetened applesauce as a brownie egg replacement when you want a soft, fudgy center without banana flavor.";
+  }
+  if (keyword.includes("yogurt")) {
+    return "Use yogurt instead of eggs in brownies when you want moisture, a slightly cakier bite, and a simple cup-for-egg ratio.";
+  }
+  if (keyword.includes("gluten")) {
+    return "Pick an egg replacement for gluten-free brownies that adds moisture without making the batter fragile or gummy.";
+  }
+  if (keyword.includes("2 eggs")) {
+    return "Replace two eggs in brownies with measured applesauce, yogurt, or flax eggs and adjust for a reliable boxed-mix texture.";
+  }
+  return "Choose the right brownie egg substitute by texture: fudgy applesauce, richer yogurt, or flax egg for vegan binding.";
+}
+
 const buttermilkKeywords = [
   ["buttermilk substitute", 50000, 26, "core substitute"],
   ["making buttermilk", 50000, 34, "make at home"],
@@ -577,13 +625,13 @@ function buttermilkPage([keyword, volume, comp, angle]: KeywordTuple): ToolPage 
   const acid = acidForButtermilk(amount);
   const nonDairy = /almond|non dairy|vegan|dairy/.test(keyword);
   const dairySwap = /greek|yogurt|sour cream|kefir|half and half|heavy cream/.test(keyword);
-  const h1 = keyword.replace(/\b\w/g, (m) => m.toUpperCase());
+  const h1 = titleCase(keyword);
   return {
     slug: slugify(keyword),
     kind: "buttermilk",
     keyword,
     title: `${h1}: Exact Substitute Ratios for Baking`,
-    description: `Make a reliable ${keyword} with measured ratios, dairy and non-dairy options, baking notes, and quick troubleshooting.`,
+    description: buttermilkDescription(keyword, amount, nonDairy, dairySwap),
     h1,
     shortAnswer: nonDairy
       ? `For a non-dairy buttermilk substitute, use ${amount} unsweetened almond, soy, or oat milk with ${acid}. Stir, wait 5 to 10 minutes, then use it in pancakes, muffins, quick breads, or cakes.`
@@ -638,7 +686,7 @@ function buttermilkPage([keyword, volume, comp, angle]: KeywordTuple): ToolPage 
 }
 
 function eggPage([keyword, volume, comp, angle]: KeywordTuple): ToolPage {
-  const h1 = keyword.replace(/\b\w/g, (m) => m.toUpperCase());
+  const h1 = titleCase(keyword);
   const twoEggs = keyword.includes("2 eggs");
   const brand = /betty|ghirardelli|pillsbury/.test(keyword);
   return {
@@ -646,7 +694,7 @@ function eggPage([keyword, volume, comp, angle]: KeywordTuple): ToolPage {
     kind: "egg-brownies",
     keyword,
     title: `${h1}: Best Egg Replacements That Still Set`,
-    description: `Use the right egg substitute for brownies, boxed brownie mix, fudgy centers, vegan baking, and gluten-free brownie batter.`,
+    description: eggDescription(keyword),
     h1,
     shortAnswer: twoEggs
       ? "For 2 eggs in brownies, use 1/2 cup unsweetened applesauce, 1/2 cup yogurt, or 2 flax eggs. For the fudgiest result, applesauce or yogurt usually beats banana."
@@ -700,7 +748,7 @@ function eggPage([keyword, volume, comp, angle]: KeywordTuple): ToolPage {
 }
 
 function butterOilPage([keyword, volume, comp, angle]: KeywordTuple): ToolPage {
-  const h1 = keyword.replace(/\b\w/g, (m) => m.toUpperCase());
+  const h1 = titleCase(keyword);
   const reverse = keyword.includes("oil to butter") || keyword.startsWith("conversion oil");
   return {
     slug: slugify(keyword),
@@ -760,7 +808,7 @@ function butterOilPage([keyword, volume, comp, angle]: KeywordTuple): ToolPage {
 }
 
 function panPage([keyword, volume, comp, angle]: KeywordTuple): ToolPage {
-  const h1 = keyword.replace(/\b\w/g, (m) => m.toUpperCase());
+  const h1 = titleCase(keyword);
   return {
     slug: slugify(keyword),
     kind: "pan-size",
@@ -818,7 +866,7 @@ function panPage([keyword, volume, comp, angle]: KeywordTuple): ToolPage {
 }
 
 function sourdoughPage([keyword, volume, comp, angle]: KeywordTuple): ToolPage {
-  const h1 = keyword.replace(/\b\w/g, (m) => m.toUpperCase());
+  const h1 = titleCase(keyword);
   return {
     slug: slugify(keyword),
     kind: "sourdough",
@@ -874,7 +922,7 @@ function sourdoughPage([keyword, volume, comp, angle]: KeywordTuple): ToolPage {
 }
 
 function scalePage([keyword, volume, comp, angle]: KeywordTuple): ToolPage {
-  const h1 = keyword.replace(/\b\w/g, (m) => m.toUpperCase());
+  const h1 = titleCase(keyword);
   return {
     slug: slugify(keyword),
     kind: "recipe-scaler",
@@ -931,7 +979,7 @@ function scalePage([keyword, volume, comp, angle]: KeywordTuple): ToolPage {
 }
 
 function servingPage([keyword, volume, comp, angle]: KeywordTuple): ToolPage {
-  const h1 = keyword.replace(/\b\w/g, (m) => m.toUpperCase());
+  const h1 = titleCase(keyword);
   return {
     slug: slugify(keyword),
     kind: "cake-serving",

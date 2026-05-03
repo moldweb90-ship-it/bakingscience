@@ -88,40 +88,49 @@ export default function ToolCalculator({ kind }: ToolCalculatorProps) {
 
   return (
     <div className="rounded-lg border border-slate-200 bg-white shadow-sm overflow-hidden">
-      <div className="bg-slate-900 text-white px-5 py-4">
-        <p className="text-sm uppercase tracking-wide text-amber-200">Interactive calculator</p>
-        <p className="text-xl font-semibold mt-1">{result.primary}</p>
-        <p className="text-sm text-slate-300 mt-1">{result.secondary}</p>
+      <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="bg-slate-900 text-white px-5 py-5">
+          <p className="text-sm uppercase tracking-wide text-amber-200">Interactive calculator</p>
+          <p className="text-2xl font-semibold mt-2">{result.primary}</p>
+          <p className="text-sm text-slate-300 mt-2 leading-relaxed">{result.secondary}</p>
+        </div>
+        <div className="bg-amber-50 px-5 py-5 border-t lg:border-t-0 lg:border-l border-amber-100">
+          <p className="text-sm font-semibold text-slate-900">How to use it</p>
+          <p className="text-sm text-slate-600 mt-2 leading-relaxed">
+            Change the amount below and use the result as a kitchen starting point. For cakes and bread,
+            texture still depends on flour, pan depth, and bake time.
+          </p>
+        </div>
       </div>
 
       <div className="p-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
         {kind === 'buttermilk' && (
           <label className="block">
             <span className="text-sm font-medium text-slate-700">Cups of buttermilk needed</span>
-            <input className="mt-2 w-full rounded border border-slate-300 px-3 py-2" value={amount} onChange={(event) => setAmount(event.target.value)} />
+            <input className="mt-2 w-full rounded border border-slate-300 px-3 py-2 text-base" inputMode="decimal" value={amount} onChange={(event) => setAmount(event.target.value)} />
           </label>
         )}
         {kind === 'egg-brownies' && (
           <label className="block">
             <span className="text-sm font-medium text-slate-700">Eggs to replace</span>
-            <input className="mt-2 w-full rounded border border-slate-300 px-3 py-2" value={eggs} onChange={(event) => setEggs(event.target.value)} />
+            <input className="mt-2 w-full rounded border border-slate-300 px-3 py-2 text-base" inputMode="decimal" value={eggs} onChange={(event) => setEggs(event.target.value)} />
           </label>
         )}
         {kind === 'butter-oil' && (
           <label className="block">
             <span className="text-sm font-medium text-slate-700">Cups of butter or oil</span>
-            <input className="mt-2 w-full rounded border border-slate-300 px-3 py-2" value={butter} onChange={(event) => setButter(event.target.value)} />
+            <input className="mt-2 w-full rounded border border-slate-300 px-3 py-2 text-base" inputMode="decimal" value={butter} onChange={(event) => setButter(event.target.value)} />
           </label>
         )}
         {kind === 'pan-size' && (
           <>
             <label className="block">
               <span className="text-sm font-medium text-slate-700">Original round pan, inches</span>
-              <input className="mt-2 w-full rounded border border-slate-300 px-3 py-2" value={oldSize} onChange={(event) => setOldSize(event.target.value)} />
+              <input className="mt-2 w-full rounded border border-slate-300 px-3 py-2 text-base" inputMode="decimal" value={oldSize} onChange={(event) => setOldSize(event.target.value)} />
             </label>
             <label className="block">
               <span className="text-sm font-medium text-slate-700">New round pan, inches</span>
-              <input className="mt-2 w-full rounded border border-slate-300 px-3 py-2" value={newSize} onChange={(event) => setNewSize(event.target.value)} />
+              <input className="mt-2 w-full rounded border border-slate-300 px-3 py-2 text-base" inputMode="decimal" value={newSize} onChange={(event) => setNewSize(event.target.value)} />
             </label>
           </>
         )}
@@ -129,11 +138,11 @@ export default function ToolCalculator({ kind }: ToolCalculatorProps) {
           <>
             <label className="block">
               <span className="text-sm font-medium text-slate-700">Flour, grams</span>
-              <input className="mt-2 w-full rounded border border-slate-300 px-3 py-2" value={flour} onChange={(event) => setFlour(event.target.value)} />
+              <input className="mt-2 w-full rounded border border-slate-300 px-3 py-2 text-base" inputMode="decimal" value={flour} onChange={(event) => setFlour(event.target.value)} />
             </label>
             <label className="block">
               <span className="text-sm font-medium text-slate-700">Water, grams</span>
-              <input className="mt-2 w-full rounded border border-slate-300 px-3 py-2" value={water} onChange={(event) => setWater(event.target.value)} />
+              <input className="mt-2 w-full rounded border border-slate-300 px-3 py-2 text-base" inputMode="decimal" value={water} onChange={(event) => setWater(event.target.value)} />
             </label>
           </>
         )}
@@ -141,18 +150,18 @@ export default function ToolCalculator({ kind }: ToolCalculatorProps) {
           <>
             <label className="block">
               <span className="text-sm font-medium text-slate-700">Original servings</span>
-              <input className="mt-2 w-full rounded border border-slate-300 px-3 py-2" value={originalServings} onChange={(event) => setOriginalServings(event.target.value)} />
+              <input className="mt-2 w-full rounded border border-slate-300 px-3 py-2 text-base" inputMode="decimal" value={originalServings} onChange={(event) => setOriginalServings(event.target.value)} />
             </label>
             <label className="block">
               <span className="text-sm font-medium text-slate-700">Desired servings</span>
-              <input className="mt-2 w-full rounded border border-slate-300 px-3 py-2" value={newServings} onChange={(event) => setNewServings(event.target.value)} />
+              <input className="mt-2 w-full rounded border border-slate-300 px-3 py-2 text-base" inputMode="decimal" value={newServings} onChange={(event) => setNewServings(event.target.value)} />
             </label>
           </>
         )}
         {kind === 'cake-serving' && (
           <label className="block">
             <span className="text-sm font-medium text-slate-700">Round cake size, inches</span>
-            <input className="mt-2 w-full rounded border border-slate-300 px-3 py-2" value={cakeSize} onChange={(event) => setCakeSize(event.target.value)} />
+            <input className="mt-2 w-full rounded border border-slate-300 px-3 py-2 text-base" inputMode="decimal" value={cakeSize} onChange={(event) => setCakeSize(event.target.value)} />
           </label>
         )}
       </div>

@@ -49,18 +49,16 @@ export default function ToolsPage() {
                     href={`/tools/${page.slug}/`}
                     className="card p-5 hover:border-accent transition-colors group"
                   >
-                    <div className="flex items-center justify-between gap-3 mb-3">
-                      <span className="text-xs uppercase tracking-wide text-slate-500">
-                        {page.searchVolume.toLocaleString("en-US")} searches/mo
-                      </span>
-                      <span className="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded">
-                        Comp {page.competitionIndex}
-                      </span>
-                    </div>
+                    <p className="text-xs uppercase tracking-wide text-accent font-semibold mb-3">
+                      {category.label}
+                    </p>
                     <h3 className="font-semibold text-slate-900 group-hover:text-accent transition-colors leading-snug">
                       {page.h1}
                     </h3>
                     <p className="text-sm text-slate-600 mt-2 line-clamp-3">{page.description}</p>
+                    <p className="mt-4 text-sm font-medium text-accent group-hover:text-accent-hover">
+                      Open calculator
+                    </p>
                   </Link>
                 ))}
               </div>
