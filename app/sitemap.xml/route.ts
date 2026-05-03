@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { blogPosts } from "@/data/blog-posts";
 import { SITE_URL } from "@/lib/env";
 import { ingredients } from "@/lib/converter";
+import { toolPages } from "@/lib/tool-pages";
 import { COMMON_CUP_VALUES, REVERSE_ENABLED_INGREDIENTS } from "@/lib/cups-to-grams";
 import { GENERIC_CUP_VALUES, GENERIC_GRAM_WEIGHTS } from "@/lib/generic-conversions";
 import {
@@ -41,6 +42,7 @@ export async function GET() {
     { loc: `${SITE_URL}/disclaimer/`, changefreq: "yearly", priority: 0.3 },
     { loc: `${SITE_URL}/cookies/`, changefreq: "yearly", priority: 0.3 },
     { loc: `${SITE_URL}/blog/`, changefreq: "weekly", priority: 0.6 },
+    { loc: `${SITE_URL}/tools/`, changefreq: "weekly", priority: 0.8 },
   ];
 
   for (const page of staticPages) addUrl(urls, page);
@@ -50,6 +52,14 @@ export async function GET() {
       loc: `${SITE_URL}/blog/${post.slug}/`,
       changefreq: "monthly",
       priority: 0.6,
+    });
+  }
+
+  for (const page of toolPages) {
+    addUrl(urls, {
+      loc: `${SITE_URL}/tools/${page.slug}/`,
+      changefreq: "monthly",
+      priority: page.searchVolume >= 500 ? 0.75 : 0.65,
     });
   }
 
