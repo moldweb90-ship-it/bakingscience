@@ -92,6 +92,243 @@ function buildBreadcrumbSchema(page: ToolPage) {
   };
 }
 
+const priorityLongTailSlugs = new Set([
+  "almond-milk-buttermilk-substitute",
+  "buttermilk-using-almond-milk",
+  "make-buttermilk-from-almond-milk",
+  "oat-milk-buttermilk-substitute",
+  "buttermilk-substitute-oat-milk",
+  "buttermilk-substitute-with-oat-milk",
+  "non-dairy-buttermilk-substitute",
+  "non-dairy-buttermilk-substitute-baking",
+  "dairy-free-buttermilk-substitute-for-baking",
+  "buttermilk-substitute-for-ranch-dressing",
+  "substitute-for-buttermilk-ranch-dressing",
+  "buttermilk-substitute-for-fried-chicken",
+  "fried-chicken-buttermilk-substitute",
+  "substitute-for-buttermilk-fried-chicken",
+  "buttermilk-substitute-for-red-velvet-cake",
+  "substitute-for-buttermilk-in-red-velvet-cake",
+  "1-4-cup-buttermilk-substitute",
+  "1-2-cup-buttermilk-substitute",
+  "3-4-cup-buttermilk-substitute",
+  "buttermilk-substitute-with-greek-yogurt",
+  "buttermilk-substitute-greek-yogurt",
+  "kefir-buttermilk-substitute",
+  "egg-substitutes-for-brownie-mix",
+  "substitute-for-2-eggs-in-brownies",
+  "betty-crocker-brownie-mix-egg-substitute",
+  "ghirardelli-brownie-mix-egg-substitute",
+  "pillsbury-brownie-mix-without-eggs",
+  "brownie-mix-vegan-substitute-for-eggs",
+  "brownies-with-applesauce-instead-of-egg",
+  "brownies-with-yogurt-instead-of-eggs",
+  "flax-egg-brownies",
+  "egg-substitute-for-gluten-free-brownies",
+  "butter-to-oil-conversion-baking",
+  "oil-to-butter-conversion-calculator",
+  "olive-oil-to-butter-conversion",
+  "butter-to-oil-conversion-grams",
+  "butter-to-vegetable-oil-conversion-grams",
+  "baking-pan-conversion-calculator",
+  "cake-pan-conversion-chart",
+  "baking-pan-time-conversion-chart",
+  "convert-8-inch-cake-recipe-to-6-inch",
+  "convert-8-inch-cake-recipe-to-9-inch",
+  "round-pan-to-square-pan-conversion",
+  "square-pan-to-round-pan-conversion",
+  "loaf-pan-conversion",
+  "sourdough-starter-hydration-calculator",
+  "sourdough-hydration-formula",
+  "recipe-scaler-online",
+  "double-recipe-calculator",
+  "halve-recipe-calculator",
+  "wedding-cake-servings-calculator",
+]);
+
+function isPriorityLongTailPage(page: ToolPage): boolean {
+  return priorityLongTailSlugs.has(page.slug);
+}
+
+function buildHowToSchema(page: ToolPage) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: `How to use ${page.h1}`,
+    description: page.shortAnswer,
+    step: expertSteps(page).map((step, index) => ({
+      "@type": "HowToStep",
+      position: index + 1,
+      name: step.title,
+      text: step.text,
+    })),
+  };
+}
+
+function expertNote(page: ToolPage): string {
+  const keyword = page.keyword.toLowerCase();
+  if (page.kind === "buttermilk") {
+    if (keyword.includes("fried chicken")) {
+      return "For fried chicken, the substitute has to do more than taste tangy. It should loosen the coating, carry salt and spices, and give the chicken enough acidity to tenderize during the rest.";
+    }
+    if (keyword.includes("ranch") || keyword.includes("dressing") || keyword.includes("coleslaw")) {
+      return "For dressings, thickness matters as much as acidity. I would start slightly thicker, then loosen with milk one teaspoon at a time so the dressing does not turn watery.";
+    }
+    if (keyword.includes("red velvet")) {
+      return "Red velvet depends on a mild acidic dairy note. A thin milk-and-vinegar substitute works, but yogurt or kefir usually gives a rounder crumb if the batter can handle the thickness.";
+    }
+    if (keyword.includes("almond") || keyword.includes("oat") || keyword.includes("dairy") || keyword.includes("vegan")) {
+      return "Plant milk buttermilk works best when the milk is unsweetened and unflavored. Vanilla or sweetened versions can quietly change both the flavor and browning.";
+    }
+    return "The useful trick is not just adding acid. Add the acid first, pour milk up to the measuring line, then rest it long enough to thicken slightly before it goes into batter.";
+  }
+  if (page.kind === "egg-brownies") {
+    if (/betty|ghirardelli|pillsbury|box/.test(keyword)) {
+      return "Boxed brownie mixes are forgiving, but they still need moisture and a little binding. Applesauce gives the easiest fudgy result; flax is better when the goal is vegan, not necessarily lighter.";
+    }
+    if (keyword.includes("flax")) {
+      return "A flax egg needs a few quiet minutes before it behaves like a binder. If it goes straight into the bowl dry, the brownie can bake up gritty instead of cohesive.";
+    }
+    if (keyword.includes("yogurt")) {
+      return "Yogurt adds moisture and protein, so the brownie can set a little more firmly than with applesauce. That is useful for slices, less ideal if you want a very gooey center.";
+    }
+    return "Brownies are friendlier to egg swaps than cakes because they are dense by design. The key is choosing the texture you want before choosing the substitute.";
+  }
+  if (page.kind === "butter-oil") {
+    return "Oil keeps cakes and quick breads moist, but it cannot cream with sugar or create flaky layers. Use the conversion for batters, not for pie crust, laminated dough, or butter-forward cookies.";
+  }
+  if (page.kind === "pan-size") {
+    return "Pan conversions are really batter-depth decisions. Two pans can have similar area but behave differently if one is much deeper, darker, or made from glass.";
+  }
+  if (page.kind === "sourdough") {
+    return "Hydration is only useful when it is calculated by weight. Cups hide too much variation, especially once whole grain flour or starter water gets involved.";
+  }
+  if (page.kind === "cake-serving") {
+    return "Serving charts are estimates, not promises. A tall cake with clean slices serves more people than a short single layer cut at a casual party.";
+  }
+  return "Scaling is arithmetic first and baking judgment second. Multiply the ingredients, then slow down around eggs, salt, spices, leavening, and pan depth.";
+}
+
+function expertChecks(page: ToolPage): { label: string; text: string }[] {
+  if (page.kind === "buttermilk") {
+    return [
+      { label: "Acidity", text: "Use lemon juice or white vinegar when the recipe needs a clean, predictable tang." },
+      { label: "Thickness", text: "Thin yogurt or sour cream before adding it to delicate cake batter." },
+      { label: "Flavor", text: "Avoid sweetened plant milk unless the recipe can handle extra sweetness." },
+    ];
+  }
+  if (page.kind === "egg-brownies") {
+    return [
+      { label: "Fudgy", text: "Use applesauce or yogurt when you want a soft, moist center." },
+      { label: "Vegan", text: "Use flax egg after it gels; it binds better when rested." },
+      { label: "Slices", text: "Cool completely before cutting egg-free brownies." },
+    ];
+  }
+  if (page.kind === "pan-size") {
+    return [
+      { label: "Area", text: "Compare surface area before thinking about bake time." },
+      { label: "Depth", text: "A deeper pan needs slower checking and sometimes a lower oven." },
+      { label: "Material", text: "Glass and dark metal can brown faster than light metal." },
+    ];
+  }
+  if (page.kind === "sourdough") {
+    return [
+      { label: "Total flour", text: "Include flour from the starter for exact hydration." },
+      { label: "Total water", text: "Include starter water and any bassinage water." },
+      { label: "Flour type", text: "Whole wheat and rye absorb more water than white flour." },
+    ];
+  }
+  if (page.kind === "cake-serving") {
+    return [
+      { label: "Event", text: "Birthday slices are usually larger than wedding slices." },
+      { label: "Height", text: "Tall cakes can be cut thinner and still feel generous." },
+      { label: "Buffer", text: "Round up when cake is the main dessert." },
+    ];
+  }
+  return [
+    { label: "Multiplier", text: "Use desired yield divided by original yield." },
+    { label: "Rounding", text: "Round eggs and spices more carefully than flour or sugar." },
+    { label: "Pan", text: "Changing quantity often means changing pan area too." },
+  ];
+}
+
+function expertSteps(page: ToolPage): { title: string; text: string }[] {
+  if (page.kind === "pan-size") {
+    return [
+      { title: "Measure both pans", text: "Use inside dimensions and calculate surface area." },
+      { title: "Compare the area", text: "Divide the new pan area by the original pan area to get the batter multiplier." },
+      { title: "Watch bake time", text: "Start checking early if the batter is shallower, and later if it is deeper." },
+    ];
+  }
+  if (page.kind === "sourdough") {
+    return [
+      { title: "Weigh flour and water", text: "Use grams for all flour, water, and starter." },
+      { title: "Calculate percentage", text: "Divide water by flour and multiply by 100." },
+      { title: "Adjust gradually", text: "Move hydration by small jumps until the dough feels manageable." },
+    ];
+  }
+  if (page.kind === "egg-brownies") {
+    return [
+      { title: "Choose texture first", text: "Pick applesauce for fudgy, yogurt for richer, or flax for vegan binding." },
+      { title: "Measure per egg", text: "Use 1/4 cup applesauce or yogurt, or one prepared flax egg per egg." },
+      { title: "Cool before slicing", text: "Egg-free brownies firm as they cool, so do not judge the center too early." },
+    ];
+  }
+  if (page.kind === "butter-oil") {
+    return [
+      { title: "Check the recipe style", text: "Use the swap for liquid batters, not recipes that rely on creamed butter." },
+      { title: "Use the ratio", text: "Use about 3/4 as much oil as butter by volume." },
+      { title: "Adjust flavor", text: "Choose neutral oil for vanilla bakes and olive oil only when its flavor fits." },
+    ];
+  }
+  if (page.kind === "cake-serving") {
+    return [
+      { title: "Pick slice style", text: "Decide whether you are serving casual party slices or narrower event slices." },
+      { title: "Account for height", text: "Tall cakes serve more cleanly than short single layers." },
+      { title: "Add a buffer", text: "Plan a few extra servings if cake is the only dessert." },
+    ];
+  }
+  return [
+    { title: "Measure the substitute", text: "Use the ratio on this page rather than guessing by taste." },
+    { title: "Match the recipe", text: "Think about whether the batter needs acidity, moisture, fat, or binding." },
+    { title: "Check texture early", text: "Baking swaps often change thickness before they change flavor." },
+  ];
+}
+
+function ExpertUpgrade({ page }: { page: ToolPage }) {
+  if (!isPriorityLongTailPage(page)) return null;
+
+  return (
+    <section className="mt-8 rounded-card border border-amber-200 bg-gradient-to-br from-white to-amber-50 p-6 shadow-card">
+      <p className="text-sm font-semibold uppercase tracking-wide text-accent mb-2">Baker's note</p>
+      <h2 className="text-2xl font-bold text-slate-900 mb-3">How I would handle this in a real kitchen</h2>
+      <p className="text-slate-700 leading-relaxed max-w-3xl">{expertNote(page)}</p>
+
+      <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-3">
+        {expertChecks(page).map((check) => (
+          <div key={check.label} className="rounded-lg border border-slate-200 bg-white p-4">
+            <p className="font-semibold text-slate-900">{check.label}</p>
+            <p className="text-sm text-slate-600 leading-relaxed mt-1">{check.text}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-6 rounded-lg bg-slate-900 text-white p-5">
+        <h3 className="text-lg font-semibold text-white mb-3">Mini workflow</h3>
+        <ol className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          {expertSteps(page).map((step, index) => (
+            <li key={step.title} className="rounded border border-white/15 bg-white/5 p-4">
+              <p className="text-sm text-amber-200">Step {index + 1}</p>
+              <p className="font-semibold mt-1">{step.title}</p>
+              <p className="text-sm text-slate-300 leading-relaxed mt-2">{step.text}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+}
+
 function calculatorRows(page: ToolPage): string[][] {
   if (page.kind === "buttermilk") {
     return [
@@ -201,6 +438,9 @@ export default async function ToolDetailPage({ params }: ToolPageProps) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(buildFaqSchema(page)) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(buildSoftwareSchema(page)) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(buildBreadcrumbSchema(page)) }} />
+      {isPriorityLongTailPage(page) && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(buildHowToSchema(page)) }} />
+      )}
 
       <div className="flex flex-col lg:flex-row gap-8">
         <article className="flex-1 min-w-0 max-w-4xl">
@@ -226,6 +466,8 @@ export default async function ToolDetailPage({ params }: ToolPageProps) {
             <p className="text-sm font-semibold uppercase tracking-wide text-accent mb-2">Quick answer</p>
             <p className="text-lg text-slate-800 leading-relaxed">{page.shortAnswer}</p>
           </section>
+
+          <ExpertUpgrade page={page} />
 
           <section className="mb-8">
             <h2 className="text-2xl font-bold text-slate-900 mb-3">{page.calculatorTitle}</h2>
