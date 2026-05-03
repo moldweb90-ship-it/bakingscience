@@ -39,6 +39,8 @@ export type ToolPage = {
   relatedSlugs: string[];
 };
 
+type KeywordTuple = readonly [string, 50 | 500 | 5000 | 50000, number, string];
+
 function slugify(value: string): string {
   return value
     .toLowerCase()
@@ -198,7 +200,379 @@ const servingKeywords = [
   ["wedding cake servings calculator", 50, 0, "wedding"],
 ] as const;
 
-function buttermilkPage([keyword, volume, comp, angle]: (typeof buttermilkKeywords)[number]): ToolPage {
+const lowTailExpansionLines = `
+1 cup oil to butter conversion|0
+23cm square cake tin convert to round|0
+250g butter to oil conversion|0
+6 inch cake pan conversion|0
+8 inch cake pan conversion|0
+8 inch to 10 inch cake conversion|0
+8 inch to 6 inch cake conversion|0
+9 inch cake pan conversion|0
+almond milk buttermilk recipe|0
+baking dish conversion chart|0
+baking pan time conversion chart|0
+baking time conversion pan size|0
+baking tin size conversion calculator|0
+betty crocker brownie mix egg substitute|0
+bob's red mill egg replacer in brownies|0
+brownie mix with yogurt instead of eggs|0
+brownie recipe with applesauce instead of eggs|0
+brownies with yogurt instead of eggs|0
+bundt cake to loaf pan conversion|0
+butter conversion to oil|0
+butter to canola oil conversion|0
+butter to oil conversion grams|0
+butter to vegetable oil conversion grams|0
+buttermilk alternative almond milk|0
+buttermilk as milk substitute|0
+buttermilk biscuit mix substitute|0
+buttermilk dill seasoning substitute|0
+buttermilk egg replacement|0
+buttermilk egg substitute|0
+buttermilk for egg substitute|0
+buttermilk for milk substitute|0
+buttermilk powder replacement|0
+buttermilk substitute evaporated milk|0
+buttermilk substitute oat milk|0
+buttermilk substitute powdered milk|0
+cake pan converter calculator|0
+cake pan size conversion|0
+cake pan volume conversion|0
+cake serving calculator|0
+cake serving size calculator|0
+cake size conversion|0
+cake size conversion chart|0
+cake tin conversion|0
+cake tin conversion calculator|0
+cake tin conversion chart|0
+cake tin size conversion chart|0
+chickpea flour brownies with eggs|0
+conversion chart for baking pan sizes|0
+conversion oil to butter|0
+convert 6 inch cake recipe to 8 inch|0
+convert 8 inch cake recipe to 6 inch|0
+convert 8 inch cake recipe to 9 inch|0
+convert 8 inch cake to 6 inch|0
+convert 9 inch cake to 6 inch|0
+convert 9x13 recipe to 11x15|0
+convert baking time 8x8 to 9x13|0
+convert pie recipe to 9x13|0
+convert round cake tin to rectangle|0
+converting cake recipes for different size pans|0
+converting round cake tins to square|0
+cultured buttermilk blend powder substitute|0
+dairy free substitute buttermilk|0
+egg substitute buttermilk|0
+egg substitute for gluten free brownies|0
+flax egg brownies|0
+flaxseed egg substitute brownies|0
+fried chicken with milk instead of buttermilk|0
+homemade sour cream with buttermilk|0
+irish soda bread with yogurt instead of buttermilk|0
+just egg vegan brownies|0
+keikos cake pan conversion|0
+keto buttermilk substitute|0
+loaf pan conversion|0
+loaf tin to round tin conversion|0
+making vegan buttermilk|0
+oat milk instead of buttermilk|0
+oil to butter conversion grams|0
+pan conversion chart|0
+pillsbury brownie mix without eggs|0
+red velvet cake with yogurt instead of buttermilk|0
+replacement for buttermilk powder|0
+rice milk buttermilk|0
+round cake tin to loaf tin conversion|0
+round pan to square pan conversion|0
+sourdough bread hydration calculator|0
+sourdough starter hydration calculator|0
+square cake tin to round conversion|0
+square pan to round pan conversion|0
+square to round cake tin conversion|0
+substitute buttermilk powder for dry milk|0
+substitute for buttermilk powder in baking|0
+substitute for vinegar in red velvet cake|0
+substitute sourdough starter for buttermilk|0
+substitution for buttermilk powder|0
+using buttermilk instead of milk in cake|0
+vegan alternative buttermilk|0
+vegan brownies with egg replacer|0
+vegan egg substitute for baking brownies|0
+wedding cake servings calculator|0
+8 inch round cake pan volume|1
+brownies with applesauce instead of egg|1
+brownies with egg replacer|1
+buttermilk substitute kefir|1
+buttermilk substitute lactose free|1
+buttermilk substitute with lactose free milk|1
+cake batter conversion chart|1
+cake pan volume|1
+dried buttermilk substitute|1
+greek yogurt instead of buttermilk|1
+kefir as buttermilk substitute|1
+non dairy buttermilk substitute for fried chicken|1
+plant based buttermilk substitute|1
+soda bread using yogurt instead of buttermilk|1
+sour cream to buttermilk conversion|1
+sourdough hydration formula|1
+sub buttermilk for milk|1
+brownie egg replacement|2
+brownie mix vegan substitute for eggs|2
+buttermilk as egg substitute|2
+buttermilk instead of sour cream|2
+buttermilk substitute without milk|2
+evaporated milk and vinegar for buttermilk|2
+keto substitute for buttermilk|2
+oat milk substitute for buttermilk|2
+pan size converter|2
+replace milk with buttermilk|2
+sour cream instead of buttermilk|2
+sub kefir for buttermilk|2
+substitute buttermilk for whole milk|2
+substitute sour milk for buttermilk|2
+vegan sub for buttermilk|2
+buttermilk substitute biscuits|3
+buttermilk substitute cream of tartar|3
+whole milk substitute for buttermilk|3
+buttermilk replacement fried chicken|4
+buttermilk substitute for frying|4
+buttermilk substitute for red velvet cake|4
+ghirardelli brownie mix egg substitute|4
+lactose free alternative to buttermilk|4
+substitute for buttermilk in red velvet cake|4
+substitute for eggs when baking brownies|4
+use yogurt instead of buttermilk|4
+vegan buttermilk almond milk|4
+yogurt instead of buttermilk|4
+yogurt sub for buttermilk|4
+buttermilk powder substitute dairy free|5
+buttermilk substitute for chicken marinade|5
+buttermilk substitute with oat milk|5
+cant find buttermilk|5
+cream instead of buttermilk|5
+dairy free sub for buttermilk|5
+fried chicken buttermilk substitute|5
+low carb buttermilk substitute|5
+recipe scaler online|5
+substitute for buttermilk in cupcakes|5
+substitute for eggs in brownie batter|5
+yogurt in place of buttermilk|5
+3 4 buttermilk substitute|6
+alternative for buttermilk for fried chicken|6
+buttermilk substitute using sour cream|6
+oat milk buttermilk substitute|6
+vegan substitute for buttermilk powder|6
+yogurt and milk substitute for buttermilk|6
+1 4 buttermilk substitute|7
+alternative for buttermilk for baking|7
+buttermilk marinade substitute|7
+buttermilk substitute for lactose intolerance|7
+dairy free buttermilk substitute for baking|7
+healthy buttermilk substitute|7
+buttermilk using sour cream|8
+making buttermilk from yogurt|8
+vegan buttermilk powder substitute|8
+alternative to buttermilk for fried chicken|9
+buttermilk substitute for chicken|9
+replace buttermilk with|9
+replace buttermilk with sour cream|9
+substitute sour cream for buttermilk in baking|9
+buttermilk cream of tartar|10
+buttermilk substitute cream|10
+buttermilk substitute using almond milk|10
+substitute for buttermilk fried chicken|10
+substitute oat milk for buttermilk|10
+almond milk to buttermilk|11
+alternative to eggs in brownies|11
+butter milk substitute for heavy cream|11
+buttermilk in cake instead of milk|11
+cultured buttermilk substitute|11
+egg replacement for box brownies|11
+evaporated milk substitute for buttermilk|11
+goat milk buttermilk|11
+substitute for eggs in betty crocker brownies|11
+vegan substitute for buttermilk in baking|11
+2 cups buttermilk substitute|12
+buttermilk substitute for coleslaw|12
+egg substitute for box brownies|12
+make buttermilk with sour cream|12
+non dairy buttermilk substitute baking|12
+non dairy substitute for buttermilk in fried chicken|12
+1 cup milk to buttermilk|13
+buttermilk non dairy alternative|13
+buttermilk substitute 1 cup|13
+egg substitute for vegan brownies|13
+replace buttermilk with milk|13
+sub greek yogurt for buttermilk|13
+substitute yogurt for buttermilk in baking|13
+vegan brownie egg substitute|13
+vegan brownies egg replacer|13
+vegan egg replacement for brownies|13
+best vegan substitute for buttermilk|14
+buttermilk keto substitute|14
+buttermilk replacement for pancakes|14
+egg and oil substitute in brownies|14
+full fat buttermilk substitute|14
+loaf pan size conversion|14
+substitute for buttermilk dairy free|14
+substitute for buttermilk in ranch dressing|14
+substitute for buttermilk without milk|14
+substitute for egg in box brownies|14
+best sub for buttermilk|15
+buttermilk replacement for fried chicken|15
+buttermilk substitute for marinade|15
+dried buttermilk powder substitute|15
+instead of buttermilk|15
+sub sour cream for buttermilk|15
+buttermilk substitute how to make buttermilk|16
+out of buttermilk what can i use|16
+replacement for buttermilk in fried chicken|16
+substitute evaporated milk for buttermilk|16
+1 2 buttermilk substitute|17
+alternative for eggs in brownie mix|17
+buttermilk replacement for cake|17
+egg substitute for boxed brownie mix|17
+milk plus vinegar buttermilk|17
+one cup buttermilk substitute|17
+substitute for buttermilk in waffles|17
+substitute yogurt for buttermilk in pancakes|17
+best substitute for egg in brownies|18
+brownie mix substitute for eggs|18
+closest thing to buttermilk|18
+nonfat buttermilk substitute|18
+buttermilk substitute lemon|50|19
+don t have buttermilk|50|19
+keto buttermilk alternative|50|19
+brownie mix egg replacement|50|20
+buttermilk white vinegar|50|20
+casserole dish size conversion|50|21
+substitute for buttermilk ranch dressing|50|21
+egg substitute for brownie box mix|50|22
+egg substitute for brownies box mix|50|22
+in place of buttermilk|50|22
+substitute for one egg in brownies|50|22
+quick buttermilk substitute|50|23
+sub for buttermilk in biscuits|50|23
+substitute for buttermilk in cornbread recipe|50|23
+substitute for whole buttermilk|50|23
+if a recipe calls for buttermilk what can i substitute|50|24
+if you don t have buttermilk|50|24
+replacement to buttermilk|50|24
+sub for egg in brownies|50|24
+use instead of buttermilk|50|24
+best vegan egg substitute for brownies|50|25
+good buttermilk substitute|50|25
+a replacement for buttermilk|50|26
+a substitute for buttermilk|50|26
+baking pan conversion sizes|50|26
+i don t have buttermilk what can i substitute|50|27
+buttermilk baking mix substitute|50|28
+buttermilk equivalent|50|28
+best buttermilk substitute for cake|50|29
+buttermilk baking blend|50|29
+buttermilk substitute chicken|50|29
+substitute for buttermilk in salad dressing|50|30
+buttermilk equivalent to milk|50|31
+buttermilk substitute white vinegar|50|31
+if no buttermilk what can i use|50|32
+baking pan conversion calculator|500|0
+butter to oil conversion baking|500|0
+buttermilk instead of heavy cream|500|0
+cake pan conversion|500|0
+cake pan conversion chart|500|0
+oil to butter conversion calculator|500|0
+olive oil to butter conversion|500|0
+baking pan conversion|500|1
+baking pan conversion chart|500|1
+milk for buttermilk substitute|500|1
+recipe scaler|500|1
+use buttermilk instead of milk|500|1
+1 4 cup buttermilk substitute|500|2
+buttermilk substitute for ranch dressing|500|2
+diy buttermilk substitute|500|2
+buttermilk instead of milk|500|3
+milk instead of buttermilk|500|3
+sour cream and buttermilk|500|3
+sour cream buttermilk|500|3
+almond milk buttermilk substitute|500|4
+buttermilk substitute half and half|500|4
+egg substitutes for brownie mix|500|4
+3 4 cup buttermilk substitute|500|5
+almond milk buttermilk|500|5
+buttermilk using almond milk|500|5
+kefir buttermilk substitute|500|5
+make buttermilk from almond milk|500|5
+1 2 cup buttermilk substitute|500|6
+homemade buttermilk substitute|500|7
+low fat buttermilk substitute|500|7
+low fat substitute for buttermilk|500|7
+buttermilk greek yogurt substitute|500|8
+buttermilk substitute greek yogurt|500|8
+buttermilk substitute with greek yogurt|500|8
+make buttermilk substitute|500|8
+substitute for 2 eggs in brownies|500|8
+buttermilk replacement yogurt|500|9
+buttermilk substitute with yogurt|500|9
+non dairy alternative to buttermilk|500|9
+non dairy buttermilk replacement|500|9
+non dairy buttermilk substitute|500|9
+non dairy sub for buttermilk|500|9
+sub yogurt for buttermilk|500|9
+substitute for buttermilk non dairy|500|9
+yogurt milk buttermilk substitute|500|9
+buttermilk substitute for soda bread|500|10
+substitute for buttermilk in soda bread|500|10
+1 cup buttermilk substitute|500|13
+i don t have buttermilk|500|13
+buttermilk powder alternative|500|14
+buttermilk powder substitute|500|14
+buttermilk substitute milk and vinegar|500|14
+buttermilk substitute vinegar|500|14
+substitute for buttermilk powdered milk|500|14
+buttermilk substitute no milk|500|15
+no buttermilk substitute|500|15
+buttermilk substitute for cornbread|500|16
+buttermilk substitute for pancakes|500|16
+cornbread buttermilk substitute|500|16
+egg substitute baking brownies|500|16
+brownie mix egg substitute|500|17
+egg replacement brownie mix|500|17
+egg replacement for brownie mix|500|17
+non dairy butter milk|500|17
+replacement for buttermilk in cake|500|18
+sub for buttermilk in cake|500|18
+alternative for buttermilk in cake|500|20
+best buttermilk substitute|500|20
+buttermilk substitute cake|500|20
+if i don t have buttermilk what can i use|500|20
+if i dont have buttermilk what can i use|500|20
+best egg replacement for brownies|500|23
+best egg substitute for brownies|500|23
+buttermilk substitute for biscuits|500|23
+buttermilk substitute in biscuits|500|23
+if you don t have buttermilk what can you use|500|24
+lemon milk buttermilk|500|27
+milk and lemon juice buttermilk|500|28
+buttermilk conversion|500|30
+milk to buttermilk conversion|500|30
+sourdough hydration calculator|5000|0
+butter for oil conversion|5000|1
+butter to oil converter|5000|1
+buttermilk substitute lemon juice|5000|1
+`.trim();
+
+function lowTailExpansionKeywords(): KeywordTuple[] {
+  return lowTailExpansionLines.split("\n").map((line) => {
+    const parts = line.split("|");
+    const keyword = parts[0];
+    const volume = parts.length === 3 ? Number(parts[1]) : 50;
+    const comp = parts.length === 3 ? Number(parts[2]) : Number(parts[1]);
+    return [keyword, volume as 50 | 500 | 5000 | 50000, comp, "low-tail expansion"] as const;
+  });
+}
+
+function buttermilkPage([keyword, volume, comp, angle]: KeywordTuple): ToolPage {
   const amount = cupAmountFromKeyword(keyword);
   const acid = acidForButtermilk(amount);
   const nonDairy = /almond|non dairy|vegan|dairy/.test(keyword);
@@ -263,7 +637,7 @@ function buttermilkPage([keyword, volume, comp, angle]: (typeof buttermilkKeywor
   };
 }
 
-function eggPage([keyword, volume, comp, angle]: (typeof eggBrownieKeywords)[number]): ToolPage {
+function eggPage([keyword, volume, comp, angle]: KeywordTuple): ToolPage {
   const h1 = keyword.replace(/\b\w/g, (m) => m.toUpperCase());
   const twoEggs = keyword.includes("2 eggs");
   const brand = /betty|ghirardelli|pillsbury/.test(keyword);
@@ -325,7 +699,7 @@ function eggPage([keyword, volume, comp, angle]: (typeof eggBrownieKeywords)[num
   };
 }
 
-function butterOilPage([keyword, volume, comp, angle]: (typeof butterOilKeywords)[number]): ToolPage {
+function butterOilPage([keyword, volume, comp, angle]: KeywordTuple): ToolPage {
   const h1 = keyword.replace(/\b\w/g, (m) => m.toUpperCase());
   const reverse = keyword.includes("oil to butter") || keyword.startsWith("conversion oil");
   return {
@@ -385,7 +759,7 @@ function butterOilPage([keyword, volume, comp, angle]: (typeof butterOilKeywords
   };
 }
 
-function panPage([keyword, volume, comp, angle]: (typeof panKeywords)[number]): ToolPage {
+function panPage([keyword, volume, comp, angle]: KeywordTuple): ToolPage {
   const h1 = keyword.replace(/\b\w/g, (m) => m.toUpperCase());
   return {
     slug: slugify(keyword),
@@ -443,7 +817,7 @@ function panPage([keyword, volume, comp, angle]: (typeof panKeywords)[number]): 
   };
 }
 
-function sourdoughPage([keyword, volume, comp, angle]: (typeof sourdoughKeywords)[number]): ToolPage {
+function sourdoughPage([keyword, volume, comp, angle]: KeywordTuple): ToolPage {
   const h1 = keyword.replace(/\b\w/g, (m) => m.toUpperCase());
   return {
     slug: slugify(keyword),
@@ -499,7 +873,7 @@ function sourdoughPage([keyword, volume, comp, angle]: (typeof sourdoughKeywords
   };
 }
 
-function scalePage([keyword, volume, comp, angle]: (typeof scaleKeywords)[number]): ToolPage {
+function scalePage([keyword, volume, comp, angle]: KeywordTuple): ToolPage {
   const h1 = keyword.replace(/\b\w/g, (m) => m.toUpperCase());
   return {
     slug: slugify(keyword),
@@ -556,7 +930,7 @@ function scalePage([keyword, volume, comp, angle]: (typeof scaleKeywords)[number
   };
 }
 
-function servingPage([keyword, volume, comp, angle]: (typeof servingKeywords)[number]): ToolPage {
+function servingPage([keyword, volume, comp, angle]: KeywordTuple): ToolPage {
   const h1 = keyword.replace(/\b\w/g, (m) => m.toUpperCase());
   return {
     slug: slugify(keyword),
@@ -614,13 +988,45 @@ function servingPage([keyword, volume, comp, angle]: (typeof servingKeywords)[nu
 }
 
 export const toolPages: ToolPage[] = [
-  ...buttermilkKeywords.map(buttermilkPage),
-  ...eggBrownieKeywords.map(eggPage),
-  ...butterOilKeywords.map(butterOilPage),
-  ...panKeywords.map(panPage),
-  ...sourdoughKeywords.map(sourdoughPage),
-  ...scaleKeywords.map(scalePage),
-  ...servingKeywords.map(servingPage),
+  ...new Map(
+    [
+      ...buttermilkKeywords.map(buttermilkPage),
+      ...eggBrownieKeywords.map(eggPage),
+      ...butterOilKeywords.map(butterOilPage),
+      ...panKeywords.map(panPage),
+      ...sourdoughKeywords.map(sourdoughPage),
+      ...scaleKeywords.map(scalePage),
+      ...servingKeywords.map(servingPage),
+      ...lowTailExpansionKeywords().map((tuple) => {
+        const keyword = tuple[0].toLowerCase();
+        if (keyword.includes("sourdough")) return sourdoughPage(tuple);
+        if (keyword.includes("serving") || keyword.includes("wedding cake")) return servingPage(tuple);
+        if (keyword.includes("recipe scaler") || keyword.includes("double recipe") || keyword.includes("halve recipe")) {
+          return scalePage(tuple);
+        }
+        if (
+          keyword.includes("pan") ||
+          keyword.includes("tin") ||
+          keyword.includes("dish") ||
+          keyword.includes("9x13") ||
+          keyword.includes("inch") ||
+          keyword.includes("round") ||
+          keyword.includes("square") ||
+          keyword.includes("loaf") ||
+          keyword.includes("bundt") ||
+          keyword.includes("cake size") ||
+          keyword.includes("cake batter")
+        ) {
+          return panPage(tuple);
+        }
+        if (keyword.includes("oil") || keyword.includes("butter conversion to oil")) return butterOilPage(tuple);
+        if (keyword.includes("brownie") || keyword.includes("egg replacer") || keyword.includes("egg replacement")) {
+          return eggPage(tuple);
+        }
+        return buttermilkPage(tuple);
+      }),
+    ].map((page) => [page.slug, page]),
+  ).values(),
 ];
 
 export function getToolPage(slug: string): ToolPage | undefined {

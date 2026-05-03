@@ -4,6 +4,7 @@ import Link from "next/link";
 import Breadcrumbs from "@/components/layout/Breadcrumbs";
 import FAQAccordion from "@/components/seo/FAQAccordion";
 import AdBanner from "@/components/ads/AdBanner";
+import ToolCalculator from "@/components/tools/ToolCalculator";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 import { getToolPage, toolCategories, toolPages, type ToolPage } from "@/lib/tool-pages";
 
@@ -176,6 +177,16 @@ function RelatedLinks({ page }: { page: ToolPage }) {
   );
 }
 
+function ideaLink(idea: string): string {
+  const key = idea.toLowerCase();
+  if (key.includes("pancake")) return "/tools/buttermilk-substitute/";
+  if (key.includes("brownie")) return "/tools/egg-substitute-for-brownies/";
+  if (key.includes("cake") || key.includes("sheet") || key.includes("wedding")) return "/tools/cake-serving-calculator/";
+  if (key.includes("sourdough") || key.includes("starter") || key.includes("pizza dough")) return "/tools/sourdough-hydration-calculator/";
+  if (key.includes("muffin") || key.includes("quick bread") || key.includes("banana bread")) return "/tools/butter-to-oil-converter/";
+  return "/tools/";
+}
+
 export default async function ToolDetailPage({ params }: ToolPageProps) {
   const { slug } = await params;
   const page = getToolPage(slug);
@@ -216,10 +227,11 @@ export default async function ToolDetailPage({ params }: ToolPageProps) {
             <p className="text-lg text-slate-800 leading-relaxed">{page.shortAnswer}</p>
           </section>
 
-          <section className="card p-6 mb-8">
+          <section className="mb-8">
             <h2 className="text-2xl font-bold text-slate-900 mb-3">{page.calculatorTitle}</h2>
             <p className="text-slate-600 mb-5">{page.calculatorNote}</p>
-            <div className="overflow-x-auto">
+            <ToolCalculator kind={page.kind} />
+            <div className="overflow-x-auto mt-5 rounded-lg border border-slate-200 bg-white shadow-sm">
               <table>
                 <thead>
                   <tr>
@@ -268,19 +280,25 @@ export default async function ToolDetailPage({ params }: ToolPageProps) {
           ))}
 
           <section className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
+            <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
               <h2 className="text-2xl font-bold text-slate-900 mb-4">Practical Notes</h2>
               <ul className="space-y-3">
                 {page.tips.map((tip) => (
-                  <li key={tip} className="card p-4 text-slate-700">{tip}</li>
+                  <li key={tip} className="flex gap-3 text-slate-700">
+                    <span className="mt-1 h-2 w-2 rounded-full bg-accent flex-shrink-0" />
+                    <span>{tip}</span>
+                  </li>
                 ))}
               </ul>
             </div>
-            <div>
+            <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
               <h2 className="text-2xl font-bold text-slate-900 mb-4">Mistakes to Avoid</h2>
               <ul className="space-y-3">
                 {page.mistakes.map((mistake) => (
-                  <li key={mistake} className="card p-4 text-slate-700">{mistake}</li>
+                  <li key={mistake} className="flex gap-3 text-slate-700">
+                    <span className="mt-1 h-2 w-2 rounded-full bg-red-400 flex-shrink-0" />
+                    <span>{mistake}</span>
+                  </li>
                 ))}
               </ul>
             </div>
@@ -290,9 +308,9 @@ export default async function ToolDetailPage({ params }: ToolPageProps) {
             <h2 className="text-2xl font-bold text-slate-900 mb-4">Where This Helps in Real Baking</h2>
             <div className="flex flex-wrap gap-2">
               {page.recipeIdeas.map((idea) => (
-                <span key={idea} className="bg-accent-light text-accent-hover px-3 py-2 rounded text-sm font-medium">
+                <Link key={idea} href={ideaLink(idea)} className="bg-accent-light text-accent-hover hover:bg-accent hover:text-white px-3 py-2 rounded text-sm font-medium transition-colors">
                   {idea}
-                </span>
+                </Link>
               ))}
             </div>
           </section>
