@@ -249,6 +249,77 @@ const servingKeywords = [
 ] as const;
 
 const lowTailExpansionLines = `
+butter milk replacement|5000|26
+buttermilk milk substitute|5000|26
+substitute milk with buttermilk|5000|26
+make buttermilk from regular milk|5000|34
+buttermilk substitute lemon juice|5000|1
+buttermilk substitute with lemon juice|5000|1
+milk and vinegar buttermilk substitute|5000|1
+buttermilk alternative vegan|5000|3
+buttermilk replacement vegan|5000|3
+buttermilk vegan replacement|5000|3
+buttermilk substitute vegan|5000|3
+buttermilk vegan alternative|5000|3
+substitute for buttermilk vegan|5000|3
+vegan alternative for buttermilk|5000|3
+dairy free buttermilk substitute|5000|4
+buttermilk alternative dairy free|5000|4
+buttermilk dairy free alternative|5000|4
+buttermilk lactose free substitute|5000|4
+dairy free alternative for buttermilk|5000|4
+dairy free buttermilk replacement|5000|4
+dairy free replacement for buttermilk|5000|4
+buttermilk substitute for sour cream|5000|6
+buttermilk alternative for fried chicken|5000|11
+buttermilk substitute for fried chicken|5000|11
+buttermilk substitute fried chicken|5000|11
+substitute for buttermilk for fried chicken|5000|11
+alternative for egg in brownies|5000|19
+egg alternative for brownies|5000|19
+egg replacement brownies|5000|19
+substitute for an egg in brownies|5000|19
+substitute for eggs for brownies|5000|19
+egg sub for brownies|5000|21
+butter milk alternative|5000|19
+butter milk with vinegar|5000|25
+buttermilk from milk and vinegar|5000|25
+buttermilk milk vinegar|5000|25
+vinegar to milk for buttermilk|5000|25
+substitute for buttermilk in baking|5000|32
+alternative for buttermilk in baking|5000|32
+buttermilk alternative baking|5000|32
+buttermilk replacement baking|5000|32
+buttermilk replacement for baking|5000|32
+sub for buttermilk in baking|5000|32
+substitute for butter milk in baking|5000|32
+substitute for buttermilk baking|5000|32
+substitute of buttermilk in baking|5000|32
+buttermilk alternative recipe|5000|35
+buttermilk recipe substitute|5000|35
+buttermilk replacement recipe|5000|35
+make buttermilk from milk and vinegar|5000|38
+make buttermilk with vinegar|5000|38
+vinegar and milk to make buttermilk|5000|38
+almond milk buttermilk|500|5
+low fat buttermilk substitute|500|7
+low fat substitute for buttermilk|500|7
+buttermilk replacement yogurt|500|9
+buttermilk substitute with yogurt|500|9
+non dairy alternative to buttermilk|500|9
+non dairy buttermilk replacement|500|9
+substitute for buttermilk non dairy|500|9
+buttermilk substitute for soda bread|500|10
+substitute for buttermilk in soda bread|500|10
+1 cup buttermilk substitute|500|13
+buttermilk substitute vinegar|500|14
+milk lemon juice buttermilk|500|34
+make buttermilk lemon juice|500|44
+buttermilk substitute for cornbread|500|16
+buttermilk substitute for pancakes|500|16
+substitute for buttermilk in muffins|50|18
+lemon juice to make buttermilk|50|38
+need buttermilk but don t have|50|36
 1 cup oil to butter conversion|0
 23cm square cake tin convert to round|0
 250g butter to oil conversion|0

@@ -33,6 +33,7 @@ export default function ToolCalculator({ kind }: ToolCalculatorProps) {
   const [oilType, setOilType] = useState('neutral oil');
   const [panShape, setPanShape] = useState('round');
   const [servingStyle, setServingStyle] = useState('party');
+  const [copied, setCopied] = useState(false);
 
   const result = useMemo(() => {
     if (kind === 'buttermilk') {
@@ -97,6 +98,16 @@ export default function ToolCalculator({ kind }: ToolCalculatorProps) {
       secondary: `Multiply every ingredient by ${format(multiplier, 2)}. Watch eggs, salt, spices, and pan size.`,
     };
   }, [acid, amount, butter, cakeSize, eggStyle, eggs, flour, kind, newServings, newSize, oilType, oldSize, originalServings, panShape, servingStyle, water]);
+
+  function copyResult() {
+    const text = `${result.primary} — ${result.secondary}`;
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(text).then(() => {
+        setCopied(true);
+        window.setTimeout(() => setCopied(false), 1600);
+      });
+    }
+  }
 
   return (
     <div className="rounded-lg border border-slate-200 bg-white shadow-sm overflow-hidden">
@@ -223,6 +234,15 @@ export default function ToolCalculator({ kind }: ToolCalculatorProps) {
             </label>
           </>
         )}
+      </div>
+
+      <div className="px-5 pb-5 flex flex-wrap gap-3">
+        <button type="button" onClick={copyResult} className="rounded border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:border-accent hover:text-accent">
+          {copied ? 'Copied result' : 'Copy result'}
+        </button>
+        <button type="button" onClick={() => window.print()} className="rounded border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:border-accent hover:text-accent">
+          Print kitchen card
+        </button>
       </div>
     </div>
   );
