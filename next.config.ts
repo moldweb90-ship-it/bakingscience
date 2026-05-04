@@ -5,7 +5,12 @@ const nextConfig: NextConfig = {
 
   images: {
     formats: ['image/webp'],
-    remotePatterns: [],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.pexels.com',
+      },
+    ],
   },
 
   // Keep dev/build stable on Windows: this optimization intermittently
@@ -38,7 +43,7 @@ const nextConfig: NextConfig = {
               "default-src 'self'",
               "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://mc.yandex.ru",
               "style-src 'self' 'unsafe-inline'",
-              "img-src 'self' data: https://pagead2.googlesyndication.com https://mc.yandex.ru",
+              "img-src 'self' data: https://images.pexels.com https://pagead2.googlesyndication.com https://mc.yandex.ru",
               "font-src 'self'",
               "connect-src 'self' https://www.google-analytics.com https://mc.yandex.ru",
               "frame-src https://googleads.g.doubleclick.net",
