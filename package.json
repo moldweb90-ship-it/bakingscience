@@ -24,7 +24,8 @@
     "seo:dfs:site": "node scripts/dataforseo-report.mjs site",
     "seo:dfs:overview": "node scripts/dataforseo-report.mjs overview",
     "seo:dfs:serp": "node scripts/dataforseo-report.mjs serp",
-    "seo:keywords:analyze": "node scripts/keyword-stats-analyze.mjs"
+    "seo:keywords:analyze": "node scripts/keyword-stats-analyze.mjs",
+    "media:pexels": "node scripts/pexels-search.mjs"
   },
   "dependencies": {
     "next": "^15.0.0",
