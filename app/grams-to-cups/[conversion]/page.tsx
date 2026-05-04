@@ -64,8 +64,8 @@ export async function generateMetadata({ params }: GenericGramsPageProps): Promi
 
   const flourCups = convert(weight, "all-purpose-flour").cups;
   const sugarCups = convert(weight, "granulated-sugar").cups;
-  const title = `${weight} grams to cups conversion chart | BakingConverter`;
-  const description = `${weight} grams to cups depends on the ingredient: ${formatCupResult(flourCups)} all-purpose flour, ${formatCupResult(sugarCups)} granulated sugar, plus butter, brown sugar, oats and more.`;
+  const title = `${weight} Grams to Cups - Flour, Sugar, Butter Chart`;
+  const description = `Don't use a one-size-fits-all answer. ${weight}g is ${formatCupResult(flourCups)} flour but ${formatCupResult(sugarCups)} sugar. Compare cups for 18 baking ingredients before you measure.`;
   const canonical = `${SITE_URL}${buildGenericUrl(weight)}`;
 
   return {
@@ -98,6 +98,8 @@ export default async function GenericGramsToCupsPage({ params }: GenericGramsPag
 
   const rows = rowsForWeight(weight);
   const faqs = faqForWeight(weight);
+  const flourCups = convert(weight, "all-purpose-flour").cups;
+  const sugarCups = convert(weight, "granulated-sugar").cups;
   const nearbyWeights = GENERIC_GRAM_WEIGHTS.filter((value) => value !== weight)
     .sort((a, b) => Math.abs(a - weight) - Math.abs(b - weight))
     .slice(0, 12)
@@ -127,10 +129,20 @@ export default async function GenericGramsToCupsPage({ params }: GenericGramsPag
 
         <section className="mb-8">
           <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
-            {weight} Grams to Cups Conversion Chart
+            {weight} Grams to Cups: The Answer Depends on the Ingredient
           </h1>
           <p className="text-lg text-slate-700 max-w-3xl leading-relaxed">
-            <strong>{weight} grams to cups</strong> depends on what you are measuring. Use this chart to compare common baking ingredients, then open the exact ingredient page for method-specific details.
+            <strong>{weight} grams to cups</strong> is not one universal number. Flour, sugar, butter, oats, water, and rice all fill a cup differently, so this page gives the comparison Google snippets usually skip.
+          </p>
+        </section>
+
+        <section className="card p-5 sm:p-6 mb-8 border-accent/40">
+          <p className="text-sm font-semibold uppercase text-accent-hover mb-2">Quick answer</p>
+          <p className="text-xl sm:text-2xl font-bold text-slate-900 leading-snug">
+            {weight}g equals {formatCupResult(flourCups)} all-purpose flour, but {formatCupResult(sugarCups)} granulated sugar.
+          </p>
+          <p className="text-slate-600 mt-3 leading-relaxed">
+            If your recipe just says "{weight} grams to cups," choose the ingredient first. That is the difference between a useful conversion and a dry cake.
           </p>
         </section>
 

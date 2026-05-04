@@ -66,8 +66,8 @@ export async function generateMetadata({ params }: GenericCupsPageProps): Promis
   const label = `${formatCupAmount(cups)} ${cupWord(cups)}`;
   const flourGrams = cupsToGrams(cups, "all-purpose-flour");
   const sugarGrams = cupsToGrams(cups, "granulated-sugar");
-  const title = `${label} to grams conversion chart | BakingConverter`;
-  const description = `${label} to grams depends on the ingredient: ${formatGrams(flourGrams)} all-purpose flour, ${formatGrams(sugarGrams)} granulated sugar, plus butter, brown sugar, oats and more.`;
+  const title = `${label} to Grams - Flour, Sugar, Butter Chart`;
+  const description = `${label} is ${formatGrams(flourGrams)} flour but ${formatGrams(sugarGrams)} sugar. Compare exact grams for 18 baking ingredients before you measure.`;
   const canonical = `${SITE_URL}${buildGenericUrl(cups)}`;
 
   return {
@@ -99,6 +99,8 @@ export default async function GenericCupsToGramsPage({ params }: GenericCupsPage
   if (cups === null || !GENERIC_CUP_VALUES.includes(cups)) notFound();
 
   const label = `${formatCupAmount(cups)} ${cupWord(cups)}`;
+  const flourGrams = cupsToGrams(cups, "all-purpose-flour");
+  const sugarGrams = cupsToGrams(cups, "granulated-sugar");
   const rows = rowsForCups(cups);
   const faqs = faqForCups(cups);
   const nearbyCups = GENERIC_CUP_VALUES.filter((value) => value !== cups)
@@ -130,10 +132,20 @@ export default async function GenericCupsToGramsPage({ params }: GenericCupsPage
 
         <section className="mb-8">
           <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
-            {label} to Grams Conversion Chart
+            {label} to Grams: Flour, Sugar, Butter and More
           </h1>
           <p className="text-lg text-slate-700 max-w-3xl leading-relaxed">
-            <strong>{label} to grams</strong> changes by ingredient. Use this chart for quick comparisons, then open the exact ingredient page for detailed baking measurements.
+            <strong>{label} to grams</strong> changes by ingredient. A cup of flour is not a cup of sugar by weight, so this chart gives the numbers recipe snippets usually flatten.
+          </p>
+        </section>
+
+        <section className="card p-5 sm:p-6 mb-8 border-accent/40">
+          <p className="text-sm font-semibold uppercase text-accent-hover mb-2">Quick answer</p>
+          <p className="text-xl sm:text-2xl font-bold text-slate-900 leading-snug">
+            {label} equals {formatGrams(flourGrams)} all-purpose flour, but {formatGrams(sugarGrams)} granulated sugar.
+          </p>
+          <p className="text-slate-600 mt-3 leading-relaxed">
+            Pick the ingredient before you bake. The wrong cup-to-grams conversion can add enough flour or sugar to change the texture.
           </p>
         </section>
 

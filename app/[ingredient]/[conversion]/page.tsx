@@ -49,6 +49,8 @@ export async function generateStaticParams() {
 export const revalidate = 604800;
 
 const PRIORITY_LEAF_PAGES = new Set([
+  'granulated-sugar:40',
+  'granulated-sugar:70',
   'granulated-sugar:100',
   'granulated-sugar:140',
   'bread-flour:100',
@@ -72,8 +74,8 @@ function getCupWord(value: number): string {
 
 function buildPriorityLeafMeta(weight: number, shortName: string, cups: number, siftedCups: number, packedCups: number) {
   const cupText = `${decimalToFraction(cups)} ${getCupWord(cups)}`;
-  const title = `${weight}g ${shortName} to cups: ${cupText} | BakingConverter`;
-  const description = `${weight}g ${shortName} equals ${cupText}. Compare spooned, sifted (${siftedCups} cups), and packed (${packedCups} cups) methods with an instant baking calculator.`;
+  const title = `${weight}g ${shortName} to Cups - ${cupText} exact`;
+  const description = `${weight}g ${shortName} = ${cupText}. See tablespoons, teaspoons, recipe notes, and why generic grams-to-cups answers can ruin baking texture.`;
   return { title, description };
 }
 
@@ -253,6 +255,16 @@ export default async function LeafPage({ params }: LeafPageProps) {
             With Dip &amp; Sweep it&apos;s {dipSweep.cups} cups,{' '}
             and sifted it&apos;s {sifted.cups} cups.
           </p>
+
+          <section className="card p-5 sm:p-6 mb-8 border-accent/40">
+            <p className="text-sm font-semibold uppercase text-accent-hover mb-2">Exact answer for this ingredient</p>
+            <p className="text-xl sm:text-2xl font-bold text-slate-900 leading-snug">
+              {weight}g {ing.name.toLowerCase()} = {spoonLevel.cups} cups ({fraction}) with Spoon &amp; Level.
+            </p>
+            <p className="text-slate-600 mt-3 leading-relaxed">
+              This is not a generic grams-to-cups guess. It uses {ing.name.toLowerCase()} density, so the number is tuned for real baking instead of a one-size-fits-all snippet.
+            </p>
+          </section>
 
           {isPriorityPage && (
             <section className="card p-5 mb-6">

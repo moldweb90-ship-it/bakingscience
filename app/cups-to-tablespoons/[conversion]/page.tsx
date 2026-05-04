@@ -25,8 +25,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (cups === null || !CUP_UNIT_VALUES.includes(cups)) return { title: "Not Found" };
   const label = `${formatCupAmount(cups)} ${cupWord(cups)}`;
   const tbsp = cupsToTablespoons(cups);
-  const title = `${label} in tablespoons: ${formatNumber(tbsp)} tbsp | BakingConverter`;
-  const description = `${label} equals ${formatNumber(tbsp)} tablespoons and ${formatNumber(cupsToTeaspoons(cups))} teaspoons. Exact US cup to tablespoon conversion with formula and chart.`;
+  const title = `${label} to Tablespoons - ${formatNumber(tbsp)} tbsp exact`;
+  const description = `${label} equals ${formatNumber(tbsp)} tbsp and ${formatNumber(cupsToTeaspoons(cups))} tsp. Exact US cup conversion for recipe scaling, butter, liquids, and small-batch baking.`;
   const canonical = `${SITE_URL}${urlFor(cups)}`;
   return {
     title,
@@ -60,6 +60,15 @@ export default async function CupsToTablespoonsPage({ params }: PageProps) {
         <p className="text-lg text-slate-700 mb-6 max-w-3xl">
           <strong>{label}</strong> equals <strong>{formatNumber(tbsp)} tablespoons</strong>. Formula: tablespoons = cups x 16.
         </p>
+        <section className="card p-5 sm:p-6 mb-8 border-accent/40">
+          <p className="text-sm font-semibold uppercase text-accent-hover mb-2">Quick answer</p>
+          <p className="text-xl sm:text-2xl font-bold text-slate-900 leading-snug">
+            {label} = {formatNumber(tbsp)} tablespoons = {formatNumber(tsp)} teaspoons.
+          </p>
+          <p className="text-slate-600 mt-3 leading-relaxed">
+            Use this when a recipe gives cups but you need a spoon measure for butter, oil, milk, or small-batch baking.
+          </p>
+        </section>
         <section className="card p-5 sm:p-6 mb-8">
           <h2 className="text-xl font-bold text-slate-900 mb-4">Cup, Tablespoon, Teaspoon Chart</h2>
           <div className="grid sm:grid-cols-3 gap-3 text-sm">

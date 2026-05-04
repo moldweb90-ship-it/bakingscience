@@ -96,9 +96,9 @@ export async function generateMetadata({ params }: ReverseLeafPageProps): Promis
 
   const grams = cupsToGrams(cups, ingredientId, "spoon_level");
   const cupLabel = formatCupLabel(cups);
-  const title = `${cupLabel} ${cupWord(cups)} ${ing.name.toLowerCase()} in grams: ${formatGrams(grams)}g | BakingConverter`;
+  const title = `${cupLabel} ${cupWord(cups)} ${ing.name.toLowerCase()} in grams - ${formatGrams(grams)}g exact`;
   const cakeAlias = ingredientId === "cake-flour" ? " (pastry flour)" : "";
-  const description = `${cupLabel} ${cupWord(cups)} of ${ing.name.toLowerCase()}${cakeAlias} equals ${formatGrams(grams)}g using Spoon & Level. Compare Dip & Sweep and Sifted results for accurate baking.`;
+  const description = `${cupLabel} ${cupWord(cups)} ${ing.name.toLowerCase()}${cakeAlias} = ${formatGrams(grams)}g. See Spoon & Level vs packed/sifted results, recipe notes, and why this conversion matters.`;
   const canonical = `${SITE_URL}${buildCupToGramsUrl(ingredientId, cups)}`;
 
   return {
@@ -179,6 +179,16 @@ export default async function CupsToGramsLeafPage({ params }: ReverseLeafPagePro
             <strong>{cupLabel} {cupWord(cups)} of {ing.name.toLowerCase()}</strong> equals <strong>{formatGrams(grams)} grams</strong> using Spoon &amp; Level.
             Dip &amp; Sweep: {formatGrams(dip)}g. Sifted: {formatGrams(sifted)}g.
           </p>
+
+          <section className="card p-5 sm:p-6 mb-8 border-accent/40">
+            <p className="text-sm font-semibold uppercase text-accent-hover mb-2">Baker's quick answer</p>
+            <p className="text-xl sm:text-2xl font-bold text-slate-900 leading-snug">
+              {cupLabel} {cupWord(cups)} {ing.name.toLowerCase()} = {formatGrams(grams)}g with Spoon &amp; Level.
+            </p>
+            <p className="text-slate-600 mt-3 leading-relaxed">
+              Use this exact ingredient page instead of a generic cup chart. {ing.name} has its own density, and the wrong number can change sweetness, spread, moisture, or crumb.
+            </p>
+          </section>
 
           <CupToGramsLeafCalculator
             ingredientId={ingredientId}
