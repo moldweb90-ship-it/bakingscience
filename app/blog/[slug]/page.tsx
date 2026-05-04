@@ -19,15 +19,15 @@ const LEGACY_BLOG_REDIRECTS: Record<string, string> = {
 
 const FEATURED_BLOG_IMAGES: Record<string, { src: string; alt: string }> = {
   'why-cup-measurements-fail': {
-    src: 'https://images.pexels.com/photos/7299855/pexels-photo-7299855.jpeg?auto=compress&cs=tinysrgb&h=900&w=1400',
+    src: '/images/blog/cup-measurements-scale.jpg',
     alt: 'A bowl being weighed on a kitchen scale while baking ingredients are prepared',
   },
   'high-altitude-baking-guide': {
-    src: 'https://images.pexels.com/photos/15033893/pexels-photo-15033893.jpeg?auto=compress&cs=tinysrgb&h=900&w=1400',
+    src: '/images/blog/high-altitude-mountains.jpg',
     alt: 'Snow-covered mountains under a clear sky representing high altitude baking conditions',
   },
   'butter-solid-vs-melted-measurement': {
-    src: 'https://images.pexels.com/photos/94443/pexels-photo-94443.jpeg?auto=compress&cs=tinysrgb&h=900&w=1400',
+    src: '/images/blog/butter-flour-counter.jpg',
     alt: 'Butter and flour on a kitchen counter ready for baking',
   },
 };
@@ -37,7 +37,7 @@ const ENHANCED_BLOG_CONTENT: Record<string, string> = {
 <p>Most cup-measurement problems do not look dramatic while they are happening. You scoop flour, level it off, keep moving, and only notice the damage when the cookies come out dry or the cake crumb feels tight.</p>
 <p>The quiet problem is this: <strong>the same measuring cup can hold roughly 106g to 148g of flour</strong>, depending on whether the flour was sifted, spooned, or packed by dipping the cup into the bag. That is not a tiny rounding error. That is the difference between a recipe behaving and a recipe fighting back.</p>
 <blockquote>A cup is a container. A gram is a measurement. In baking, that distinction matters.</blockquote>
-<figure class="blog-photo"><img src="https://images.pexels.com/photos/7965962/pexels-photo-7965962.jpeg?auto=compress&cs=tinysrgb&h=850&w=1300" alt="Flour and baking ingredients being measured on a digital kitchen scale" /><figcaption>When flour is weighed, the recipe starts from a known number instead of a packed or airy cup.</figcaption></figure>
+<figure class="blog-photo"><img src="/images/blog/flour-on-scale.jpg" alt="Flour and baking ingredients being measured on a digital kitchen scale" /><figcaption>When flour is weighed, the recipe starts from a known number instead of a packed or airy cup.</figcaption></figure>
 <h2>The Three Methods (and Why They Give Different Results)</h2>
 <p>There are three common ways people fill a measuring cup with flour. They all look normal. They do not bake the same.</p>
 <h3>Method 1: Spoon &amp; Level</h3>
@@ -56,7 +56,7 @@ const ENHANCED_BLOG_CONTENT: Record<string, string> = {
 <tr><td><a href="/powdered-sugar/">Powdered Sugar</a></td><td>120g</td><td>142g</td><td>102g</td><td>Frosting texture and dusting</td></tr>
 </table>
 <div class="blog-callout"><strong>Kitchen note:</strong> if a recipe fails once, do not immediately blame the recipe. Re-bake it with weighed flour first. That single change fixes more bad recipes than people expect.</div>
-<figure class="blog-photo blog-photo-split"><img src="https://images.pexels.com/photos/8178914/pexels-photo-8178914.jpeg?auto=compress&cs=tinysrgb&h=850&w=1300" alt="Dough being worked on a floured kitchen counter" /><figcaption>Too much flour shows up later as dry dough, tight crumb, and cookies that refuse to spread correctly.</figcaption></figure>
+<figure class="blog-photo blog-photo-split"><img src="/images/blog/floured-dough-counter.jpg" alt="Dough being worked on a floured kitchen counter" /><figcaption>Too much flour shows up later as dry dough, tight crumb, and cookies that refuse to spread correctly.</figcaption></figure>
 <h2>So What Should You Do?</h2>
 <p><strong>Use a kitchen scale when accuracy matters.</strong> This is the cleanest fix. 125g is 125g whether the flour came from a fresh bag, a packed canister, or a humid kitchen.</p>
 <p><strong>If you use cups, pick one method and stay consistent.</strong> Spoon the flour in gently, level it once, and do not tap the cup on the counter. Tapping settles the flour and quietly adds more.</p>
@@ -68,7 +68,7 @@ const ENHANCED_BLOG_CONTENT: Record<string, string> = {
 <p>If you live above 3,500 feet and your cakes keep rising beautifully, then sinking in the center, you are not imagining it. The recipe may be fine at sea level. Your kitchen is just playing by different rules.</p>
 <p>At altitude, air pressure is lower. Gases expand faster, moisture leaves batter sooner, and structure has less time to set. A cake can look successful for the first twenty minutes and still collapse before it cools.</p>
 <blockquote>High altitude baking is not about adding random flour. It is about giving the batter enough structure before the gases outrun it.</blockquote>
-<figure class="blog-photo"><img src="https://images.pexels.com/photos/12366051/pexels-photo-12366051.jpeg?auto=compress&cs=tinysrgb&h=850&w=1300" alt="Mountain peaks rising above clouds" /><figcaption>Above about 3,500 feet, lower pressure changes how quickly batters rise, dry, and set.</figcaption></figure>
+<figure class="blog-photo"><img src="/images/blog/mountain-peaks-clouds.jpg" alt="Mountain peaks rising above clouds" /><figcaption>Above about 3,500 feet, lower pressure changes how quickly batters rise, dry, and set.</figcaption></figure>
 <h2>The Science (Quick Version)</h2>
 <p>Three changes matter most in a home kitchen:</p>
 <ul>
@@ -89,7 +89,7 @@ const ENHANCED_BLOG_CONTENT: Record<string, string> = {
 <h2>What This Means in Grams</h2>
 <p>If a recipe calls for 250g of flour at sea level, Denver often needs about 260g to 268g depending on the recipe. A delicate butter cake may need the higher end. A dense banana bread may need less.</p>
 <p>If the recipe calls for 200g of <a href="/granulated-sugar/">granulated sugar</a>, try reducing to about 185g to 190g at Denver altitude. Less sugar helps the crumb set with more strength.</p>
-<figure class="blog-photo blog-photo-split"><img src="https://images.pexels.com/photos/5964491/pexels-photo-5964491.jpeg?auto=compress&cs=tinysrgb&h=850&w=1300" alt="Ingredients being poured onto a kitchen scale" /><figcaption>At altitude, small gram changes matter because flour, sugar, and liquid all affect structure.</figcaption></figure>
+<figure class="blog-photo blog-photo-split"><img src="/images/blog/weighing-ingredients.jpg" alt="Ingredients being poured onto a kitchen scale" /><figcaption>At altitude, small gram changes matter because flour, sugar, and liquid all affect structure.</figcaption></figure>
 <h2>Cities That Need These Adjustments</h2>
 <table>
 <tr><th>City</th><th>Approx. elevation</th><th>Start with this level</th></tr>
@@ -110,7 +110,7 @@ const ENHANCED_BLOG_CONTENT: Record<string, string> = {
 <p>Butter looks simple until a recipe says "1/2 cup melted butter." Do you measure the stick first and melt it, or melt butter and pour it into a cup? Those two choices are not identical.</p>
 <p><strong>113g of butter is one standard U.S. stick.</strong> By weight, it never changes. By volume, it changes with temperature and state: cold, softened, or melted.</p>
 <blockquote>If the recipe gives butter in grams, trust the grams. If it gives butter in cups, pay close attention to the comma.</blockquote>
-<figure class="blog-photo"><img src="https://images.pexels.com/photos/5618033/pexels-photo-5618033.jpeg?auto=compress&cs=tinysrgb&h=850&w=1300" alt="Butter in a bowl with milk and baking tools on a wooden board" /><figcaption>Butter behaves differently as a cold solid, a softened fat, and a melted liquid.</figcaption></figure>
+<figure class="blog-photo"><img src="/images/blog/butter-bowl-milk.jpg" alt="Butter in a bowl with milk and baking tools on a wooden board" /><figcaption>Butter behaves differently as a cold solid, a softened fat, and a melted liquid.</figcaption></figure>
 <h2>The Numbers</h2>
 <table>
 <tr><th>Butter state</th><th>113g equals</th><th>Best way to measure</th><th>Recipe risk</th></tr>
@@ -121,7 +121,7 @@ const ENHANCED_BLOG_CONTENT: Record<string, string> = {
 <p>That is roughly a 14% volume difference between solid and melted butter. If you are making cookies, brownies, or a butter-heavy cake, that gap can change spread, tenderness, and greasiness.</p>
 <h2>Why Does This Happen?</h2>
 <p>When butter melts, the fat phase loosens and the water content can separate slightly. The same 113g occupies more space as a liquid than it does as a tidy cold stick. This is why "same weight" and "same cup volume" are not always the same instruction.</p>
-<figure class="blog-photo blog-photo-split"><img src="https://images.pexels.com/photos/7966382/pexels-photo-7966382.jpeg?auto=compress&cs=tinysrgb&h=850&w=1300" alt="Butter being spread on a parchment-lined baking tray" /><figcaption>Melted or smeared butter coats flour differently, which is why recipe wording matters.</figcaption></figure>
+<figure class="blog-photo blog-photo-split"><img src="/images/blog/butter-on-parchment.jpg" alt="Butter being spread on a parchment-lined baking tray" /><figcaption>Melted or smeared butter coats flour differently, which is why recipe wording matters.</figcaption></figure>
 <h2>What Your Recipe Actually Wants</h2>
 <table>
 <tr><th>Recipe wording</th><th>What to do</th><th>Why</th></tr>

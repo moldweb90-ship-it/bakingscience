@@ -52,7 +52,7 @@ const blogPostPlaceholders = [
     slug: 'why-cup-measurements-fail',
     excerpt: 'How you fill your measuring cup changes the weight by up to 20%. Learn the three methods professional bakers use and why Google AI can never give you the full picture.',
     date: '2025-01-15',
-    image: 'https://images.pexels.com/photos/7299855/pexels-photo-7299855.jpeg?auto=compress&cs=tinysrgb&h=520&w=840',
+    image: '/images/blog/cup-measurements-scale.jpg',
     imageAlt: 'A bowl on a kitchen scale for precise baking measurements',
   },
   {
@@ -60,7 +60,7 @@ const blogPostPlaceholders = [
     slug: 'high-altitude-baking-guide',
     excerpt: 'Altitude changes everything. Learn exactly how much extra flour and liquid you need above 3,500 feet, with a city-by-city adjustment table.',
     date: '2025-01-22',
-    image: 'https://images.pexels.com/photos/15033893/pexels-photo-15033893.jpeg?auto=compress&cs=tinysrgb&h=520&w=840',
+    image: '/images/blog/high-altitude-mountains.jpg',
     imageAlt: 'Snowy mountain peaks for a high altitude baking guide',
   },
   {
@@ -68,7 +68,7 @@ const blogPostPlaceholders = [
     slug: 'butter-solid-vs-melted-measurement',
     excerpt: 'The same 113g of butter measures differently depending on whether it is solid, softened, or melted. See the visual comparison that will change how you bake.',
     date: '2025-01-29',
-    image: 'https://images.pexels.com/photos/94443/pexels-photo-94443.jpeg?auto=compress&cs=tinysrgb&h=520&w=840',
+    image: '/images/blog/butter-flour-counter.jpg',
     imageAlt: 'Butter and flour on a counter for a baking measurement guide',
   },
 ];
