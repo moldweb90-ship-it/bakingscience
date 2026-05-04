@@ -52,24 +52,24 @@ const blogPostPlaceholders = [
     slug: 'why-cup-measurements-fail',
     excerpt: 'How you fill your measuring cup changes the weight by up to 20%. Learn the three methods professional bakers use and why Google AI can never give you the full picture.',
     date: '2025-01-15',
-    gradient: 'from-blue-400 to-blue-600',
-    icon: '\u274C',
+    image: 'https://images.pexels.com/photos/7299855/pexels-photo-7299855.jpeg?auto=compress&cs=tinysrgb&h=520&w=840',
+    imageAlt: 'A bowl on a kitchen scale for precise baking measurements',
   },
   {
     title: 'Baking in Denver: The High-Altitude Adjustment Guide You Actually Need',
     slug: 'high-altitude-baking-guide',
     excerpt: 'Altitude changes everything. Learn exactly how much extra flour and liquid you need above 3,500 feet, with a city-by-city adjustment table.',
     date: '2025-01-22',
-    gradient: 'from-amber-400 to-orange-600',
-    icon: '\u26F0',
+    image: 'https://images.pexels.com/photos/15033893/pexels-photo-15033893.jpeg?auto=compress&cs=tinysrgb&h=520&w=840',
+    imageAlt: 'Snowy mountain peaks for a high altitude baking guide',
   },
   {
     title: 'Butter Math: Why Solid vs Melted Changes Everything in Your Recipe',
     slug: 'butter-solid-vs-melted-measurement',
     excerpt: 'The same 113g of butter measures differently depending on whether it is solid, softened, or melted. See the visual comparison that will change how you bake.',
     date: '2025-01-29',
-    gradient: 'from-yellow-300 to-amber-500',
-    icon: '\uD83E\uDDC8',
+    image: 'https://images.pexels.com/photos/94443/pexels-photo-94443.jpeg?auto=compress&cs=tinysrgb&h=520&w=840',
+    imageAlt: 'Butter and flour on a counter for a baking measurement guide',
   },
 ];
 
@@ -251,9 +251,12 @@ export default function HomeLanding({ heroTitle, heroSubtitle, initialMode }: Ho
               href={`/blog/${post.slug}/`}
               className="card p-6 flex flex-col gap-3 group hover:border-accent transition-colors"
             >
-              <div className={`bg-gradient-to-br ${post.gradient} rounded-card h-40 flex items-center justify-center text-5xl text-white`}>
-                {post.icon}
-              </div>
+              <img
+                src={post.image}
+                alt={post.imageAlt}
+                className="h-40 w-full rounded-card object-cover"
+                loading="lazy"
+              />
               <h3 className="font-semibold text-slate-900 group-hover:text-accent transition-colors leading-snug">
                 {post.title}
               </h3>
